@@ -16,6 +16,12 @@ const FeatureList = [
     ]
   },
   {
+    title: 'Decentralized Identifiers(DIDs)',
+    items: [
+      {url: "https://docs.useorbis.com/", text: "Interact and manage decentralized identifiers"},
+    ]
+  },
+  {
     title: 'Orbis',
     items: [
       {url: "https://docs.useorbis.com/", text: "Easily add Web3 social features to your application."},

@@ -4,15 +4,9 @@ import styles from './homeNavBoxes.module.css';
 
 const FeatureList = [
   {
-    title: 'js-ceramic',
+    title: 'Creamic Protocol',
     items: [
       {url: "docs/protocol/js-ceramic/overview", text: "Dive into the JavaScript implementation of the  Ceramic Protocol."},
-    ]
-  },
-  {
-    title: 'Decentralized Indentifiers (DIDs)',
-    items: [
-      {url: "https://did.js.org/docs/introduction", text: "Interact and manage decentralized identifiers."},
     ]
   },
   {
