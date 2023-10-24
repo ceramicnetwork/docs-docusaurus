@@ -16,9 +16,9 @@
   .grid3col{
     display: grid;
     grid-template-columns: repeat(4,minmax(0,1fr));
-    gap:56rem;
+    gap:7rem;
     margin: 0 auto;
-    padding: 0;
+    padding: 4rem;
   }
   @media screen and (max-width: 1680px) {
     .grid3col{
