@@ -2,12 +2,47 @@
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
+ @font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter/static/Inter-Light.ttf");
+}
+
+
+html[data-theme="dark"] header{
+  color: #fff;
+}
+
+html[data-theme="dark"] p3{
+  color: #fff;
+}
 
 .heroBanner {
   padding: 4rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  height: 175px;
+  background: #FA861B;
+}
+
+.heroBanner h1 {
+  color: #fffdfd;
+  text-align: center;
+  font-family: "Inter";
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.heroBanner p {
+  color: #fffdfd;
+  text-align: center;
+  font-family: "Inter";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
 @media screen and (max-width: 996px) {
@@ -24,20 +59,31 @@
 
 header {
   padding-top: 60px;
-  padding-left: 5rem;
-  font:
-    bold 2.7rem Arial,
-    sans-serif;
+  font: bold 22px Arial, sans-serif;
   color: #5a5959;
 }
 
+main {
+  max-width: 851px;
+  margin: auto;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-bottom: 190px;
+}
+
+h1 .hero__title {
+  color: #413f3f;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
 
 p3 {
   padding-top: 15px;
-  padding-left: 5rem;
-  font:
-    1.2rem Arial,
-    sans-serif;
+  /* padding-left: 5rem; */
+  font: 12px Arial, sans-serif;
   color: #5a5959;
 }
-

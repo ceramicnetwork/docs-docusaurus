@@ -4,15 +4,9 @@ import styles from './homeNavBoxes.module.css';
 
 const FeatureList = [
   {
-    title: 'js-ceramic',
+    title: 'Creamic Protocol',
     items: [
       {url: "docs/protocol/js-ceramic/overview", text: "Dive into the JavaScript implementation of the  Ceramic Protocol."},
-    ]
-  },
-  {
-    title: 'Decentralized Indentifiers (DIDs)',
-    items: [
-      {url: "https://did.js.org/docs/introduction", text: "Interact and manage decentralized identifiers."},
     ]
   },
   {
@@ -36,29 +30,30 @@ const FeatureList = [
  
 ];
 
-function FeatureItem({url, text}){
+function FeatureItem({ url, text }) {
   return (
-    <li><a className={styles.listContainerLink} href={url}>{text}</a></li>
+    <>
+      <div className={styles.listContainerLink}>{text}</div>
+
+      <a className={styles.action} href={url}>
+        Learn more{" "}
+      </a>
+    </>
   );
 }
 
 
-function Feature({title, icon, items }) {
-
-
+function Feature({ title, icon, items }) {
   return (
-    <article className={clsx('col col--4')}>
+    <article className={clsx("col--4")}>
       <div className={styles.homecard}>
-        <h2>{title}</h2>
-        <div className={styles.listContainer}>
-        <ul>
+        <div className={styles.title}>{title}</div>
+        
           {items.map((props, idx) => (
             <FeatureItem key={idx} {...props} />
           ))}
-        </ul>
-        </div>
-      </div>
       
+      </div>
     </article>
   );
 }
@@ -68,11 +63,11 @@ function Feature({title, icon, items }) {
 export default function HomepageFeatures() {
   return (
     <section className={styles.features}>
-        <ul className={styles.grid3col}>
+        <div className={styles.grid3col}>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
-        </ul>
+        </div>
     </section>
   );
 }
