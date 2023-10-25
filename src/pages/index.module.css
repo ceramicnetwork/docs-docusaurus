@@ -6,6 +6,16 @@
   font-family: "Inter";
   src: url("../fonts/Inter/static/Inter-Light.ttf");
 }
+
+
+html[data-theme="dark"] header{
+  color: #fff;
+}
+
+html[data-theme="dark"] p3{
+  color: #fff;
+}
+
 .heroBanner {
   padding: 4rem 0;
   text-align: center;

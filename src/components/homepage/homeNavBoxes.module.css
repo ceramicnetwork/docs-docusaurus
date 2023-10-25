@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Inter";
+  src: url("../../fonts/Inter/static/Inter-Light.ttf");
+}
+
 .features {
   display: justify-between;
   align-items: center;
@@ -50,7 +55,6 @@
   height: 99px;
   padding: 10px 10px;
   flex-shrink: 0;
-
   border-radius: 15px;
   border: 1px solid #d6d6d6;
   background-color: #1c1f26;
@@ -60,14 +64,14 @@
 html[data-theme="light"] .homecard {
   color: #000;
   border-radius: 15px;
-  border: 1px solid #d6d6d6;
+  border: 1px solid #d6d6d6; 
   background-color: #fff;
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.25);
 }
 
 .homecard .title {
   color: #000;
-  /* font-family: Inter; */
+  font-family: Inter;
   font-size: 12px;
   font-style: normal;
   font-weight: 700;
@@ -75,9 +79,17 @@ html[data-theme="light"] .homecard {
   
 }
 
+html[data-theme="dark"] .homecard{
+  color: #fff;
+  border-radius: 15px;
+  border: 1px solid #d6d6d6; 
+  background-color: #fff;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
 .homecard .listContainerLink {
   color: #000;
-  /* font-family: Inter; */
+  font-family: Inter;
   font-size: 9px;
   font-style: normal;
   font-weight: 400;
@@ -86,7 +98,7 @@ html[data-theme="light"] .homecard {
 
 .homecard .action {
   color: #4149f9 !important;
-  /* font-family: Inter; */
+  font-family: Inter;
   font-size: 9px;
   font-style: normal;
   font-weight: 700;
