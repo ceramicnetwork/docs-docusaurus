@@ -1,0 +1,35 @@
+# ComposeDB Docs
+![Introduction](/img/intro-dataverse.png)
+
+ComposeDB is a composable graph database built on [Ceramic](https://ceramic.network), designed for Web3 applications. 
+
+### Use Cases
+| Use Case  | Examples  |
+|---|---|
+|__Decentralized identity__| `user profiles` `credentials` `reputation systems` |
+|__Web3 social__| `social graphs` `posts` `reactions` `comments` `messages` |
+|__DAO tools__| `proposals` `projects` `tasks` `votes` `contribution graphs` |
+|__Open information graphs__| `DeSci graphs` `knowledge graphs` `discourse graphs` |
+
+### Why ComposeDB?
+
+-  Store and query data with powerful, easy-to-use GraphQL APIs
+-  Build faster with a catalog of plug-and-play schemas
+-  Bootstrap content by plugging into a composable data ecosystem
+-  Deliver great UX with sign-in with Ethereum, Solana, and more
+-  Eliminate trust and guarantee data verifiability
+-  Scale your Web3 data infrastructure beyond L1 or L2 blockchains
+
+### Project Status: `Beta`
+
+ComposeDB officially entered `Beta` on February 28, 2023. What does this mean?
+
+- You can now build and deploy apps to production on mainnet! 
+- Core features like GraphQL APIs, reusable models, and data composability are available
+- We will continue to improve performance and add more features
+- We are not yet guaranteeing a 100% stable, bug-free platform
+
+If you want to provide feedback, request new features, or report insufficient performance, please [make a post on the Forum](https://forum.ceramic.network/c/graph/9), as we'd like to work with you.
+Thank you for being a ComposeDB pioneer and understanding that great Web3 protocols take time to mature.
+
+---

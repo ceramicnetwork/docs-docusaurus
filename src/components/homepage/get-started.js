@@ -7,7 +7,7 @@ const FeatureList = [
     title: "What is Ceramic?",
     items: [
       {
-        url: "docs/intro",
+        url: "docs/introduction/intro",
         text: "Dive into the core concepts behind the Ceramic Network",
       },
     ],
@@ -16,7 +16,7 @@ const FeatureList = [
     title: "ComposeDB Sandbox",
     items: [
       {
-        url: "https://composedb.js.org/sandbox",
+        url: "/sandbox",
         text: "Interact with data stored in the Ceramic Network right in your browser.",
       },
     ],
@@ -26,7 +26,7 @@ const FeatureList = [
     items: [
       {
         url: "https://threebox.notion.site/Ceramic-Ecosystem-Directory-a3a7a58f81544d33ad3feb84368775d4",
-        text: "Explore the innocative projects and tools build on Ceramic Network.",
+        text: "Explore the innovative projects and tools build on Ceramic Network.",
       },
     ],
   },
