@@ -10,13 +10,19 @@ const FeatureList = [
     ]
   },
   {
+    title: 'Decentralized Identifiers (DIDs)',
+    items: [
+      {url: "docs/dids/introduction", text: "Interact and manage decentralized identifiers"},
+    ]
+  },
+  {
     title: 'Simple Deploy',
     items: [
       {url: "https://composedb.js.org/docs/0.5.x/guides/composedb-server/running-in-the-cloud", text: "Easily run Ceramic Nodes in the Cloud."},
     ]
   },
   {
-    title: 'Ceramic Hirenodes',
+    title: 'Hirenodes',
     items: [
       {url: "https://hirenodes.io/", text: "Run Ceramic Nodes using a hosted service."},
     ]

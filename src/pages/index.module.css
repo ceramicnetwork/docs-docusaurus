@@ -12,6 +12,10 @@ html[data-theme="dark"] header{
   color: #fff;
 }
 
+html , body {
+	height: 100%;
+  }
+
 html[data-theme="dark"] p3{
   color: #fff;
 }
@@ -21,15 +25,12 @@ html[data-theme="dark"] p3{
   text-align: center;
   position: relative;
   overflow: hidden;
-  height: 175px;
-  background: #FA861B;
 }
 
 .heroBanner h1 {
   color: #fffdfd;
   text-align: center;
-  font-family: "Inter";
-  font-size: 26px;
+  font-size: 50px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -38,10 +39,9 @@ html[data-theme="dark"] p3{
 .heroBanner p {
   color: #fffdfd;
   text-align: center;
-  font-family: "Inter";
-  font-size: 14px;
+  font-size: 23px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 300;
   line-height: normal;
 }
 
@@ -58,24 +58,23 @@ html[data-theme="dark"] p3{
 }
 
 header {
-  padding-top: 60px;
-  font: bold 22px Arial, sans-serif;
+  padding-top: 70px;
+  font: bold 30px Arial, sans-serif;
   color: #5a5959;
 }
 
 main {
-  max-width: 851px;
+
   margin: auto;
   padding-left: 5rem;
   padding-right: 5rem;
-  padding-bottom: 190px;
+  padding-bottom: 200px;
 }
 
 h1 .hero__title {
   color: #413f3f;
   text-align: center;
-  font-family: Inter;
-  font-size: 14px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -84,6 +83,7 @@ h1 .hero__title {
 p3 {
   padding-top: 15px;
   /* padding-left: 5rem; */
-  font: 12px Arial, sans-serif;
   color: #5a5959;
 }
+
+

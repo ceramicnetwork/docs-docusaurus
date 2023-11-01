@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Ceramic developers',
+  title: 'Ceramic documentation',
   tagline: 'Ceramic is a decentralized data network that powers an ecosystem of interoperable Web3 applications and services.',
   favicon: 'img/favicon.png',
 
@@ -58,7 +58,7 @@ const config = {
         },
         items: [
           {
-            to: 'docs/intro',
+            to: 'docs/introduction/intro',
             label: 'Introduction',
           },
           {
@@ -66,15 +66,15 @@ const config = {
 
             items: [
               {
-                href: "https://composedb.js.org/",
-                label: "ComposeDB",
+                to: 'docs/composedb/getting-started',
+                label: 'ComposeDB'
               },
               {
-                href: "https://composedb.js.org/docs/0.5.x/set-up-your-environment#installation-using-wheel",
+                to: "docs/wheel/wheel-reference",
                 label: "Wheel",
               },
               {
-                href: "https://did.js.org/",
+                to: "docs/dids/introduction",
                 label: "Decentralized Identifiers",
               },
             ],
