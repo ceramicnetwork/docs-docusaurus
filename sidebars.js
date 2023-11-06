@@ -358,6 +358,12 @@ const sidebars = {
     { type: 'link', label: 'DIDs API', href: 'https://did.js.org/docs/api/modules/dids' },
 
   ],
+  ecosystem: [
+    {
+      type: 'doc',
+      id: 'ecosystem/community',
+      label: 'Overview'
+    }]
   
 
 

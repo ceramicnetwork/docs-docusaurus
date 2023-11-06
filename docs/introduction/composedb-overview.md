@@ -29,7 +29,24 @@ ComposeDB officially entered `Beta` on February 28, 2023. What does this mean?
 - We will continue to improve performance and add more features
 - We are not yet guaranteeing a 100% stable, bug-free platform
 
-If you want to provide feedback, request new features, or report insufficient performance, please [make a post on the Forum](https://forum.ceramic.network/c/graph/9), as we'd like to work with you.
+If you want to provide feedback, request new features, or report insufficient performance, please [make a post on the Forum](https://forum.ceramic.network/), as we'd like to work with you.
 Thank you for being a ComposeDB pioneer and understanding that great Web3 protocols take time to mature.
 
 ---
+
+
+### [Get Started →](../composedb/getting-started) 
+Build a Hello World application and interact from the CLI.
+
+### [ComposeDB Sandbox →](/sandbox) 
+Test example queries to ComposeDB directly in your browser.
+
+### [Development Guides →](../composedb/guides)
+Learn about data modeling, application set up, and data interactions.
+<!-- Server Config-->
+
+### [Core concepts →](../composedb/core-concepts)
+Dive deeper into the ComposeDB protocol and its components.
+  
+### [Community →](../ecosystem/community)
+Connect with the ComposeDB developer community.

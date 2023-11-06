@@ -102,6 +102,10 @@ const config = {
 
             items: [
               {
+                to: 'docs/ecosystem/community',
+                label: "Overview"
+              },
+              {
                 href: 'https://threebox.notion.site/threebox/Ceramic-Ecosystem-Directory-a3a7a58f81544d33ad3feb84368775d4',
                 label: 'Ecosystem Page',
               },
