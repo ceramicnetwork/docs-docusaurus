@@ -1,12 +1,11 @@
-# **CAIP-10 Link client**
+# CAIP-10 Link client
 
 ---
 
 A CAIP-10 Link is a stream that stores a proof that links a blockchain address to a Ceramic account (DID), using the [CAIP-10 standard](https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-10.md) to represent blockchain addresses.
 
-The `stream-caip10-link` module export a `Caip10Link` class used to link and unlink a DID to a CAIP-10 address using the [CIP-7 "CAIP-10 Link" program](../../docs/advanced/standards/stream-programs/caip10-link.md).
 
-## **Installation**
+## Installation
 
 ---
 
@@ -14,21 +13,21 @@ The `stream-caip10-link` module export a `Caip10Link` class used to link and unl
 npm install @ceramicnetwork/stream-caip10-link
 ```
 
-### **Additional requirements**
+### Additional requirements
 
-- In order to load CAIP-10 Links, a [Ceramic client instance](../core-clients/ceramic-http.md) must be available
-- To add/remove links, the client must also have an [authenticated DID](../core-clients/did-jsonrpc.md)
+- In order to load CAIP-10 Links, a [Ceramic client instance](../javascript-clients/ceramic-http.md) must be available
+- To add/remove links, the client must also have an [authenticated DID](../authentication/did-jsonrpc.md)
 - An authentication provider is needed to sign the payload for the given CAIP-10 account, using the `blockchain-utils-linking` module that should be installed as needed:
 
 ```sh
 npm install @ceramicnetwork/blockchain-utils-linking
 ```
 
-## **Common usage**
+## Common usage
 
 ---
 
-### **Load a link**
+### Load a link
 
 In this example we load a Caip10Link for the account `0x054...7cb8` on the Ethereum mainnet blockchain (`eip155:1`).
 
@@ -49,7 +48,7 @@ async function getLinkedDID() {
 }
 ```
 
-### **Create a link**
+### Create a link
 
 Here we can see the full flow of getting a user's Ethereum address, creating a link, and adding the users' DID account.
 
@@ -87,7 +86,7 @@ async function linkCurrentAddress() {
 }
 ```
 
-### **Remove a link**
+### Remove a lin
 
 Removing a link involves a similar flow to setting the DID, but using the `clearDid` method instead of `setDid`:
 
