@@ -28,14 +28,14 @@ ComposeDB goes beyond vanilla DIDs and provides a great UX with additional devel
 
 ### Documents
 
-A document is a single mutable instance of structured data in the ComposeDB graph. All documents must conform to a [model](#models) and be authored by an account. Updates to a document must also adhere to its model and can only be performed by its owner's account. ComposeDB APIs abstract away that documents are actually stored in Ceramic [streams](https://developers.ceramic.network/learn/advanced/overview/#streams).
+A document is a single mutable instance of structured data in the ComposeDB graph. All documents must conform to a [model](#models) and be authored by an account. Updates to a document must also adhere to its model and can only be performed by its owner's account. ComposeDB APIs abstract away that documents are actually stored in Ceramic [streams](../protocol/js-ceramic/streams/streams-index).
 
 ### Models
 Models contain metadata and GraphQL schemas for documents. All documents must be based on a model. Models are designed to be plug-and-play so they can easily be reused by ComposeDB application developers, removing the burden of data modeling. When multiple applications reuse the same model, they also share access to the same documents (data set) on the ComposeDB graph, enabling data composability and reuse. Like documents, models are stored in Ceramic streams; however unlike documents, models are immutable. 
 
 #### Modeling Basics
 
-Models are stored in a `.graphql` file and written using a subset of the [GraphQL Schema Definition Language (SDL)](./api/sdl/scalars.mdx). Within a model, it is possible to define specific properties that store relations to other models or accounts. When using the model, it's possible to perform queries based on these relations. See [Introduction to Modeling](./guides/data-modeling/introduction-to-modeling.mdx) to learn the basics of writing models.
+Models are stored in a `.graphql` file and written using a subset of the [GraphQL Schema Definition Language (SDL)](https://composedb.js.org/docs/0.5.x/api/sdl/scalars). Within a model, it is possible to define specific properties that store relations to other models or accounts. When using the model, it's possible to perform queries based on these relations. See [Introduction to Modeling](./guides/data-modeling/introduction-to-modeling.mdx) to learn the basics of writing models.
 
 An example `Post` model, whose documents would store social posts:
 

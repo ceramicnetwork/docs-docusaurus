@@ -4,7 +4,7 @@ Ceramic uses the [Decentralized Identifier (DID)](https://w3c.github.io/did-core
 
 ## DID Methods
 
-We encourage using the `did:pkh` DID method which generates a persistent id from a wallet address’s public key hash. This enables one-click sign-on with your wallet to many apps on Ethereum, and soon on many other chains including Solana. We also support the Ceramic-created [3ID](https://developers.ceramic.network/docs/advanced/standards/accounts/3id-did/) method which acts as an aggregator for multiple accounts and can handle multiple keys simulatneously.
+We encourage using the `did:pkh` DID method which generates a persistent id from a wallet address’s public key hash. This enables one-click sign-on with your wallet to many apps on Ethereum, and soon on many other chains including Solana.
 
 ## DID Sessions
 

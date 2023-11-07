@@ -4,7 +4,7 @@ Authorize and then use DIDs where needed. At the moment, Ethereum and Solana acc
 are supported. Reference the chain/network specific libraries for more info on how to
 use each. Additional accounts will be supported in the future. 
 
-Authorize with an Ethereum account using [@didtools/pkh-ethereum](./api/modules/pkh_ethereum.md):
+Authorize with an Ethereum account using [@didtools/pkh-ethereum](https://did.js.org/docs/api/modules/pkh_ethereum):
 
 ```js
 import { DIDSession } from 'did-session'
@@ -18,7 +18,7 @@ const authMethod = await EthereumWebAuth.getAuthMethod(ethprovider, accountId)
 const session = await DIDSession.get(accountId, authMethod, { resources: [...]})
 ```
 
-Authorize with a Solana account using [@didtools/pkh-solana](./api/modules/pkh_solana.md):
+Authorize with a Solana account using [@didtools/pkh-solana](https://did.js.org/docs/api/modules/pkh_solana):
 
 ```js
 import { DIDSession } from 'did-session'
