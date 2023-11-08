@@ -138,11 +138,11 @@ const config = {
             items: [
               {
                 label: 'Introduction',
-                to: '/docs/intro',
+                to: '/docs/introduction/intro',
               },
               {
                 label: 'ComposeDB',
-                to: 'https://composedb.js.org/',
+                to: '/docs/composedb/getting-started',
               },
               {
                 label: 'Protocol',
