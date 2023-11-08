@@ -80,7 +80,6 @@ const sidebars = {
             items: [
               {type: 'doc', id: 'protocol/js-ceramic/guides/ceramic-clients/authentication/did-jsonrpc', label: 'Basic Usage'},
               {type: 'doc', id: 'protocol/js-ceramic/guides/ceramic-clients/authentication/key-did', label: 'Key DID'},
-              {type: 'doc', id: 'protocol/js-ceramic/guides/ceramic-clients/authentication/3id-did', label: '3ID DID'},
               {type: 'doc', id: 'protocol/js-ceramic/guides/ceramic-clients/authentication/did-session', label: 'DID Session'},
             ],
           },
@@ -358,6 +357,12 @@ const sidebars = {
     { type: 'link', label: 'DIDs API', href: 'https://did.js.org/docs/api/modules/dids' },
 
   ],
+  ecosystem: [
+    {
+      type: 'doc',
+      id: 'ecosystem/community',
+      label: 'Overview'
+    }]
   
 
 

@@ -1,10 +1,10 @@
-# **DID JSON-RPC client**
+# DID JSON-RPC client
 
 ---
 
 DID JSON-RPC client provides a simple JS API for interacting with Ceramic accounts.
 
-## **Things to know**
+## Things to know
 
 ---
 
@@ -43,7 +43,6 @@ The next step is to install resolver libraries for all account types that you ma
 
 | Account | Resolver libraries                                                            | Maintainer |
 | ------- | ----------------------------------------------------------------------------- | ---------- |
-| 3ID DID | [`@ceramicnetwork/3id-did-resolver`](./3id-did.md#3id-did-resolver) | 3Box Labs  |
 | Key DID | [`key-did-resolver`](./key-did.md#key-did-resolver)                 | 3Box Labs  |
 
 <!--
@@ -60,11 +59,6 @@ Install providers to manage accounts and sign transactions. Once you have chosen
 
 However, the providers listed above are low-level, run locally, and burden developers with UX issues related to secret key management and transaction signing. Instead of using a local provider, you can alternatively use a wallet system. Wallets wrap providers with additional user experience features related to signing and key management and can be used in place of a provider. The benefit is multiple applications can access the same wallet and key management system, so users have a continuous experience between applications.
 
-| Account | Wallet | Benefits | Drawbacks |
-| --- | --- | --- | --- |
-| 3ID DID | `3ID Connect` | Sign with blockchain wallets, including Metamask <br /> Connect multiple blockchain accounts to one Ceramic account <br /> Implements 3ID DID <br /> Works cross-chain <br /> Sleek UI | Risks |
-
-> Most user-facing applications use the 3ID Connect wallet instead of using a provider.
 
 
 ### Create your own wallet
@@ -73,7 +67,6 @@ One option is installing and setting up one or more account providers that run l
 
 | Account | Supported Key Types | Provider libraries                                               |
 | ------- | ------------------- | ---------------------------------------------------------------- |
-| 3ID DID | Ed25519             | [`3id-did-provider`](./3id-did.md#3id-did-provider)    |
 | Key DID | Ed25519             | [`key-did-provider-ed25519`](./key-did.md#ed25519)     |
 | Key DID | Secp256k1           | [`key-did-provider-secp256k1`](./key-did.md#secp256k1) |
 
@@ -120,9 +113,10 @@ async function authenticateCeramic(seed) {
 
 ### Authenticate the user
 
-!!! note ""
+ ::caution
 
     This will flow will vary slightly depending on which account provider library you use. Please see the documentation specific to your provider library.
+::
 
 ```ts
 import { CeramicClient } from '@ceramicnetwork/http-client'

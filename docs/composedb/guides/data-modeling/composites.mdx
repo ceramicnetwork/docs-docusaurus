@@ -15,7 +15,7 @@ In order to start using a model in your app, you’ll have to include it in a co
 ## Prerequisites
 ---
 - If you want to manage your composites from the CLI, you will need to have it installed
-- If you want to manage your composites from JavaScript, you will need to install the [`@composedb/devtools`](../../api/modules/devtools.md) library
+- If you want to manage your composites from JavaScript, you will need to install the [`@composedb/devtools`](https://composedb.js.org/docs/0.5.x/api/modules/devtools) library
 - One or more `.graphql` files containing your models
 
 ## Basic Usage
@@ -243,7 +243,7 @@ If you want to check what models are included in a specific composite, follow th
 `composedb composite:compile my-first-composite.json runtime-composite.json`
 
 2. View the GraphQL schema of the composite:
-[`composedb graphql:schema runtime-composite.json --output=schema.graphql`](../../api/commands/cli.graphql.md#composedb-graphqlschema)
+[`composedb graphql:schema runtime-composite.json --output=schema.graphql`](https://composedb.js.org/docs/0.5.x/api/commands/cli.graphql)
 
 ### Aliasing composites
 In general, models are referenced using their unique model streamIDs which are not memorable. Models can be more easily referenced by aliasing them to your preferred names. 

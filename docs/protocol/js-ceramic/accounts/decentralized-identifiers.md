@@ -33,10 +33,3 @@ did:pkh:eip155:1:0xb9c5714089478a327f09197987f16f9e5d936e8a
 did:key:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK
 ```
 
-### 3ID DID
-
-**3ID DID Method**: A DID method that uses Ceramic's Tile Document StreamType to represent a mutable DID document. 3ID can be controlled with any number of blockchain accounts. [did:3id Method Specification](https://github.com/ceramicnetwork/CIP/blob/main/CIPs/CIP-79/CIP-79.md)
-
-```bash
-did:3:kjzl6cwe1jw149tlplc4bgnpn1v4uwk9rg9jkvijx0u0zmfa97t69dnqibqa2as
-```

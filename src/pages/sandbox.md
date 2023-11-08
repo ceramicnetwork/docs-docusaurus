@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 
 Test out several pre-made example queries below to gain hands-on exposure to accessing documents by relations, filtering and ordering by fields, and combining query logic.
 
-For a deeper dive into querying, visit the [**queries**](./docs/0.5.x/guides/data-interactions/queries) page.
+For a deeper dive into querying, visit the [**queries**](./docs/composedb/guides/data-interactions/queries) page.
 
 ## Data Models
 
@@ -72,4 +72,4 @@ Use the example queries below to access data related to the `Comments` model:
 
 ---
 
-To begin building with ComposeDB in your local environment using the same data models you just queried, get started [**Setting Up Your Environment**](./docs/0.5.x/set-up-your-environment).
+To begin building with ComposeDB in your local environment using the same data models you just queried, get started [**Setting Up Your Environment**](./docs/composedb/set-up-your-environment).

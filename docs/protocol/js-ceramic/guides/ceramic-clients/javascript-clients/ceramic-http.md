@@ -7,7 +7,7 @@ The Ceramic HTTP client library can be used in browsers and Node.js to connect y
 ## Things to know
 
 
-- The client is read-only by default, to enable transactions a [DID client](did-jsonrpc.md) needs to be attached to the Ceramic client instance.
+- The client is read-only by default, to enable transactions a [DID client](../authentication//did-jsonrpc.md) needs to be attached to the Ceramic client instance.
 - Ceramic streams can be identified by a **stream ID** or a **commit ID**. A **stream ID** is generated when creating the stream and can be used to load the **latest version** of the stream, while a **commit ID** represents a **specific version** of the stream.
 
 ## Installation
@@ -68,5 +68,5 @@ async function loadMulti(ids = []) {
 
 ### Enable transactions
 
-In order to create and update streams, the Ceramic client instance must be able to sign transaction payloads by using an authenticated DID instance. The [DID client documentation](../authentication/did-jsonrpc.md) describes the process of authenticating and attaching a DID instance to the Ceramic instance.
+In order to create and update streams, the Ceramic client instance must be able to sign transaction payloads by using an authenticated DID instance. The [DID client documentation](../authentication//did-jsonrpc.md) describes the process of authenticating and attaching a DID instance to the Ceramic instance.
 

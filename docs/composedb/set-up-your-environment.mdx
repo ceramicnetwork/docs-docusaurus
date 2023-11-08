@@ -119,7 +119,7 @@ CAS is require for `dev`, `testnet-clay` and `mainnet` networks. Since `InMemory
 
 :::
 
-If you are ready to dive into a more advanced configuration, head to [**Wheel reference page→**](./wheel-reference.mdx) to learn more details about each parameter you can configure.
+If you are ready to dive into a more advanced configuration, head to [**Wheel reference page→**](../wheel/wheel-reference.mdx) to learn more details about each parameter you can configure.
 
 ### Interact with the example web3 social app
 
@@ -187,8 +187,8 @@ Once your app is up and running you will be greeted with the following user inte
 From now on you can interact with the application:
 
 1. Authenticate using one of the provided methods:
-   - [Key DID](https://developers.ceramic.network/docs/advanced/standards/accounts/key-did/) - it's a simple authentication method that encodes public key into a DID string
-   - [Ethereum DID PKH](https://developers.ceramic.network/docs/advanced/standards/accounts/pkh-did/) - an authentication metod which uses and Ethereum wallet (e.g. Metamask) to authenticate users
+   - [Key DID](../protocol/js-ceramic/accounts/decentralized-identifiers#key-did) - it's a simple authentication method that encodes public key into a DID string
+   - [Ethereum DID PKH](../protocol/js-ceramic/accounts/decentralized-identifiers#pkh-did) - an authentication metod which uses and Ethereum wallet (e.g. Metamask) to authenticate users
 2. Create your account in the `Profile` section of the app
 3. Create your first post in `Home` section of the app
 4. See currently available posts in the `Explore` section of the app
@@ -330,8 +330,8 @@ yarn global add @composedb/cli@^0.5.0
 
 ComposeDB provides two additional libraries that support development:
 
-1. [@composedb/devtools](./api/modules/devtools.md) containing utilities related to managing composites
-2. [@composedb/devtools-node](./api/modules/devtools_node.md) which contains utilities for interacting with the local file system and starting a local HTTP server.
+1. [@composedb/devtools](https://composedb.js.org/docs/0.5.x/api/modules/devtools) containing utilities related to managing composites
+2. [@composedb/devtools-node](https://composedb.js.org/docs/0.5.x/api/modules/devtools_node) which contains utilities for interacting with the local file system and starting a local HTTP server.
 
 To install the development packages, run:
 
@@ -462,7 +462,7 @@ cd ~/.ceramic
 Inside of this directory you should see the following files:
 
 - `daemon.config.json` - your Ceramic node configuration file
-- `statestore` - a local directory for [persisting the data](https://developers.ceramic.network/run/nodes/nodes/#ceramic-state-store)
+- `statestore` - a local directory for [persisting the data](../protocol/js-ceramic/guides/ceramic-nodes/running-cloud#ceramic-state-store)
 
 Open the `daemon.config.json` file using your preferred code editor and provide the authenticated DID, generated in the [generate your account](#generate-your-account) step of this guide, in the `admin-dids` section of the file as shown below:
 
