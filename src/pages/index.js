@@ -30,7 +30,7 @@ export default function Home() {
         description="Description will go into a meta tag in <head />"
       >
         <HomepageHeader />
-        <main>
+        <screen-card>
           <header>Get Started</header>
           <p3>New to Ceramic? Start here!</p3>
           <HomeNavBox />
@@ -45,7 +45,7 @@ export default function Home() {
           <header>Explore Network Tools and Utilities</header>
           <p3>Run Ceramic nodes and interact with the Ceramic protocol.</p3>
           <HomeNavUtils />
-        </main>
+        </screen-card>
       </Layout>
     </div>
   );

@@ -40,6 +40,10 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
         },
+        gtag: {
+          trackingID: 'G-426ZZLPJPW',
+          anonymizeIP: true,
+        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -134,11 +138,11 @@ const config = {
             items: [
               {
                 label: 'Introduction',
-                to: '/docs/intro',
+                to: '/docs/introduction/intro',
               },
               {
                 label: 'ComposeDB',
-                to: 'https://composedb.js.org/',
+                to: '/docs/composedb/getting-started',
               },
               {
                 label: 'Protocol',

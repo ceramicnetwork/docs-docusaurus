@@ -63,13 +63,7 @@ header {
   color: #5a5959;
 }
 
-main {
 
-  margin: auto;
-  padding-left: 5rem;
-  padding-right: 5rem;
-  padding-bottom: 200px;
-}
 
 h1 .hero__title {
   color: #413f3f;
@@ -86,4 +80,11 @@ p3 {
   color: #5a5959;
 }
 
+
+screen-card {
+  height: 100%;
+  margin: auto;
+  margin-bottom: 150px;
+
+}
 
