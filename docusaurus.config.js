@@ -92,10 +92,6 @@ const config = {
                 to: 'docs/protocol/js-ceramic/overview',
                 label: 'JS-Ceramic'
               },
-              {
-                to: 'protocol/rust-ceramic',
-                label: "Rust-Ceramic"
-              },
             ],
 
 

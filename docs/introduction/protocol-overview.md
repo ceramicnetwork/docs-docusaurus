@@ -24,7 +24,7 @@ The Ceramic protocol consists of the following components:
 | Section | State |
 | --- | --- |
 | [1. Streams](../protocol/js-ceramic/streams/streams-index) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/streams/streams-index)** |
-| [1.1. Event Log](../protocol/js-ceramic/streams/event-log) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/event-log)** |
+| [1.1. Event Log](../protocol/js-ceramic/streams/event-log) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/streams/event-log)** |
 | [1.2. URI Scheme](../protocol/js-ceramic/streams/uri-scheme) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/streams/uri-scheme)** |
 | [1.3. Consensus](../protocol/js-ceramic/streams/consensus) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/streams/consensus)** |
 | [1.4. Lifecycle](../protocol/js-ceramic/streams/lifecycle) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/streams/lifecycle)** |
