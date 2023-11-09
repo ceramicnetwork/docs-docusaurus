@@ -16,7 +16,7 @@ const FeatureList = [
     title: "ComposeDB Sandbox",
     items: [
       {
-        url: "/sandbox",
+        url: "sandbox",
         text: "Interact with data stored in the Ceramic Network right in your browser.",
       },
     ],
