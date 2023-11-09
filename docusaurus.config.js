@@ -124,7 +124,7 @@ const config = {
             ],
           },
           {
-            href: 'https://github.com/ceramicnetwork/docs',
+            href: 'https://github.com/ceramicnetwork/docs-docusaurus',
             label: 'GitHub',
             position: 'right',
           },
@@ -173,7 +173,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/ceramicnetwork/docs',
+                href: 'https://github.com/ceramicnetwork/docs-docusaurus',
               },
               {
                 label: 'Roadmap',
