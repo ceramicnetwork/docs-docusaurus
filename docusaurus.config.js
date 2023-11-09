@@ -1,25 +1,26 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require('prism-react-renderer/themes/github')
+const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Ceramic documentation',
-  tagline: 'Ceramic is a decentralized data network that powers an ecosystem of interoperable Web3 applications and services.',
+  tagline:
+    'Ceramic is a decentralized data network that powers an ecosystem of interoperable Web3 applications and services.',
   favicon: 'img/favicon.png',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://ceramicnetwork.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/docs-docusaurus/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Ceramic', // Usually your GitHub org/user name.
-  projectName: 'ceramicnetwork', // Usually your repo name.
+  organizationName: 'ceramicnetwork', // Usually your GitHub org/user name.
+  projectName: 'docs-docusaurus', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -71,31 +72,27 @@ const config = {
             items: [
               {
                 to: 'docs/composedb/getting-started',
-                label: 'ComposeDB'
+                label: 'ComposeDB',
               },
               {
-                to: "docs/wheel/wheel-reference",
-                label: "Wheel",
+                to: 'docs/wheel/wheel-reference',
+                label: 'Wheel',
               },
               {
-                to: "docs/dids/introduction",
-                label: "Decentralized Identifiers",
+                to: 'docs/dids/introduction',
+                label: 'Decentralized Identifiers',
               },
             ],
           },
           {
-
             label: 'Protocol',
 
             items: [
               {
                 to: 'docs/protocol/js-ceramic/overview',
-                label: 'JS-Ceramic'
+                label: 'JS-Ceramic',
               },
             ],
-
-
-
           },
           {
             label: 'Ecosystem',
@@ -103,7 +100,7 @@ const config = {
             items: [
               {
                 to: 'docs/ecosystem/community',
-                label: "Overview"
+                label: 'Overview',
               },
               {
                 href: 'https://threebox.notion.site/threebox/Ceramic-Ecosystem-Directory-a3a7a58f81544d33ad3feb84368775d4',
@@ -144,7 +141,6 @@ const config = {
                 label: 'Protocol',
                 to: '/docs/protocol/js-ceramic/overview',
               },
-              
             ],
           },
           {
@@ -177,7 +173,7 @@ const config = {
               },
               {
                 label: 'CIPs',
-                href: 'https://forum.ceramic.network/c/cips/12'
+                href: 'https://forum.ceramic.network/c/cips/12',
               },
             ],
           },
@@ -189,6 +185,6 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
-};
+}
 
-module.exports = config;
+module.exports = config
