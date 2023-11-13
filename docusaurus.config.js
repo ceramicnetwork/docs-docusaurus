@@ -104,7 +104,7 @@ const config = {
               },
               {
                 href: 'https://threebox.notion.site/threebox/Ceramic-Ecosystem-Directory-a3a7a58f81544d33ad3feb84368775d4',
-                label: 'Ecosystem Page',
+                label: 'Ecosystem Directory',
               },
               {
                 href: 'https://forum.ceramic.network/',
