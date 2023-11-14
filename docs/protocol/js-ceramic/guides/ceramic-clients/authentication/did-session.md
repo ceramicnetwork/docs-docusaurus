@@ -80,7 +80,7 @@ import { ComposeClient } from '@composedb/client'
 
 //... Reference above and `@composedb` docs for additional configuration here
 
-const client = new ComposeClient({ceramic, definition})
+const client = new ComposeClient({ ceramic, definition })
 const resources = client.resources
 const session = await DIDSession.authorize(authMethod, { resources })
 client.setDID(session.did)
@@ -153,17 +153,17 @@ if (session.isExpired) {
 
 // continue to write
 ```
- 
-## Upgrading from `did-session@0.x.x` to `did-session@1.x.x` 
 
-AuthProviders change to AuthMethod interfaces. Similarly you can import the auth libraries you need. How you configure and manage 
+## Upgrading from `did-session@0.x.x` to `did-session@1.x.x`
+
+AuthProviders change to AuthMethod interfaces. Similarly you can import the auth libraries you need. How you configure and manage
 these AuthMethods may differ, but each will return an AuthMethod function to be used with did-session.
 
 ```ts
 // Before with v0.x.x
 //...
 import { EthereumAuthProvider } from '@ceramicnetwork/blockchain-utils-linking'
- 
+
 const ethProvider = // import/get your web3 eth provider
 const addresses = await ethProvider.enable()
 const authProvider = new EthereumAuthProvider(ethProvider, addresses[0])
@@ -173,7 +173,7 @@ const did = await session.authorize()
 // Now did-session@1.0.0
 ...
 import { EthereumWebAuth, getAccountId } from '@didtools/pkh-ethereum'
- 
+
 const ethProvider = // import/get your web3 eth provider
 const addresses = await ethProvider.enable()
 const accountId = await getAccountId(ethProvider, addresses[0])
@@ -197,12 +197,12 @@ const did = session.did
 ```
 
 Requesting resources are required now when authorizing, before wildcard (access all) was the default. You can continue to use
-wildcard by passing the following * below. Wildcard is typically only used with `@glazed` libraries and/or tile documents and
-it is best to switch over when possible, as the wildcard option may be * deprecated in the future. When using with
+wildcard by passing the following _ below. Wildcard is typically only used with `@glazed` libraries and/or tile documents and
+it is best to switch over when possible, as the wildcard option may be _ deprecated in the future. When using with
 composites/models you should request the minimum needed resources instead.
 
 ```ts
-const session = await DIDSession.authorize(authMethod, { resources: [`ceramic://*`]})
+const session = await DIDSession.authorize(authMethod, { resources: [`ceramic://*`] })
 const did = session.did
 ```
 
@@ -216,8 +216,8 @@ const did = session.did
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type            |
+| :------- | :-------------- |
 | `params` | `SessionParams` |
 
 ## Accessors
@@ -232,7 +232,7 @@ Get the list of resources a session is authorized for
 
 `string`[]
 
-___
+---
 
 ### cacao
 
@@ -244,7 +244,7 @@ Get the session CACAO
 
 `Cacao`
 
-___
+---
 
 ### did
 
@@ -256,7 +256,7 @@ Get DID instance, if authorized
 
 `DID`
 
-___
+---
 
 ### expireInSecs
 
@@ -268,7 +268,7 @@ Number of seconds until a session expires
 
 `number`
 
-___
+---
 
 ### hasSession
 
@@ -278,7 +278,7 @@ ___
 
 `boolean`
 
-___
+---
 
 ### id
 
@@ -290,7 +290,7 @@ DID string associated to the session instance. session.id == session.getDID().pa
 
 `string`
 
-___
+---
 
 ### isExpired
 
@@ -312,15 +312,15 @@ Determine if session is available and optionally if authorized for given resourc
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name         | Type       |
+| :----------- | :--------- |
 | `resources?` | `string`[] |
 
 #### Returns
 
 `boolean`
 
-___
+---
 
 ### serialize
 
@@ -332,56 +332,56 @@ Serialize session into string, can store and initalize the same session again wh
 
 `string`
 
-___
+---
 
 ### authorize
 
-▸ `Static` **authorize**(`authMethod`, `authOpts?`): `Promise`<`DIDSession`\>
+▸ `Static` **authorize**(`authMethod`, `authOpts?`): `Promise`\<`DIDSession`\>
 
 Request authorization for session
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name         | Type         |
+| :----------- | :----------- |
 | `authMethod` | `AuthMethod` |
-| `authOpts` | `AuthOpts` |
+| `authOpts`   | `AuthOpts`   |
 
 #### Returns
 
-`Promise`<`DIDSession`>
+`Promise`\<`DIDSession`\>
 
-___
+---
 
 ### fromSession
 
-▸ `Static` **fromSession**(`session`): `Promise`<`DIDSession`\>
+▸ `Static` **fromSession**(`session`): `Promise`\<`DIDSession`\>
 
 Initialize a session from a serialized session string
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type     |
+| :-------- | :------- |
 | `session` | `string` |
 
 #### Returns
 
-`Promise`<`DIDSession`\>
+`Promise`\<`DIDSession`\>
 
-___
+---
 
 ### initDID
 
-▸ `Static` **initDID**(`didKey`, `cacao`): `Promise`<`DID`\>
+▸ `Static` **initDID**(`didKey`, `cacao`): `Promise`\<`DID`\>
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `didKey` | `DID` |
-| `cacao` | `Cacao` |
+| Name     | Type    |
+| :------- | :------ |
+| `didKey` | `DID`   |
+| `cacao`  | `Cacao` |
 
 #### Returns
 
-`Promise`<`DID`\>
+`Promise`\<`DID`\>

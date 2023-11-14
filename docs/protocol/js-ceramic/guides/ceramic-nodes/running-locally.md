@@ -8,17 +8,16 @@ The Ceramic command line interface provides an easy way to start a JS Ceramic no
 
 ---
 
-Installing the CLI requires a console, [Node.js](https://nodejs.org/en/){:target="\_blank"} v16, and [npm](https://www.npmjs.com/get-npm){:target="\_blank"} v6. Make sure to have these installed on your machine.
+Installing the CLI requires a console, [Node.js](https://nodejs.org/en/) v16, and [npm](https://www.npmjs.com/get-npm) v6. Make sure to have these installed on your machine.
 
 :::caution
 
-    While npm v7 is not officially supported, you may still be able to get it to work. You will need to install the `node-pre-gyp` package globally. This is required until `node-webrtc` which IPFS depends on [is upgraded](https://github.com/node-webrtc/node-webrtc/pull/694){:target="_blank"}.
+    While npm v7 is not officially supported, you may still be able to get it to work. You will need to install the `node-pre-gyp` package globally. This is required until `node-webrtc` which IPFS depends on [is upgraded](https://github.com/node-webrtc/node-webrtc/pull/694).
 
- 
+
     npm install -g node-pre-gyp
 
 :::
-
 
 ## Installation and usage
 
