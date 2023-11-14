@@ -186,9 +186,17 @@ const sidebars: SidebarsConfig = {
       ],
     },
     {
-      type: 'doc',
-      id: 'protocol/js-ceramic/nodes',
+      type: 'category',
+      collapsed: false,
       label: 'Nodes',
+      link: {
+        type: 'doc',
+        id: 'protocol/js-ceramic/nodes/overview',
+      },
+      items: [
+        { type: 'doc', id: 'protocol/js-ceramic/nodes/overview', label: 'Overview' },
+        { type: 'doc', id: 'protocol/js-ceramic/nodes/running-a-node', label: 'Running a Node' },
+      ],
     },
     {
       type: 'doc',
