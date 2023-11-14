@@ -7,7 +7,7 @@ const FeatureList = [
     title: "What is Ceramic?",
     items: [
       {
-        url: "docs/introduction/intro",
+        url: "docs/introduction/why-ceramic",
         text: "Dive into the core concepts behind the Ceramic Network",
       },
     ],
