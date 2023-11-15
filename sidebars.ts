@@ -217,7 +217,22 @@ const sidebars: SidebarsConfig = {
         { type: 'doc', id: 'composedb/core-concepts', label: 'Core concepts' },
       ],
     },
-    { type: 'doc', id: 'composedb/examples', label: 'Tutorials and Examples' },
+    {
+      type: 'category',
+      collapsed: true,
+      label: 'Tutorials and Examples',
+      link: {
+        type: 'doc',
+        id: 'composedb/examples/index',
+      },
+      items: [
+        {
+          type: 'doc',
+          id: 'composedb/examples/verifiable-credentials',
+          label: 'Verifiable Credentials',
+        },
+      ],
+    },
     {
       type: 'category',
       collapsed: true,
