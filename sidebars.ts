@@ -14,7 +14,7 @@ import type { SidebarsConfig } from '@docusaurus/plugin-content-docs'
 const sidebars: SidebarsConfig = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
   docs: [
-    { type: 'doc', id: 'introduction/why-ceramic', label: 'Why Cermic?' },
+    { type: 'doc', id: 'introduction/why-ceramic', label: 'Why Ceramic?' },
     {
       type: 'category',
       collapsed: false,
