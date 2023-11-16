@@ -4,7 +4,7 @@ import styles from './homeNavBoxes.module.css';
 
 const FeatureList = [
   {
-    title: 'Creamic Protocol',
+    title: 'Ceramic Protocol',
     items: [
       {url: "docs/protocol/js-ceramic/overview", text: "Dive into the JavaScript implementation of the  Ceramic Protocol."},
     ]
