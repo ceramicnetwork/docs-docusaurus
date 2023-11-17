@@ -1,7 +1,9 @@
 # Relations
+
 Define queryable relationships between models and other models or accounts.
 
 ## Types of Relations
+
 ---
 
 There are a few primary forms of relations currently supported by ComposeDB:
@@ -12,6 +14,7 @@ There are a few primary forms of relations currently supported by ComposeDB:
 - [Account to account relations](#account-to-account)
 
 ## Account to Model
+
 ---
 
 Account to model relations enable linking and querying data to the account that created it. By default the `@createmodel` directive (used when creating a new model) requires that every model must specify a relation to its author’s account. This was covered in [Writing Models](../../guides/data-modeling/writing-models.mdx).
@@ -37,6 +40,7 @@ Where:
 - `SINGLE` limits to one profile per account
 
 ## Model to Account
+
 ---
 
 Model to account relations enable you to link data to and query data from an account other than the data’s author. When using this type of relation, you need to define a model field that stores an account (e.g. a [DID](../../guides/composedb-client/user-sessions.mdx)), then add the `@accountReference` directive to make it queryable.
@@ -54,7 +58,7 @@ Here’s a model for a user-to-user message that can be queried based on the rec
 
 type Message @createModel(accountRelation: LIST, description: "Direct message model") {
   recipient: DID! @accountReference
-	directMessage: String! @string(minLength: 1, maxLength: 200)
+  directMessage: String! @string(minLength: 1, maxLength: 200)
 }
 ```
 
@@ -65,6 +69,7 @@ Where:
 - `recipient` references the recipient’s account by storing its `DID!`, using `@accountReference`
 
 ## Model to Model
+
 ---
 
 Model to model relations enable you to link data to and query data from another piece of data. These relations can be uni-directional (e.g. query a post from a comment) or bi-directional (e.g. query a post from a comment and query all comments from a post).
@@ -76,8 +81,8 @@ Here’s a model that allows many comments to be made on a single post. It suppo
 ```graphql
 # Load post model (using streamID)
 
-type Post @loadModel(id: "kjzl6hvfrbw6c99mdfpjx1z3fue7sesgua6gsl1vu97229lq56344zu9bawnf96"){
-    id: ID!
+type Post @loadModel(id: "kjzl6hvfrbw6c99mdfpjx1z3fue7sesgua6gsl1vu97229lq56344zu9bawnf96") {
+  id: ID!
 }
 
 # New comment model
@@ -116,9 +121,54 @@ Where:
 - `postID` defines the relationship from a comment to the original post, using `@documentReference`
 - `post` allows accessing the original post from the comment, using `@relationDocument`
 - `text` defines a string for the comment
-- `comments` defines the relationships from a post to a collection of comments, using  `@relationFrom`; requires specifying the model relation (`Comment`) and the specific property that stores the relation (`postID`)
+- `comments` defines the relationships from a post to a collection of comments, using `@relationFrom`; requires specifying the model relation (`Comment`) and the specific property that stores the relation (`postID`)
+
+### Using interfaces
+
+When defining relations, it is possible to reference model interfaces to allow for a wider range of documents in the relations set, for example to create a collection of documents using different models implementing the same interface:
+
+```graphql
+interface TextContent @createModel(description: "Required text content interface") {
+  text: String! @string(maxLength: 10000)
+}
+
+type Page implements TextContent @createModel(description: "Page model") {
+  title: String @string(maxLength: 100)
+  text: String! @string(maxLength: 10000)
+}
+
+type Post implements TextContent @createModel(description: "Post model") {
+  title: String! @string(maxLength: 100)
+  text: String! @string(maxLength: 10000)
+  createdAt: DateTime!
+}
+
+type ContentCollectionItem
+  @createModel(description: "Association between a collection and an item") {
+  # The Node interface is used here instead of ContentCollection, see warning below
+  collectionID: StreamID! @documentReference(model: "Node")
+  collection: Node! @relationDocument(property: "collectionID")
+  itemID: StreamID! @documentReference(model: "TextContent")
+  item: TextContent! @relationDocument(property: "itemID")
+}
+
+type ContentCollection @createModel(description: "Collection of text contents") {
+  name: String @string(maxLength: 50)
+  items: [ContentCollectionItem]!
+    @relationFrom(model: "ContentCollectionItem", property: "collectionID")
+}
+```
+
+:::caution Circular references
+
+ComposeDB does not support creating relations with circular references, such as `ContentCollection` -> `ContentCollectionItem` -> `ContentCollection` in the example above.
+
+To work around this limitation, it is possible to use the `Node` interface as a placeholder for any model. The example above uses the `Node` interface instead of `ContentCollection` to reference the collection in the `ContentCollectionItem` in order to avoid creating a circular reference.
+
+:::
 
 ## Account to Account
+
 ---
 
 :::caution
@@ -130,5 +180,7 @@ Account to account relations are on the roadmap, but not yet supported.
 Account to account relations enable you to define a relationship between an account and a different account, and query both ways based on that relationship. This is useful for creating structures such as social graphs where the relationship represents a follow.
 
 ## Next Steps
+
 ---
+
 Now that you understand the fundamentals of creating models with different types of relations, let's create a [**composite**](../data-modeling/composites.mdx) so we can use it in our app.
