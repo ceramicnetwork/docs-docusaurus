@@ -82,12 +82,33 @@ type Learner {
 
 `Learner` is not anything different from `EducationModule` in terms of how it is defined. It does contain different fields, but it is just a GraphQL shape that can be used like any other shape.
 
-💡 For this to work, you will want to define both shapes inside the same GraphQL file when writing ComposeDB schemas. 
+💡 For this to work, you will want to define both shapes inside the same GraphQL file when writing ComposeDB schemas.
+
+### Interfaces
+
+Interfaces are abstract models defining common fields for other models. Objects can implement these interfaces to ensure they match their constraints and provide [additional relations options](./relations.mdx#using-interfaces), for example:
+
+```graphql
+interface TextContent @createModel(description: "Required text content interface") {
+  text: String! @string(maxLength: 10000)
+}
+
+type Page implements TextContent @createModel(description: "Page model") {
+  title: String @string(maxLength: 100)
+  text: String! @string(maxLength: 10000)
+}
+
+type Post implements TextContent @createModel(description: "Post model") {
+  title: String! @string(maxLength: 100)
+  text: String! @string(maxLength: 10000)
+  createdAt: DateTime!
+}
+```
 
 ### Directives
 
-ComposeDB comes with [a list of different directives](https://composedb.js.org/docs/0.5.x/api/sdl/directives) that can be used to create or load data models, define type validation rules, and create indices 
-for specific fields which enables them to be used for document filtering and sorting. 
+ComposeDB comes with [a list of different directives](https://composedb.js.org/docs/0.5.x/api/sdl/directives) that can be used to create or load data models, define type validation rules, and create indices
+for specific fields which enables them to be used for document filtering and sorting.
 
 #### Type validation directives
 
@@ -95,16 +116,16 @@ Directives are keywords that add validation rules to a scalar. Not all scalars n
 
 ```graphql
 type EducationModule {
-	module_name: String! @string(maxLength: 50)
-	module_domain: String @string(minLength: 5, maxLength: 50)
-	number_of_topics_covered: Int! @int(min: 1, max: 100)
-	learners_enrolled: [Learner!]! @list(maxLength: 30)
+  module_name: String! @string(maxLength: 50)
+  module_domain: String @string(minLength: 5, maxLength: 50)
+  number_of_topics_covered: Int! @int(min: 1, max: 100)
+  learners_enrolled: [Learner!]! @list(maxLength: 30)
 }
 
 type Learner {
-	first_name: String! @string(minLength: 10, maxLength: 30)
-	last_name: String! @string(maxLength: 30) 
-	username: String! @string(maxLength: 32)
+  first_name: String! @string(minLength: 10, maxLength: 30)
+  last_name: String! @string(maxLength: 30)
+  username: String! @string(maxLength: 32)
 }
 ```
 
@@ -115,32 +136,30 @@ Where:
 - `@int` adds validation rules to values that are integers, e.g. minimum and maximum values
 - `@list` adds validation rules to an array, e.g. maximum length
 
+#### Directives for creating indices
 
-#### Directives for creating indices 
-
-To be able to filter the query results by a specific field and sort them in a specific order, 
-you are required to create indices for corresponding fields. In ComposeDB indices work the 
-same way as in traditional databases - they speed up the querying processes. You can create indices 
+To be able to filter the query results by a specific field and sort them in a specific order,
+you are required to create indices for corresponding fields. In ComposeDB indices work the
+same way as in traditional databases - they speed up the querying processes. You can create indices
 for specific fields using `@createIndex` directive as follows:
 
 ```graphql
-type Posts @createModel(accountRelation: LIST, description: "A simple Post")
-@createIndex(fields: [{path: "title"}])
-@createIndex(fields: [{path: "tag"}])
-@createIndex(fields: [{path: "created_at"}])
-{
-    title: String! @string(minLength: 1, maxLength: 100)
-    body: String! @string(minLength: 1, maxLength: 100)
-    tag: String! @string(minLength: 1, maxLength: 100)
-    ranking: Int!
-    created_at: DateTime!
+type Posts
+  @createModel(accountRelation: LIST, description: "A simple Post")
+  @createIndex(fields: [{ path: "title" }])
+  @createIndex(fields: [{ path: "tag" }])
+  @createIndex(fields: [{ path: "created_at" }]) {
+  title: String! @string(minLength: 1, maxLength: 100)
+  body: String! @string(minLength: 1, maxLength: 100)
+  tag: String! @string(minLength: 1, maxLength: 100)
+  ranking: Int!
+  created_at: DateTime!
 }
 ```
 
-The example above will create indices for the fields `title`, `tag` and `created_at`, and will enable you to filter the documents based on the values in these fields as well as sort the results in a specified order. 
+The example above will create indices for the fields `title`, `tag` and `created_at`, and will enable you to filter the documents based on the values in these fields as well as sort the results in a specified order.
 
 You can create indices for individual or multiple fields in your data models.
-
 
 ## Next Steps
 
