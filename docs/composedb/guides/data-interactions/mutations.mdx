@@ -128,7 +128,7 @@ mutation UpdatePost($i: UpdatePostInput!) {
 Where:
 
 - You will notice that the naming of the mutation is `UpdatePost` which indicates that this mutation will update existing records.
-- `updatePost` binding has a prefix `update` which is very defines the behaviour of your mutation - updating the existing data instead of creating new records.
+- `updatePost` binding has a prefix `update` which defines the behaviour of your mutation - updating the existing data instead of creating new records.
 - Finally, just like before, we define the variables that should be passed to update record. Here, very important difference is that you will be required to specify all variables, including the stream id so that ComposeDB would know which record should be updated.
 
 ### Update Options
