@@ -33,7 +33,7 @@ In order to use Wheel, you’ll have to install a few necessary dependencies:
 
 :::tip
 
-**Node.js** We've seen best results with Node.js v16. If you are using a different version (e.g. v18+), you may run into issues. Please use `nvm` to install Node.js v16 for best results.
+**Node.js** We've seen best results with Node.js v20. If you are using a different version (e.g. v16), you may run into issues. Please use `nvm` to install Node.js v20 for best results.
 
 **PostgreSQL:** PostgreSQL is only required for a production configuration on the Mainnet. If you are new to ComposeDB on Ceramic and would like to quickly test it out, you can skip the
 PostgreSQL installation and come back to it once you are ready to scale your project.
@@ -44,8 +44,8 @@ PostgreSQL installation and come back to it once you are ready to scale your pro
 
 If you don’t already have them installed, you will need to install at least:
 
-- [NodeJS v16](https://nodejs.org/en/)
-- npm v8 (installed automatically with NodeJS v16)
+- [NodeJS v20](https://nodejs.org/en/)
+- npm v10 (installed automatically with NodeJS v20)
 
 Use this command to make sure you have the correct versions installed.
 
@@ -224,10 +224,10 @@ cd my-project #targets the created directory
 
 #### Node.js
 
-If you don’t already have them installed, you will need to install Node.js v16 and a package manager. We primarily use `pnpm`, but `npm` and `yarn` are supported as well.
+If you don’t already have them installed, you will need to install Node.js v20 and a package manager. We primarily use `pnpm`, but `npm` and `yarn` are supported as well.
 
-- [NodeJS v16](https://nodejs.org/en/)
-- [pnpm v7](https://pnpm.io/installation)
+- [NodeJS v20](https://nodejs.org/en/)
+- [pnpm v10](https://pnpm.io/installation)
 
 Use this command to make sure you have the correct versions installed.
 
@@ -238,7 +238,7 @@ pnpm -v
 
 :::tip
 
-**Node.js** We've seen best results with Node.js v16. If you are using a different version (e.g. v18+), you may run into issues. Please use `nvm` to install Node.js v16 for best results.
+**Node.js** We've seen best results with Node.js v20. If you are using a different version (e.g. v16), you may run into issues. Please use `nvm` to install Node.js v20 for best results.
 
 :::
 
@@ -536,8 +536,8 @@ Some questions and issues come up more often than others. We've compiled a list 
   <summary>Which Node.js version is preferred?</summary>
   <div>
     <div>
-      We have seen the best results using Node.js v16. Earlier or later versions can cause issues
-      for some users. While we're working on eliminating the issues, it's best to use Node v16 for
+      We have seen the best results using Node.js v20. Earlier or later versions can cause issues
+      for some users. While we're working on eliminating the issues, it's best to use Node v20 for
       now.
     </div>
   </div>
@@ -613,7 +613,7 @@ Some questions and issues come up more often than others. We've compiled a list 
     connect ECONNREFUSED ::1:7007
   </summary>
   <div>
-    <div>The most likely cause is using Node.js v18. Please try using Node.js v16.</div>
+    <div>The most likely cause is using Node.js v18. Please try using Node.js v20.</div>
   </div>
 </details>
 <details>
