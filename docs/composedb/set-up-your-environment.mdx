@@ -302,14 +302,14 @@ Next install the ComposeDB CLI, which enables you to interact with ComposeDB dat
   <TabItem value="npm">
 
 ```bash
-npm install --location=global @composedb/cli@^0.5.0
+npm install --location=global @composedb/cli
 ```
 
   </TabItem>
   <TabItem value="pnpm">
 
 ```bash
-pnpm add -g @composedb/cli@^0.5.0
+pnpm add -g @composedb/cli
 ```
 
   </TabItem>
@@ -322,11 +322,22 @@ Global packages are only supported for yarn 2.x and older. For yarn 3.x and newe
 :::
 
 ```bash
-yarn global add @composedb/cli@^0.5.0
+yarn global add @composedb/cli
 ```
 
   </TabItem>
 </Tabs>
+
+:::tip
+
+The command above will install the latest version of the ComposeDB CLI. If you need to install a specific version, you
+can specify it  by adding `@version-number` at the end of this command. You can also prefix the version number with `^` to 
+install the latest patch. For example, if you'd like to install the latest patched version of ComposeDB 0.5.x you can run the command:
+
+`npm install --location=global @composedb/cli@^0.5.x`
+
+
+:::
 
 ComposeDB provides two additional libraries that support development:
 
@@ -346,14 +357,14 @@ To install the development packages, run:
   <TabItem value="npm">
 
 ```bash
-npm install -D @composedb/devtools@^0.5.0 @composedb/devtools-node@^0.5.0
+npm install -D @composedb/devtools @composedb/devtools-node
 ```
 
   </TabItem>
   <TabItem value="pnpm">
 
 ```bash
-pnpm add -D @composedb/devtools@^0.5.0 @composedb/devtools-node@^0.5.0
+pnpm add -D @composedb/devtools @composedb/devtools-node
 ```
 
   </TabItem>
