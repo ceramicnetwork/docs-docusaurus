@@ -39,7 +39,7 @@ const config: Config = {
           sidebarPath: require.resolve('./sidebars.js'),
         },
         gtag: {
-          trackingID: 'G-V2Y8T342EX',
+          trackingID: 'G-426ZZLPJPW',
           anonymizeIP: true,
         },
         googleTagManager: {
