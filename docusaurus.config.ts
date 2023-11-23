@@ -55,9 +55,8 @@ const config: Config = {
   themeConfig: {
     algolia: {
       appId: '3UBUL6C1TL',
-      apiKey: '95ff5c5b36bcda0da231be4adcaa56e1',
+      apiKey: 'c80ef08afbfdb5f44dd3812dd7f72242',
       indexName: 'developers-ceramic',
-      contextualSearch: true,
     },
     navbar: {
       title: 'Ceramic Documentation',
