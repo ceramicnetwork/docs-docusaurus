@@ -42,6 +42,9 @@ const config: Config = {
           trackingID: 'G-426ZZLPJPW',
           anonymizeIP: true,
         },
+        googleTagManager: {
+          containerId: 'GTM-TFSMT4ZD',
+        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
