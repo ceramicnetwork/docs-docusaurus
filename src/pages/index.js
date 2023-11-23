@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <div>
       <Layout
-        title={`Ceramic documentation`}
+        title={`Ceramic docs`}
         description="Ceramic is a decentralized data network that powers an ecosystem of interoperable Web3 applications and services."
       >
         <HomepageHeader />
