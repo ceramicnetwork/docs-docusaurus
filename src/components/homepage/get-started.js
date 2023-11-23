@@ -8,7 +8,7 @@ const FeatureList = [
     items: [
       {
         url: "docs/introduction/why-ceramic",
-        text: "Dive into the overview of Ceramic Network",
+        text: "Dive into the overview of Ceramic Network.",
       },
     ],
   },
