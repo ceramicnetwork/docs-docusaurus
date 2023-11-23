@@ -27,7 +27,7 @@ export default function Home() {
     <div>
       <Layout
         title={`Ceramic documentation`}
-        description="Description will go into a meta tag in <head />"
+        description="Ceramic is a decentralized data network that powers an ecosystem of interoperable Web3 applications and services."
       >
         <HomepageHeader />
         <screen-card>

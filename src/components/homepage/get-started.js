@@ -4,11 +4,11 @@ import styles from "./homeNavBoxes.module.css";
 
 const FeatureList = [
   {
-    title: "What is Ceramic?",
+    title: "Why Ceramic?",
     items: [
       {
         url: "docs/introduction/why-ceramic",
-        text: "Dive into the core concepts behind the Ceramic Network",
+        text: "Dive into the overview of Ceramic Network",
       },
     ],
   },
