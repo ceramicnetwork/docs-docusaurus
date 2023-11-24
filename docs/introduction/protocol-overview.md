@@ -14,7 +14,7 @@ The Ceramic protocol consists of the following components:
 - [**Accounts →**](../protocol/js-ceramic/accounts/accounts-index.md)
 - [**Networking →**](../protocol/js-ceramic/networking/networking-index.md)
 - [**Ceramic API →**](../protocol/js-ceramic/api.md)
-- [**Ceramic Nodes →**](../protocol/js-ceramic/nodes.md)
+- [**Ceramic Nodes →**](../protocol/js-ceramic/nodes/overview.md)
 
 
 ## Specification Status
@@ -38,7 +38,7 @@ The Ceramic protocol consists of the following components:
 | [3.3. Event Fetching](../protocol/js-ceramic/networking/event-fetching) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/networking/event-fetching)** |
 | [3.4. Network Identifiers](../protocol/js-ceramic/networking/networks) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/networking/networks)** |
 | [4. API](../protocol/js-ceramic/api) | **[<span styles="color:rgba(212, 76, 71, 1)">Missing</span>](../protocol/js-ceramic/api)** |
-| [5. Nodes](../protocol/js-ceramic/nodes) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/nodes)** |
+| [5. Nodes](../protocol/js-ceramic/nodes/overview) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/nodes/overview)** |
 
 #### **Legend**
 

@@ -1,4 +1,4 @@
-# Nodes
+# Nodes Overview
 ---
 Two types of nodes currently work together to support the Ceramic network.
 

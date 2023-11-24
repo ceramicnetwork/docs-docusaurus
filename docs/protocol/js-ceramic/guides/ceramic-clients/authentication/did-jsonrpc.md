@@ -113,10 +113,10 @@ async function authenticateCeramic(seed) {
 
 ### Authenticate the user
 
- ::caution
+ :::caution
 
     This will flow will vary slightly depending on which account provider library you use. Please see the documentation specific to your provider library.
-::
+:::
 
 ```ts
 import { CeramicClient } from '@ceramicnetwork/http-client'
