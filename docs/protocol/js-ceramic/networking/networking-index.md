@@ -8,7 +8,7 @@ Ceramic streams and nodes are grouped into independent networks. These networks 
 
 ### [Networks](networks.md)
 
-Networks are collections of Ceramic [nodes](../nodes.md) that share specific configurations and communicate over dedicated [libp2p](https://libp2p.io/) pubsub topics. They are easily identified by a path string, for example `/ceramic/mainnet` .
+Networks are collections of Ceramic [nodes](../nodes/overview.md) that share specific configurations and communicate over dedicated [libp2p](https://libp2p.io/) pubsub topics. They are easily identified by a path string, for example `/ceramic/mainnet` .
 
 ### [Tip Gossip](tip-gossip.md)
 
