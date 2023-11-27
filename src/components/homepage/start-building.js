@@ -12,7 +12,7 @@ const FeatureList = [
   {
     title: 'ComposeDB',
     items: [
-      {url: "docs/composedb/getting-started", text: "Build composable dApps using a decentralised grapqh database."},
+      {url: "docs/composedb/getting-started", text: "Build composable dApps using a decentralised graph database."},
     ]
   },
   {
