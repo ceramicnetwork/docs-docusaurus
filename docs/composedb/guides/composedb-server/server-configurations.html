@@ -13,8 +13,8 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Ceramic documentation" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.2f990547.css">
-<script src="/assets/js/runtime~main.c4331bc9.js" defer="defer"></script>
-<script src="/assets/js/main.2c91ee93.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.1bdf9588.js" defer="defer"></script>
+<script src="/assets/js/main.8f9f8ded.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFSMT4ZD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -59,7 +59,7 @@
 <li><code>psql postgres</code></li>
 <li><code>ALTER DATABASE ceramic RENAME TO ceramic_NETWORK; \q</code></li>
 </ul><ol start="3">
-<li>Restart your ceramic daemon wth the newly desired network config and compose DB will setup the new default environment automatically</li>
+<li>Restart your ceramic daemon with the newly desired network config and compose DB will setup the new default environment automatically</li>
 </ol><p>To switch back between networks simply follow the above steps again and return the desired backup to the default values:
 <strong>SQLITE</strong>: <code>~./ceramic/indexing.sqlite</code>
 <strong>Postgres</strong>: Default DB Name: <code>ceramic</code></p></div></div>
@@ -82,7 +82,7 @@
 <p>You can also use AWS S3 for data storage which is supported for both Ceramic and IPFS. Examples of the configuration are shared on the Ceramic docs <a href="/docs/protocol/js-ceramic/guides/ceramic-nodes/running-cloud#example-aws-s3-policies">here</a>.</p>
 <h3 class="anchor anchorWithStickyNavbar_lHFp" id="ipfs-datastore">IPFS Datastore<a href="#ipfs-datastore" class="hash-link" aria-label="Direct link to IPFS Datastore" title="Direct link to IPFS Datastore">​</a></h3>
 <p>The IPFS datastore stores the raw IPFS blocks that make up Ceramic streams. To prevent data corruption, use environment variables written to your profile file, or otherwise injected into your environment on start so that the datastore location does not change between reboots.</p>
-<p>Note: Switching between data storage locations is an advanced feature and should be avoided. Depending on the sharding implementation you may need to do a data migration first. See <a href="https://github.com/ipfs/go-ipfs/blob/master/docs/config.md#datastorespec" target="_blank" rel="noopener noreferrer">t</a>he <a href="https://github.com/ipfs/go-ipfs/blob/master/docs/config.md#datastorespec" target="_blank" rel="noopener noreferrer">datastore spec</a> for more information.</p>
+<p>Note: Switching between data storage locations is an advanced feature and should be avoided. Depending on the sharding implementation you may need to do a data migration first. See the <a href="https://github.com/ipfs/go-ipfs/blob/master/docs/config.md#datastorespec" target="_blank" rel="noopener noreferrer">datastore spec</a> for more information.</p>
 <h3 class="anchor anchorWithStickyNavbar_lHFp" id="ceramic-state-store">Ceramic State Store<a href="#ceramic-state-store" class="hash-link" aria-label="Direct link to Ceramic State Store" title="Direct link to Ceramic State Store">​</a></h3>
 <p>The Ceramic State Store holds state for pinned streams and the acts as a cache for the Ceramic streams that your node creates or loads. To ensure that the data you create with your Ceramic node does not get lost you must pin streams you care about and you must ensure that the state store does not get deleted.</p>
 <h2 class="anchor anchorWithStickyNavbar_lHFp" id="next-steps">Next Steps<a href="#next-steps" class="hash-link" aria-label="Direct link to Next Steps" title="Direct link to Next Steps">​</a></h2>
