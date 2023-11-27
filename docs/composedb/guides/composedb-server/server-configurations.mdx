@@ -157,7 +157,7 @@ If you seek to switch networks locally you need to either drop or move your defa
 - ```psql postgres```
 - ```ALTER DATABASE ceramic RENAME TO ceramic_NETWORK; \q```
 
-3. Restart your ceramic daemon wth the newly desired network config and compose DB will setup the new default environment automatically
+3. Restart your ceramic daemon with the newly desired network config and compose DB will setup the new default environment automatically
 
 To switch back between networks simply follow the above steps again and return the desired backup to the default values:
 **SQLITE**: ```~./ceramic/indexing.sqlite```
@@ -218,7 +218,7 @@ You can also use AWS S3 for data storage which is supported for both Ceramic and
 
 The IPFS datastore stores the raw IPFS blocks that make up Ceramic streams. To prevent data corruption, use environment variables written to your profile file, or otherwise injected into your environment on start so that the datastore location does not change between reboots.
 
-Note: Switching between data storage locations is an advanced feature and should be avoided. Depending on the sharding implementation you may need to do a data migration first. See [t](https://github.com/ipfs/go-ipfs/blob/master/docs/config.md#datastorespec)he [datastore spec](https://github.com/ipfs/go-ipfs/blob/master/docs/config.md#datastorespec) for more information.
+Note: Switching between data storage locations is an advanced feature and should be avoided. Depending on the sharding implementation you may need to do a data migration first. See the [datastore spec](https://github.com/ipfs/go-ipfs/blob/master/docs/config.md#datastorespec) for more information.
 
 ### Ceramic State Store
 
