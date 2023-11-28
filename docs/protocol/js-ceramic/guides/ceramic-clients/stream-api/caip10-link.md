@@ -86,7 +86,7 @@ async function linkCurrentAddress() {
 }
 ```
 
-### Remove a lin
+### Remove a link
 
 Removing a link involves a similar flow to setting the DID, but using the `clearDid` method instead of `setDid`:
 
