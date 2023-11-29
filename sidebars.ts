@@ -199,9 +199,9 @@ const sidebars: SidebarsConfig = {
       ],
     },
     {
-      type: 'doc',
-      id: 'protocol/js-ceramic/api',
-      label: 'Ceramic API',
+      type: 'link',
+      label: 'API Reference',
+      href: 'https://developers.ceramic.network/reference/typescript/modules.html',
     },
   ],
   composedb: [
