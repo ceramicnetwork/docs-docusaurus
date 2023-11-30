@@ -67,7 +67,11 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           collapsed: false,
-          label: 'Ceramic clients',
+          label: 'Ceramic Clients',
+          link: {
+            type: 'doc',
+            id: 'protocol/js-ceramic/guides/ceramic-clients/clients-overview',
+          },
           items: [
             {
               type: 'category',
@@ -78,6 +82,11 @@ const sidebars: SidebarsConfig = {
                   type: 'doc',
                   id: 'protocol/js-ceramic/guides/ceramic-clients/javascript-clients/ceramic-http',
                   label: 'Basic Usage',
+                },
+                {
+                  type: 'doc',
+                  id: 'protocol/js-ceramic/guides/ceramic-clients/javascript-clients/http-api',
+                  label: 'Ceramic HTTP API',
                 },
                 {
                   type: 'doc',
