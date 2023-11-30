@@ -20,6 +20,9 @@ dependencies:
   '@docusaurus/core':
     specifier: ^3.0.0
     version: 3.0.0(@docusaurus/types@3.0.0)(eslint@8.53.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
+  '@docusaurus/plugin-client-redirects':
+    specifier: 3.0.0
+    version: 3.0.0(eslint@8.53.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
   '@docusaurus/plugin-content-docs':
     specifier: ^3.0.0
     version: 3.0.0(eslint@8.53.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
@@ -4663,6 +4666,43 @@ packages:
       - esbuild
       - uglify-js
       - webpack-cli
+
+  /@docusaurus/plugin-client-redirects@3.0.0(eslint@8.53.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-JcZLod4lgPdbv/OpCbNwTc57u54d01dcWiDy/sBaxls/4HkDGdj6838oBPzbBdnCWrmasBIRz3JYLk+1GU0IOQ==}
+    engines: {node: '>=18.0'}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      '@docusaurus/core': 3.0.0(@docusaurus/types@3.0.0)(eslint@8.53.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
+      '@docusaurus/logger': 3.0.0
+      '@docusaurus/utils': 3.0.0(@docusaurus/types@3.0.0)
+      '@docusaurus/utils-common': 3.0.0(@docusaurus/types@3.0.0)
+      '@docusaurus/utils-validation': 3.0.0(@docusaurus/types@3.0.0)
+      eta: 2.2.0
+      fs-extra: 11.1.1
+      lodash: 4.17.21
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      tslib: 2.6.2
+    transitivePeerDependencies:
+      - '@docusaurus/types'
+      - '@parcel/css'
+      - '@swc/core'
+      - '@swc/css'
+      - bufferutil
+      - csso
+      - debug
+      - esbuild
+      - eslint
+      - lightningcss
+      - supports-color
+      - typescript
+      - uglify-js
+      - utf-8-validate
+      - vue-template-compiler
+      - webpack-cli
+    dev: false
 
   /@docusaurus/plugin-content-blog@3.0.0(eslint@8.53.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2):
     resolution: {integrity: sha512-iA8Wc3tIzVnROJxrbIsU/iSfixHW16YeW9RWsBw7hgEk4dyGsip9AsvEDXobnRq3lVv4mfdgoS545iGWf1Ip9w==}
