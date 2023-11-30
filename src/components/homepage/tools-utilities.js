@@ -18,7 +18,7 @@ const FeatureList = [
   {
     title: 'Simple Deploy',
     items: [
-      {url: "https://composedb.js.org/docs/0.5.x/guides/composedb-server/running-in-the-cloud", text: "Easily run Ceramic Nodes in the Cloud."},
+      {url: "docs/composedb/guides/composedb-server/running-in-the-cloud", text: "Easily run Ceramic Nodes in the Cloud."},
     ]
   },
   {
