@@ -52,6 +52,21 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        fromExtensions: ['html', 'htm'],
+        redirects: [
+          {
+            to: '/docs/composedb/guides/data-modeling',
+            from: '/docs/advanced/standards/data-models/',
+          },
+        ],
+      },
+    ],
+  ],
+
   themeConfig: {
     algolia: {
       appId: '3UBUL6C1TL',
