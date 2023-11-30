@@ -26,7 +26,7 @@ const FeatureList = [
     items: [
       {
         url: "https://threebox.notion.site/Ceramic-Ecosystem-Directory-a3a7a58f81544d33ad3feb84368775d4",
-        text: "Explore the innovative projects and tools build on Ceramic Network.",
+        text: "Explore the innovative projects and tools built on Ceramic Network.",
       },
     ],
   },
