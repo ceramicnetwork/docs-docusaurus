@@ -20,7 +20,7 @@ With accounts defined through CAIP10 you can now add standards support in DID:PK
 
 ### CACAO Support 
 
-[CACAO](https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-74.md) is a chain-agnostic Object Capability ([OCAP](https://en.wikipedia.org/wiki/Object-capability_model)). CACAO allows us to create DID sessions by transfering the rights to write/update specific Ceramic streams from a DID:PKH (blockchain account) to a browser session key. Session keys then can sign all Ceramic writes, needing to only sign with your blockchain account once. To add support for your blockchain we need be able to translate from SIWX messages to a CACAO (and back) and describe how to sign a SIWX. The library [`@didtools/cacao`](https://github.com/ceramicnetwork/js-did/tree/main/packages/cacao) implements this. 
+[CACAO](https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-74.md) is a chain-agnostic Object Capability ([OCAP](https://en.wikipedia.org/wiki/Object-capability_model)). CACAO allows us to create DID sessions by transferring the rights to write/update specific Ceramic streams from a DID:PKH (blockchain account) to a browser session key. Session keys then can sign all Ceramic writes, needing to only sign with your blockchain account once. To add support for your blockchain we need be able to translate from SIWX messages to a CACAO (and back) and describe how to sign a SIWX. The library [`@didtools/cacao`](https://github.com/ceramicnetwork/js-did/tree/main/packages/cacao) implements this. 
 
 To add support, first implement a SIWX class specific to your blockchain, based on the CAIP122 spec defined above. The file should be added to `src/siwx/siw(name).ts` and extend `SiwxMessage`. Typically you should only have to implement the function `signMessage()` which encodes a SIWX message in the format needed to sign message payloads in your ecosystem. Reference the Solana (SIWS) and Ethereum (SIWE) implementations for example. 
 
@@ -38,7 +38,7 @@ Authmethods are the primary interface used by [`did-session`](https://github.com
 type AuthMethod = (opts: AuthMethodOpts) => Promise<Cacao>
 ```
 
-Typicaly you will write a function or class that returns a configured AuthMethod and provides any specific helper functions that help a developer use your blockchain with an AuthMethod.
+Typically you will write a function or class that returns a configured AuthMethod and provides any specific helper functions that help a developer use your blockchain with an AuthMethod.
 
 Verifiers are used by Ceramic nodes to verify signed commits by a DID:PKH and CACAO. Nodes must register the verifiers needed for the blockchains and accounts they want to support. Right now most are included by default, once implemented. Verifers have the following interface. 
 
@@ -48,7 +48,7 @@ export type Verifiers = Record<string, CacaoVerifier>
 export type CacaoVerifier = (cacao: Cacao, opts: VerifyOptions) => Promise<void>
 ```
 
-To add support you create a `@didtools/pkh-(namespace)` package in the [`js-did` monorepo](https://github.com/ceramicnetwork/js-did). Use the existing `@didtools/pkh-ethereum` and `@didtools/pkh-solana` libraries as a template to implement similar naming, functionality, documentation and testing. But primarly the library should export a `Verifier` and a function or class the gives the developer a configured `AuthMethod`. Once ready open a PR. You can reach out to the 3Box Labs team for reviews and help if needed. 
+To add support you create a `@didtools/pkh-(namespace)` package in the [`js-did` monorepo](https://github.com/ceramicnetwork/js-did). Use the existing `@didtools/pkh-ethereum` and `@didtools/pkh-solana` libraries as a template to implement similar naming, functionality, documentation and testing. But primarily the library should export a `Verifier` and a function or class the gives the developer a configured `AuthMethod`. Once ready open a PR. You can reach out to the 3Box Labs team for reviews and help if needed. 
 
 ### Ready, Set, Go
 

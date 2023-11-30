@@ -326,7 +326,7 @@ Determine if session is available and optionally if authorized for given resourc
 
 ▸ **serialize**(): `string`
 
-Serialize session into string, can store and initalize the same session again while valid
+Serialize session into string, can store and initialize the same session again while valid
 
 #### Returns
 
