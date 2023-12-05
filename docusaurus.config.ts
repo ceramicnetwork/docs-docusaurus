@@ -62,6 +62,123 @@ const config: Config = {
             to: '/docs/composedb/guides/data-modeling',
             from: '/docs/advanced/standards/data-models/',
           },
+          {
+            to: '/',
+            from: ['/reference/glossary/', '/reference/glaze/modules/devtools/', '/tools/glaze/glossary/', '/reference/glaze/classes/did_datastore.DIDDataStore/', '/reference/self-id/classes/web.SelfID/', '/docs/advanced/standards/accounts/safe-did/', '/references/glaze/', '/tools/self-id/configuration/', '/tools/self-id/read/', '/pages/3box-migration/', '/reference/self-id/modules/framework/', '/reference/self-id/modules/image_utils/', '/reference/stream-programs/tile-document/', '/reference/self-id/', '/tools/identitylink/overview/', '/tools/self-id/utilities/', '/tools/self-id/write/', '/pages/3id-lifecycle/', '/reference/self-id/modules/react/', '/reference/glaze/modules/types/', '/reference/self-id/modules/3box_legacy/'],
+          },
+          {
+            to: '/docs/protocol/js-ceramic/streams/consensus',
+            from: ['/learn/advanced/consensus/', '/protocol/streams/consensus/'],
+          },
+          {
+            to: '/docs/composedb/guides/data-modeling/model-catalog',
+            from: '/build/share/',
+          },
+          {
+            to: '/docs/protocol/js-ceramic/guides/ceramic-clients/javascript-clients/pinning',
+            from: '/build/javascript/pinning/',
+          },
+          {
+            to: '/docs/composedb/examples',
+            from: ['/explore/sample-apps/', '/tools/self-id/sample-applications/'],
+          },
+          {
+            to: 'https://threebox.notion.site/Ceramic-Ecosystem-Directory-a3a7a58f81544d33ad3feb84368775d4',
+            from: '/learn/highlighted-projects/',
+          },
+          {
+            to: 'https://developers.ceramic.network/reference/typescript/modules.html',
+            from: ['/protocol/api/', '/reference/typescript/functions/_ceramicnetwork_ipfs_daemon.createController.html', '/reference/typescript/classes/_ceramicnetwork_cli.DaemonDidResolversConfig.html', '/reference/typescript/interfaces/_ceramicnetwork_core.DatabaseIndexApi.html', '/reference/self-id/classes/core.PublicID/', '/reference/self-id/classes/core.Core/', '/reference/self-id/classes/web.WebClient/', '/reference/typescript/interfaces/_ceramicnetwork_core.IndexModelArgs.html', '/reference/typescript/interfaces/_ceramicnetwork_core.ceramicnetworkoptions.html'],
+          },
+          {
+            to: '/docs/protocol/js-ceramic/streams/event-log',
+            from: '/protocol/streams/event-log/',
+          },
+          {
+            to: '/docs/composedb/getting-started',
+            from: ['/build/', '/tools/overview/', '/tools/glaze/development/', '/build/javascript/quick-start/'],
+          },
+          {
+            to: '/docs/protocol/js-ceramic/guides/ceramic-clients/authentication/key-did',
+            from: ['/reference/accounts/key-did/', '/docs/advanced/standards/accounts/key-did/', '/authentication/3id-did/3box-migration/'],
+          },
+          {
+            to: '/docs/protocol/js-ceramic/streams/uri-scheme',
+            from: '/protocol/streams/uri-scheme/',
+          },
+          {
+            to: '/docs/protocol/js-ceramic/guides/ceramic-clients/clients-overview',
+            from: '/build/clients/',
+          },
+          {
+            to: '/docs/composedb/guides',
+            from: '/guides',
+          },
+          {
+            to: '/docs/protocol/js-ceramic/accounts/decentralized-identifiers#supported-methods',
+            from: ['/reference/accounts/3id-did/', '/docs/advanced/standards/accounts/nft-did/', '/docs/composedb/protocol/js-ceramic/accounts/decentralized-identifiers'],
+          },
+          {
+            to: '/docs/protocol/js-ceramic/networking/networking-index',
+            from: ['/protocol/networking/'],
+          },
+          {
+            to: 'https://threebox.notion.site/Ceramic-Ecosystem-Directory-a3a7a58f81544d33ad3feb84368775d4',
+            from: ['/explore/explorers/'],
+          },
+          {
+            to: '/docs/protocol/js-ceramic/overview',
+            from: ['/run/cas/cas/', '/run/'],
+          },
+          {
+            to: '/docs/composedb/guides/data-modeling#models',
+            from: ['/tools/glaze/datamodel/', '/tools/glaze/did-datastore/', '/reference/glaze/modules/did_datastore/', '/reference/glaze/classes/datamodel.DataModel/'],
+          },
+          {
+            to: '/docs/protocol/js-ceramic/overview',
+            from: ['/reference/javascript/blockchain/', '/build/javascript/writes/', '/build/writes/'],
+          },
+          {
+            to: '/docs/dids/guides/concepts-overview#did-sessions',
+            from: ['/reference/accounts/did-session/'],
+          },
+          {
+            to: '/docs/protocol/js-ceramic/guides/ceramic-clients/stream-api/caip10-link',
+            from: ['/reference/stream-programs/caip10-link/'],
+          },
+          {
+            to: '/docs/protocol/js-ceramic/networking/event-fetching',
+            from: ['/protocol/networking/event-fetching/'],
+          },
+          {
+            to: '/docs/protocol/js-ceramic/streams/lifecycle',
+            from: ['/protocol/streams/lifecycle/'],
+          },
+          {
+            to: 'https://blog.ceramic.network/',
+            from: ['/learn/blog/'],
+          },
+          {
+            to: '/docs/protocol/js-ceramic/streams/streams-index',
+            from: '/protocol/streams/',
+          },
+          {
+            to: '/docs/protocol/js-ceramic/accounts/authorizations',
+            from: '/protocol/accounts/authorizations/',
+          },
+          {
+            to: '/docs/protocol/js-ceramic/networking/tip-gossip',
+            from: '/protocol/networking/tip-gossip/',
+          },
+          {
+            to: '/docs/protocol/js-ceramic/accounts/object-capabilities',
+            from: '/protocol/accounts/object-capabilities/',
+          },
+
+
+
+
+
         ],
       },
     ],
