@@ -64,13 +64,15 @@ const config: Config = {
           },
           {
             to: '/',
-            from: ['/tools/idx/overview', '/learn/advanced/data-availability', '/docs/advanced/standards/stream-programs/tile-document/','/docs/advanced/standards/', '/tools/self-id/framework/' ,'/tools/identity/idx/','/docs/advanced/standards/accounts/3id-did/', '/reference/self-id/classes/react.ReactClient/', '/legacy/', '/reference/glossary/', '/reference/glaze/modules/devtools/', '/tools/glaze/glossary/',  '/tools/glaze/example/', '/learn/glossary/', '/authentication/3id-did/3id-connect/', '/build/frameworks/',
-                    '/reference/glaze/classes/did_datastore.DIDDataStore/', '/reference/self-id/classes/web.SelfID/', 
-                    '/docs/advanced/standards/accounts/safe-did/', '/references/glaze/', '/tools/self-id/configuration/', 
-                    '/tools/self-id/read/', '/pages/3box-migration/', '/reference/self-id/modules/framework/', '/reference/self-id/modules/image_utils/', 
-                    '/reference/stream-programs/tile-document/', '/reference/self-id/', '/tools/identitylink/overview/', '/tools/self-id/utilities/', '/tools/self-id/write/', 
-                    '/pages/3id-lifecycle/', '/reference/self-id/modules/react/', '/reference/glaze/modules/types/', '/reference/self-id/modules/3box_legacy/',
-                    '/tools/glaze/deploy-from-cli/', '/tools/glaze/tile-loader/', '/reference/glaze/modules/tile_loader/', '/authentication/3id-did/lifecycle/', '/tools/identity/identitylink/'],
+            from: ['/tools/idx/overview', '/learn/advanced/data-availability', '/docs/advanced/standards/stream-programs/tile-document/','/docs/advanced/standards/', 
+                  '/tools/self-id/framework/' ,'/tools/identity/idx/','/docs/advanced/standards/accounts/3id-did/', '/reference/self-id/classes/react.ReactClient/', 
+                  '/legacy/', '/reference/glossary/', '/reference/glaze/modules/devtools/', '/tools/glaze/glossary/',  '/tools/glaze/example/', '/learn/glossary/', 
+                  '/authentication/3id-did/3id-connect/', '/build/frameworks/', '/reference/glaze/classes/did_datastore.DIDDataStore/', '/reference/self-id/classes/web.SelfID/', 
+                  '/docs/advanced/standards/accounts/safe-did/', '/references/glaze/', '/tools/self-id/configuration/', '/tools/self-id/read/', '/pages/3box-migration/', 
+                  '/reference/self-id/modules/framework/', '/reference/self-id/modules/image_utils/', '/reference/stream-programs/tile-document/', '/reference/self-id/', 
+                  '/tools/identitylink/overview/', '/tools/self-id/utilities/', '/tools/self-id/write/', '/pages/3id-lifecycle/', '/reference/self-id/modules/react/', 
+                  '/reference/glaze/modules/types/', '/reference/self-id/modules/3box_legacy/','/tools/glaze/deploy-from-cli/', '/tools/glaze/tile-loader/', 
+                  '/reference/glaze/modules/tile_loader/', '/authentication/3id-did/lifecycle/', '/tools/identity/identitylink/'],
           },
           {
             to: '/docs/protocol/js-ceramic/streams/consensus',
@@ -94,7 +96,11 @@ const config: Config = {
           },
           {
             to: 'https://developers.ceramic.network/reference/typescript/modules.html',
-            from: ['/reference/self-id/modules/core/', '/protocol/api/', '/reference/typescript/functions/_ceramicnetwork_ipfs_daemon.createController.html', '/reference/typescript/classes/_ceramicnetwork_cli.DaemonDidResolversConfig.html', '/reference/typescript/interfaces/_ceramicnetwork_core.DatabaseIndexApi.html', '/reference/self-id/classes/core.PublicID/', '/reference/self-id/classes/core.Core/', '/reference/self-id/classes/web.WebClient/', '/reference/typescript/interfaces/_ceramicnetwork_core.IndexModelArgs.html', '/reference/typescript/interfaces/_ceramicnetwork_core.ceramicnetworkoptions.html', '/reference/javascript/packages/', '/reference/glaze/classes/devtools.ModelManager/', '/reference/self-id/classes/react.RequestClient/'],
+            from: ['/reference/self-id/modules/core/', '/protocol/api/', '/reference/typescript/functions/_ceramicnetwork_ipfs_daemon.createController.html', 
+                  '/reference/typescript/classes/_ceramicnetwork_cli.DaemonDidResolversConfig.html', '/reference/typescript/interfaces/_ceramicnetwork_core.DatabaseIndexApi.html', 
+                  '/reference/self-id/classes/core.PublicID/', '/reference/self-id/classes/core.Core/', '/reference/self-id/classes/web.WebClient/', 
+                  '/reference/typescript/interfaces/_ceramicnetwork_core.IndexModelArgs.html', '/reference/typescript/interfaces/_ceramicnetwork_core.ceramicnetworkoptions.html', 
+                  '/reference/javascript/packages/', '/reference/glaze/classes/devtools.ModelManager/', '/reference/self-id/classes/react.RequestClient/'],
           },
           {
             to: '/docs/protocol/js-ceramic/streams/event-log',
@@ -102,11 +108,13 @@ const config: Config = {
           },
           {
             to: '/docs/composedb/getting-started',
-            from: ['/build/', '/tools/overview/', '/tools/glaze/development/', '/build/javascript/quick-start/', '/build/middleware/', '/build/quick-start/', '/build/cli/quick-start/'],
+            from: ['/build/', '/tools/overview/', '/tools/glaze/development/', '/build/javascript/quick-start/', '/build/middleware/', '/build/quick-start/', 
+                  '/build/cli/quick-start/'],
           },
           {
             to: '/docs/protocol/js-ceramic/guides/ceramic-clients/authentication/key-did',
-            from: ['/reference/accounts/key-did/', '/docs/advanced/standards/accounts/key-did/', '/authentication/3id-did/3box-migration/', '/authentication/dids/key/', '/authentication/key-did/resolver/', '/authentication/key-did/provider/'],
+            from: ['/reference/accounts/key-did/', '/docs/advanced/standards/accounts/key-did/', '/authentication/3id-did/3box-migration/', '/authentication/dids/key/', 
+                  '/authentication/key-did/resolver/', '/authentication/key-did/provider/'],
           },
           {
             to: '/docs/protocol/js-ceramic/streams/uri-scheme',
@@ -122,7 +130,8 @@ const config: Config = {
           },
           {
             to: '/docs/protocol/js-ceramic/accounts/decentralized-identifiers#supported-methods',
-            from: ['/reference/accounts/3id-did/', '/docs/advanced/standards/accounts/nft-did/', '/docs/composedb/protocol/js-ceramic/accounts/decentralized-identifiers', '/protocol/accounts/decentralized-identifiers/', '/authentication/nft-did/method/', '/authentication/3id-did/provider/'],
+            from: ['/reference/accounts/3id-did/', '/docs/advanced/standards/accounts/nft-did/', '/docs/composedb/protocol/js-ceramic/accounts/decentralized-identifiers', 
+                  '/protocol/accounts/decentralized-identifiers/', '/authentication/nft-did/method/', '/authentication/3id-did/provider/'],
           },
           {
             to: '/docs/protocol/js-ceramic/networking/networking-index',
@@ -138,7 +147,8 @@ const config: Config = {
           },
           {
             to: '/docs/composedb/guides/data-modeling#models',
-            from: ['/tools/glaze/datamodel/', '/tools/glaze/did-datastore/', '/reference/glaze/modules/did_datastore/', '/reference/glaze/classes/datamodel.DataModel/', '/reference/glaze/modules/datamodel/'],
+            from: ['/tools/glaze/datamodel/', '/tools/glaze/did-datastore/', '/reference/glaze/modules/did_datastore/', '/reference/glaze/classes/datamodel.DataModel/', 
+                  '/reference/glaze/modules/datamodel/'],
           },
           {
             to: '/docs/protocol/js-ceramic/overview',
@@ -240,14 +250,6 @@ const config: Config = {
             to: '/docs/protocol/js-ceramic/networking/networks',
             from: ['/learn/networks/'],
           },
-          
-          
-          
-
-
-
-
-
         ],
       },
     ],
