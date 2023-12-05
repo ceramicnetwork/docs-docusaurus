@@ -57,7 +57,7 @@ import { CeramicClient } from '@ceramicnetwork/http-client'
 // Connect to a Ceramic node
 const ceramic = new CeramicClient('https://your-ceramic-node.com')
 
-// The `ids` argument can contain an arry of stream IDs (to load the latest version)
+// The `ids` argument can contain an array of stream IDs (to load the latest version)
 // or commit IDs (to load a specific version)
 async function loadMulti(ids = []) {
   const queries = ids.map((streamId) => ({ streamId }))

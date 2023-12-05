@@ -327,7 +327,7 @@ Now let's query them though the multiqueries endpoint:
 ## **Commits API**
 
 The `commits` endpoint provides lower level access to the data structure of a
-Ceramic stream. It is also the enpoint that is used in order to update a stream,
+Ceramic stream. It is also the endpoint that is used in order to update a stream,
 by adding a new commit.
 
 ### Getting all commits in a stream
@@ -522,7 +522,7 @@ This method adds the stream with the given StreamID to the pinset.
 
 === "Response"
 
-    If the operation was sucessful the response will be a 200 OK.
+    If the operation was successful the response will be a 200 OK.
 
     * `streamId` - the StreamID of the stream which was pinned, string
 
@@ -560,7 +560,7 @@ This method removes the stream with the given StreamID from the pinset.
 
 === "Response"
 
-    If the operation was sucessful the response will be a 200 OK.
+    If the operation was successful the response will be a 200 OK.
 
     * `streamId` - the StreamID of the stream which was unpinned, string
 
