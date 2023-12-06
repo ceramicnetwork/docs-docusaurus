@@ -282,6 +282,10 @@ const config: Config = {
             to: 'https://developers.ceramic.network/reference/typescript/interfaces/_ceramicnetwork_common.PinApi.html',
             from: ['/reference/typescript/interfaces/_ceramicnetwork_common.pinapi-1.html'],
           },
+          {
+            to: '/docs/protocol/js-ceramic/nodes/overview',
+            from: [/docs/protocol/js-ceramic/nodes],
+          },
         ],
       },
     ],
