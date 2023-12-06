@@ -125,7 +125,7 @@ const definition = {
 };
 
 const fetcher = async (graphQLParams) => {
-  ReactGA.initialize('G-V2Y8T342EX')
+  ReactGA.initialize('G-426ZZLPJPW')
 
   const composeClient = new ComposeClient({
     ceramic: 'https://ceramic-temp.hirenodes.io',
