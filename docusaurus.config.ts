@@ -105,7 +105,7 @@ const config: Config = {
                   '/reference/typescript/interfaces/_ceramicnetwork_core.IndexModelArgs.html', '/reference/typescript/interfaces/_ceramicnetwork_core.ceramicnetworkoptions.html', 
                   '/reference/javascript/packages/', '/reference/glaze/classes/devtools.ModelManager/', '/reference/self-id/classes/react.RequestClient/',
                   '/reference/typescript/interfaces/_ceramicnetwork_common.AnchorValidator.html', '/reference/typescript/DEVELOPMENT.md', '/reference/typescript/docs-dev/UPGRADING.md',
-                  '/reference/typescript/docs-dev/QUICKSTART.md'],
+                  '/reference/typescript/docs-dev/QUICKSTART.md', '/reference/typescript/DEVELOPMENT.md'],
           },
           {
             to: '/docs/protocol/js-ceramic/streams/event-log',
