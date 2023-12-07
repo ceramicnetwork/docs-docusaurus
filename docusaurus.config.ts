@@ -285,7 +285,7 @@ const config: Config = {
           },
           {
             to: '/docs/protocol/js-ceramic/nodes/overview',
-            from: [/docs/protocol/js-ceramic/nodes],
+            from: ['/docs/protocol/js-ceramic/nodes'],
           },
         ],
       },
