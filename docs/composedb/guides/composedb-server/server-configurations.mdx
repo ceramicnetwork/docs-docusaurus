@@ -29,7 +29,7 @@ When you start the daemon using the `ceramic daemon` command, if a configuration
         "name": "mainnet", // Connect to mainnet, testnet-clay, or dev-unstable
     },
     "node": {},
-    "state-store": { 
+    "state-store": {
         "mode": "fs", // volume storage option shared here, can be replaced by S3 mode & bucket
 				"local-directory": "/path_for_ceramic_statestore", // Defaults to $HOME/.ceramic/statestore
     }
@@ -43,6 +43,7 @@ These are the configurations you should pay close attention to, described below 
 - SQL Database
 - History Sync
 - IPFS Process
+- Metrics
 
 ### Changing configurations
 ComposeDB configurations can be set in two places: using the config file and using the CLI. Although we recommend making changes using the config file, for completeness this guide demonstrates both.
@@ -223,6 +224,30 @@ Note: Switching between data storage locations is an advanced feature and should
 ### Ceramic State Store
 
 The Ceramic State Store holds state for pinned streams and the acts as a cache for the Ceramic streams that your node creates or loads. To ensure that the data you create with your Ceramic node does not get lost you must pin streams you care about and you must ensure that the state store does not get deleted.
+
+## Metrics
+Metrics are a critical part of running a production Ceramic node. They allow you to monitor the health of your node and the network, and to debug issues when they arise.
+
+Js-ceramic produces metrics in the Prometheus format. You can configure your Ceramic node to expose these metrics on an HTTP endpoint, which can then be scraped by a Prometheus server.
+Alternatively, you can configure the Ceramic node to send metrics to an Opentelemetry collector endpoint.
+
+### Prometheus endpoint
+In the `metrics` section of the daemon config, set the `prometheus` field to `true`:
+
+```json
+"metrics": {
+	"prometheus-exporter-enabled": true,
+	"prometheus-exporter-port": 9464 # or whatever port you want to use
+},
+```
+
+### Opentelemetry collector endpoint
+Set the following environment variables:
+
+```bash
+COLLECTOR_HOSTNAME=<OPENTELEMETRY_COLLECTION_ENDPOINT>
+CERAMIC_METRICS_EXPORTER_ENABLED=true
+```
 
 ## Next Steps
 - [Access Mainnet](../../guides/composedb-server/access-mainnet.mdx)
