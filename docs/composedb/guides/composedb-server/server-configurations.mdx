@@ -232,7 +232,7 @@ Js-ceramic produces metrics in the Prometheus format. You can configure your Cer
 Alternatively, you can configure the Ceramic node to send metrics to an Opentelemetry collector endpoint.
 
 ### Prometheus endpoint
-In the `metrics` section of the daemon config, set the `prometheus` field to `true`:
+In the `metrics` section of the daemon config, set the `prometheus` field to `true` and add a port number:
 
 ```json
 "metrics": {
@@ -242,12 +242,16 @@ In the `metrics` section of the daemon config, set the `prometheus` field to `tr
 ```
 
 ### Opentelemetry collector endpoint
-Set the following environment variables:
+In the `metrics` section of the daemon config, set the `metrics-exporter-enabled` field to `true` and add a collector host endpoint:
 
 ```bash
-COLLECTOR_HOSTNAME=<OPENTELEMETRY_COLLECTION_ENDPOINT>
-CERAMIC_METRICS_EXPORTER_ENABLED=true
+"metrics": {
+	"metrics-exporter-enabled": true,
+	"collector-host": <OPENTELEMETRY_COLLECTION_ENDPOINT>
+},
 ```
+
+Depending on the version of js-ceramic, environment variables may be available to be set metrics options. See the [js-ceramic docs](https://github.com/ceramicnetwork/js-ceramic/blob/develop/README.md) for more information.
 
 ## Next Steps
 - [Access Mainnet](../../guides/composedb-server/access-mainnet.mdx)
