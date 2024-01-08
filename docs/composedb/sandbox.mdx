@@ -1,0 +1,147 @@
+---
+title: ComposeDB API Sandbox
+description: Test out example GraphQL queries on ComposeDB to learn how to access documents by relations, how to filter, and more.
+---
+
+import Sandbox from '../../src/components/sandbox/Sandbox';
+import MutationSandbox from '../../src/components/sandbox/MutationSandbox';
+import Connect from '../../src/components/sandbox/SandboxConnect';
+import FeedExample from '../../src/components/sandbox/Feed';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+# Sandbox
+
+Test out several pre-made example queries below to gain hands-on exposure to accessing documents by relations, filtering and ordering by fields, and combining query logic.
+
+For a deeper dive into querying, visit the [**queries**](../docs/composedb/guides/data-interactions/queries) page.
+
+## Reading Data
+
+---
+
+#### Data Models
+
+The schema definitions that this section of the sandbox uses are outlined in [**this repository**](https://github.com/ceramicstudio/ComposeDBExampleApp/tree/main/composites). The sandbox has been pre-populated with data corresponding to several fictionary people.
+
+#### Instructions
+
+To interact with the ComposeDB read-only Sandbox, simply press the pink play icon to execute the pre-written queries in the left-hand side of the embedded GraphiQL IDE. Results returned from your query will populate in the right-hand side of the interface.
+
+You can also alter your query logic however you see fit, or build your own queries entirely from scratch based on the schema definitions.
+
+### Reading Profiles
+
+---
+
+Use the example queries below to access data related to the `BasicProfile` model:
+
+
+
+<div style={{height: "60rem", width: "100%", margin: "auto"}}><Sandbox queries='profiles' /></div>
+
+<br />
+---
+
+### Reading Posts
+
+---
+
+Use the example queries below to access data related to the `Posts` model:
+
+
+
+<div style={{height: "60rem", width: "100%", margin: "auto"}}><Sandbox queries='posts' /></div>
+
+<br />
+---
+
+### Reading Comments
+
+---
+
+Use the example queries below to access data related to the `Comments` model:
+
+
+<div style={{height: "60rem", width: "100%", margin: "auto"}}><Sandbox queries='comments' /></div>
+
+
+<br />
+---
+
+## Writing Data
+
+---
+
+#### Data Models
+
+The following sandbox section will allow you to create Ceramic documents using mutations. For this section, we will be using a different model definition:
+
+```GraphQL
+enum Proficiency {
+  Beginner
+  Intermediate
+  Advanced
+  Expert
+}
+
+type Language {
+  JavaScript: Proficiency
+  Python: Proficiency
+  Rust: Proficiency
+  Java: Proficiency
+  Swift: Proficiency
+  Go: Proficiency
+  Cpp: Proficiency
+  Scala: Proficiency
+  WebAssembly: Proficiency
+  Solidity: Proficiency
+  Other: Proficiency
+}
+
+type CeramicDeveloper
+  @createModel(accountRelation: SINGLE, description: "A Ceramic developer") {
+  developer: DID! @documentAccount
+  languages: Language!
+}
+```
+
+You will use this model to self-describe your own development skills, and will therefore require you to alter the given examples to meet your actual abilities.
+
+#### Authentication
+
+You will first have to self-authenticate on our Ceramic node. This is required for making mutation queries, whereas you do not have to be authenticated on a given node to read its data.
+
+<div style={{height: "100%", width: "100%", margin: "auto"}}><Connect /></div>
+
+Your browser wallet should create a prompt for you that looks something like this:
+
+<div style={{textAlign: 'center'}}>
+![Sign in prompt](/img/sign-in.png)
+</div>
+
+Notice how there's 1 model listed under "Resources" in the prompt - the model listed here is the StreamID of the model definition shown in GraphQL above that we've already deployed onto Ceramic. By signing this prompt, you are creating a temporary session that allows the current application to create edits on your behalf _only_ to the resources you've granted access to (in this case, our `CeramicDeveloper` schema).
+
+View how we're doing this for yourself in [this component]('../../src/components/sandbox/SandboxConnect').
+
+### Creating a Record
+
+Now that you're authenticated, you'll be able to create a `CeramicDeveloper` profile of your own!
+
+<div style={{height: "60rem", width: "100%", margin: "auto"}}><MutationSandbox queries='mutations' /></div>
+
+### Developer Feed
+
+<div style={{height: "100%", width: "100%", margin: "auto", marginBottom: "5%", display : 'flex', flexDirection: "row"}}>
+
+
+<FeedExample  />
+
+</div>
+
+## Next Steps
+
+---
+
+To begin building with ComposeDB in your local environment using the same data models you just queried, get started [**Setting Up Your Environment**](../docs/composedb/set-up-your-environment).

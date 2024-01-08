@@ -29,7 +29,7 @@ const sidebars: SidebarsConfig = {
         { type: 'doc', id: 'introduction/did-overview', label: 'Decentralized Identifiers' },
       ],
     },
-    { type: 'link', label: 'Try it out!', href: '/sandbox' },
+    { type: 'link', label: 'Try it out!', href: '/composedb/sandbox' },
     { type: 'doc', id: 'introduction/ceramic-roadmap', label: 'Roadmap' },
   ],
   protocol: [
@@ -225,12 +225,17 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: 'doc',
-          id: 'composedb/set-up-your-environment',
-          label: '1. Set up your environment',
+          id: 'composedb/sandbox',
+          label: '1. ComposeDB Sandbox',
         },
-        { type: 'doc', id: 'composedb/create-your-composite', label: '2. Create your composite' },
-        { type: 'doc', id: 'composedb/interact-with-data', label: '3. Interact with data' },
-        { type: 'doc', id: 'composedb/next-steps', label: '4. Next Steps' },
+        {
+          type: 'doc',
+          id: 'composedb/set-up-your-environment',
+          label: '2. Set up your environment',
+        },
+        { type: 'doc', id: 'composedb/create-your-composite', label: '3. Create your composite' },
+        { type: 'doc', id: 'composedb/interact-with-data', label: '4. Interact with data' },
+        { type: 'doc', id: 'composedb/next-steps', label: '5. Next Steps' },
         { type: 'doc', id: 'composedb/core-concepts', label: 'Core concepts' },
       ],
     },
