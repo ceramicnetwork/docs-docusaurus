@@ -45,6 +45,17 @@ export default function FeedExample() {
                           Solidity
                           Other
                         }
+                        attestations(first: 100){
+                            edges{
+                                node{
+                                    id
+                                    attester {
+                                      id
+                                    }
+                                  signal
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -56,8 +67,7 @@ export default function FeedExample() {
   useEffect(() => {
     setInterval(() => {
       refreshMessages();
-    }
-    , 1000);
+    }, 1000);
   }, []);
 
   return (
@@ -116,6 +126,9 @@ export default function FeedExample() {
                       "Other: " + dev.node.languages.Other}
                   </div>
                 </FeedUser>
+                <div className="text-sm text-gray-400">
+                  <p> Attestations: {dev.node.attestations.edges.length.toString()}</p>
+                </div>
               </FeedSummary>
               <FeedMeta></FeedMeta>
             </FeedContent>
