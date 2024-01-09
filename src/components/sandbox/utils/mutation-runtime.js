@@ -1,4 +1,3 @@
-// This is an auto-generated file, do not edit manually
 export const definition = {
     models: {
       CeramicDev: {
@@ -98,7 +97,7 @@ export const definition = {
             source: "queryConnection",
             model:
               "kjzl6hvfrbw6c7oefyjstwh3rwfb8mi9w2o6suqpanosz8l6eskwdf31aqzk314",
-            property: "attestationId",
+            property: "attestedProfileId",
           },
         },
       },
@@ -124,4 +123,3 @@ export const definition = {
       attestToDevList: { type: "connection", name: "AttestToDev" },
     },
   };
-  
