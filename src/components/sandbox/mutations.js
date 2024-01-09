@@ -1,9 +1,9 @@
 
 const firstMutation = 
-`# creates a wave greeting
+`
 
 mutation DeveloperOne {
-  createCeramicDeveloper(input: {
+  createCeramicDev(input: {
     content: {
       languages: {
         JavaScript: Expert
@@ -27,10 +27,10 @@ mutation DeveloperOne {
 }`
 
 const secondMutation = 
-`# creates a love greeting
+`
 
 mutation DeveloperTwo {
-  createCeramicDeveloper(input: {
+  createCeramicDev(input: {
     content: {
       languages: {
         Rust: Expert
@@ -54,10 +54,10 @@ mutation DeveloperTwo {
 }`
 
 const thirdMutation = 
-`# creates a peace greeting
+`
 
 mutation DeveloperThree {
-  createCeramicDeveloper(input: {
+  createCeramicDev(input: {
     content: {
       languages: {
         Go: Advanced

@@ -1,16 +1,16 @@
 // This is an auto-generated file, do not edit manually
 export const definition = {
     models: {
-      CeramicDeveloper: {
+      CeramicDev: {
         interface: false,
         implements: [],
-        id: "kjzl6hvfrbw6cb62ahzivytpqwzeie7eew7vfmxwv8xcsvih8g0phftfemgkk5m",
+        id: "kjzl6hvfrbw6c9sg8de1gdmkhbyki8e9w7ktz7yzzvu6zv18h2yfgjz2wogr9bl",
         accountRelation: { type: "single" },
       },
-      AttestToDeveloper: {
+      AttestToDev: {
         interface: false,
         implements: [],
-        id: "kjzl6hvfrbw6caij69etcj3buxlfput5fct2487bmcfx6te2nbilgkjp4njczdi",
+        id: "kjzl6hvfrbw6c7oefyjstwh3rwfb8mi9w2o6suqpanosz8l6eskwdf31aqzk314",
         accountRelation: { type: "list" },
       },
     },
@@ -83,7 +83,7 @@ export const definition = {
           required: false,
         },
       },
-      CeramicDeveloper: {
+      CeramicDev: {
         languages: {
           type: "reference",
           refType: "object",
@@ -97,12 +97,12 @@ export const definition = {
           relation: {
             source: "queryConnection",
             model:
-              "kjzl6hvfrbw6caij69etcj3buxlfput5fct2487bmcfx6te2nbilgkjp4njczdi",
+              "kjzl6hvfrbw6c7oefyjstwh3rwfb8mi9w2o6suqpanosz8l6eskwdf31aqzk314",
             property: "attestationId",
           },
         },
       },
-      AttestToDeveloper: {
+      AttestToDev: {
         signal: { type: "boolean", required: true },
         attestedProfileId: { type: "streamid", required: true },
         profile: {
@@ -111,7 +111,7 @@ export const definition = {
           relation: {
             source: "document",
             model:
-              "kjzl6hvfrbw6cb62ahzivytpqwzeie7eew7vfmxwv8xcsvih8g0phftfemgkk5m",
+              "kjzl6hvfrbw6c9sg8de1gdmkhbyki8e9w7ktz7yzzvu6zv18h2yfgjz2wogr9bl",
             property: "attestedProfileId",
           },
         },
@@ -120,8 +120,8 @@ export const definition = {
     },
     enums: { Proficiency: ["Beginner", "Intermediate", "Advanced", "Expert"] },
     accountData: {
-      ceramicDeveloper: { type: "node", name: "CeramicDeveloper" },
-      attestToDeveloperList: { type: "connection", name: "AttestToDeveloper" },
+      ceramicDev: { type: "node", name: "CeramicDev" },
+      attestToDevList: { type: "connection", name: "AttestToDev" },
     },
   };
   

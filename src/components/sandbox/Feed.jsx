@@ -25,7 +25,7 @@ export default function FeedExample() {
     const list = [];
     const messagesResult = await composeClient.executeQuery(`
         query {
-            ceramicDeveloperIndex(last: 30){
+            ceramicDevIndex(last: 30){
                 edges{
                     node{
                         id
@@ -50,7 +50,7 @@ export default function FeedExample() {
             }
         }
     `);
-    setDevs(messagesResult.data.ceramicDeveloperIndex.edges);
+    setDevs(messagesResult.data.ceramicDevIndex.edges);
   };
 
   useEffect(() => {
