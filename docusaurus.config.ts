@@ -59,6 +59,10 @@ const config: Config = {
         fromExtensions: ['html', 'htm'],
         redirects: [
           {
+            to: '/docs/composedb/sandbox',
+            from: '/composedb/sandbox',
+          },
+          {
             to: '/docs/composedb/guides/data-modeling',
             from: '/docs/advanced/standards/data-models/',
           },
