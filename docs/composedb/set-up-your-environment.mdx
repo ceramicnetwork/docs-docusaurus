@@ -107,8 +107,7 @@ You can run the following command to learn more about available Wheel commands a
 ./wheel --help
 ```
 
-For developers who are completely new to Ceramic, we highly recommend starting the configuration with all default parameters. Go through the prompt
-and press Enter on your keyboard for each step. This will install the Ceramic and ComposeDB dependencies and spin up a local node running `InMemory`.
+For developers who are completely new to Ceramic, we highly recommend starting the configuration with the default configuration. This will install the Ceramic and ComposeDB dependencies and spin up a local node running `InMemory`.
 
 Moreover, this option will give you an option to set up an example web3 social app for you to interact with and test ComposeDB features.
 
@@ -141,32 +140,7 @@ unique project.
 
 This application is set up by selecting `Include ComposeDB Sample Application` when following the Wheel setup.
 At the very end of the Wheel prompt you will see the output similar to the one below. It means that the Ceramic node is up and running and that the example
-app is accessible following the specified path:
-
-```bash
-Application demo is available at
-/Users/user/ceramic-getting-started/wheel/ceramic-test-app/ceramic-test-app-app. To run the demo application:
-
-cd /Users/user/ceramic-getting-started/wheel/ceramic-test-app/ceramic-test-app-app
-npm run nextDev
-```
-
-The output above also provides the instructions on how to spin up the app. Open a new terminal and run the suggested commands.
-
-Navigate to the example app project directory:
-
-```bash
-cd /Users/user/ceramic-getting-started/wheel/ceramic-test-app/ceramic-test-app-app
-```
-
-Spin up the app:
-
-```bash
-npm run nextDev
-```
-
-This will launch the example app on a local server. The output of the command above should
-look similar to the following:
+app is accessible using the provided url:
 
 ```bash
 > demo@0.1.0 nextDev
@@ -177,6 +151,17 @@ ready - started server on 0.0.0.0:3000, url: http://localhost:3000
 
 Copy the provided url `http://localhost:3000` and open it in your browser. This will launch the example application
 in your browser for you to interact with.
+
+:::tip
+
+The example application files are accessible in your working environment. You can navigate to the example app directory in your working environment as follows:
+`cd ./ceramic-app/ceramic-app-app`
+
+From here, you can make changes to any of the example application files and start the application manually by running the following commands:
+`npm run nextDev`
+
+:::
+
 
 #### Interact with the application
 
