@@ -29,7 +29,7 @@ const sidebars: SidebarsConfig = {
         { type: 'doc', id: 'introduction/did-overview', label: 'Decentralized Identifiers' },
       ],
     },
-    { type: 'link', label: 'Try it out!', href: '/composedb/sandbox' },
+    { type: 'link', label: 'Try it out!', href: '/docs/composedb/sandbox' },
     { type: 'doc', id: 'introduction/ceramic-roadmap', label: 'Roadmap' },
   ],
   protocol: [
