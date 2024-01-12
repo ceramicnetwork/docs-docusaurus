@@ -120,6 +120,10 @@ const config: Config = {
                   '/build/cli/quick-start/', '/tools/composedb/development/', '/learn/'],
           },
           {
+            to: '/docs/composedb/sandbox',
+            from: ['/sandbox'],
+          },
+          {
             to: '/docs/protocol/js-ceramic/guides/ceramic-clients/authentication/key-did',
             from: ['/reference/accounts/key-did/', '/docs/advanced/standards/accounts/key-did/', '/authentication/3id-did/3box-migration/', '/authentication/dids/key/', 
                   '/authentication/key-did/resolver/', '/authentication/key-did/provider/', '/reference/javascript/did-resolvers/', '/authentication/key-did/method/'],
