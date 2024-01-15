@@ -214,7 +214,7 @@ If you don’t already have them installed, you will need to install Node.js v20
 - [NodeJS v20](https://nodejs.org/en/)
 - [pnpm v10](https://pnpm.io/installation)
 
-Use this command to make sure you have the correct versions installed.
+Use the following command to check the versions you have installed.
 
 ```bash
 node -v
@@ -223,7 +223,7 @@ pnpm -v
 
 :::tip
 
-**Node.js** We've seen best results with Node.js v20. If you are using a different version (e.g. v16), you may run into issues. Please use `nvm` to install Node.js v20 for best results.
+**Node.js** We've seen best results with Node.js v20. If you are using a different version (e.g. v16), you may run into issues. Please use `nvm` to install Node.js v20.
 
 :::
 
@@ -402,11 +402,15 @@ yarn dlx @ceramicnetwork/cli daemon
   </TabItem>
 </Tabs>
 
-If you see the following output in your terminal, that means you have successfully started a local node and connected to Clay testnet 🚀
+You should see the following output in your terminal. This means you have successfully started a local node and connected to Clay testnet 🚀
 
 ```bash
 IMPORTANT: Ceramic API running on 0.0.0.0:7007
 ```
+
+Now, that you have installed everything successfully and are able to run the node, let's create a developer account. You can stop
+the node for now by using the keyboard combination `Control+C`. 
+
 
 ### Developer Account
 
@@ -414,11 +418,20 @@ IMPORTANT: Ceramic API running on 0.0.0.0:7007
 
 #### Generate your private key
 
-You will need a private key for authorizing ComposeDB CLI commands in the later stages of development. You can generate it using the command below. Save it for later use:
+You will need a private key for authorizing ComposeDB CLI commands in the later stages of development. You can generate it using the command below:
 
 ```bash
 composedb did:generate-private-key
 ```
+
+You should see the output similar to the one below. Keep in mind that the key generated for your will be unique and will different from the example shown below:
+
+```bash
+✔ Generating random private key... Done!
+5c7d2fa8ebc488f2fe008e5ed1db7f1f95c203434bbcbeb703491c405f6f31f0
+```
+
+Copy and save this key securely for later use.
 
 :::caution
 
@@ -428,17 +441,22 @@ composedb did:generate-private-key
 
 #### Generate your account
 
-Indexing is one of the key features of ComposeDB. In order to notify the Ceramic node which models have to be indexed, the ComposeDB tools have to interact with the restricted Admin API. Calling the API requires an authenticated Decentralized Identifier (DID) to be provided in the node configuration file. Create a DID by running the following command, using the private key generated previously:
+Indexing is one of the key features of ComposeDB. In order to notify the Ceramic node which models have to be indexed, the ComposeDB tools have to interact with the restricted Admin API. Calling the API requires an authenticated Decentralized Identifier (DID) to be provided in the node configuration file. Create a DID by running the following command, using the private key generated previously
+instead of the placeholder variable `your-private-key`:
 
 ```bash
 composedb did:from-private-key your-private-key
 ```
 
-The generated DID key will have the following format:
+You should see the output similar to the one below. Here again, the DID created for you will be unique and will differ
+from the one shown below:
 
-```json
-did:key:...
+```bash
+✔ Creating DID... Done!
+did:key:z6MkoDgemAx51v8w692aZRLPdwP6UPKj3EgUhBTvbL7hCwLu
 ```
+
+This key will be used to configure your node in the later steps of this guide.
 
 :::caution
 
@@ -455,19 +473,19 @@ The Ceramic node configuration file will be created inside of the automatically 
 cd ~/.ceramic
 ```
 
-Inside of this directory you should see the following files:
+Inside of this directory you should find the following files:
 
 - `daemon.config.json` - your Ceramic node configuration file
 - `statestore` - a local directory for [persisting the data](../protocol/js-ceramic/guides/ceramic-nodes/running-cloud#ceramic-state-store)
 
-Open the `daemon.config.json` file using your preferred code editor and provide the authenticated DID, generated in the [generate your account](#generate-your-account) step of this guide, in the `admin-dids` section of the file as shown below:
+Open the `daemon.config.json` file using your preferred code editor and provide the authenticated DID, generated in the [generate your account](#generate-your-account) step of this guide, in the `admin-dids` section of the file as shown in the example below:
 
 ```json
 {
   ...
   "http-api": {
     ...
-    "admin-dids": ["did:key:..."]
+    "admin-dids": ["did:key:z6MkoDgemAx51v8w692aZRLPdwP6UPKj3EgUhBTvbL7hCwLu"]
   },
   "indexing": {
     ...
@@ -476,8 +494,7 @@ Open the `daemon.config.json` file using your preferred code editor and provide 
 }
 ```
 
-Save this file and restart your Ceramic node for the changes to be applied. To do that, simply stop the process that is running the Ceramic node by hitting `ctrl+C` on your keyboard
-and spin up the node once again by following the steps in the [Confirmation](#confirmation) section of this guide.
+Save this file and start your Ceramic node again by following the steps in the [Confirmation](#confirmation) section of this guide.
 
 ### Confirmation
 
