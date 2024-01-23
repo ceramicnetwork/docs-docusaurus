@@ -4,6 +4,9 @@ description: Test out example GraphQL queries on ComposeDB to learn how to acces
 ---
 
 import Sandbox from '../../src/components/sandbox/Sandbox';
+import MutationSandbox from '../../src/components/sandbox/MutationSandbox';
+import Connect from '../../src/components/sandbox/SandboxConnect';
+import FeedExample from '../../src/components/sandbox/Feed';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -66,6 +69,101 @@ Use the example queries below to access data related to the `Comments` model:
 
 <br />
 ---
+
+## Writing Data
+
+---
+
+#### Data Models
+
+The following sandbox section will allow you to create Ceramic documents using mutations. For this section, we will be using a different model definition:
+
+```GraphQL
+enum Proficiency {
+  Beginner
+  Intermediate
+  Advanced
+  Expert
+}
+
+type Language {
+  JavaScript: Proficiency
+  Python: Proficiency
+  Rust: Proficiency
+  Java: Proficiency
+  Swift: Proficiency
+  Go: Proficiency
+  Cpp: Proficiency
+  Scala: Proficiency
+  WebAssembly: Proficiency
+  Solidity: Proficiency
+  Other: Proficiency
+}
+
+type CeramicDev
+  @createModel(accountRelation: SINGLE, description: "A Ceramic developer") {
+  developer: DID! @documentAccount
+  languages: Language!
+}
+
+type AttestToDev @createModel(accountRelation: LIST, description: "Signals if user attests to another developer profile") {
+  attester: DID! @documentAccount
+  attestedProfileId: StreamID! @documentReference(model: "CeramicDev")
+  profile: CeramicDev! @relationDocument(property: "attestedProfileId")
+  signal: Boolean!
+}
+```
+
+You will use this model to self-describe your own development skills, and will therefore require you to alter the given examples to meet your actual abilities.
+
+#### Authentication
+
+You will first have to self-authenticate on our Ceramic node. This is required for making mutation queries, whereas you do not have to be authenticated on a given node to read its data.
+
+<div style={{height: "100%", width: "100%", margin: "auto"}}><Connect /></div>
+
+Your browser wallet should create a prompt for you that looks something like this:
+
+<div style={{textAlign: 'center'}}>
+![Sign in prompt](/img/sign-in.png)
+</div>
+
+Notice how there's 1 model listed under "Resources" in the prompt - the model listed here is the StreamID of the model definition shown in GraphQL above that we've already deployed onto Ceramic. By signing this prompt, you are creating a temporary session that allows the current application to create edits on your behalf _only_ to the resources you've granted access to (in this case, our `CeramicDeveloper` schema).
+
+### Creating a Record
+
+Now that you're authenticated, you'll be able to create a `CeramicDeveloper` profile of your own! Be sure to adjust the dummy queries below to meet your unique skill set.
+
+<div style={{height: "60rem", width: "100%", margin: "auto"}}><MutationSandbox queries='mutations' /></div>
+
+### Developer Feed
+
+Below we've pulled in the most recent 8 `CeramicDev` records in addition to all verifications that have been issued in relation to that `CeramicDev` profile (these have been filtered to ensure each verification is from a unique profile):
+
+<div style={{height: "100%", width: "100%", margin: "auto", marginBottom: "5%", display : 'flex', flexDirection: "row"}}>
+
+
+<FeedExample  />
+
+</div>
+
+### Attest to Your Profile in a Local Environment
+
+Notice how some of the profiles have obtained attestations? We've intentionally omitted the ability to create an `AttestToDev` instance using this sandbox. You can attest to your own profile as well by cloning a local version of the application:
+
+```bash
+git clone https://github.com/ceramicstudio/sandbox-extension
+npm install
+npm run dev
+```
+
+Once you have the application running locally, you'll be able to sign in using your browser wallet. Be sure to use the same address and network you used when authenticating yourself on this page.
+
+Once authenticated, you'll be able to verify your own profile as well as others.
+
+Finally, once you've verified your profile, return back to this page. You should now see your verification(s) counted for each unique verification you issued in your local environment.
+
+You've done it! You now know how to perform successful read and write queries on a live ComposeDB node! 
 
 ## Next Steps
 
