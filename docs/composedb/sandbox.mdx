@@ -130,11 +130,11 @@ Your browser wallet should create a prompt for you that looks something like thi
 ![Sign in prompt](/img/sign-in.png)
 </div>
 
-Notice how there's 1 model listed under "Resources" in the prompt - the model listed here is the StreamID of the model definition shown in GraphQL above that has already been deployed onto Ceramic. By signing this prompt, you are creating a temporary session that allows the current application to create edits on your behalf _only_ to the resources you've granted access to (in this case, our `CeramicDeveloper` schema).
+Notice how there's 1 model listed under "Resources" in the prompt - the model listed here is the StreamID of the `CeramicDev` model definition shown above that has already been deployed onto Ceramic. By signing this prompt, you are creating a temporary session that allows the current application to create edits on your behalf _only_ to the resources you've granted access to (in this case, our `CeramicDev` schema).
 
 ### Creating a Record
 
-Now that you're authenticated, you'll be able to create a `CeramicDeveloper` profile of your own! Be sure to adjust the dummy queries below to meet your unique skill set.
+Now that you're authenticated, you'll be able to create a `CeramicDev` profile of your own! Be sure to adjust the dummy queries below to meet your unique skill set.
 
 <div style={{height: "60rem", width: "100%", margin: "auto"}}><MutationSandbox queries='mutations' /></div>
 
