@@ -134,7 +134,9 @@ Notice how there's 1 model listed under "Resources" in the prompt - the model li
 
 ### Creating a Record
 
-Now that you're authenticated, you'll be able to create a `CeramicDev` profile of your own! Be sure to adjust the dummy queries below to meet your unique skill set.
+Now that you're authenticated, you'll be able to create a `CeramicDev` profile of your own! Be sure to adjust the dummy queries below to meet your unique skill set. You can edit the languages variable and the corresponding proficiency fields for each language that represents your own expertise.
+
+For example, if you notice that a language like `Cpp` is missing from your mutation and you want to signal that you have `Intermediate` experience, you can create a new line withing your `languages` object and add `Cpp: Intermediate`.
 
 <div style={{height: "60rem", width: "100%", margin: "auto"}}><MutationSandbox queries='mutations' /></div>
 
