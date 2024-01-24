@@ -59,7 +59,7 @@ export default function FeedExample() {
             }
         }
     `);
-    setDevs(messagesResult.data.ceramicDevIndex.edges);
+    setDevs(messagesResult.data.ceramicDevIndex.edges.reverse());
   };
 
   useEffect(() => {

@@ -76,7 +76,7 @@ Use the example queries below to access data related to the `Comments` model:
 
 #### Data Models
 
-The following sandbox section will allow you to create Ceramic documents using mutations. For this section, we will be using a different model definition:
+The following sandbox section will allow you to create Ceramic documents using mutations. For this section, you will be using a different model definition. These have been included for your reference below and have already been deployed onto the node this sandbox uses.
 
 ```GraphQL
 enum Proficiency {
@@ -118,7 +118,9 @@ You will use this model to self-describe your own development skills, and will t
 
 #### Authentication
 
-You will first have to self-authenticate on our Ceramic node. This is required for making mutation queries, whereas you do not have to be authenticated on a given node to read its data.
+You will first have to self-authenticate on the Ceramic node this sandbox environment uses. This is required for making mutation queries, whereas you do not have to be authenticated on a given node to read its data. In order to do so, you will need the MetaMask wallet browser extension installed.
+
+Once you're ready, go ahead and press the `Connect` button below, and sign the messages within the two MetaMask popups.
 
 <div style={{height: "100%", width: "100%", margin: "auto"}}><Connect /></div>
 
@@ -128,7 +130,7 @@ Your browser wallet should create a prompt for you that looks something like thi
 ![Sign in prompt](/img/sign-in.png)
 </div>
 
-Notice how there's 1 model listed under "Resources" in the prompt - the model listed here is the StreamID of the model definition shown in GraphQL above that we've already deployed onto Ceramic. By signing this prompt, you are creating a temporary session that allows the current application to create edits on your behalf _only_ to the resources you've granted access to (in this case, our `CeramicDeveloper` schema).
+Notice how there's 1 model listed under "Resources" in the prompt - the model listed here is the StreamID of the model definition shown in GraphQL above that has already been deployed onto Ceramic. By signing this prompt, you are creating a temporary session that allows the current application to create edits on your behalf _only_ to the resources you've granted access to (in this case, our `CeramicDeveloper` schema).
 
 ### Creating a Record
 
@@ -138,7 +140,7 @@ Now that you're authenticated, you'll be able to create a `CeramicDeveloper` pro
 
 ### Developer Feed
 
-Below we've pulled in the most recent 8 `CeramicDev` records in addition to all verifications that have been issued in relation to that `CeramicDev` profile (these have been filtered to ensure each verification is from a unique profile):
+Below you'll see the most recent 8 `CeramicDev` records in addition to all verifications that have been issued in relation to that `CeramicDev` profile (these have been filtered to ensure each verification is from a unique profile):
 
 <div style={{height: "100%", width: "100%", margin: "auto", marginBottom: "5%", display : 'flex', flexDirection: "row"}}>
 
@@ -149,10 +151,11 @@ Below we've pulled in the most recent 8 `CeramicDev` records in addition to all 
 
 ### Attest to Your Profile in a Local Environment
 
-Notice how some of the profiles have obtained attestations? We've intentionally omitted the ability to create an `AttestToDev` instance using this sandbox. You can attest to your own profile as well by cloning a local version of the application:
+Notice how some of the profiles have obtained attestations? The ability to create an `AttestToDev` instance using this has been intentionally omitted from the runtime definition used on this page. You can verify your own profile as well as others by cloning a local version of the application:
 
 ```bash
 git clone https://github.com/ceramicstudio/sandbox-extension
+cd sandbox-extension
 npm install
 npm run dev
 ```
