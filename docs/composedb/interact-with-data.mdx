@@ -11,10 +11,10 @@ Want to interact with data using JavaScript instead? See [Client setup](./guides
 
 ## Setup
 ### GraphQL Server
-To interact with data on the network, start a local GraphQL server by running the command below. Note that you have to provide the seed to your `did-private-key` here — it is also required for performing mutations, covered below.
+To interact with data on the network, start a local GraphQL server by running the command below. Note that you have to provide the [private key](./set-up-your-environment#generate-your-private-key) to your `did-private-key` here — it is also required for performing mutations, covered below.
 
 ```bash
-composedb graphql:server --ceramic-url=http://localhost:7007 --graphiql runtime-composite.json --did-private-key=your_private_key --port=5005
+composedb graphql:server --ceramic-url=http://localhost:7007 --graphiql runtime-composite.json --did-private-key=your-private-key --port=5005
 ```
 
 >✏️ ***Note:*** You can customize the port by configuring the `—-port` flag.
@@ -26,7 +26,8 @@ GraphQL server is listening on http://localhost:5005/graphql
 ```
 
 ### GraphQL Web UI
-In your browser, visit the URL that your local GraphQL server is listening on. You will see a simple UI that you can use to easily interact with your data:
+In your browser, visit the URL that your local GraphQL server is listening on. You will see a simple UI that you can use to easily interact with your data.
+This UI allows you to run queries by simply writing data queries inside of the editor you see below and pressing the "Play" button to see the results of the query:
 ![GraphQL Web UI](/img/graphiql.png)
   
 

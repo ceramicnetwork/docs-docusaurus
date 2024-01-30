@@ -59,6 +59,10 @@ const config: Config = {
         fromExtensions: ['html', 'htm'],
         redirects: [
           {
+            to: '/docs/composedb/sandbox',
+            from: '/composedb/sandbox',
+          },
+          {
             to: '/docs/composedb/guides/data-modeling',
             from: '/docs/advanced/standards/data-models/',
           },
@@ -115,6 +119,10 @@ const config: Config = {
             to: '/docs/composedb/getting-started',
             from: ['/build/', '/tools/overview/', '/tools/glaze/development/', '/build/javascript/quick-start/', '/build/middleware/', '/build/quick-start/', 
                   '/build/cli/quick-start/', '/tools/composedb/development/', '/learn/'],
+          },
+          {
+            to: '/docs/composedb/sandbox',
+            from: ['/sandbox'],
           },
           {
             to: '/docs/protocol/js-ceramic/guides/ceramic-clients/authentication/key-did',
@@ -286,6 +294,10 @@ const config: Config = {
           {
             to: '/docs/protocol/js-ceramic/nodes/overview',
             from: ['/docs/protocol/js-ceramic/nodes'],
+          },
+          {
+            to: '/docs/introduction/protocol-overview',
+            from: '/protocol',
           },
         ],
       },

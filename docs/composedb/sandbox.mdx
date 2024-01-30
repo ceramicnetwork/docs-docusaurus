@@ -1,0 +1,199 @@
+---
+title: ComposeDB API Sandbox
+description: Test out example GraphQL queries on ComposeDB to learn how to access documents by relations, how to filter, and more.
+---
+
+import Sandbox from '../../src/components/sandbox/Sandbox';
+import MutationSandbox from '../../src/components/sandbox/MutationSandbox';
+import Connect from '../../src/components/sandbox/SandboxConnect';
+import FeedExample from '../../src/components/sandbox/Feed';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+# Sandbox
+
+Test out several pre-made example queries below to gain hands-on exposure to accessing documents by relations, filtering and ordering by fields, and combining query logic.
+
+For a deeper dive into querying, visit the [**queries**](/docs/composedb/interact-with-data) page.
+
+## Reading Data
+
+---
+
+#### Data Models
+
+The schema definitions that this section of the sandbox uses are outlined in [**this repository**](https://github.com/ceramicstudio/ComposeDBExampleApp/tree/main/composites). The sandbox has been pre-populated with data corresponding to several fictionary people.
+
+#### Instructions
+
+To interact with the ComposeDB read-only Sandbox, simply press the pink play icon to execute the pre-written queries in the left-hand side of the embedded GraphiQL IDE. Results returned from your query will populate in the right-hand side of the interface.
+
+You can also alter your query logic however you see fit, or build your own queries entirely from scratch based on the schema definitions.
+
+### Reading Profiles
+
+---
+
+Use the example queries below to access data related to the `BasicProfile` model:
+
+
+
+<Sandbox queries='profiles' />
+
+<br />
+---
+
+### Reading Posts
+
+---
+
+Use the example queries below to access data related to the `Posts` model:
+
+
+
+<Sandbox queries='posts' />
+
+<br />
+---
+
+### Reading Comments
+
+---
+
+Use the example queries below to access data related to the `Comments` model:
+
+
+<Sandbox queries='comments' />
+
+
+<br />
+---
+
+## Writing Data
+
+---
+
+#### Data Models
+
+The following sandbox section will allow you to create Ceramic documents using mutations. For this section, you will be using a different model definition. These have been included for your reference below and have already been deployed onto the node this sandbox uses.
+
+```GraphQL
+enum Proficiency {
+  Beginner
+  Intermediate
+  Advanced
+  Expert
+}
+
+type Language {
+  JavaScript: Proficiency
+  Python: Proficiency
+  Rust: Proficiency
+  Java: Proficiency
+  Swift: Proficiency
+  Go: Proficiency
+  Cpp: Proficiency
+  Scala: Proficiency
+  WebAssembly: Proficiency
+  Solidity: Proficiency
+  Other: Proficiency
+}
+
+type CeramicDev
+  @createModel(accountRelation: SINGLE, description: "A Ceramic developer") {
+  developer: DID! @documentAccount
+  languages: Language!
+}
+
+type AttestToDev @createModel(accountRelation: LIST, description: "Signals if user attests to another developer profile") {
+  attester: DID! @documentAccount
+  attestedProfileId: StreamID! @documentReference(model: "CeramicDev")
+  profile: CeramicDev! @relationDocument(property: "attestedProfileId")
+  signal: Boolean!
+}
+```
+
+You will use this model to self-describe your own development skills, and will therefore require you to alter the given examples to meet your actual abilities.
+
+#### Authentication
+
+You will first have to self-authenticate on the Ceramic node this sandbox environment uses. This is required for making mutation queries, whereas you do not have to be authenticated on a given node to read its data. In order to do so, you will need the MetaMask wallet browser extension installed.
+
+Once you're ready, go ahead and press the `Connect` button below, and sign the messages within the two MetaMask popups.
+
+<div style={{height: "100%", width: "100%", margin: "auto"}}><Connect /></div>
+
+Your browser wallet should create a prompt for you that looks something like this:
+
+<div style={{textAlign: 'center'}}>
+![Sign in prompt](/img/sign-in.png)
+</div>
+
+Notice how there's 1 model listed under "Resources" in the prompt - the model listed here is the StreamID of the `CeramicDev` model definition shown above that has already been deployed onto Ceramic. By signing this prompt, you are creating a temporary session that allows the current application to create edits on your behalf _only_ to the resources you've granted access to (in this case, our `CeramicDev` schema).
+
+### Creating a Record
+
+Now that you're authenticated, you'll be able to create a `CeramicDev` profile of your own! Be sure to adjust the dummy queries below to meet your unique skill set. You can edit the languages variable and the corresponding proficiency fields for each language that represents your own expertise.
+
+For example, if you notice that a language like `Cpp` is missing from your mutation and you want to signal that you have `Intermediate` experience, you can create a new line withing your `languages` object and add `Cpp: Intermediate`.
+
+<div style={{height: "60rem", width: "100%", margin: "auto"}}><MutationSandbox queries='mutations' /></div>
+
+### Developer Feed
+
+Below you'll see the most recent 8 `CeramicDev` records in addition to all verifications that have been issued in relation to that `CeramicDev` profile (these have been filtered to ensure each verification is from a unique profile):
+
+<div style={{height: "100%", width: "100%", margin: "auto", marginBottom: "5%", display : 'flex', flexDirection: "row"}}>
+
+
+<FeedExample  />
+
+</div>
+
+### Attest to Your Profile in a Local Environment
+
+Notice how some of the profiles have obtained verifications? The ability to create an `AttestToDev` instance using this sandbox has been intentionally omitted from the runtime definition used on this page. We've done so to encourage developers to complete this sandbox module by following the steps below that allow you to verify your profile in a local environment.
+
+To get started, clone the extension repository, install your dependencies, and run the local application:
+
+```bash
+git clone https://github.com/ceramicstudio/sandbox-extension
+cd sandbox-extension
+npm install
+npm run dev
+```
+
+The operations above will run the extension application in developer mode - go ahead and navigate to http://localhost:3000 in your browser to start interacting with the application.
+
+Once you have the extension running locally and visible in your browser, you'll be able to sign in using MetaMask. Be sure to use the same address and network you used when authenticating yourself on this page.
+
+Click the `Sign in with MetaMask` button in the upper right-hand corner as the screenshot shows below to get started.
+
+<div style={{textAlign: 'center'}}>
+![Sign in prompt](/img/sandbox-extension.png)
+</div>
+
+Once authenticated, you'll be able to verify your own profile as well as others. If you've signed in using the same account and network as the one you used on the sandbox page, you should see the profile you just created appended to the right:
+
+<div style={{textAlign: 'center'}}>
+![before verifying](/img/before-verify.png)
+</div>
+
+Notice how your profile does not currently have any unique verifications. You can go ahead and verify by clicking the `Verify Profile` button for that item. You should now see something like this:
+
+<div style={{textAlign: 'center'}}>
+![before verifying](/img/after-verify.png)
+</div>
+
+You can also verify profiles made by other developers that are appended to the left of your screen.
+
+Finally, once you've verified your profile, return back to this page. You should now see your verification(s) counted for each unique verification you issued in your local environment back in the [Developer Feed](./sandbox/#developer-feed)
+
+You've done it! You now know how to perform successful read and write queries on a live ComposeDB node! 
+
+## Next Steps
+
+---
+
+To begin building with ComposeDB in your local environment using the same data models you just queried, get started with setting up your environment.
