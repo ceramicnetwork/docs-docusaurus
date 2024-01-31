@@ -6,6 +6,7 @@ import { ComposeClient } from "@composedb/client";
 import ReactGA from "react-ga4";
 import Profiles from "./queries/profiles";
 import Posts from "./queries/posts";
+import Begin from "./queries/begin";
 import Comments from "./queries/comments";
 import { definition } from "./utils/read-runtime";
 import { BrowserView, MobileView } from "react-device-detect";
@@ -40,6 +41,7 @@ const settings = {
   profiles: Profiles,
   comments: Comments,
   posts: Posts,
+  begin: Begin,
 };
 
 export default function Sandbox(props) {
