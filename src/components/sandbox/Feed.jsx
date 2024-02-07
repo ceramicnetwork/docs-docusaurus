@@ -59,7 +59,12 @@ export default function FeedExample() {
             }
         }
     `);
-    setDevs(messagesResult.data.ceramicDevIndex.edges.reverse());
+    const devIndex = messagesResult.data.ceramicDevIndex.edges
+      .reverse()
+      .filter((dev) => {
+        return dev.node !== null;
+      });
+    setDevs(devIndex);
   };
 
   useEffect(() => {
