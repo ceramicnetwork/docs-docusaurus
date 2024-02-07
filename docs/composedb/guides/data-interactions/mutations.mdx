@@ -65,13 +65,13 @@ Users will generate data as they interact with your app. Your app needs to perfo
 ```graphql
 # Create post
 
-mutation CreateNewPost($i: CreatePostInput!){
-  createPost(input: $i){
-		document{
-			id
-			title
-      text
-    }
+mutation CreateNewPost($i: CreatePostInput!) {
+  createPost(input: $i) {
+	document{
+		id
+		title
+	        text
+    	}
   }
 }
 
@@ -108,7 +108,7 @@ mutation UpdatePost($i: UpdatePostInput!) {
         document {
             id
             title
-						text
+            text
         }
     }
 }
