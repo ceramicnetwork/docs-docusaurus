@@ -216,7 +216,7 @@ const sidebars: SidebarsConfig = {
   composedb: [
     {
       type: "category",
-      collapsed: true,
+      collapsed: false,
       label: "Getting Started",
       link: {
         type: "doc",
@@ -226,28 +226,38 @@ const sidebars: SidebarsConfig = {
         {
           type: "doc",
           id: "composedb/sandbox",
-          label: "1. ComposeDB Sandbox"
+          label: "ComposeDB Sandbox"
+        },
+        {
+          type: "doc",
+          id: "composedb/create-ceramic-app",
+          label: "Scaffold a new Ceramic app"
         },
         {
           type: "doc",
           id: "composedb/set-up-your-environment",
-          label: "2. Set up your environment"
+          label: "Set up your environment"
         },
-        { type: "doc", id: "composedb/create-your-composite", label: "3. Create your composite" },
-        { type: "doc", id: "composedb/interact-with-data", label: "4. Interact with data" },
-        { type: "doc", id: "composedb/next-steps", label: "5. Next Steps" },
-        { type: "doc", id: "composedb/core-concepts", label: "Core concepts" }
+        { type: "doc", id: "composedb/create-your-composite", label: "Create your composite" },
+        { type: "doc", id: "composedb/interact-with-data", label: "Interact with data" },
+        { type: "doc", id: "composedb/core-concepts", label: "Core ComposeDBconcepts" },
+        { type: "doc", id: "composedb/next-steps", label: "Next Steps" }
       ]
     },
     {
       type: "category",
-      collapsed: true,
+      collapsed: false,
       label: "Tutorials and Examples",
       link: {
         type: "doc",
         id: "composedb/examples/index"
       },
       items: [
+        {
+          type: "doc",
+          id: "composedb/examples/tutorials-and-examples",
+          label: "Starter Apps and Tutorials"
+        },
         {
           type: "doc",
           id: "composedb/examples/verifiable-credentials",
@@ -257,7 +267,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      collapsed: true,
+      collapsed: false,
       label: "Guides",
       link: {
         type: "doc",
@@ -266,7 +276,7 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: "category",
-          collapsed: false,
+          collapsed: true,
           label: "Data Modeling",
           link: {
             type: "doc",
@@ -313,7 +323,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
-          collapsed: false,
+          collapsed: true,
           label: "ComposeDB Client",
           link: {
             type: "doc",
@@ -361,7 +371,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
-          collapsed: false,
+          collapsed: true,
           label: "ComposeDB Server",
           link: {
             type: "doc",
@@ -397,7 +407,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
-          collapsed: false,
+          collapsed: true,
           label: "Data Interactions",
           link: {
             type: "doc",

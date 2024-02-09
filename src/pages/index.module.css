@@ -2,21 +2,21 @@
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
- @font-face {
+@font-face {
   font-family: "Inter";
   src: url("../fonts/Inter/static/Inter-Light.ttf");
 }
 
-
-html[data-theme="dark"] header{
+html[data-theme="dark"] header {
   color: #fff;
 }
 
-html , body {
-	height: 100%;
-  }
+html,
+body {
+  height: 100%;
+}
 
-html[data-theme="dark"] p3{
+html[data-theme="dark"] p3 {
   color: #fff;
 }
 
@@ -58,12 +58,10 @@ html[data-theme="dark"] p3{
 }
 
 header {
-  padding-top: 70px;
+  padding-top: 50px;
   font: bold 30px Arial, sans-serif;
   color: #5a5959;
 }
-
-
 
 h1 .hero__title {
   color: #413f3f;
@@ -80,11 +78,8 @@ p3 {
   color: #5a5959;
 }
 
-
 screen-card {
   height: 100%;
   margin: auto;
   margin-bottom: 150px;
-
 }
-

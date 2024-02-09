@@ -1,5 +1,5 @@
-import Tabs from '@theme/Tabs'
-import TabItem from '@theme/TabItem'
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 # Set up your environment
 
@@ -49,7 +49,7 @@ If you don’t already have them installed, you will need to install at least:
 
 Use this command to make sure you have the correct versions installed.
 
-```bash
+```powershell
 node -v
 npm -v
 ```
@@ -69,13 +69,13 @@ for running your applications on the Mainnet and is optional for other networks.
 To install Postgres, follow [instructions provided on official Postgres documentation](https://www.postgresql.org/download/).
 Once installed, open Postgres in your command line:
 
-```bash
+```powershell
 psql postgres
 ```
 
 Configure your database using the following commands:
 
-```bash
+```SQL
 CREATE DATABASE ceramic;
 
 CREATE ROLE ceramic WITH PASSWORD 'password' LOGIN;
@@ -88,13 +88,13 @@ GRANT ALL PRIVILEGES ON DATABASE "ceramic" to ceramic;
 We will use Wheel to install all of the dependencies needed to run Ceramic and ComposeDB as well as configure the working environment
 for your project. To download Wheel, open your terminal and run the command below:
 
-```bash
+```powershell
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ceramicstudio/wheel/main/wheel.sh | bash
 ```
 
 Once Wheel is downloaded you are good to start configuring your project working directory. To kick it off, run the command below:
 
-```bash
+```powershell
 ./wheel
 ```
 
@@ -103,7 +103,7 @@ you’d like to install to how your Ceramic node should be configured.
 
 You can run the following command to learn more about available Wheel commands and options:
 
-```bash
+```powershell
 ./wheel --help
 ```
 
@@ -142,7 +142,7 @@ This application is set up by selecting `Include ComposeDB Sample Application` w
 At the very end of the Wheel prompt you will see the output similar to the one below. It means that the Ceramic node is up and running and that the example
 app is accessible using the provided url:
 
-```bash
+```powershell
 > demo@0.1.0 nextDev
 > next dev
 
@@ -161,7 +161,6 @@ From here, you can make changes to any of the example application files and star
 `npm run nextDev`
 
 :::
-
 
 #### Interact with the application
 
@@ -185,7 +184,8 @@ From now on you can interact with the application:
   title="YouTube video player"
   frameborder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  allowfullscreen></iframe>
+  allowfullscreen
+></iframe>
 
 After you interact with the application you can dive deeper into the underlying application files which you can find in the directory of your app.
 Familiarise yourself with the actual implementations of specific features, e.g. - check out the `composites` directory to see the implementation
@@ -202,7 +202,7 @@ process step-by-step. If you have followed the [Wheel installation](#installatio
 
 Start with creating the project directory. Here you’ll store all your app’s local files:
 
-```bash
+```powershell
 mkdir my-project #creates a new directory
 cd my-project #targets the created directory
 ```
@@ -216,7 +216,7 @@ If you don’t already have them installed, you will need to install Node.js v20
 
 Use the following command to check the versions you have installed.
 
-```bash
+```powershell
 node -v
 pnpm -v
 ```
@@ -245,14 +245,14 @@ The Ceramic CLI provides a set of commands that make it easier to run and manage
   ]}>
   <TabItem value="npm">
 
-```bash
+```powershell
 npm install --location=global @ceramicnetwork/cli
 ```
 
   </TabItem>
   <TabItem value="pnpm">
 
-```bash
+```powershell
 pnpm install -g @ceramicnetwork/cli
 ```
 
@@ -265,7 +265,7 @@ Global packages are only supported for yarn 2.x and older. For yarn 3.x and newe
 
 :::
 
-```bash
+```powershell
 yarn global add @ceramicnetwork/cli
 ```
 
@@ -286,14 +286,14 @@ Next install the ComposeDB CLI, which enables you to interact with ComposeDB dat
   ]}>
   <TabItem value="npm">
 
-```bash
+```powershell
 npm install --location=global @composedb/cli
 ```
 
   </TabItem>
   <TabItem value="pnpm">
 
-```bash
+```powershell
 pnpm add -g @composedb/cli
 ```
 
@@ -306,7 +306,7 @@ Global packages are only supported for yarn 2.x and older. For yarn 3.x and newe
 
 :::
 
-```bash
+```powershell
 yarn global add @composedb/cli
 ```
 
@@ -316,11 +316,10 @@ yarn global add @composedb/cli
 :::tip
 
 The command above will install the latest version of the ComposeDB CLI. If you need to install a specific version, you
-can specify it  by adding `@version-number` at the end of this command. You can also prefix the version number with `^` to 
+can specify it by adding `@version-number` at the end of this command. You can also prefix the version number with `^` to
 install the latest patch. For example, if you'd like to install the latest patched version of ComposeDB 0.5.x you can run the command:
 
 `npm install --location=global @composedb/cli@^0.5.x`
-
 
 :::
 
@@ -341,21 +340,21 @@ To install the development packages, run:
   ]}>
   <TabItem value="npm">
 
-```bash
+```powershell
 npm install -D @composedb/devtools @composedb/devtools-node
 ```
 
   </TabItem>
   <TabItem value="pnpm">
 
-```bash
+```powershell
 pnpm add -D @composedb/devtools @composedb/devtools-node
 ```
 
   </TabItem>
   <TabItem value="yarn">
 
-```bash
+```powershell
 yarn add -D @composedb/devtools@^0.5.0 @composedb/devtools-node@^0.5.0
 ```
 
@@ -381,21 +380,21 @@ Indexing is a key component of ComposeDB, which syncs data across nodes. Enable 
   ]}>
   <TabItem value="npm">
 
-```bash
+```powershell
 npx @ceramicnetwork/cli daemon
 ```
 
   </TabItem>
   <TabItem value="pnpm">
 
-```bash
+```powershell
 pnpm dlx @ceramicnetwork/cli daemon
 ```
 
   </TabItem>
   <TabItem value="yarn">
 
-```bash
+```powershell
 yarn dlx @ceramicnetwork/cli daemon
 ```
 
@@ -404,7 +403,7 @@ yarn dlx @ceramicnetwork/cli daemon
 
 You should see the following output in your terminal. This means you have successfully started a local node and connected to Clay testnet 🚀
 
-```bash
+```powershell
 IMPORTANT: Ceramic API running on 0.0.0.0:7007
 ```
 
@@ -420,7 +419,7 @@ the node for now by using the keyboard combination `Control+C`.
 
 You will need a private key for authorizing ComposeDB CLI commands in the later stages of development. You can generate it using the command below:
 
-```bash
+```powershell
 composedb did:generate-private-key
 ```
 
@@ -444,7 +443,7 @@ Copy and save this key securely for later use.
 Indexing is one of the key features of ComposeDB. In order to notify the Ceramic node which models have to be indexed, the ComposeDB tools have to interact with the restricted Admin API. Calling the API requires an authenticated Decentralized Identifier (DID) to be provided in the node configuration file. Create a DID by running the following command, using the private key generated previously
 instead of the placeholder variable `your-private-key`:
 
-```bash
+```powershell
 composedb did:from-private-key your-private-key
 ```
 
@@ -469,7 +468,7 @@ Copy this authenticated DID key and store it in a secure place, just like with y
 The very first time you spin up a Ceramic node, a node configuration file is automatically created for you where you can configure how your node is operated. Here you have to provide the DID key which is authorised to interact with the Admin API.
 The Ceramic node configuration file will be created inside of the automatically created directory `./ceramic` in your home directory (usually `/home/USERNAME/` on Linux or `/Users/USERNAME/` on Mac). This directory can be accessed using the following command:
 
-```bash
+```powershell
 cd ~/.ceramic
 ```
 
@@ -502,13 +501,13 @@ Save this file and start your Ceramic node again by following the steps in the [
 
 As a final test, spin up the Ceramic local node:
 
-```bash
+```powershell
 ceramic daemon --network=testnet-clay
 ```
 
 Once again, you should see your local Ceramic node up and running as follows:
 
-```bash
+```powershell
 IMPORTANT: Ceramic API running on 0.0.0.0:7007
 ```
 
@@ -524,13 +523,13 @@ Some questions and issues come up more often than others. We've compiled a list 
   <summary>Which setup method is better: Wheel or JavaScript package managers?</summary>
   <div>
     <div>
-      Wheel is the recommended and the easiest way to configure your working environment and install
-      all the necessary dependencies. We highly recommended going with Wheel if you are just
-      starting out with Ceramic. Everything will be taken care of for you.
+      Wheel is the recommended and the easiest way to configure your working environment and install all the necessary
+      dependencies. We highly recommended going with Wheel if you are just starting out with Ceramic. Everything will be
+      taken care of for you.
     </div>
     <div>
-      You might consider using JavaScript package managers if you are already familiar with Ceramic
-      and need more manual configuration and control over your working environment.
+      You might consider using JavaScript package managers if you are already familiar with Ceramic and need more manual
+      configuration and control over your working environment.
     </div>
   </div>
 </details>
@@ -538,9 +537,8 @@ Some questions and issues come up more often than others. We've compiled a list 
   <summary>Which operating systems are supported?</summary>
   <div>
     <div>
-      It's best to run Ceramic and ComposeDB on Linux or a Mac. You can also run it on Windows but
-      you'll have to use WSL2 (Windows Subsystem for Linux). See the supported operating systems
-      section at the top.
+      It's best to run Ceramic and ComposeDB on Linux or a Mac. You can also run it on Windows but you'll have to use
+      WSL2 (Windows Subsystem for Linux). See the supported operating systems section at the top.
     </div>
   </div>
 </details>
@@ -549,9 +547,8 @@ Some questions and issues come up more often than others. We've compiled a list 
   <summary>Which Node.js version is preferred?</summary>
   <div>
     <div>
-      We have seen the best results using Node.js v20. Earlier or later versions can cause issues
-      for some users. While we're working on eliminating the issues, it's best to use Node v20 for
-      now.
+      We have seen the best results using Node.js v20. Earlier or later versions can cause issues for some users. While
+      we're working on eliminating the issues, it's best to use Node v20 for now.
     </div>
   </div>
 </details>
@@ -559,9 +556,9 @@ Some questions and issues come up more often than others. We've compiled a list 
   <summary>How long does it take to install the packages?</summary>
   <div>
     <div>
-      Installing everything (either with Wheel or JavaScript packages) takes usually between 2 and 5
-      minutes. Throughout the guide above you can find what kind of output you should be looking for
-      to know that everything was installed correctly.
+      Installing everything (either with Wheel or JavaScript packages) takes usually between 2 and 5 minutes. Throughout
+      the guide above you can find what kind of output you should be looking for to know that everything was installed
+      correctly.
     </div>
   </div>
 </details>
@@ -569,15 +566,14 @@ Some questions and issues come up more often than others. We've compiled a list 
   <summary>Where in the system do I run all of the commands?</summary>
   <div>
     <div>
-      Sometimes, especially when using JavaScript package managers to install Ceramic and ComposeDB,
-      it's easy to forget that you need to run all of the commands in the app's directory. This
-      directory is either automatically created for you when using Wheel, or you create it manually
-      when using JavaScript package managers.
+      Sometimes, especially when using JavaScript package managers to install Ceramic and ComposeDB, it's easy to forget
+      that you need to run all of the commands in the app's directory. This directory is either automatically created
+      for you when using Wheel, or you create it manually when using JavaScript package managers.
     </div>
     <div>
-      When installing with JavaScript package managers you need to open 2-3 terminal windows and run
-      different commands, so it's easy to miss that you can be in a wrong directory. Please make
-      sure you run all the commands where they're supposed to run.
+      When installing with JavaScript package managers you need to open 2-3 terminal windows and run different commands,
+      so it's easy to miss that you can be in a wrong directory. Please make sure you run all the commands where they're
+      supposed to run.
     </div>
   </div>
 </details>
@@ -585,45 +581,39 @@ Some questions and issues come up more often than others. We've compiled a list 
   <summary>Where can I find a Ceramic node configuration file, daemon.config.json?</summary>
   <div>
     <div>
-      When installing ComposeDB with JavaScript package managers, at some point you need to edit
-      your Ceramic node config file. By default, it's in your home directory, in .ceramic folder
-      (*not* in the app directory). It's easy to miss this detail so please check the path. This
-      command should take you to the right directory: cd ~/.ceramic
+      When installing ComposeDB with JavaScript package managers, at some point you need to edit your Ceramic node
+      config file. By default, it's in your home directory, in .ceramic folder (*not* in the app directory). It's easy
+      to miss this detail so please check the path. This command should take you to the right directory: cd ~/.ceramic
     </div>
   </div>
 </details>
 <details>
   <summary>How to restart a node after stopping it?</summary>
   <div>
-    When you use Wheel to install Ceramic and ComposeDB, it takes care of the whole installation
-    process. But please note that Wheel is just an installer, not a node launcher. If you want to
-    launch Ceramic and ComposeDB again, after you have stopped it, you need to launch Ceramic daemon
-    again and then launch ComposeDB.
+    When you use Wheel to install Ceramic and ComposeDB, it takes care of the whole installation process. But please
+    note that Wheel is just an installer, not a node launcher. If you want to launch Ceramic and ComposeDB again, after
+    you have stopped it, you need to launch Ceramic daemon again and then launch ComposeDB.
   </div>
-  <div>
-    You can launch Ceramic daemon by running the following command: ceramic daeomn
-    --network=InMemory
-  </div>
+  <div>You can launch Ceramic daemon by running the following command: ceramic daeomn --network=InMemory</div>
   <div>You can launch ComposeDB by running the command: composedb</div>
   <div>
-    More on all of the composedb command options can be found in "2. Create your composite" section
-    of this Getting Started guide.
+    More on all of the composedb command options can be found in "2. Create your composite" section of this Getting
+    Started guide.
   </div>
 </details>
 <details>
   <summary>How do I interact with the data once Ceramic node is running?</summary>
   <div>
     <div>
-      The easiest way to interact with data is through a GraphQL Server. You can find all the
-      details on how to set it up, launch, and interact with your data in section of this guide, "3.
-      Interact with data"
+      The easiest way to interact with data is through a GraphQL Server. You can find all the details on how to set it
+      up, launch, and interact with your data in section of this guide, "3. Interact with data"
     </div>
   </div>
 </details>
 <details>
   <summary>
-    Error when creating a composite: ✖ request to http://localhost:7007/(...) failed, reason:
-    connect ECONNREFUSED ::1:7007
+    Error when creating a composite: ✖ request to http://localhost:7007/(...) failed, reason: connect ECONNREFUSED
+    ::1:7007
   </summary>
   <div>
     <div>The most likely cause is using Node.js v18. Please try using Node.js v20.</div>
@@ -632,10 +622,7 @@ Some questions and issues come up more often than others. We've compiled a list 
 <details>
   <summary>Error: npm ERR! code EACCESS</summary>
   <div>
-    <div>
-      The most likely cause is read/write access on your system. Try running the command with sudo
-      privileges.
-    </div>
+    <div>The most likely cause is read/write access on your system. Try running the command with sudo privileges.</div>
   </div>
 </details>
 <details>
@@ -643,10 +630,9 @@ Some questions and issues come up more often than others. We've compiled a list 
   <div>
     <div></div>
     <div>
-      If your question is not answered in this guide, we recommend visiting our Community Forum (see
-      the link in the footer). There, you can ask your question and get help from our community of
-      developers and users. It's great to ask anything: from beginner to expert questions. The
-      community and our developers are there to help you.
+      If your question is not answered in this guide, we recommend visiting our Community Forum (see the link in the
+      footer). There, you can ask your question and get help from our community of developers and users. It's great to
+      ask anything: from beginner to expert questions. The community and our developers are there to help you.
     </div>
   </div>
 </details>
