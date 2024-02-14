@@ -236,7 +236,7 @@ const sidebars: SidebarsConfig = {
         {
           type: "doc",
           id: "composedb/set-up-your-environment",
-          label: "Set up your environment"
+          label: "Quickstart"
         },
         { type: "doc", id: "composedb/create-your-composite", label: "Create your composite" },
         { type: "doc", id: "composedb/interact-with-data", label: "Interact with data" },
