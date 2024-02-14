@@ -34,11 +34,19 @@ const fetcher = async (graphQLParams) => {
       category: "sandbox-query",
       action: "query-error",
     });
+    ReactGA.event({
+      category: "sandbox-query",
+      action: "query-all",
+    });
   }
   if (!data.data.__schema) {
     ReactGA.event({
       category: "sandbox-query",
       action: "mutation-success",
+    });
+    ReactGA.event({
+      category: "sandbox-query",
+      action: "query-all",
     });
     return data.data;
   }
