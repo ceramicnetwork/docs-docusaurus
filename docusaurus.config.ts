@@ -430,6 +430,10 @@ const config: Config = {
 
           items: [
             {
+              to: "docs/orbisdb/overview",
+              label: "OrbisDB"
+            },
+            {
               to: "docs/composedb/getting-started",
               label: "ComposeDB"
             },

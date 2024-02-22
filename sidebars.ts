@@ -462,7 +462,21 @@ const sidebars: SidebarsConfig = {
       id: "ecosystem/community",
       label: "Overview"
     }
-  ]
+  ],
+  orbisdb: [
+    {
+      type: "doc",
+      id: "orbisdb/overview",
+      label: "OrbisDB Overview"
+    },
+    {
+      type: "doc",
+      id: "orbisdb/orbisdb-sdk",
+      label: "OrbisDB SDK"
+    },
+    
+  ],
+
 
   // But you can create a sidebar manually
   /*
