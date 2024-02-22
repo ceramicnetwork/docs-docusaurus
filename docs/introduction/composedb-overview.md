@@ -1,4 +1,4 @@
-# ComposeDB Docs
+# ComposeDB
 ![Introduction](/img/intro-dataverse.png)
 
 ComposeDB is a composable graph database built on [Ceramic](https://ceramic.network), designed for Web3 applications. 

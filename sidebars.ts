@@ -25,6 +25,7 @@ const sidebars: SidebarsConfig = {
       },
       items: [
         { type: "doc", id: "introduction/protocol-overview", label: "Ceramic Protocol" },
+        { type: "doc", id: "introduction/orbisdb-overview", label: "OrbisDB" },
         { type: "doc", id: "introduction/composedb-overview", label: "ComposeDB" },
         { type: "doc", id: "introduction/did-overview", label: "Decentralized Identifiers" }
       ]
