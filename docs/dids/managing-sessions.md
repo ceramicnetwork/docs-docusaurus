@@ -14,10 +14,18 @@ if (await DIDSession.hasSessionFor(accountId, resources: [...])) {
 }
 ```
 
+### Removing a persisted session
 
-## Session lifecycle management
+If you want to remove a persisted session that was created using `DIDSession.get(...)`, you can use the static function `remove`. This will permanently remove the persisted session for a given account, and the user would need to reauthenticate in order to establish a new session.
 
-Additional helper functions are available on DIDSession instances to help you manage a session lifecycle and the user experience.
+```js
+await DIDSession.remove(accountId)
+```
+
+
+### Session lifecycle management
+
+Additional helper fields are available on DIDSession instances. They can help you manage a session lifecycle and the user experience. For example, if a session has expired you might want to show a message to the user before you ask them for a new session.
 
 ```js
 // Check if authorized or created from existing session string
