@@ -20,6 +20,6 @@ OrbisDB consists of two main components - core and plugins.
     - Divided into 4 categories (Create streams, Add metadata, Validate and Post process). More details about plugins underneath.
 
 
-Head to [OrbisDB Github repository](https://github.com/OrbisWeb3/orbisdb) to start building using OrbisDB.
+Start building using [OrbisDB](https://useorbis.com/).
 
 
