@@ -25,6 +25,7 @@ const sidebars: SidebarsConfig = {
       },
       items: [
         { type: "doc", id: "introduction/protocol-overview", label: "Ceramic Protocol" },
+        { type: "doc", id: "introduction/orbisdb-overview", label: "OrbisDB" },
         { type: "doc", id: "introduction/composedb-overview", label: "ComposeDB" },
         { type: "doc", id: "introduction/did-overview", label: "Decentralized Identifiers" }
       ]
@@ -462,7 +463,21 @@ const sidebars: SidebarsConfig = {
       id: "ecosystem/community",
       label: "Overview"
     }
-  ]
+  ],
+  orbisdb: [
+    {
+      type: "doc",
+      id: "orbisdb/overview",
+      label: "OrbisDB Overview"
+    },
+    {
+      type: "doc",
+      id: "orbisdb/orbisdb-sdk",
+      label: "OrbisDB SDK"
+    },
+    
+  ],
+
 
   // But you can create a sidebar manually
   /*
