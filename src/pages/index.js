@@ -42,9 +42,8 @@ export default function Home() {
             >
               <h3>Build with OrbisDB</h3>
               <div>
-                Easily add Web3 social features to your application. OrbisDB is providing a developer-friendly interface
-                to explore data with the ease of SQL and a plugin store to save development time on crypto-specific
-                features.
+                OrbisDB is an advanced decentralized database built on the Ceramic Data Network. It comes with a set of
+                plugins allowing unlimited customization options.
               </div>
               <div
                 style={{
@@ -97,9 +96,6 @@ export default function Home() {
               >
                 <div>
                   <a href="/docs/composedb/getting-started">Getting Started →</a>
-                </div>
-                <div>
-                  <a href="/docs/composedb/create-ceramic-app">Build an example app</a>
                 </div>
               </div>
             </div>

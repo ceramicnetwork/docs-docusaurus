@@ -4,6 +4,15 @@ import styles from "./homeNavBoxes.module.css";
 
 const FeatureList = [
   {
+    title: "Orbis →",
+    items: [
+      {
+        url: "https://useorbis.com/",
+        text: "An advanced decentralized database built on Ceramic, with plugins for unlimited customization."
+      }
+    ]
+  },
+  {
     title: "Example App →",
     items: [
       {
@@ -17,10 +26,6 @@ const FeatureList = [
     items: [
       { url: "docs/composedb/getting-started", text: "Build composable dApps using a decentralised graph database." }
     ]
-  },
-  {
-    title: "Orbis →",
-    items: [{ url: "https://docs.useorbis.com/", text: "Easily add Web3 social features to your application." }]
   }
 ];
 
