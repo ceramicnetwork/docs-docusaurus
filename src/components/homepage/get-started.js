@@ -4,57 +4,45 @@ import styles from "./homeNavBoxes.module.css";
 
 const FeatureList = [
   {
-    title: "Why Ceramic?",
+    title: "Why Ceramic? →",
     items: [
       {
         url: "docs/introduction/why-ceramic",
-        text: "Dive into the overview of Ceramic Network.",
-      },
-    ],
+        text: "Dive into the overview of Ceramic Network. See key benefits, compare to other web3 solutions."
+      }
+    ]
   },
   {
-    title: "ComposeDB Sandbox",
+    title: "ComposeDB Sandbox →",
     items: [
       {
         url: "docs/composedb/sandbox",
-        text: "Interact with data stored in the Ceramic Network right in your browser.",
-      },
-    ],
+        text: "Interact with data stored in the Ceramic Network right in your browser."
+      }
+    ]
   },
   {
-    title: "Ceramic Ecosystem",
+    title: "Ceramic Ecosystem →",
     items: [
       {
         url: "https://threebox.notion.site/Ceramic-Ecosystem-Directory-a3a7a58f81544d33ad3feb84368775d4",
-        text: "Explore the innovative projects and tools built on Ceramic Network.",
-      },
-    ],
-  },
+        text: "Explore the innovative projects and tools built on Ceramic Network."
+      }
+    ]
+  }
 ];
-
-function FeatureItem({ url, text }) {
-  return (
-    <>
-      <div className={styles.listContainerLink}>{text}</div>
-
-      <a className={styles.action} href={url}>
-        Learn more{" "}
-      </a>
-    </>
-  );
-}
 
 function Feature({ title, icon, items }) {
   return (
-    <article className={clsx("col--4")}>
-      <div className={styles.homecard}>
-        <div className={styles.title}>{title}</div>
-
-        {items.map((props, idx) => (
-          <FeatureItem key={idx} {...props} />
-        ))}
-
-      </div>
+    <article>
+      {items.map((item, idx) => (
+        <a key={idx} href={item.url} className={styles.homecardLink}>
+          <div className={styles.homecard}>
+            <div className={styles.title}>{title}</div>
+            <div className={styles.listContainerLink}>{item.text}</div>
+          </div>
+        </a>
+      ))}
     </article>
   );
 }
@@ -62,11 +50,9 @@ function Feature({ title, icon, items }) {
 export default function HomepageFeatures() {
   return (
     <section className={styles.features}>
-      <div className={styles.grid3col}>
-        {FeatureList.map((props, idx) => (
-          <Feature key={idx} {...props} />
-        ))}
-      </div>
+      {FeatureList.map((props, idx) => (
+        <Feature key={idx} {...props} />
+      ))}
     </section>
   );
 }
