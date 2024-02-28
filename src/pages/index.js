@@ -58,7 +58,7 @@ export default function Home() {
                 }}
               >
                 <div>
-                  <a href="https://docs.useorbis.com/" target="_blank">
+                  <a href="https://useorbis.com/" target="_blank">
                     Get started with OrbisDB{" "}
                     <svg
                       width="13.5"
