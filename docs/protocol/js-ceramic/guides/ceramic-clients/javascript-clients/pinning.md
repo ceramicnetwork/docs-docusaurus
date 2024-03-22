@@ -20,7 +20,7 @@ Use the `pin.add()` method to add an existing stream to your permanent pinset.
 
 ```javascript
 const streamId = 'kjzl6cwe1jw14...'
-await ceramic.pin.add(streamId)
+await ceramic.admin.pin.add(streamId)
 ```
 
 
@@ -30,7 +30,7 @@ Use the `pin.rm()` method to remove a stream from your permanent pinset.
 
 ```javascript
 const streamId = 'kjzl6cwe1jw14...'
-await ceramic.pin.rm(streamId)
+await ceramic.admin.pin.rm(streamId)
 ```
 
 
@@ -39,6 +39,6 @@ await ceramic.pin.rm(streamId)
 Use the `pin.ls()` method to list streams currently in your permanent pinset.
 
 ```javascript
-const streamIds = await ceramic.pin.ls()
+const streamIds = await ceramic.admin.pin.ls()
 ```
 
