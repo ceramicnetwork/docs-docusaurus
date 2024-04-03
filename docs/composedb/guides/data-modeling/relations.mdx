@@ -74,9 +74,9 @@ Where:
 
 Model to model relations enable you to link data to and query data from another piece of data. These relations can be uni-directional (e.g. query a post from a comment) or bi-directional (e.g. query a post from a comment and query all comments from a post).
 
-### Example: Post with comments
+### Example: Post with comments and likes
 
-Here’s a model that allows many comments to be made on a single post. It supports unlimited comments per user, and bi-directional queries from any comment to the original post and from the original post to all of its comments.
+Here’s a model that allows many comments from the same or different account to be made on a single post. It supports unlimited comments per user, and bi-directional queries from any comment or like to the original post and from the original post to all of its comments and likes. The model schema also creates a relation between posts and likes enabling a single like per post by an account, meaning a single account will only be able to like the post once
 
 ```graphql
 # Load post model (using streamID)
@@ -86,13 +86,21 @@ type Post @loadModel(id: "kjzl6hvfrbw6c99mdfpjx1z3fue7sesgua6gsl1vu97229lq56344z
 }
 
 # New comment model
-# Set relationship to original post
+# Set reference to original post
 # Enable querying comment to get original post
 
 type Comment @createModel(accountRelation: LIST, description: "A comment on a Post") {
   postID: StreamID! @documentReference(model: "Post")
   post: Post! @relationDocument(property: "postID")
   text: String! @string(maxLength: 500)
+}
+
+# New like model
+# Set relationship to original post
+# Enable querying comment to get original post
+type Like @createModel(description: "A like on a post", accountRelation: SET, accountRelationFields: ["postID"]) {
+  postID: StreamID! @documentReference(model: "Post")
+  post: Post! @relationDocument(property: "postID")
 }
 ```
 
@@ -106,12 +114,13 @@ type Comment @loadModel(id: "kjzl6hvfrbw6c9oo2ync09y6z5c9mas9u49lfzcowepuzxmcn3p
 }
 
 # Load post model
-# Extend post model with comments
-# Set relationships to all comments
-# Enable querying post to get all comments
+# Extend post model with comments and likes
+# Set relationships to all comments and likes
+# Enable querying post to get all comments and likes
 
 type Post @loadModel(id: "kjzl6hvfrbw6c99mdfpjx1z3fue7sesgua6gsl1vu97229lq56344zu9bawnf96") {
   comments: [Comment] @relationFrom(model: "Comment", property: "postID")
+  likes: [Like] @relationFrom(model: "Like", property: "postID")
 }
 ```
 
@@ -122,6 +131,7 @@ Where:
 - `post` allows accessing the original post from the comment, using `@relationDocument`
 - `text` defines a string for the comment
 - `comments` defines the relationships from a post to a collection of comments, using `@relationFrom`; requires specifying the model relation (`Comment`) and the specific property that stores the relation (`postID`)
+- `likes` defines the relationships from a post to a collection of comments, using `@relationFrom`; requires specifying the model relation (`Like`) and the specific property that stores the relation (`postID`)
 
 ### Using interfaces
 
