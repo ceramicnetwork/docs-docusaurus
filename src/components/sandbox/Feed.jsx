@@ -12,7 +12,7 @@ import { ComposeClient } from "@composedb/client";
 import { definition } from "./utils/mutation-all";
 
 const composeClient = new ComposeClient({
-  ceramic: "https://ceramic-temp.hirenodes.io",
+  ceramic: "http://146.190.3.22:7007",
   definition,
 });
 
@@ -30,6 +30,7 @@ export default function FeedExample() {
                         developer {
                           id
                         }
+                        context
                         languages {
                           JavaScript 
                           Python
@@ -62,16 +63,20 @@ export default function FeedExample() {
     const devIndex = messagesResult.data.ceramicDevIndex.edges
       .reverse()
       .filter((dev) => {
-        return dev.node !== null;
+        return dev.node !== null && dev.node.context === "sandbox";
       });
     setDevs(devIndex);
   };
 
   useEffect(() => {
     setInterval(() => {
-      localStorage.getItem("parent_did") &&
-        setParentDid(localStorage.getItem("parent_did"));
-      refreshMessages();
+      try {
+        localStorage.getItem("parent_did") &&
+          setParentDid(localStorage.getItem("parent_did"));
+        refreshMessages();
+      } catch (error) {
+        console.log(error);
+      }
     }, 1000);
   }, []);
 
@@ -94,6 +99,10 @@ export default function FeedExample() {
                     <div style={{ color: "lightgreen" }}>Your Profile</div>
                   )}
                   <strong>Developer:</strong> {dev.node.developer.id}
+                  <div style={{ color: "lightblue" }}>
+                    {" "}
+                    Context: {dev.node.context}
+                  </div>
                 </FeedLabel>
                 <FeedContent>
                   <FeedSummary>
@@ -147,15 +156,7 @@ export default function FeedExample() {
                       <p style={{ color: "white" }}>
                         {" "}
                         Unique Verifications:{" "}
-                        {
-                          dev.node.attestations.edges
-                            .map((attestation) => {
-                              return attestation.node.attester.id;
-                            })
-                            .filter((value, index, self) => {
-                              return self.indexOf(value) === index;
-                            }).length
-                        }
+                        {dev.node.attestations.edges.length}
                       </p>
                     </div>
                   </FeedSummary>

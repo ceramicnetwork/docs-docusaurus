@@ -41,7 +41,7 @@ export default function Connect() {
         accountId
       );
       session = await DIDSession.authorize(authMethod, {
-        resources: [compose.resources[0]],
+        resources: [compose.resources[1]],
       });
       localStorage.setItem("ceramic:eth_did", session.serialize());
       localStorage.setItem("parent_did", session.did._parentId);

@@ -6,6 +6,7 @@ description: Test out example GraphQL queries on ComposeDB to learn how to acces
 import Sandbox from '../../src/components/sandbox/Sandbox';
 import MutationSandbox from '../../src/components/sandbox/MutationSandbox';
 import Connect from '../../src/components/sandbox/SandboxConnect';
+import ConnectOnly from '../../src/components/sandbox/SandboxConnectOnly';
 import FeedExample from '../../src/components/sandbox/Feed';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -169,12 +170,20 @@ type Language {
 }
 
 type CeramicDev
-  @createModel(accountRelation: SINGLE, description: "A Ceramic developer") {
+  @createModel(
+    accountRelation: SET
+    accountRelationFields: ["context"]
+    description: "A Ceramic developer") {
   developer: DID! @documentAccount
+  context: String! @string(maxLength: 100)
   languages: Language!
+  attestations: [AttestToDev] @relationFrom(model: "AttestToDev", property: "attestedProfileId")
 }
 
-type AttestToDev @createModel(accountRelation: LIST, description: "Signals if user attests to another developer profile") {
+type AttestToDev @createModel(
+    accountRelation: SET
+    accountRelationFields: ["attestedProfileId"]
+    description: "Signals if user attests to another developer profile") {
   attester: DID! @documentAccount
   attestedProfileId: StreamID! @documentReference(model: "CeramicDev")
   profile: CeramicDev! @relationDocument(property: "attestedProfileId")
@@ -182,7 +191,25 @@ type AttestToDev @createModel(accountRelation: LIST, description: "Signals if us
 }
 ```
 
-You will use this model to self-describe your own development skills, and will therefore require you to alter the given examples to meet your actual abilities.
+You will use this model to self-describe your own development skills, and will therefore require you to alter the given examples to meet your actual abilities. 
+
+You'll notice several unique qualities within the definitions above:
+
+**Embedded "Language" Type**
+
+Unlike the definitions used above in the read section, `CeramicDev` makes use of an embedded type called `Language`, which allows developers the ability to use these definitions in their data modeling as if it were a scalar. It's important to note that embedded types also introduce some restrictions - for example, developers impose filtering and ordering based on embedded types.
+
+**Proficiency Enum**
+
+Our embedded `Language` type uses an enum called `Proficiency` that restricts the possible values each key within `Language` can be assigned to. In our use case, we implemented a simple paradigm that uses a scale of 4 proficiency "levels."
+
+**"SET" Account Relation**
+
+Most importantly, you'll see that `SET` is used to define the relation between the authoring account and the model instance document. Unlike `LIST` (which allows an infinite number of model instance documents to be associated with a given account), `SET` lets developers restrict the number of instance documents to 1 based on the value of a subfield.
+
+A simple way to understand this is to think about reviews on an eCommerce platform. If a customer has purchased a product, the platform should ensure that the customer can only leave 1 review for the product they have purchased. 
+
+In `CeramicDev`, 
 
 #### Authentication
 

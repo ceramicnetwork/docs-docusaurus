@@ -3,13 +3,14 @@ const firstMutation =
 `
 
 mutation DeveloperOne {
-  createCeramicDev(input: {
+  setCeramicDev(input: {
     content: {
       languages: {
         JavaScript: Expert
         Solidity: Advanced
         Python: Intermediate
       }
+      context: "sandbox"
     }
   })
   {
@@ -30,13 +31,14 @@ const secondMutation =
 `
 
 mutation DeveloperTwo {
-  createCeramicDev(input: {
+  setCeramicDev(input: {
     content: {
       languages: {
         Rust: Expert
         Swift: Advanced
         WebAssembly: Beginner
       }
+      context: "sandbox"
     }
   })
   {
@@ -57,13 +59,14 @@ const thirdMutation =
 `
 
 mutation DeveloperThree {
-  createCeramicDev(input: {
+  setCeramicDev(input: {
     content: {
       languages: {
         Go: Advanced
         Cpp: Expert
         Java: Intermediate
       }
+      context: "sandbox"
     }
   })
   {
