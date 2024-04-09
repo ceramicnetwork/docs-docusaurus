@@ -1,125 +1,141 @@
+// This is an auto-generated file, do not edit manually
 export const definition = {
-    models: {
-      CeramicDev: {
-        interface: false,
-        implements: [],
-        id: "kjzl6hvfrbw6c9sg8de1gdmkhbyki8e9w7ktz7yzzvu6zv18h2yfgjz2wogr9bl",
-        accountRelation: { type: "single" },
+  models: {
+    AttestToDev: {
+      interface: false,
+      implements: [],
+      id: "kjzl6hvfrbw6c7ydwrii3rw8rca48n4za1unqwjrhnellwjrpc9m5q7o0v1xpdz",
+      accountRelation: { type: "set", fields: ["attestedProfileId"] },
+    },
+    CeramicDev: {
+      interface: false,
+      implements: [],
+      id: "kjzl6hvfrbw6c7ylw5pv7wk8rw98ohqe4qgdj1hy206rv97p9tsrqoplh540a3o",
+      accountRelation: { type: "set", fields: ["context"] },
+    },
+  },
+  objects: {
+    AttestToDev: {
+      signal: { type: "boolean", required: true, immutable: false },
+      attestedProfileId: { type: "streamid", required: true, immutable: true },
+      profile: {
+        type: "view",
+        viewType: "relation",
+        relation: {
+          source: "document",
+          model:
+            "kjzl6hvfrbw6c7ylw5pv7wk8rw98ohqe4qgdj1hy206rv97p9tsrqoplh540a3o",
+          property: "attestedProfileId",
+        },
       },
-      AttestToDev: {
-        interface: false,
-        implements: [],
-        id: "kjzl6hvfrbw6c7oefyjstwh3rwfb8mi9w2o6suqpanosz8l6eskwdf31aqzk314",
-        accountRelation: { type: "list" },
+      attester: { type: "view", viewType: "documentAccount" },
+    },
+    CeramicDev: {
+      context: { type: "string", required: true, immutable: true },
+      languages: {
+        type: "reference",
+        refType: "object",
+        refName: "Language",
+        required: true,
+        immutable: false,
+      },
+      developer: { type: "view", viewType: "documentAccount" },
+      attestations: {
+        type: "view",
+        viewType: "relation",
+        relation: {
+          source: "queryConnection",
+          model:
+            "kjzl6hvfrbw6c7ydwrii3rw8rca48n4za1unqwjrhnellwjrpc9m5q7o0v1xpdz",
+          property: "attestedProfileId",
+        },
       },
     },
-    objects: {
-      Language: {
-        Go: {
-          type: "reference",
-          refType: "enum",
-          refName: "Proficiency",
-          required: false,
-        },
-        Cpp: {
-          type: "reference",
-          refType: "enum",
-          refName: "Proficiency",
-          required: false,
-        },
-        Java: {
-          type: "reference",
-          refType: "enum",
-          refName: "Proficiency",
-          required: false,
-        },
-        Rust: {
-          type: "reference",
-          refType: "enum",
-          refName: "Proficiency",
-          required: false,
-        },
-        Other: {
-          type: "reference",
-          refType: "enum",
-          refName: "Proficiency",
-          required: false,
-        },
-        Scala: {
-          type: "reference",
-          refType: "enum",
-          refName: "Proficiency",
-          required: false,
-        },
-        Swift: {
-          type: "reference",
-          refType: "enum",
-          refName: "Proficiency",
-          required: false,
-        },
-        Python: {
-          type: "reference",
-          refType: "enum",
-          refName: "Proficiency",
-          required: false,
-        },
-        Solidity: {
-          type: "reference",
-          refType: "enum",
-          refName: "Proficiency",
-          required: false,
-        },
-        JavaScript: {
-          type: "reference",
-          refType: "enum",
-          refName: "Proficiency",
-          required: false,
-        },
-        WebAssembly: {
-          type: "reference",
-          refType: "enum",
-          refName: "Proficiency",
-          required: false,
-        },
+    Language: {
+      Go: {
+        type: "reference",
+        refType: "enum",
+        refName: "Proficiency",
+        required: false,
+        immutable: false,
       },
-      CeramicDev: {
-        languages: {
-          type: "reference",
-          refType: "object",
-          refName: "Language",
-          required: true,
-        },
-        developer: { type: "view", viewType: "documentAccount" },
-        attestations: {
-          type: "view",
-          viewType: "relation",
-          relation: {
-            source: "queryConnection",
-            model:
-              "kjzl6hvfrbw6c7oefyjstwh3rwfb8mi9w2o6suqpanosz8l6eskwdf31aqzk314",
-            property: "attestedProfileId",
-          },
-        },
+      Cpp: {
+        type: "reference",
+        refType: "enum",
+        refName: "Proficiency",
+        required: false,
+        immutable: false,
       },
-      AttestToDev: {
-        signal: { type: "boolean", required: true },
-        attestedProfileId: { type: "streamid", required: true },
-        profile: {
-          type: "view",
-          viewType: "relation",
-          relation: {
-            source: "document",
-            model:
-              "kjzl6hvfrbw6c9sg8de1gdmkhbyki8e9w7ktz7yzzvu6zv18h2yfgjz2wogr9bl",
-            property: "attestedProfileId",
-          },
-        },
-        attester: { type: "view", viewType: "documentAccount" },
+      Java: {
+        type: "reference",
+        refType: "enum",
+        refName: "Proficiency",
+        required: false,
+        immutable: false,
+      },
+      Rust: {
+        type: "reference",
+        refType: "enum",
+        refName: "Proficiency",
+        required: false,
+        immutable: false,
+      },
+      Other: {
+        type: "reference",
+        refType: "enum",
+        refName: "Proficiency",
+        required: false,
+        immutable: false,
+      },
+      Scala: {
+        type: "reference",
+        refType: "enum",
+        refName: "Proficiency",
+        required: false,
+        immutable: false,
+      },
+      Swift: {
+        type: "reference",
+        refType: "enum",
+        refName: "Proficiency",
+        required: false,
+        immutable: false,
+      },
+      Python: {
+        type: "reference",
+        refType: "enum",
+        refName: "Proficiency",
+        required: false,
+        immutable: false,
+      },
+      Solidity: {
+        type: "reference",
+        refType: "enum",
+        refName: "Proficiency",
+        required: false,
+        immutable: false,
+      },
+      JavaScript: {
+        type: "reference",
+        refType: "enum",
+        refName: "Proficiency",
+        required: false,
+        immutable: false,
+      },
+      WebAssembly: {
+        type: "reference",
+        refType: "enum",
+        refName: "Proficiency",
+        required: false,
+        immutable: false,
       },
     },
-    enums: { Proficiency: ["Beginner", "Intermediate", "Advanced", "Expert"] },
-    accountData: {
-      ceramicDev: { type: "node", name: "CeramicDev" },
-      attestToDevList: { type: "connection", name: "AttestToDev" },
-    },
-  };
+  },
+  enums: { Proficiency: ["Beginner", "Intermediate", "Advanced", "Expert"] },
+  accountData: {
+    attestToDev: { type: "set", name: "AttestToDev" },
+    attestToDevList: { type: "connection", name: "AttestToDev" },
+    ceramicDev: { type: "set", name: "CeramicDev" },
+    ceramicDevList: { type: "connection", name: "CeramicDev" },
+  },
+};

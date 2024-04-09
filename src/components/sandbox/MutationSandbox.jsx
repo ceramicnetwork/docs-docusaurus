@@ -12,7 +12,7 @@ const fetcher = async (graphQLParams) => {
   ReactGA.initialize("G-426ZZLPJPW");
 
   const composeClient = new ComposeClient({
-    ceramic: "https://ceramic-temp.hirenodes.io",
+    ceramic: "http://146.190.3.22:7007",
     definition,
   });
 
@@ -27,7 +27,6 @@ const fetcher = async (graphQLParams) => {
   }
 
   const data = await composeClient.executeQuery(`${graphQLParams.query}`);
-  console.log(data);
 
   if (data.errors) {
     ReactGA.event({
@@ -48,6 +47,17 @@ const fetcher = async (graphQLParams) => {
       category: "sandbox-query",
       action: "query-all",
     });
+
+    // Check if wallet is connected and allocate a point if conditions are met
+    const accounts = await window.ethereum.request({ method: "eth_accounts" });
+    if (
+      accounts.length &&
+      session &&
+      session.hasSession &&
+      !session.isExpired
+    ) {
+      // await generatePoint(accounts[0]);
+    }
     return data.data;
   }
 };
