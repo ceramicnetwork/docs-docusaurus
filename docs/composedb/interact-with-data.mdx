@@ -109,7 +109,7 @@ query{
   
 
 ## Mutations
-There are two types of mutations you can perform on ComposeDB data: creating and updating records.
+There are three types of mutations you can perform on ComposeDB data: creating, and updating records, or change wether the records is indexed or not.
   
 ### Creating records
 Let’s say, you would like to create a post and add it to the graph. To do that, you will have to run a mutation as shown below and pass the actual text as a variable:
@@ -227,6 +227,50 @@ This mutation will update the record with ID `kjzl6kcym7w8y9xlffqruh3v7ou1vn11t8
         "id": "kjzl6kcym7w8y9xlffqruh3v7ou1vn11t8203i6te2i3pliizt65ad3vdh5nl4l",
         "text": "My best post!"
       }
+    }
+  }
+}
+```
+
+### Remove/Restore record from index
+If instead of updating the created post record we want to stop indexing said record we would need to  use the `enableIndexingPost`
+mutation with the `shouldIndex` option set to `false`, or if we want to index an un-indexed record we can call the `enableIndexingPost`
+mutation with the `shouldIndex` option set to `true`, and the post ID as variable.
+  
+
+**Query:**
+
+```graphql
+mutation EnableIndexingPost($input: EnableIndexingPostInput!) {
+      enableIndexingPost(input: $input) {
+          document {
+            id
+          }
+        }
+      }
+```
+
+  
+
+**Variables:**
+
+```json
+{
+  "i": {
+    "id": "kjzl6kcym7w8y9xlffqruh3v7ou1vn11t8203i6te2i3pliizt65ad3vdh5nl4l",
+    "shouldIndex": false
+  }
+}
+```
+
+This mutation will un-index the record with ID `kjzl6kcym7w8y9xlffqruh3v7ou1vn11t8203i6te2i3pliizt65ad3vdh5nl4l`.
+
+**Response:**
+```json
+{
+  "data": {
+    "enableIndexingPost": {
+      "document": null
     }
   }
 }

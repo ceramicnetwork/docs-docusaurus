@@ -107,7 +107,7 @@ type Post implements TextContent @createModel(description: "Post model") {
 
 ### Directives
 
-ComposeDB comes with [a list of different directives](https://composedb.js.org/docs/0.5.x/api/sdl/directives) that can be used to create or load data models, define type validation rules, and create indices
+ComposeDB comes with [a list of different directives](https://composedb.js.org/docs/0.7.x/api/sdl/directives) that can be used to create or load data models, define type validation rules, and create indices
 for specific fields which enables them to be used for document filtering and sorting.
 
 #### Type validation directives
@@ -125,7 +125,7 @@ type EducationModule {
 type Learner {
   first_name: String! @string(minLength: 10, maxLength: 30)
   last_name: String! @string(maxLength: 30)
-  username: String! @string(maxLength: 32)
+  username: String! @string(maxLength: 32) @immutable
 }
 ```
 
@@ -135,6 +135,7 @@ Where:
 - `@string` adds validation rules to values that are strings, e.g. minimum and maximum length
 - `@int` adds validation rules to values that are integers, e.g. minimum and maximum values
 - `@list` adds validation rules to an array, e.g. maximum length
+- `@immutable` ensures that after a field value is set it won't be updated
 
 #### Directives for creating indices
 
