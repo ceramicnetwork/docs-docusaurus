@@ -12,7 +12,7 @@ import { ComposeClient } from "@composedb/client";
 import { definition } from "./utils/mutation-all";
 
 const composeClient = new ComposeClient({
-  ceramic: "http://146.190.3.22:7007",
+  ceramic: "https://experiments.ceramic.dev/",
   definition,
 });
 
