@@ -12,7 +12,7 @@ const fetcher = async (graphQLParams) => {
   ReactGA.initialize("G-426ZZLPJPW");
 
   const composeClient = new ComposeClient({
-    ceramic: "http://146.190.3.22:7007",
+    ceramic: "https://experiments.ceramic.dev/",
     definition,
   });
 
