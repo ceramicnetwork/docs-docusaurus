@@ -55,7 +55,7 @@ sudo systemctl start logrotate
 
 ### Monitoring
 
-It is strongly recommended to use your existing monitoring system to collect and process the [metrics offered by the node](../../../guides/composedb-server/server-configuration.mdx). In addition to those, it is strongly recommended to monitor and avoid exhaustion of:
+It is strongly recommended to use your existing monitoring system to collect and process the [metrics offered by the node](../../../composedb/guides/composedb-server/server-configurations.mdx). In addition to those, it is strongly recommended to monitor and avoid exhaustion of:
 
 * the amount of free space available on all relevant filesystems
 * the amount of free [inodes](https://en.wikipedia.org/wiki/Inode) on all filesystems containing IPFS files
