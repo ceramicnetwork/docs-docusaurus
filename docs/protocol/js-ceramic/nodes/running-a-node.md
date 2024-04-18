@@ -52,3 +52,12 @@ sudo apt install logrotate
 sudo systemctl enable logrotate
 sudo systemctl start logrotate
 ```
+
+### Monitoring
+
+It is strongly recommended to use your existing monitoring system to collect and process the [metrics offered by the node](../../../guides/composedb-server/server-configuration.mdx). In addition to those, it is strongly recommended to monitor and avoid exhaustion of:
+
+* the amount of free space available on all relevant filesystems
+* the amount of free [inodes](https://en.wikipedia.org/wiki/Inode) on all filesystems containing IPFS files
+
+These can be checked by hand using `df -h` for space and `df -i` for inodes.
