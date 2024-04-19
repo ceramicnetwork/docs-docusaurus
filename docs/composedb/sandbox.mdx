@@ -6,6 +6,7 @@ description: Test out example GraphQL queries on ComposeDB to learn how to acces
 import Sandbox from '../../src/components/sandbox/Sandbox';
 import MutationSandbox from '../../src/components/sandbox/MutationSandbox';
 import Connect from '../../src/components/sandbox/SandboxConnect';
+import ConnectOnly from '../../src/components/sandbox/SandboxConnectOnly';
 import FeedExample from '../../src/components/sandbox/Feed';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -13,7 +14,11 @@ import TabItem from '@theme/TabItem';
 
 # Sandbox
 
-Welcome to the Sandbox! Before we dive in, let's get you familiar with the GraphiQL interface. Start by pressing the pink play ▶️ icon in the component below:
+On this page, you can earn points for interacting with the Ceramic Network. Let's walk you through the potential actions you can perform while you learn!
+
+<ConnectOnly />
+
+Before we dive in, let's get you familiar with the GraphiQL interface. Start by pressing the pink play ▶️ icon in the component below:
 
 <Sandbox queries='begin' />
 
@@ -214,7 +219,7 @@ In `CeramicDev`,
 
 You will first have to self-authenticate on the Ceramic node this sandbox environment uses. This is required for making mutation queries, whereas you do not have to be authenticated on a given node to read its data. In order to do so, you will need the MetaMask wallet browser extension installed.
 
-Once you're ready, go ahead and press the `Connect` button below, and sign the messages within the two MetaMask popups.
+Once you're ready, go ahead and press the `Connect to Ceramic` button below, and sign the messages within the MetaMask popups.
 
 <div style={{height: "100%", width: "100%", margin: "auto"}}><Connect /></div>
 
@@ -240,8 +245,7 @@ Below you'll see the most recent 8 `CeramicDev` records in addition to all verif
 
 <div style={{height: "100%", width: "100%", margin: "auto", marginBottom: "5%", display : 'flex', flexDirection: "row"}}>
 
-
-<FeedExample  />
+<FeedExample />
 
 </div>
 

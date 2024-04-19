@@ -2,11 +2,133 @@ import React, { useState, useEffect } from "react";
 import useIsBrowser from "@docusaurus/useIsBrowser";
 import "graphiql/graphiql.min.css";
 
-export default function Connect() {
+export default function ConnectOnly() {
   const [loaded, setLoaded] = useState(false);
+  const [read, setRead] = useState(false);
+  const [mutationSandbox, setMutationSandbox] = useState(false);
+  const [mutationRepo, setMutationRepo] = useState(false);
   const [account, setAccount] = useState("");
   const [status, setStatus] = useState("");
+  const [network, setNetwork] = useState("");
   const isBrowser = useIsBrowser();
+
+  const networks = {
+    "0x1": "Mainnet",
+    "0x3": "Ropsten",
+    "0x2a": "Kovan",
+    "0x4": "Rinkeby",
+    "0x5": "Goerli",
+    "0x61": "BSC Testnet",
+    "0x38": "BSC Mainnet",
+    "0x89": "Polygon Mainnet",
+    "0x13881": "Polygon Mumbai Testnet",
+    "0xa86a": "AVAX Mainnet",
+    "0xaa36a7": "Sepolia",
+  };
+
+  const checkPoints = async (recipient) => {
+    try {
+      const readPoints = await fetch(
+        "http://localhost:8080/multi/getAggregations",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            recipient: `did:pkh:eip155:1:${recipient}`,
+            context: "read",
+          }),
+        }
+      ).then((res) => res.json());
+
+      const writeSandbox = await fetch(
+        "http://localhost:8080/multi/getAggregations",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            recipient: `did:pkh:eip155:1:${recipient}`,
+            context: "mutationSandbox",
+          }),
+        }
+      ).then((res) => res.json());
+
+      const mutationRepo = await fetch(
+        "http://localhost:8080/multi/getAggregations",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            recipient: `did:pkh:eip155:1:${recipient}`,
+            context: "mutationRepo",
+          }),
+        }
+      ).then((res) => res.json());
+
+      return {
+        read: readPoints,
+        mutationSandbox: writeSandbox,
+        mutationRepo,
+      };
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const switchNetwork = async () => {
+    if (window.ethereum) {
+      try {
+        // Try to switch to the Mumbai testnet
+        await window.ethereum.request({
+          method: "wallet_switchEthereumChain",
+          params: [{ chainId: "0x1" }], // Check networks.js for hexadecimal network ids
+        });
+
+        const chainId = await ethereum.request({ method: "eth_chainId" });
+        setNetwork(networks[chainId]);
+        if (chainId === "0x1") {
+          const accounts = await ethereum.request({ method: "eth_accounts" });
+          localStorage.setItem("address", accounts[0]);
+        }
+      } catch (error) {
+        // This error code means that the chain we want has not been added to MetaMask
+        // In this case we ask the user to add it to their MetaMask
+        if (error.code === 4902) {
+          try {
+            await window.ethereum.request({
+              method: "wallet_addEthereumChain",
+              params: [
+                {
+                  chainId: "1",
+                  chainName: "Mainnet",
+                  rpcUrls: ["https://ethereum-rpc.publicnode.com"],
+                  nativeCurrency: {
+                    name: "ETH",
+                    symbol: "ETH",
+                    decimals: 18,
+                  },
+                  blockExplorerUrls: ["https://etherscan.io/"],
+                },
+              ],
+            });
+          } catch (error) {
+            console.log(error);
+          }
+        }
+        console.log(error);
+      }
+    } else {
+      // If window.ethereum is not found then MetaMask is not installed
+      alert(
+        "MetaMask is not installed. Please install it to use this app: https://metamask.io/download.html"
+      );
+    }
+  };
 
   const connectWallet = async () => {
     try {
@@ -19,7 +141,7 @@ export default function Connect() {
         method: "eth_requestAccounts",
       });
       console.log("Connected", accounts[0]);
-      setAccount(accounts[0].toLowerCase());
+      setAccount(accounts[0]);
       setStatus("Connected");
     } catch (error) {
       console.log(error);
@@ -40,27 +162,152 @@ export default function Connect() {
     if (accounts.length !== 0) {
       const acc = accounts[0];
       console.log("Found an authorized account:", acc);
-      setAccount(acc.toLowerCase());
+      setAccount(acc);
+      const res = await checkPoints(acc);
+      if (res) {
+        if (res.read.contextTotal) {
+          setRead(true);
+        }
+        if (res.mutationSandbox.contextTotal) {
+          setMutationSandbox(true);
+        }
+        if (res.mutationRepo.contextTotal) {
+          setMutationRepo(true);
+        }
+      }
       setStatus("Connected");
     } else {
       console.log("No authorized account found");
+    }
+    const chainId = await ethereum.request({ method: "eth_chainId" });
+
+    setNetwork(networks[chainId]);
+    if (chainId === "0x1") {
+      const acc = accounts[0];
+      localStorage.setItem("address", acc);
     }
     setLoaded(true);
   };
 
   useEffect(() => {
     checkIfWalletIsConnected();
+    window.addEventListener("point", function (e) {
+      console.log(e);
+      checkIfWalletIsConnected();
+    });
   }, []);
 
-  return isBrowser && loaded && status !== "Connected" ? (
-    <button onClick={async () => connectWallet()}>Connect Wallet</button>
-  ) : (
-    <button
-      onClick={async () => {
-        connectWallet();
-      }}
-    >
-      {loaded ? status : "Loading..."}
-    </button>
+  return (
+    <>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          padding: "10px",
+          height: "fit-content",
+          width: "100%",
+          borderRadius: ".5rem",
+          boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            padding: "10px",
+            justifyContent: "space-between",
+            width: "90%",
+            margin: "auto",
+          }}
+        >
+          <p>Read Query</p>
+          {status === "Connected" && network === "Mainnet" && read ? (
+            <p>1/1 Point(s) Earned</p>
+          ) : status === "Connected" && network === "Mainnet" && !read ? (
+            <p>0/1 Point(s) Earned</p>
+          ) : (
+            <p>Not Connected</p>
+          )}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            padding: "10px",
+            justifyContent: "space-between",
+            width: "90%",
+            margin: "auto",
+          }}
+        >
+          <p>Sandbox Mutation Query</p>
+          {status === "Connected" &&
+          network === "Mainnet" &&
+          mutationSandbox ? (
+            <p>5/5 Point(s) Earned</p>
+          ) : status === "Connected" &&
+            network === "Mainnet" &&
+            !mutationSandbox ? (
+            <p>0/5 Point(s) Earned</p>
+          ) : (
+            <p>Not Connected</p>
+          )}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            padding: "10px",
+            justifyContent: "space-between",
+            width: "90%",
+            margin: "auto",
+          }}
+        >
+          <p>Sandbox Extension Mutation Query</p>
+          {status === "Connected" && network === "Mainnet" && mutationRepo ? (
+            <p>10/10 Point(s) Earned</p>
+          ) : status === "Connected" &&
+            network === "Mainnet" &&
+            !mutationRepo ? (
+            <p>0/10 Point(s) Earned</p>
+          ) : (
+            <p>Not Connected</p>
+          )}
+        </div>
+      </div>{" "}
+      {isBrowser && loaded && status !== "Connected" ? (
+        <>
+          <p style={{ marginTop: "1rem" }}>
+            Connect your wallet to earn points
+          </p>
+          <button
+            style={{ marginBottom: "1rem" }}
+            onClick={async () => connectWallet()}
+          >
+            Connect Wallet
+          </button>
+        </>
+      ) : isBrowser &&
+        loaded &&
+        status === "Connected" &&
+        network !== "Mainnet" ? (
+        <button
+          onClick={async () => {
+            switchNetwork();
+          }}
+          style={{ marginTop: "1rem", marginBottom: "1rem" }}
+        >
+          Switch to Mainnet
+        </button>
+      ) : (
+        <button
+          onClick={async () => {
+            connectWallet();
+          }}
+          style={{ marginTop: "1rem", marginBottom: "1rem" }}
+        >
+          {loaded ? status : "Loading..."}
+        </button>
+      )}
+    </>
   );
 }

@@ -60,24 +60,34 @@ export default function FeedExample() {
             }
         }
     `);
-    const devIndex = messagesResult.data.ceramicDevIndex.edges
+    if(messagesResult.data && messagesResult.data.ceramicDevIndex && messagesResult.data.ceramicDevIndex.edges){
+      const devIndex = messagesResult.data.ceramicDevIndex.edges
       .reverse()
       .filter((dev) => {
         return dev.node !== null && dev.node.context === "sandbox";
       });
     setDevs(devIndex);
+    }
   };
 
   useEffect(() => {
-    setInterval(() => {
-      try {
-        localStorage.getItem("parent_did") &&
-          setParentDid(localStorage.getItem("parent_did"));
-        refreshMessages();
-      } catch (error) {
-        console.log(error);
-      }
-    }, 1000);
+    try {
+      localStorage.getItem("parent_did") &&
+        setParentDid(localStorage.getItem("parent_did"));
+      refreshMessages();
+      window.addEventListener("mutation", function (e) {
+        console.log(e);
+        try {
+          localStorage.getItem("parent_did") &&
+            setParentDid(localStorage.getItem("parent_did"));
+          refreshMessages();
+        } catch (error) {
+          console.log(error);
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   return (
