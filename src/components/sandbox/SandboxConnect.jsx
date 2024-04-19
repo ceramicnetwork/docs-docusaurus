@@ -118,7 +118,7 @@ export default function Connect() {
       {loaded && ceramicConnected
         ? "Connected"
         : loaded && status === "connected"
-        ? "Connect to Ceramic"
+        ? "Authenticate on Ceramic"
         : loaded
         ? "Connect Wallet"
         : "Loading"}
