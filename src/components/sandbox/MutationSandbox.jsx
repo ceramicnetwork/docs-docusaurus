@@ -11,7 +11,7 @@ import { definition } from "./utils/mutation-runtime";
 const pointUpdate = async (recipient) => {
   try {
     const readPoints = await fetch(
-      "http://localhost:8080/multi/getAggregations",
+      "https://walrus-app-f7xa9.ondigitalocean.app/multi/getAggregations",
       {
         method: "POST",
         headers: {
@@ -27,7 +27,7 @@ const pointUpdate = async (recipient) => {
     if (readPoints) {
       if (!readPoints.contextTotal) {
         const updatePoints = await fetch(
-          "http://localhost:8080/multi/aggregate",
+          "https://walrus-app-f7xa9.ondigitalocean.app/multi/aggregate",
           {
             method: "POST",
             headers: {

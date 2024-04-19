@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import useIsBrowser from "@docusaurus/useIsBrowser";
 import "graphiql/graphiql.min.css";
+import { ComposeClient } from "@composedb/client";
+import { definition } from "./utils/mutation-all";
+
+const composeClient = new ComposeClient({
+  ceramic: "https://experiments.ceramic.dev/",
+  definition,
+});
 
 export default function ConnectOnly() {
   const [loaded, setLoaded] = useState(false);
@@ -29,7 +36,7 @@ export default function ConnectOnly() {
   const checkPoints = async (recipient) => {
     try {
       const readPoints = await fetch(
-        "http://localhost:8080/multi/getAggregations",
+        "https://walrus-app-f7xa9.ondigitalocean.app/multi/getAggregations",
         {
           method: "POST",
           headers: {
@@ -43,7 +50,7 @@ export default function ConnectOnly() {
       ).then((res) => res.json());
 
       const writeSandbox = await fetch(
-        "http://localhost:8080/multi/getAggregations",
+        "https://walrus-app-f7xa9.ondigitalocean.app/multi/getAggregations",
         {
           method: "POST",
           headers: {
@@ -57,7 +64,7 @@ export default function ConnectOnly() {
       ).then((res) => res.json());
 
       const mutationRepo = await fetch(
-        "http://localhost:8080/multi/getAggregations",
+        "https://walrus-app-f7xa9.ondigitalocean.app/multi/getAggregations",
         {
           method: "POST",
           headers: {
@@ -75,6 +82,63 @@ export default function ConnectOnly() {
         mutationSandbox: writeSandbox,
         mutationRepo,
       };
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const pointUpdate = async (recipient) => {
+    try {
+      const updatePoints = await fetch(
+        "https://walrus-app-f7xa9.ondigitalocean.app/multi/aggregate",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            recipient: `did:pkh:eip155:1:${recipient}`,
+            context: "mutationRepo",
+            amount: 10,
+          }),
+        }
+      ).then((res) => res.json());
+      if (updatePoints) {
+        if (updatePoints.contextTotal) {
+          return updatePoints.contextTotal;
+        }
+      }
+      return undefined;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const checkCreatedAttestation = async (address) => {
+    try {
+      const messagesResult = await composeClient.executeQuery(`
+      query Attestations {
+        node(id: "did:pkh:eip155:1:${address}") {
+          ... on CeramicAccount {
+            id
+            attestToDevList(first: 10) {
+              edges {
+                node {
+                  id
+                }
+              }
+            }
+          }
+        }
+      }
+    `);
+      if (
+        messagesResult.data &&
+        messagesResult.data.node &&
+        messagesResult.data.node.attestToDevList
+      ) {
+        return messagesResult.data.node.attestToDevList.edges;
+      }
     } catch (error) {
       console.log(error);
     }
@@ -173,6 +237,17 @@ export default function ConnectOnly() {
         }
         if (res.mutationRepo.contextTotal) {
           setMutationRepo(true);
+        } else {
+          const result = await checkCreatedAttestation(acc);
+          if (result) {
+            if (result.length) {
+              const point = await pointUpdate(acc.toLowerCase());
+              if (point) {
+                console.log("Repo mutation point created! ", point);
+                window.dispatchEvent(new Event("point"));
+              }
+            }
+          }
         }
       }
       setStatus("Connected");
