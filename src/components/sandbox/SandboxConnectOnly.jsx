@@ -303,7 +303,7 @@ export default function ConnectOnly() {
             </p>
           </div>
           {status === "Connected" && network === "Mainnet" && read ? (
-            <p>1/1 Point(s) Earned  ✅</p>
+            <p>1/1 Point(s) Earned ✅</p>
           ) : status === "Connected" && network === "Mainnet" && !read ? (
             <p>0/1 Point(s) Earned</p>
           ) : (
@@ -331,7 +331,7 @@ export default function ConnectOnly() {
           {status === "Connected" &&
           network === "Mainnet" &&
           mutationSandbox ? (
-            <p>5/5 Point(s) Earned  ✅</p>
+            <p>5/5 Point(s) Earned ✅</p>
           ) : status === "Connected" &&
             network === "Mainnet" &&
             !mutationSandbox ? (
@@ -359,7 +359,7 @@ export default function ConnectOnly() {
             </p>
           </div>
           {status === "Connected" && network === "Mainnet" && mutationRepo ? (
-            <p>10/10 Point(s) Earned  ✅</p>
+            <p>10/10 Point(s) Earned ✅</p>
           ) : status === "Connected" &&
             network === "Mainnet" &&
             !mutationRepo ? (
@@ -375,7 +375,16 @@ export default function ConnectOnly() {
             Connect your wallet to earn points
           </p>
           <button
-            style={{ marginBottom: "1rem" }}
+            style={{
+              marginBottom: "1rem",
+              borderRadius: ".75rem",
+              border: "none",
+              backgroundColor: "#F05027",
+              color: "white",
+              height: "2rem",
+              width: "8rem",
+              fontWeight: "bold",
+            }}
             onClick={async () => connectWallet()}
           >
             Connect Wallet
@@ -389,7 +398,17 @@ export default function ConnectOnly() {
           onClick={async () => {
             switchNetwork();
           }}
-          style={{ marginTop: "1rem", marginBottom: "1rem" }}
+          style={{
+            marginTop: "1rem",
+            marginBottom: "1rem",
+            borderRadius: ".75rem",
+            border: "none",
+            backgroundColor: "#F05027",
+            color: "white",
+            height: "2rem",
+            width: "8rem",
+            fontWeight: "bold",
+          }}
         >
           Switch to Mainnet
         </button>
@@ -398,7 +417,17 @@ export default function ConnectOnly() {
           onClick={async () => {
             connectWallet();
           }}
-          style={{ marginTop: "1rem", marginBottom: "1rem" }}
+          style={{
+            marginTop: "1rem",
+            marginBottom: "1rem",
+            borderRadius: ".75rem",
+            border: "none",
+            backgroundColor: "#F05027",
+            color: "white",
+            height: "2rem",
+            width: "8rem",
+            fontWeight: "bold",
+          }}
         >
           {loaded ? status : "Loading..."}
         </button>

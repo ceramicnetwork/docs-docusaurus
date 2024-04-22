@@ -108,11 +108,35 @@ export default function Connect() {
   }, []);
 
   return isBrowser && status !== "connected" ? (
-    <button onClick={async () => connectWallet()}>Connect Wallet</button>
+    <button
+      onClick={async () => connectWallet()}
+      style={{
+        borderRadius: ".75rem",
+        marginBottom: "1rem",
+        border: "none",
+        backgroundColor: "#F05027",
+        color: "white",
+        height: "2rem",
+        width: "8rem",
+        fontWeight: "bold",
+      }}
+    >
+      Connect Wallet
+    </button>
   ) : (
     <button
       onClick={async () => {
         connectWallet();
+      }}
+      style={{
+        borderRadius: ".75rem",
+        marginBottom: "1rem",
+        border: "none",
+        backgroundColor: "#F05027",
+        color: "white",
+        height: "2rem",
+        width: "8rem",
+        fontWeight: "bold",
       }}
     >
       {loaded && ceramicConnected
