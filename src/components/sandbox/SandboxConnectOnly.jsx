@@ -295,7 +295,13 @@ export default function ConnectOnly() {
             margin: "auto",
           }}
         >
-          <p>Read Query</p>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <p>Read Query</p>
+            <p style={{ fontSize: "0.8rem" }}>
+              {" "}
+              Use the GraphiQL modules below to view existing data
+            </p>
+          </div>
           {status === "Connected" && network === "Mainnet" && read ? (
             <p>1/1 Point(s) Earned</p>
           ) : status === "Connected" && network === "Mainnet" && !read ? (
@@ -314,7 +320,14 @@ export default function ConnectOnly() {
             margin: "auto",
           }}
         >
-          <p>Sandbox Mutation Query</p>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <p>Sandbox Mutation Query</p>
+            <p style={{ fontSize: "0.8rem" }}>
+              {" "}
+              Use the GraphiQL modules within the "Writing Data" section to
+              create new data
+            </p>
+          </div>
           {status === "Connected" &&
           network === "Mainnet" &&
           mutationSandbox ? (
@@ -337,7 +350,14 @@ export default function ConnectOnly() {
             margin: "auto",
           }}
         >
-          <p>Sandbox Extension Mutation Query</p>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <p>Sandbox Extension Mutation Query</p>
+            <p style={{ fontSize: "0.8rem" }}>
+              {" "}
+              Clone the reposority found in the "Writing Data" section to create
+              new data
+            </p>
+          </div>
           {status === "Connected" && network === "Mainnet" && mutationRepo ? (
             <p>10/10 Point(s) Earned</p>
           ) : status === "Connected" &&
