@@ -303,7 +303,7 @@ export default function ConnectOnly() {
             </p>
           </div>
           {status === "Connected" && network === "Mainnet" && read ? (
-            <p>1/1 Point(s) Earned</p>
+            <p>1/1 Point(s) Earned  ✅</p>
           ) : status === "Connected" && network === "Mainnet" && !read ? (
             <p>0/1 Point(s) Earned</p>
           ) : (
@@ -331,7 +331,7 @@ export default function ConnectOnly() {
           {status === "Connected" &&
           network === "Mainnet" &&
           mutationSandbox ? (
-            <p>5/5 Point(s) Earned</p>
+            <p>5/5 Point(s) Earned  ✅</p>
           ) : status === "Connected" &&
             network === "Mainnet" &&
             !mutationSandbox ? (
@@ -359,7 +359,7 @@ export default function ConnectOnly() {
             </p>
           </div>
           {status === "Connected" && network === "Mainnet" && mutationRepo ? (
-            <p>10/10 Point(s) Earned</p>
+            <p>10/10 Point(s) Earned  ✅</p>
           ) : status === "Connected" &&
             network === "Mainnet" &&
             !mutationRepo ? (
