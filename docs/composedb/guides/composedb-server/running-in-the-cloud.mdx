@@ -199,6 +199,9 @@ Once again, a successful connection will provide an output `Alive!`:
 Alive!
 ```
 
+### Optional - Add an SSL Cert and Domain Name
+If you wish to direct a domain to your ceramic node and acquire an SSL Certificate, you may follow the steps under [cert-ingress](https://github.com/ceramicstudio/simpledeploy/blob/main/k8s/cert-ingress/README.md) to modify the kubernetes setup.  Of course you may use other methods to add a domain name and certificate depending on what provider you wish to use.
+
 ### Utilize the Deployed Assets with ComposeDB CLI and Graphiql Server
 Now that you have a Ceramic with ComposeDB server deployed, you can utilize the [ComposeDB Cli](../../set-up-your-environment.mdx#composedb) to create models and
 composites, as well as standing up a Graphiql server backed by the Ceramic with ComposeDB server.
