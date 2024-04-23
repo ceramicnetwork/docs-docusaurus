@@ -81,7 +81,16 @@ First you will need to generate a private seed. You can do this with the Compose
 99918d7f36991ec38d76e1cf21d14c5348d1513512c957d0b809efbf3ad18983
 ```
 
-Copy the string of numbers and letters logged to the console.
+Copy the string of numbers and letters logged to the console.  You will use them BOTH in the daemon.config.json below AND to generate a DID as follows:
+
+```bash
+> composedb did:from-private-key #private_seed_copied_from_above
+✔ Creating DID... Done!
+
+Admin DID: did:key:z6Mkq1r4LAsQTjCN7EBTnGf7DorL28aZ4eb6akcLwJSwygBt  
+
+# Use this DID in the steps above!
+```
 
 :::note
 
