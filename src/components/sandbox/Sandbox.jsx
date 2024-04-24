@@ -11,6 +11,51 @@ import Comments from "./queries/comments";
 import { definition } from "./utils/read-runtime";
 import { BrowserView, MobileView } from "react-device-detect";
 
+const pointUpdate = async (recipient) => {
+  try {
+    const readPoints = await fetch(
+      "https://walrus-app-f7xa9.ondigitalocean.app/multi/getAggregations",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          recipient: `did:pkh:eip155:1:${recipient}`,
+          context: "read",
+        }),
+      }
+    ).then((res) => res.json());
+    console.log(readPoints);
+    if (readPoints) {
+      if (!readPoints.contextTotal) {
+        const updatePoints = await fetch(
+          "https://walrus-app-f7xa9.ondigitalocean.app/multi/aggregate",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              recipient: `did:pkh:eip155:1:${recipient}`,
+              context: "read",
+              amount: 1,
+            }),
+          }
+        ).then((res) => res.json());
+        if(updatePoints){
+          if(updatePoints.contextTotal){
+            return updatePoints.contextTotal;
+          }
+        }
+      }
+    }
+    return undefined;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const checkIfWalletIsConnected = async () => {
   const { ethereum } = window;
 
@@ -60,8 +105,11 @@ const fetcher = async (graphQLParams) => {
     // Allocate a point
     const address = await checkIfWalletIsConnected();
     if (address.length > 0) {
-      // const point = await generatePoint(address);
-      // console.log(point);
+      const point = await pointUpdate(address.toLowerCase());
+      if (point) {
+        console.log("Read point created! ", point);
+        window.dispatchEvent(new Event("point"));
+      }
     }
     return data.data;
   }
