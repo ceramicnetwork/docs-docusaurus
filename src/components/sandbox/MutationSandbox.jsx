@@ -117,6 +117,10 @@ const fetcher = async (graphQLParams) => {
         console.log("Write point created! ", point);
         window.dispatchEvent(new Event("point"));
         window.dispatchEvent(new Event("mutation"));
+        ReactGA.event({
+          category: "points",
+          action: "points-allocated",
+        });
       }
     }
     return data.data;
