@@ -3,6 +3,7 @@ import useIsBrowser from "@docusaurus/useIsBrowser";
 import "graphiql/graphiql.min.css";
 import { ComposeClient } from "@composedb/client";
 import { definition } from "./utils/mutation-all";
+import ReactGA from "react-ga4";
 
 const composeClient = new ComposeClient({
   ceramic: "https://experiments.ceramic.dev/",
@@ -245,6 +246,11 @@ export default function ConnectOnly() {
               if (point) {
                 console.log("Repo mutation point created! ", point);
                 window.dispatchEvent(new Event("point"));
+                ReactGA.initialize("G-426ZZLPJPW");
+                ReactGA.event({
+                  category: "points",
+                  action: "points-allocated",
+                });
               }
             }
           }

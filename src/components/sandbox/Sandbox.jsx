@@ -109,6 +109,10 @@ const fetcher = async (graphQLParams) => {
       if (point) {
         console.log("Read point created! ", point);
         window.dispatchEvent(new Event("point"));
+        ReactGA.event({
+          category: "points",
+          action: "points-allocated",
+        });
       }
     }
     return data.data;
