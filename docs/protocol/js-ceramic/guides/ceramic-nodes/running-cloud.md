@@ -65,6 +65,16 @@ If you would like to run Ceramic and IPFS outside of containers or on bare metal
 
 To run a Ceramic node in production, it is critical to persist the [Ceramic state store](#ceramic-state-store) and the [IPFS datastore](https://github.com/ipfs/go-ipfs/blob/master/docs/config.md#datastorespec). The form of storage you choose should also be configured for disaster recovery with data redundancy, and some form of snapshotting and/or backups.
 
+**With ComposeDB**
+
+Additionally, if using ComposeDB, your persistence strategy also needs to account for backups/snapshotting of your Postgres instance. In this case, your backup cadence should implement the following order:
+
+1. Snapshot your Postgres instance first
+2. State store
+3. IPFS block store
+
+Leveraging this order guarantees that the higher-level subsystems won't know about data that the lower-level subsystems are missing in the backup.
+
 **Loss of this data can result in permanent loss of Ceramic streams and will cause your node to be in a corrupt state.**
 
 The Ceramic state store and IPFS datastore are stored on your machine's filesystem by default. The Ceramic state store defaults to `$HOME/.ceramic/statestore`. The IPFS datastore defaults to `ipfs/blocks` located wherever you run IPFS.
