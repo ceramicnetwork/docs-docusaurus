@@ -11,7 +11,7 @@ Run a ComposeDB server in the cloud
 
 To run a Ceramic node in production, it is critical to persist the [Ceramic state store](../../../protocol/js-ceramic/guides/ceramic-nodes/running-cloud#ceramic-state-store), [IPFS datastore](https://github.com/ipfs/go-ipfs/blob/master/docs/config.md#datastorespec), and the Postgres database used for the ComposeDB index. The form of storage you choose should also be configured for an emergency recovery with data redundancy, and some form of snapshotting and/or backups. **Loss of this data can result in permanent loss of Ceramic streams and will cause your node to be in a corrupt state.**
 
-Your backup cadence should implement the following order:
+Your backup procedure should implement the following order:
 
 1. Snapshot your Postgres instance first
 2. State store
