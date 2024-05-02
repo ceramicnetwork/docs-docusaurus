@@ -67,7 +67,7 @@ To run a Ceramic node in production, it is critical to persist the [Ceramic stat
 
 **With ComposeDB**
 
-Additionally, if using ComposeDB, your persistence strategy also needs to account for backups/snapshotting of your Postgres instance. In this case, your backup cadence should implement the following order:
+Additionally, if using ComposeDB, your persistence strategy also needs to account for backups/snapshotting of your Postgres instance. In this case, your backup process should implement the following order:
 
 1. Snapshot your Postgres instance first
 2. State store
