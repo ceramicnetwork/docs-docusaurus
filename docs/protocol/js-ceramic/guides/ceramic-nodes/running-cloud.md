@@ -71,8 +71,6 @@ The Ceramic state store and IPFS datastore are stored on your machine's filesyst
 
 The fastest way to ensure data persistence is by mounting a persistent volume to your instances and configuring the Ceramic and IPFS nodes to write to the mount location. The mounted volume should be configured such that the data persists if the instance shuts down.
 
-You can also use AWS S3 for data storage which is supported for both Ceramic and IPFS. Examples of the configuration for both storage options are listed below.
-
 #### IPFS Datastore
 
 The IPFS datastore stores the raw IPFS blocks that make up Ceramic streams. To prevent data corruption, use environment variables written to your profile file, or otherwise injected into your environment on start so that the datastore location does not change between reboots.
@@ -101,21 +99,6 @@ docker run \
   --name ipfs \
   go-ipfs-daemon
 
-# Use this snippet to keep the datastore in S3
-docker run \
-  -p 5001:5001 \ # API port
-  -p 8011:8011 \ # Healthcheck port
-  -v /path_on_volume_for_ipfs_repo:/data/ipfs \
-  -e IPFS_ENABLE_S3=true \
-  -e IPFS_S3_REGION=region \
-  -e IPFS_S3_BUCKET_NAME=bucket_name \
-  -e IPFS_S3_ROOT_DIRECTORY=root_directory \
-  -e IPFS_S3_ACCESS_KEY_ID=aws_access_key_id \
-  -e IPFS_S3_SECRET_ACCESS_KEY=aws_secret_access_key \
-  -e IPFS_S3_KEY_TRANSFORM=next-to-last/2 \ # Sharding method
-  --name ipfs \
-  go-ipfs-daemon
-
 # Get the IP address
 docker inspect -f \
   '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' \
@@ -136,18 +119,6 @@ docker run -d \
   -e NODE_ENV=production \
   --name js-ceramic \
   ceramicnetwork/js-ceramic:latest
-
-# Use this snippet to keep the statestore in S3
-docker run -d \
-  -p 7007:7007 \
-  -v /path_for_daemon_config:/root/.ceramic/daemon.config.json \
-  -v /path_for_ceramic_logs:/root/.ceramic/logs \
-  -e NODE_ENV=production \
-  -e AWS_ACCESS_KEY_ID=s3_access_key_id \
-  -e AWS_SECRET_ACCESS_KEY=s3_secret_access_key \
-  --name js-ceramic \
-  ceramicnetwork/js-ceramic:latest
-```
 
 ### Example without containers
 
@@ -189,65 +160,9 @@ ceramic daemon
     },
     "node": {},
     "state-store": {
-        "mode": "s3",
-        "s3-bucket": "bucket_name"
+        "mode": "fs",
+        "local-directory": "/path_for_ceramic_statestore", // Defaults to $HOME/.ceramic/statestore
     }
-}
-```
-
-To use volume storage for the statestore instead of S3
-
-```json
-"state-store": {
-    "mode": "fs",
-    "local-directory": "/path_for_ceramic_statestore", // Defaults to $HOME/.ceramic/statestore
-}
-```
-
-### Example AWS S3 Policies
-
-IPFS AWS S3 policy for the access key
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": [
-        "s3:GetObject",
-        "s3:ListBucket",
-        "s3:PutObject",
-        "s3:DeleteObject"
-      ],
-      "Effect": "Allow",
-      "Resource": ["ipfs_bucket_arn", "ipfs_bucket_arn/*"]
-    }
-  ]
-}
-```
-
-:::caution
-
-    The [S3 datastore](https://github.com/3box/go-ds-s3) is not available out-of-the-box in vanilla `go-ipfs`. In order to use it with minimal configuration, use the 3Box Labs [go-ipfs-daemon](https://github.com/ceramicnetwork/go-ipfs-daemon).
-:::
-
-Ceramic state store AWS S3 policy for the access key
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": [
-        "s3:ListBucket",
-        "s3:GetObject",
-        "s3:PutObject",
-        "s3:DeleteObject"
-      ],
-      "Effect": "Allow",
-      "Resource": ["state_store_bucket_arn", "state_store_bucket_arn/*"]
-    }
-  ]
 }
 ```
 
