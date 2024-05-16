@@ -8,13 +8,17 @@ const FeatureList = [
     items: [
       {
         url: "docs/protocol/js-ceramic/overview",
-        text: "Dive into the JavaScript implementation of the  Ceramic Protocol."
+        text: "Dive into the JavaScript implementation of the Ceramic Protocol."
       }
     ]
   },
   {
+    title: "Data Feed API →",
+    items: [{ url: "docs/protocol/js-ceramic/networking/data-feed-api", text: "Build custom indexes on Ceramic." }]
+  },
+  {
     title: "Decentralized Identifiers (DIDs) →",
-    items: [{ url: "docs/dids/introduction", text: "Interact and manage decentralized identifiers" }]
+    items: [{ url: "docs/dids/introduction", text: "Interact and manage decentralized identifiers." }]
   },
   {
     title: "Simple Deploy →",

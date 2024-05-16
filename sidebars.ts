@@ -192,7 +192,12 @@ const sidebars: SidebarsConfig = {
           type: "doc",
           id: "protocol/js-ceramic/networking/event-fetching",
           label: "Event Fetching"
-        }
+        },
+        {
+          type: "doc",
+          id: "protocol/js-ceramic/networking/data-feed-api",
+          label: "Data Feed API"
+        },
       ]
     },
     {
