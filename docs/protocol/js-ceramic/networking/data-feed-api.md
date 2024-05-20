@@ -44,9 +44,9 @@ npm i @ceramicnetwork/codecs codeco
 
 ## Interact with the Data Feed API
 
-Below you can see a few examples of how you can interact with the Data Feed API.
+Below you can see a few examples of how you can interact with the Data Feed API. Currently, Data Feed API is available as read-only with support for `GET` methods and access to Ceramic's aggregation layer.
 
-The following request will return the following type of objects as activity is done on the Ceramic node:
+The following request `GET` will return the following type of objects as activity is done on the Ceramic node:
 
 **Request:**
 `GET /api/v0/feed/aggregation/documents`
@@ -61,6 +61,7 @@ FeedDocument = {
 }
 ```
 
+For example, the following request will return a response with the details provided below.
 **Request:**
  `curl http://localhost:7007/api/v0/feed/aggregation/documents`
 
@@ -82,7 +83,7 @@ data: {
 
 
 
-The preferred way of interacting with the Data Feed API is by using event listeners. For the example below we are using `localhost:7007` as the host:
+The recommended way of interacting with the Data Feed API is by using event listeners as show in the example below. The provided example is using `localhost:7007` as the host:
 
 ```typescript
 import { EventSource  } from "cross-eventsource";
@@ -110,7 +111,7 @@ console.log('listening...')
 
 In case your application drops a connection and needs to start where it dropped, Data Feed API could be resumed. Every event emitted by the Data Feed API contains `resumeToken` property. When initiating a connection, you might ask to emit entries after `resumeToken`. 
 
-For example, your application got an entry containing `resumeToken: "1714742204565000000"` . When connecting, pass the token value as a query parameter:
+For example, your application got an entry containing `resumeToken: "1714742204565000000"`. When connecting, pass the token value as a query parameter to emit the entries after this checkpoint:
 
 ```javascript
 // ... same as a code snipped above
