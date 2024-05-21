@@ -9,7 +9,7 @@ This information can be used to take actions or simply stay updated on the curre
 
 
 # Server-Sent Events and EventSource interface
-To understnad Data Feed API, it's important to have a basic understanding of Server-Sent Events (SSE) and the EventSource interface.
+To understand Data Feed API, it's important to have a basic understanding of [Server-Sent Events (SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events) and the [EventSource](https://developer.mozilla.org/en-US/docs/Web/API/EventSource) interface.
 
 SSE is a simple and efficient way for servers to send real-time updates to web clients over a single HTTP connection. It works with the standard HTTP protocol, which makes it great for situations where the server needs to constantly update the client.
 
