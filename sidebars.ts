@@ -186,17 +186,13 @@ const sidebars: SidebarsConfig = {
       },
       items: [
         { type: "doc", id: "protocol/js-ceramic/networking/networks", label: "Networks" },
+        {type: "doc", id: "protocol/js-ceramic/networking/data-feed-api", label: "Data Feed API" },
         { type: "doc", id: "protocol/js-ceramic/networking/tip-gossip", label: "Tip Gossip" },
         { type: "doc", id: "protocol/js-ceramic/networking/tip-queries", label: "Tip Queries" },
         {
           type: "doc",
           id: "protocol/js-ceramic/networking/event-fetching",
           label: "Event Fetching"
-        },
-        {
-          type: "doc",
-          id: "protocol/js-ceramic/networking/data-feed-api",
-          label: "Data Feed API"
         },
       ]
     },
