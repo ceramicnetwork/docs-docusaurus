@@ -10,6 +10,10 @@ Ceramic streams and nodes are grouped into independent networks. These networks 
 
 Networks are collections of Ceramic [nodes](../nodes/overview.md) that share specific configurations and communicate over dedicated [libp2p](https://libp2p.io/) pubsub topics. They are easily identified by a path string, for example `/ceramic/mainnet` .
 
+### [Data Feed API](data-feed-api.md)
+
+The Ceramic Data Feed API gives developers a way to keep track of all the new state changes that are happening in the Ceramic network. This enables developers to customize the way their data is indexed and queried, and enables the development of new custom database products on top of Ceramic.
+
 ### [Tip Gossip](tip-gossip.md)
 
 When a stream is updated, the latest event (tip) is gossiped and propagated out to all the nodes in a network that are interested in that particular stream. Listening for all tips, allows a node to learn about streams it did not know about. 
