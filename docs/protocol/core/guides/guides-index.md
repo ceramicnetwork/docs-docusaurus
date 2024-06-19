@@ -5,8 +5,10 @@ Guides that support development on Ceramic.
 
 ### Ceramic Nodes
 
--  [**Running Locally**](./ceramic-nodes/running-locally.md)
--  [**Running in the Cloud**](./ceramic-nodes/running-cloud.md)
+#### JavaScript
+
+-  [**Running Locally**](./ceramic-nodes/js-ceramic/running-locally.md)
+-  [**Running in the Cloud**](./ceramic-nodes/js-ceramic/running-cloud.md)
 
 ### Ceramic Clients
 

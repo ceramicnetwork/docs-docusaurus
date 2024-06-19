@@ -8,4 +8,4 @@ There are two primary implementations of the Ceramic protocol, [js-ceramic](../j
 
 While `js-ceramic` is currently more mature, `rust-ceramic` is quickly developing into an efficient and flexible foundation for the Ceramic network that will carry it forward into new domains, improve reliability and resource usage, and allow Ceramic to scale to meet even more use cases.
 
-Since `rust-ceramic` is still under heavy development, we recommend starting with `js-ceramic` when choosing a node implementation for your own infrastructure needs. When you're ready to make the switch, see our [migration guide](../rust-ceramic/guies/migration/from-js-ceramic.md) to import your data and get up and running with the next generation of scalable, decentralized data coordination.
+Since `rust-ceramic` is still under heavy development, we recommend starting with `js-ceramic` when choosing a node implementation for your own infrastructure needs. When you're ready to make the switch, see our [migration guide](../rust-ceramic/guides/migration/from-js-ceramic.md) to import your data and get up and running with the next generation of scalable, decentralized data coordination.

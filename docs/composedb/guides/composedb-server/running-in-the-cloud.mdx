@@ -9,7 +9,7 @@ Run a ComposeDB server in the cloud
 
 :::danger
 
-To run a Ceramic node in production, it is critical to persist the [Ceramic state store](../../../protocol/js-ceramic/guides/ceramic-nodes/running-cloud#ceramic-state-store), [IPFS datastore](https://github.com/ipfs/go-ipfs/blob/master/docs/config.md#datastorespec), and the Postgres database used for the ComposeDB index. The form of storage you choose should also be configured for an emergency recovery with data redundancy, and some form of snapshotting and/or backups. **Loss of this data can result in permanent loss of Ceramic streams and will cause your node to be in a corrupt state.**
+To run a Ceramic node in production, it is critical to persist the [Ceramic state store](../../../protocol/core/guides/ceramic-nodes/js-ceramic/running-cloud#ceramic-state-store), [IPFS datastore](https://github.com/ipfs/go-ipfs/blob/master/docs/config.md#datastorespec), and the Postgres database used for the ComposeDB index. The form of storage you choose should also be configured for an emergency recovery with data redundancy, and some form of snapshotting and/or backups. **Loss of this data can result in permanent loss of Ceramic streams and will cause your node to be in a corrupt state.**
 
 Your backup procedure should implement the following order:
 
@@ -366,7 +366,7 @@ docker run -d \
 
 ### Editing the `daemon.config.json` file
 
-To have these IPFS and Postgres settings persist in your Ceramic node, edit the `daemon.config.json` file to include IPFS information. The default location is `~/.ceramic/daemon.config.json`. For a full file example, see the [Ceramic](../../../protocol/js-ceramic/guides/ceramic-nodes/running-cloud#example-daemonconfigjson) docs.
+To have these IPFS and Postgres settings persist in your Ceramic node, edit the `daemon.config.json` file to include IPFS information. The default location is `~/.ceramic/daemon.config.json`. For a full file example, see the [Ceramic](../../../protocol/core/guides/ceramic-nodes/js-ceramic/running-cloud#example-daemonconfigjson) docs.
 
 ```bash
 ...

@@ -69,7 +69,7 @@ Networks are collections of nodes that communicate, store data, and share data. 
 
 ### Available networks
 
-Each network has its own string designation. Find more information about the networks [here](../../../protocol/js-ceramic/networking/networks).
+Each network has its own string designation. Find more information about the networks [here](../../../protocol/core/networking/networks).
 
 | Name | Description | Default Value |
 | --- | --- | --- |
@@ -205,7 +205,7 @@ By default, Ceramic nodes will only index documents they observe using pubsub me
 | remote | IPFS running in separate compute process; recommended for production and everything besides early prototyping |  |
 
 ### Persistent Storage
-To run a Ceramic node in production, it is critical to persist the [Ceramic state store](../../../protocol/js-ceramic/guides/ceramic-nodes/running-cloud#ceramic-state-store) and the [IPFS datastore](https://github.com/ipfs/go-ipfs/blob/master/docs/config.md#datastorespec). The form of storage you choose should also be configured for disaster recovery with data redundancy, and some form of snapshotting and/or backups.
+To run a Ceramic node in production, it is critical to persist the [Ceramic state store](../../../protocol/core/guides/ceramic-nodes/js-ceramic/running-cloud#ceramic-state-store) and the [IPFS datastore](https://github.com/ipfs/go-ipfs/blob/master/docs/config.md#datastorespec). The form of storage you choose should also be configured for disaster recovery with data redundancy, and some form of snapshotting and/or backups.
 
 **Loss of this data can result in permanent loss of Ceramic streams and will cause your node to be in a corrupt state.**
 
@@ -213,7 +213,7 @@ The Ceramic state store and IPFS datastore are stored on your machine's filesyst
 
 The fastest way to ensure data persistence is by mounting a persistent volume to your instances and configuring the Ceramic and IPFS nodes to write to the mount location. The mounted volume should be configured such that the data persists if the instance shuts down.
 
-You can also use AWS S3 for data storage which is supported for both Ceramic and IPFS. Examples of the configuration are shared on the Ceramic docs [here](../../../protocol/js-ceramic/guides/ceramic-nodes/running-cloud#example-aws-s3-policies).
+You can also use AWS S3 for data storage which is supported for both Ceramic and IPFS. Examples of the configuration are shared on the Ceramic docs [here](../../../protocol/core/guides/ceramic-nodes/js-ceramic/running-cloud#example-aws-s3-policies).
 
 ### IPFS Datastore
 

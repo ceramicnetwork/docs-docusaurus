@@ -45,9 +45,19 @@ const sidebars: SidebarsConfig = {
       label: "Implementations",
       items: [
         {
-          type: "doc",
-          id: "protocol/js-ceramic/overview",
-          label: "JavaScript"
+          type: "category",
+          label: "JavaScript",
+          link: {
+            type: "doc",
+            id: "protocol/js-ceramic/overview",
+          },
+          items: [
+            {
+              type: "link",
+              label: "API Reference",
+              href: "https://developers.ceramic.network/reference/typescript/modules.html"
+            }
+          ]
         },
         {
           type: "doc",
@@ -62,7 +72,7 @@ const sidebars: SidebarsConfig = {
       label: "Guides",
       link: {
         type: "doc",
-        id: "protocol/js-ceramic/guides/guides-index"
+        id: "protocol/core/guides/guides-index"
       },
       items: [
         {
@@ -71,14 +81,20 @@ const sidebars: SidebarsConfig = {
           label: "Ceramic Nodes",
           items: [
             {
-              type: "doc",
-              id: "protocol/js-ceramic/guides/ceramic-nodes/running-locally",
-              label: "Running Locally"
-            },
-            {
-              type: "doc",
-              id: "protocol/js-ceramic/guides/ceramic-nodes/running-cloud",
-              label: "Running in the Cloud"
+              type: "category",
+              label: "JavaScript",
+              items: [
+                {
+                  type: "doc",
+                  id: "protocol/core/guides/ceramic-nodes/js-ceramic/running-locally",
+                  label: "Running Locally"
+                },
+                {
+                  type: "doc",
+                  id: "protocol/core/guides/ceramic-nodes/js-ceramic/running-cloud",
+                  label: "Running in the Cloud"
+                }
+              ]
             }
           ]
         },
@@ -88,7 +104,7 @@ const sidebars: SidebarsConfig = {
           label: "Ceramic Clients",
           link: {
             type: "doc",
-            id: "protocol/js-ceramic/guides/ceramic-clients/clients-overview"
+            id: "protocol/core/guides/ceramic-clients/clients-overview"
           },
           items: [
             {
@@ -98,22 +114,22 @@ const sidebars: SidebarsConfig = {
               items: [
                 {
                   type: "doc",
-                  id: "protocol/js-ceramic/guides/ceramic-clients/javascript-clients/ceramic-http",
+                  id: "protocol/core/guides/ceramic-clients/javascript-clients/ceramic-http",
                   label: "Basic Usage"
                 },
                 {
                   type: "doc",
-                  id: "protocol/js-ceramic/guides/ceramic-clients/javascript-clients/http-api",
+                  id: "protocol/core/guides/ceramic-clients/javascript-clients/http-api",
                   label: "Ceramic HTTP API"
                 },
                 {
                   type: "doc",
-                  id: "protocol/js-ceramic/guides/ceramic-clients/javascript-clients/queries",
+                  id: "protocol/core/guides/ceramic-clients/javascript-clients/queries",
                   label: "Queries"
                 },
                 {
                   type: "doc",
-                  id: "protocol/js-ceramic/guides/ceramic-clients/javascript-clients/pinning",
+                  id: "protocol/core/guides/ceramic-clients/javascript-clients/pinning",
                   label: "Pinning"
                 }
               ]
@@ -125,17 +141,17 @@ const sidebars: SidebarsConfig = {
               items: [
                 {
                   type: "doc",
-                  id: "protocol/js-ceramic/guides/ceramic-clients/authentication/did-jsonrpc",
+                  id: "protocol/core/guides/ceramic-clients/authentication/did-jsonrpc",
                   label: "Basic Usage"
                 },
                 {
                   type: "doc",
-                  id: "protocol/js-ceramic/guides/ceramic-clients/authentication/key-did",
+                  id: "protocol/core/guides/ceramic-clients/authentication/key-did",
                   label: "Key DID"
                 },
                 {
                   type: "doc",
-                  id: "protocol/js-ceramic/guides/ceramic-clients/authentication/did-session",
+                  id: "protocol/core/guides/ceramic-clients/authentication/did-session",
                   label: "DID Session"
                 }
               ]
@@ -147,7 +163,7 @@ const sidebars: SidebarsConfig = {
               items: [
                 {
                   type: "doc",
-                  id: "protocol/js-ceramic/guides/ceramic-clients/stream-api/caip10-link",
+                  id: "protocol/core/guides/ceramic-clients/stream-api/caip10-link",
                   label: "Using CAIP-10 Links"
                 }
               ]
@@ -162,13 +178,13 @@ const sidebars: SidebarsConfig = {
       label: "Streams",
       link: {
         type: "doc",
-        id: "protocol/js-ceramic/streams/streams-index"
+        id: "protocol/core/streams/streams-index"
       },
       items: [
-        { type: "doc", id: "protocol/js-ceramic/streams/event-log", label: "Event Log" },
-        { type: "doc", id: "protocol/js-ceramic/streams/uri-scheme", label: "URI Scheme" },
-        { type: "doc", id: "protocol/js-ceramic/streams/consensus", label: "Consensus" },
-        { type: "doc", id: "protocol/js-ceramic/streams/lifecycle", label: "Lifecycle" }
+        { type: "doc", id: "protocol/core/streams/event-log", label: "Event Log" },
+        { type: "doc", id: "protocol/core/streams/uri-scheme", label: "URI Scheme" },
+        { type: "doc", id: "protocol/core/streams/consensus", label: "Consensus" },
+        { type: "doc", id: "protocol/core/streams/lifecycle", label: "Lifecycle" }
       ]
     },
     {
@@ -177,18 +193,18 @@ const sidebars: SidebarsConfig = {
       label: "Accounts",
       link: {
         type: "doc",
-        id: "protocol/js-ceramic/accounts/accounts-index"
+        id: "protocol/core/accounts/accounts-index"
       },
       items: [
         {
           type: "doc",
-          id: "protocol/js-ceramic/accounts/decentralized-identifiers",
+          id: "protocol/core/accounts/decentralized-identifiers",
           label: "Decentralized IDs"
         },
-        { type: "doc", id: "protocol/js-ceramic/accounts/authorizations", label: "Authorizations" },
+        { type: "doc", id: "protocol/core/accounts/authorizations", label: "Authorizations" },
         {
           type: "doc",
-          id: "protocol/js-ceramic/accounts/object-capabilities",
+          id: "protocol/core/accounts/object-capabilities",
           label: "Object-Capabilities"
         }
       ]
@@ -199,20 +215,21 @@ const sidebars: SidebarsConfig = {
       label: "Networking",
       link: {
         type: "doc",
-        id: "protocol/js-ceramic/networking/networking-index"
+        id: "protocol/core/networking/networking-index"
       },
       items: [
-        { type: "doc", id: "protocol/js-ceramic/networking/networks", label: "Networks" },
-        {type: "doc", id: "protocol/js-ceramic/networking/data-feed-api", label: "Data Feed API" },
-        { type: "doc", id: "protocol/js-ceramic/networking/tip-gossip", label: "Tip Gossip" },
-        { type: "doc", id: "protocol/js-ceramic/networking/tip-queries", label: "Tip Queries" },
+        { type: "doc", id: "protocol/core/networking/networks", label: "Networks" },
+        {type: "doc", id: "protocol/core/networking/data-feed-api", label: "Data Feed API" },
+        { type: "doc", id: "protocol/core/networking/tip-gossip", label: "Tip Gossip" },
+        { type: "doc", id: "protocol/core/networking/tip-queries", label: "Tip Queries" },
         {
           type: "doc",
-          id: "protocol/js-ceramic/networking/event-fetching",
+          id: "protocol/core/networking/event-fetching",
           label: "Event Fetching"
         },
       ]
     },
+    // TODO(yusef): move this to core and rewrite to include rust nodes
     {
       type: "category",
       collapsed: false,
@@ -225,11 +242,6 @@ const sidebars: SidebarsConfig = {
         { type: "doc", id: "protocol/js-ceramic/nodes/overview", label: "Overview" },
         { type: "doc", id: "protocol/js-ceramic/nodes/running-a-node", label: "Running a Node" }
       ]
-    },
-    {
-      type: "link",
-      label: "API Reference",
-      href: "https://developers.ceramic.network/reference/typescript/modules.html"
     }
   ],
   composedb: [

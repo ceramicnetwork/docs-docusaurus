@@ -126,16 +126,16 @@ const config: Config = {
             ]
           },
           {
-            to: "/docs/protocol/js-ceramic/streams/consensus",
-            from: ["/learn/advanced/consensus/", "/protocol/streams/consensus/"]
+            to: "/docs/protocol/core/streams/consensus",
+            from: ["/learn/advanced/consensus/", "/protocol/streams/consensus/", "/docs/protocol/js-ceramic/streams/consensus"]
           },
           {
             to: "/docs/composedb/guides/data-modeling/model-catalog",
             from: "/build/share/"
           },
           {
-            to: "/docs/protocol/js-ceramic/guides/ceramic-clients/javascript-clients/pinning",
-            from: ["/build/javascript/pinning/", "/build/pinning/"]
+            to: "/docs/protocol/core/guides/ceramic-clients/javascript-clients/pinning",
+            from: ["/build/javascript/pinning/", "/build/pinning/", "/docs/protocol/js-ceramic/guides/ceramic-clients/javascript-clients/pinning"]
           },
           {
             to: "/docs/composedb/examples",
@@ -172,12 +172,11 @@ const config: Config = {
               "/reference/typescript/DEVELOPMENT.md",
               "/reference/typescript/docs-dev/UPGRADING.md",
               "/reference/typescript/docs-dev/QUICKSTART.md",
-              "/reference/typescript/DEVELOPMENT.md"
             ]
           },
           {
-            to: "/docs/protocol/js-ceramic/streams/event-log",
-            from: "/protocol/streams/event-log/"
+            to: "/docs/protocol/core/streams/event-log",
+            from: ["/protocol/streams/event-log/", "/docs/protocol/js-ceramic/streams/event-log"]
           },
           {
             to: "/docs/composedb/getting-started",
@@ -198,8 +197,9 @@ const config: Config = {
             from: ["/sandbox"]
           },
           {
-            to: "/docs/protocol/js-ceramic/guides/ceramic-clients/authentication/key-did",
+            to: "/docs/protocol/core/guides/ceramic-clients/authentication/key-did",
             from: [
+              "/docs/protocol/js-ceramic/guides/ceramic-clients/authentication/key-did",
               "/reference/accounts/key-did/",
               "/docs/advanced/standards/accounts/key-did/",
               "/authentication/3id-did/3box-migration/",
@@ -211,21 +211,21 @@ const config: Config = {
             ]
           },
           {
-            to: "/docs/protocol/js-ceramic/streams/uri-scheme",
-            from: ["/protocol/streams/uri-scheme/", "/protocol/networking/streams/uri-scheme"]
+            to: "/docs/protocol/core/streams/uri-scheme",
+            from: ["/protocol/streams/uri-scheme/", "/protocol/networking/streams/uri-scheme", "/docs/protocol/js-ceramic/streams/uri-scheme"]
           },
           {
-            to: "/docs/protocol/js-ceramic/guides/ceramic-clients/clients-overview",
-            from: ["/build/clients/", "/clients/javascript/cli/", "/learn/clients/", "/reference/javascript/clients/"]
+            to: "/docs/protocol/core/guides/ceramic-clients/clients-overview",
+            from: ["/build/clients/", "/clients/javascript/cli/", "/learn/clients/", "/reference/javascript/clients/", "/docs/protocol/js-ceramic/guides/ceramic-clients/clients-overview"]
           },
           {
             to: "/docs/composedb/guides",
             from: "/guides"
           },
           {
-            to: "/docs/protocol/js-ceramic/accounts/decentralized-identifiers#supported-methods",
+            to: "/docs/protocol/core/accounts/decentralized-identifiers#supported-methods",
             from: [
-              "/reference/accounts/3id-did/",
+               "/reference/accounts/3id-did/",
               "/docs/advanced/standards/accounts/nft-did/",
               "/docs/composedb/protocol/js-ceramic/accounts/decentralized-identifiers",
               "/protocol/accounts/decentralized-identifiers/",
@@ -235,8 +235,12 @@ const config: Config = {
             ]
           },
           {
-            to: "/docs/protocol/js-ceramic/networking/networking-index",
-            from: ["/protocol/networking/"]
+            to: "/docs/protocol/core/accounts/decentralized-identifiers",
+            from: "/docs/protocol/js-ceramic/accounts/decentralized-identifiers",
+          },
+          {
+            to: "/docs/protocol/core/networking/networking-index",
+            from: ["/protocol/networking/", "/docs/protocol/js-ceramic/networking/networking-index"]
           },
           {
             to: "https://threebox.notion.site/Ceramic-Ecosystem-Directory-a3a7a58f81544d33ad3feb84368775d4",
@@ -265,52 +269,54 @@ const config: Config = {
             from: ["/reference/accounts/did-session/"]
           },
           {
-            to: "/docs/protocol/js-ceramic/guides/ceramic-clients/stream-api/caip10-link",
+            to: "/docs/protocol/core/guides/ceramic-clients/stream-api/caip10-link",
             from: [
+              "/docs/protocol/js-ceramic/guides/ceramic-clients/stream-api/caip10-link",
               "/reference/stream-programs/caip10-link/",
               "/streamtypes/caip-10-link/overview",
               "/streamtypes/caip-10-link/api"
             ]
           },
           {
-            to: "/docs/protocol/js-ceramic/networking/event-fetching",
-            from: ["/protocol/networking/event-fetching/"]
+            to: "/docs/protocol/core/networking/event-fetching",
+            from: ["/protocol/networking/event-fetching/", "/docs/protocol/js-ceramic/networking/event-fetching"]
           },
           {
-            to: "/docs/protocol/js-ceramic/streams/lifecycle",
-            from: ["/protocol/streams/lifecycle/"]
+            to: "/docs/protocol/core/streams/lifecycle",
+            from: ["/protocol/streams/lifecycle/", "/docs/protocol/js-ceramic/streams/lifecycle"]
           },
           {
             to: "https://blog.ceramic.network/",
             from: ["/learn/blog/"]
           },
           {
-            to: "/docs/protocol/js-ceramic/streams/streams-index",
-            from: ["/protocol/streams/", "/streamtypes/overview/"]
+            to: "/docs/protocol/core/streams/streams-index",
+            from: ["/protocol/streams/", "/streamtypes/overview/", "/docs/protocol/js-ceramic/streams/streams-index"]
           },
           {
-            to: "/docs/protocol/js-ceramic/accounts/authorizations",
-            from: "/protocol/accounts/authorizations/"
+            to: "/docs/protocol/core/accounts/authorizations",
+            from: ["/protocol/accounts/authorizations/", "/docs/protocol/js-ceramic/accounts/authorizations"]
           },
           {
-            to: "/docs/protocol/js-ceramic/networking/tip-gossip",
-            from: "/protocol/networking/tip-gossip/"
+            to: "/docs/protocol/core/networking/tip-gossip",
+            from: ["/protocol/networking/tip-gossip/", "/docs/protocol/js-ceramic/networking/tip-gossip"]
           },
           {
-            to: "/docs/protocol/js-ceramic/networking/tip-queries",
-            from: "/protocol/networking/tip-queries/"
+            to: "/docs/protocol/core/networking/tip-queries",
+            from: ["/protocol/networking/tip-queries/", "/docs/protocol/js-ceramic/networking/tip-queries"]
           },
           {
-            to: "/docs/protocol/js-ceramic/accounts/object-capabilities",
-            from: "/protocol/accounts/object-capabilities/"
+            to: "/docs/protocol/core/accounts/object-capabilities",
+            from: ["/protocol/accounts/object-capabilities/", "/docs/protocol/js-ceramic/accounts/object-capabilities"]
           },
           {
             to: "/docs/introduction/intro",
             from: "/docs/introduction/next-steps/"
           },
           {
-            to: "/docs/protocol/js-ceramic/guides/ceramic-clients/javascript-clients/http-api",
+            to: "/docs/protocol/core/guides/ceramic-clients/javascript-clients/http-api",
             from: [
+              "/docs/protocol/js-ceramic/guides/ceramic-clients/javascript-clients/http-api",
               "/build/cli/api/",
               "/reference/http-api/",
               "/build/http/api",
@@ -324,16 +330,16 @@ const config: Config = {
             from: "/reference/typescript/variables/_ceramicnetwork_core.INDEXED_MODEL_CONFIG_TABLE_NAME.html"
           },
           {
-            to: "/docs/protocol/js-ceramic/accounts/accounts-index",
-            from: "/protocol/accounts/"
+            to: "/docs/protocol/core/accounts/accounts-index",
+            from: ["/protocol/accounts/", "/docs/protocol/js-ceramic/accounts/accounts-index"]
           },
           {
             to: "https://developers.ceramic.network/reference/typescript/types/_ceramicnetwork_common.AnchorProof.html",
             from: "/reference/typescript/interfaces/_ceramicnetwork_common.AnchorProof.html"
           },
           {
-            to: "/docs/protocol/js-ceramic/guides/ceramic-clients/authentication/did-jsonrpc",
-            from: "/reference/core-clients/did-jsonrpc/"
+            to: "/docs/protocol/core/guides/ceramic-clients/authentication/did-jsonrpc",
+            from: ["/reference/core-clients/did-jsonrpc/", "/docs/protocol/js-ceramic/guides/ceramic-clients/authentication/did-jsonrpc"]
           },
           {
             to: "/docs/protocol/js-ceramic/nodes/overview",
@@ -344,12 +350,12 @@ const config: Config = {
             from: ["/run/nodes/nodes", "/run/nodes", "/run/nodes/available/"]
           },
           {
-            to: "/docs/protocol/js-ceramic/guides/ceramic-clients/javascript-clients/queries",
-            from: "/build/queries"
+            to: "/docs/protocol/core/guides/ceramic-clients/javascript-clients/queries",
+            from: ["/build/queries", "/docs/protocol/js-ceramic/guides/ceramic-clients/javascript-clients/queries"]
           },
           {
-            to: "/docs/protocol/js-ceramic/guides/ceramic-clients/javascript-clients/ceramic-http",
-            from: "/build/javascript/http"
+            to: "/docs/protocol/core/guides/ceramic-clients/javascript-clients/ceramic-http",
+            from: ["/build/javascript/http", "/docs/protocol/js-ceramic/guides/ceramic-clients/javascript-clients/ceramic-http"]
           },
           {
             to: "/docs/composedb/set-up-your-environment",
@@ -364,8 +370,8 @@ const config: Config = {
             from: ["/build/the-ceramic-stack/", "/learn/overview/"]
           },
           {
-            to: "/docs/protocol/js-ceramic/networking/networks",
-            from: ["/learn/networks/", "/learn/mainnet/"]
+            to: "/docs/protocol/core/networking/networks",
+            from: ["/learn/networks/", "/learn/mainnet/", "/docs/protocol/js-ceramic/networking/networks"]
           },
           {
             to: "/docs/dids/authorization",
@@ -376,8 +382,8 @@ const config: Config = {
             from: ["/learn/features/"]
           },
           {
-            to: "/docs/protocol/js-ceramic/accounts/decentralized-identifiers#pkh-did",
-            from: ["/docs/advanced/standards/accounts/pkh-did/"]
+            to: "/docs/protocol/core/accounts/decentralized-identifiers#pkh-did",
+            from: "/docs/advanced/standards/accounts/pkh-did/"
           },
           {
             to: "https://ceramic.network/terms-of-service",

@@ -14,7 +14,7 @@ To run your application on `mainnet` you'll need to run your own production-read
 
 ---
 
-**Ceramic networks** – There are currently three Ceramic networks: `mainnet`, `testnet-clay`, and `dev-unstable`. Learn more about each network [here](../../networking/networks.md). By default, Ceramic will connect to `testnet-clay` and a [Ceramic Anchor Service](https://github.com/ceramicnetwork/ceramic-anchor-service) running on Gnosis. When you are ready to get on Ceramic `mainnet`, check out [this guide](../../../../composedb/guides/composedb-server/running-in-the-cloud) to get access to our `mainnet` anchor service.
+**Ceramic networks** – There are currently three Ceramic networks: `mainnet`, `testnet-clay`, and `dev-unstable`. Learn more about each network [here](../../../networking/networks.md). By default, Ceramic will connect to `testnet-clay` and a [Ceramic Anchor Service](https://github.com/ceramicnetwork/ceramic-anchor-service) running on Gnosis. When you are ready to get on Ceramic `mainnet`, check out [this guide](../../../../../composedb/guides/composedb-server/running-in-the-cloud) to get access to our `mainnet` anchor service.
 
 **Running IPFS** – Ceramic relies on a system called [IPFS](https://docs.ipfs.io/) to connect to and share data in Ceramic networks. IPFS runs as a separate process from the Ceramic node itself, with each Ceramic node connected to a dedicated IPFS node over HTTP. The Ceramic Daemon can launch an IPFS process automatically (referred to as running IPFS in "bundled" mode in the Ceramic config file), which is designed for testing and local development only. For production deployments you should run your own IPFS process manually and point your Ceramic node at it (referred to as running ipfs in "remote" mode in the Ceramic config file). This allows for more configuration options for your IPFS node allowing for more controlled resource allocation, as well as improved maintenance, debugging and observability. Note that Ceramic only supports `go-ipfs` version 0.12 or later.
 
@@ -225,4 +225,4 @@ Request and event logs are written in [logfmt](https://brandur.org/logfmt). This
 
 ---
 
-Congratulations! You have now set up a well-connected Ceramic node in the cloud which can receive HTTP requests from the local environment, the [JS HTTP Client](../ceramic-clients/javascript-clients/ceramic-http.md), or to simply serve as another node to replicate and pin streams. Please report any bugs as issues on the [JS Ceramic GitHub](https://github.com/ceramicnetwork/js-ceramic).
+Congratulations! You have now set up a well-connected Ceramic node in the cloud which can receive HTTP requests from the local environment, the [JS HTTP Client](../../ceramic-clients/javascript-clients/ceramic-http.md), or to simply serve as another node to replicate and pin streams. Please report any bugs as issues on the [JS Ceramic GitHub](https://github.com/ceramicnetwork/js-ceramic).

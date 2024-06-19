@@ -28,8 +28,8 @@ ComposeDB is a decentralized graph database powered by Ceramic that enables you 
 
 Run a Ceramic node to provide data storage, compute, and bandwidth for your Ceramic application. Today there are no tokenized incentives for running a Ceramic node, but by running a node you can ensure the data for your app remains available while helping contribute to the network's decentralization.
 
-- [**Run Ceramic in the cloud**](../protocol/js-ceramic/guides/ceramic-nodes/running-cloud)
+- [**Run Ceramic in the cloud**](../protocol/core/guides/ceramic-nodes/js-ceramic/running-cloud)
 
-- [**Run Ceramic locally**](../protocol/js-ceramic/guides/ceramic-nodes/running-locally)
+- [**Run Ceramic locally**](../protocol/core/guides/ceramic-nodes/js-ceramic/running-locally)
 
 

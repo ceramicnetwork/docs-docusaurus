@@ -33,7 +33,7 @@ npm install -g @ceramicnetwork/cli
 
 ### Launch the Ceramic node
 
-Use the `ceramic daemon` command to start a local JS Ceramic node connected to the [Clay Testnet](../../networking/networks.md#clay-testnet) at `https://localhost:7007`.
+Use the `ceramic daemon` command to start a local JS Ceramic node connected to the [Clay Testnet](../../../networking/networks.md#clay-testnet) at `https://localhost:7007`.
 
 ```bash
 ceramic daemon
@@ -41,7 +41,7 @@ ceramic daemon
 
 ### **Configure your network**
 
-(Optional) By default, the JS CLI starts a node on the [Clay Testnet](../../networking/networks.md#clay-testnet). If you would like to use a different network, you can specify this using the `--network` option. View [available networks](../../networking/networks.md). Note, the CLI can not be used with [Mainnet](../../networking/networks.md#mainnet).
+(Optional) By default, the JS CLI starts a node on the [Clay Testnet](../../../networking/networks.md#clay-testnet). If you would like to use a different network, you can specify this using the `--network` option. View [available networks](../../../networking/networks.md). Note, the CLI can not be used with [Mainnet](../../../networking/networks.md#mainnet).
 
 ### **Configure a node URL**
 
