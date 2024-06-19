@@ -7,8 +7,8 @@ const FeatureList = [
     title: "Ceramic Protocol →",
     items: [
       {
-        url: "docs/protocol/js-ceramic/overview",
-        text: "Dive into the JavaScript implementation of the Ceramic Protocol."
+        url: "docs/protocol/core/overview",
+        text: "Dive into the core Ceramic Protocol and explore the JavaScript and Rust implementations."
       }
     ]
   },

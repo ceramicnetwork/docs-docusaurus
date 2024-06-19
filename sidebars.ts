@@ -36,8 +36,25 @@ const sidebars: SidebarsConfig = {
   protocol: [
     {
       type: "doc",
-      id: "protocol/js-ceramic/overview",
+      id: "protocol/core/overview",
       label: "Overview"
+    },
+    {
+      type: "category",
+      collapsed: true,
+      label: "Implementations",
+      items: [
+        {
+          type: "doc",
+          id: "protocol/js-ceramic/overview",
+          label: "JavaScript"
+        },
+        {
+          type: "doc",
+          id: "protocol/rust-ceramic/overview",
+          label: "Rust"
+        }
+      ],
     },
     {
       type: "category",
