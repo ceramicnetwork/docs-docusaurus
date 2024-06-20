@@ -48,23 +48,62 @@ As your project scales, you may need to expand your storage beyond 180GB.
 
 Advanced users may want to consider running the PostgreSQL database on a different server than the Ceramic node + IPFS node.  If you choose to run them on different servers, a VPC can be used to establish the communication between them.
 
-**Ceramic node + IPFS node**
-
-| Resource | Size |
-| --- | --- |
-| CPU | 2 4CPU |
-| RAM | 8 GB |
-| Storage | 180GB |
 
 
+<div style={{ display: "flex", justifyContent: "flex-start" }}>
+  <div style={{ marginRight: "100px" }}>
+    <div style={{ fontWeight: "bold", marginBottom: "8px" }}>Ceramic node + IPFS node</div>
+    <table style={{ borderCollapse: "collapse", width: "100%" }}>
+      <thead>
+        <tr>
+          <th style={{ textAlign: "left", padding: "8px" }}>Resource</th>
+          <th style={{ textAlign: "left", padding: "8px" }}>Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style={{ textAlign: "left", padding: "8px" }}>CPU</td>
+          <td style={{ textAlign: "left", padding: "8px" }}>2 4CPU Cores</td>
+        </tr>
+        <tr>
+          <td style={{ textAlign: "left", padding: "8px" }}>RAM</td>
+          <td style={{ textAlign: "left", padding: "8px" }}>8 GB</td>
+        </tr>
+        <tr>
+          <td style={{ textAlign: "left", padding: "8px" }}>Storage</td>
+          <td style={{ textAlign: "left", padding: "8px" }}>180GB</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div>
+    <div style={{ fontWeight: "bold", marginBottom: "8px" }}>PostgreSQL DB</div>
+    <table style={{ borderCollapse: "collapse", width: "100%" }}>
+      <thead>
+        <tr>
+          <th style={{ textAlign: "left", padding: "8px" }}>Resource</th>
+          <th style={{ textAlign: "left", padding: "8px" }}>Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style={{ textAlign: "left", padding: "8px" }}>CPU</td>
+          <td style={{ textAlign: "left", padding: "8px" }}>1 2CPU Cores</td>
+        </tr>
+        <tr>
+          <td style={{ textAlign: "left", padding: "8px" }}>RAM</td>
+          <td style={{ textAlign: "left", padding: "8px" }}>4 GB</td>
+        </tr>
+        <tr>
+          <td style={{ textAlign: "left", padding: "8px" }}>Storage</td>
+          <td style={{ textAlign: "left", padding: "8px" }}>110GB</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-**PostgreSQL DB**
-
-| Resource | Size |
-| --- | --- |
-| CPU | 1 2CPU |
-| RAM | 4 GB |
-| Storage | 110GB |
 
 
 ## Hosting solutions and costs
