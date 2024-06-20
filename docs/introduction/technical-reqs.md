@@ -1,33 +1,29 @@
 # Technical requirements to run Ceramic
 
-To understand the expected costs to integrate Ceramic into your architecture, it is helpful to first briefly understand where Ceramic lives in the application architecture stack.
+To understand the expected costs to integrate Ceramic into your architecture, it is helpful to first understand where Ceramic lives in the application architecture stack.
 
 Ceramic is a decentralized data storage network made up of different components, and can replace or augment existing storage solutions.
 
-![Architecture](/img/architecture-overview.png)
+![Architecture](/img/app-architecture-overview.png)
 
 
-To make it easier to grasp, it can be helpful to think about implementing Ceramic as you might think about implementing a traditional SQL or Postgres database.
+To make it easier to grasp, you can think about implementing Ceramic just like you might think about implementing a traditional SQL or PostgreSQL database.
 
-When integrating with Ceramic, you will be running three pieces of server software, or three components:
+When integrating with Ceramic, you will be running three pieces of server software:
 
 - Ceramic node
-- PostgresSQL
+- PostgreSQL
 - IPFS node
 
-Ceramic and IPFS nodes are simply pieces of software than run on a server.
-
-PostgresSQL is a type of traditional database.
+Ceramic and IPFS nodes are simply pieces of software than run on a server. PostgreSQL is a type of traditional database.
 
 ## Hardware requirements
 
-For most projects, all three components can be run on the same server.  
+For most projects, all three components of Ceramic can be run on the same server. Thus the main consideration impacting costs are the hardware requirements of your server.
 
-Thus the main consideration impacting costs are the hardware requirements of your server.
+Depending on the expected throughput of your project, the suggested hardware requirements will differ. Below, you can find the estimated hardware requirements based on a different levels of expected throughput.
 
-Depending on the expected throughput of your project, the suggested hardware requirements will differ.
-
-**Minimum (light throughput)**
+### Minimum (light throughput)
 
 | Resource | Size |
 | --- | --- |
@@ -37,7 +33,7 @@ Depending on the expected throughput of your project, the suggested hardware req
 
 
 
-### **Recommended**
+### Recommended
 
 As your project scales, you may need to expand your storage beyond 180GB.
 
@@ -48,9 +44,9 @@ As your project scales, you may need to expand your storage beyond 180GB.
 | Storage | 180GB |
 
 
-### **Advanced (heavy throughput)**
+### Advanced (heavy throughput)
 
-Advanced users may want to consider running the PostgresSQL db on a different server than the Ceramic node + IPFS node.  If running on different servers, a VPC can be used to communicate between them.
+Advanced users may want to consider running the PostgreSQL database on a different server than the Ceramic node + IPFS node.  If you choose to run them on different servers, a VPC can be used to establish the communication between them.
 
 **Ceramic node + IPFS node**
 
@@ -62,7 +58,7 @@ Advanced users may want to consider running the PostgresSQL db on a different se
 
 
 
-**PostgresSQL DB**
+**PostgreSQL DB**
 
 | Resource | Size |
 | --- | --- |
@@ -73,9 +69,29 @@ Advanced users may want to consider running the PostgresSQL db on a different se
 
 ## Hosting solutions and costs
 
-The second consideration impacting costs is how you choose to host your Ceramic node.  A few options are shown below.  **Monthly** server costs are estimated based on the hardware requirements above.
+One of the key factors impacting costs is how you choose to host your Ceramic node.  A few options are shown below.  Monthly server costs are **estimated** based on the hardware requirements above.
 
-| Locally hosted | Cloud hosted | Managed node service |
-| --- | --- | --- |
-|- No new incremental costs <br/> - Not recommended for production environments | - $25-$250 per node per month <br/> <br/> - Dependent on cloud provider (e.g., AWS vs GCP vs Azure) <br/> <br/> - Infrastructure professionals who manage their own servers should have lower costs than using a cloud provider |- $50-$500 per node per month <br/> <br/> - Managed backups <br/> <br/> - App developers who prefer to use third party managed node services can offload node management responsibilities to dedicated professionals |
+<table style={{ width: "100%", borderCollapse: "collapse" }}>
+  <tr>
+    <th style={{ width: "33%", textAlign: "left", verticalAlign: "top" }}>Locally hosted</th>
+    <th style={{ width: "33%", textAlign: "left", verticalAlign: "top" }}>Cloud hosted</th>
+    <th style={{ width: "33%", textAlign: "left", verticalAlign: "top" }}>Managed node service</th>
+  </tr>
+  <tr>
+    <td style={{ textAlign: "left", verticalAlign: "top" }}>- No new incremental costs</td>
+    <td style={{ textAlign: "left", verticalAlign: "top" }}>- $25 - $250 per node per month</td>
+    <td style={{ textAlign: "left", verticalAlign: "top" }}>- $50 - $500 per node per month</td>
+  </tr>
+  <tr>
+    <td style={{ textAlign: "left", verticalAlign: "top" }}>- Not recommended for production environments</td>
+    <td style={{ textAlign: "left", verticalAlign: "top" }}>- Dependent on cloud provider (e.g., AWS vs GCP vs Azure)</td>
+    <td style={{ textAlign: "left", verticalAlign: "top" }}>- Managed backups</td>
+  </tr>
+  <tr>
+    <td style={{ textAlign: "left", verticalAlign: "top" }}></td>
+    <td style={{ textAlign: "left", verticalAlign: "top" }}>- Infrastructure professionals who manage their own servers should have lower costs than using a cloud provider</td>
+    <td style={{ textAlign: "left", verticalAlign: "top" }}>- Application developers who prefer to use third party managed node services can offload node management responsibilities to dedicated professionals</td>
+  </tr>
+</table>
+
 
