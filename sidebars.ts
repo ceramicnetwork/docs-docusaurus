@@ -30,6 +30,7 @@ const sidebars: SidebarsConfig = {
         { type: "doc", id: "introduction/did-overview", label: "Decentralized Identifiers" }
       ]
     },
+    { type: "doc", id: "introduction/technical-reqs", label: "Technical Requirements" },
     { type: "link", label: "Try it out!", href: "/docs/composedb/sandbox" },
     { type: "doc", id: "introduction/ceramic-roadmap", label: "Roadmap" }
   ],
