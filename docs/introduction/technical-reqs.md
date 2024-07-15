@@ -9,13 +9,15 @@ Ceramic is a decentralized data storage network made up of different components,
 
 To make it easier to grasp, you can think about implementing Ceramic just like you might think about implementing a traditional SQL or PostgreSQL database.
 
-When integrating with Ceramic, you will be running three pieces of server software:
+When integrating with Ceramic, you will be running a few different services and components, each serving a specific purpose for running your application:
 
-- Ceramic node
-- PostgreSQL
-- IPFS node
+- `js-ceramic` - provides the HTTP API access for connected clients to read the streams stored on the Ceramic network
+- `ceramic-one` - responsible for storing the actual data and coordinate with network participants.
+- `PostgreSQL` - used for indexing data
+- `Ethereum RPC node API access` - required to validate Ceramic Anchor Service (CAS) anchors.
+- `Ceramic Anchor Service (CAS) access` - Anchors Ceramic protocol proofs to the blockchain. This service is currently funded by 3box Labs, however, eventually, this function will be provided by node operators and with some expected cost. 
 
-Ceramic and IPFS nodes are simply pieces of software than run on a server. PostgreSQL is a type of traditional database.
+Ceramic nodes are simply pieces of software than run on a server. PostgreSQL is a type of traditional database.
 
 ## Hardware requirements
 
@@ -46,13 +48,13 @@ As your project scales, you may need to expand your storage beyond 180GB.
 
 ### Advanced (heavy throughput)
 
-Advanced users may want to consider running the PostgreSQL database on a different server than the Ceramic node + IPFS node.  If you choose to run them on different servers, a VPC can be used to establish the communication between them.
+Advanced users may want to consider running the PostgreSQL database on a different server than the Ceramic node.  If you choose to run them on different servers, a VPC can be used to establish the communication between them.
 
 
 
 <div style={{ display: "flex", justifyContent: "flex-start" }}>
   <div style={{ marginRight: "100px" }}>
-    <div style={{ fontWeight: "bold", marginBottom: "8px" }}>Ceramic node + IPFS node</div>
+    <div style={{ fontWeight: "bold", marginBottom: "8px" }}>Ceramic node</div>
     <table style={{ borderCollapse: "collapse", width: "100%" }}>
       <thead>
         <tr>

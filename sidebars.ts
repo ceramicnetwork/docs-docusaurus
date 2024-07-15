@@ -94,11 +94,6 @@ const sidebars: SidebarsConfig = {
                   type: "doc",
                   id: "protocol/js-ceramic/guides/ceramic-clients/javascript-clients/queries",
                   label: "Queries"
-                },
-                {
-                  type: "doc",
-                  id: "protocol/js-ceramic/guides/ceramic-clients/javascript-clients/pinning",
-                  label: "Pinning"
                 }
               ]
             },
@@ -121,18 +116,6 @@ const sidebars: SidebarsConfig = {
                   type: "doc",
                   id: "protocol/js-ceramic/guides/ceramic-clients/authentication/did-session",
                   label: "DID Session"
-                }
-              ]
-            },
-            {
-              type: "category",
-              collapsed: true,
-              label: "Stream APIs",
-              items: [
-                {
-                  type: "doc",
-                  id: "protocol/js-ceramic/guides/ceramic-clients/stream-api/caip10-link",
-                  label: "Using CAIP-10 Links"
                 }
               ]
             }
@@ -188,13 +171,6 @@ const sidebars: SidebarsConfig = {
       items: [
         { type: "doc", id: "protocol/js-ceramic/networking/networks", label: "Networks" },
         {type: "doc", id: "protocol/js-ceramic/networking/data-feed-api", label: "Data Feed API" },
-        { type: "doc", id: "protocol/js-ceramic/networking/tip-gossip", label: "Tip Gossip" },
-        { type: "doc", id: "protocol/js-ceramic/networking/tip-queries", label: "Tip Queries" },
-        {
-          type: "doc",
-          id: "protocol/js-ceramic/networking/event-fetching",
-          label: "Event Fetching"
-        },
       ]
     },
     {

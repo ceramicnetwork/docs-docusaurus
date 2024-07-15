@@ -13,6 +13,11 @@ This can be installed from NPM and updated through NPM by using the following co
 npx @ceramicnetwork/cli daemon
 ```
 
+:::note
+Make sure that you have `ceramic-one` binary running in the background. To set it up, follow the setup steps [here](../guides/ceramic-nodes/running-locally#setting-up-the-ceramic-one-component).
+:::
+
+
 This will install the CLI and start the daemon. This will allow all of the initial files to be created. This will successfully have a node running on the Clay TestNet.
 
 ## Operations Considerations
@@ -55,9 +60,31 @@ sudo systemctl start logrotate
 
 ### Monitoring
 
-It is strongly recommended to use your existing monitoring system to collect and process the [metrics offered by the node](../../../composedb/guides/composedb-server/server-configurations.mdx). In addition to those, it is strongly recommended to monitor and avoid exhaustion of:
+It is strongly recommended to use your existing monitoring system to collect and process the [metrics offered by the node](../../../composedb/guides/composedb-server/server-configurations.mdx).
 
-* the amount of free space available on all relevant filesystems
-* the amount of free [inodes](https://en.wikipedia.org/wiki/Inode) on all filesystems containing IPFS files
 
-These can be checked by hand using `df -h` for space and `df -i` for inodes.
+#### Availability
+
+Check the `js-ceramic` service’s availability with the healthcheck endpoint
+
+```json
+curl http://localhost:7007/api/v0/node/healthcheck
+```
+
+Check the `rust-ceramic` service’s availability with the liveness endpoint
+
+```json
+curl http://127.0.0.1:5001/ceramic/liveness
+```
+
+#### Metrics
+
+Both `rust-ceramic` and `js-ceramic` have prometheus compatible endpoints available.
+
+`rust-ceramic` is enabled by default 
+
+```jsx
+curl http://127.0.0.1:9464/metrics # rust-ceramic metrics
+```
+
+js-ceramic monitoring configuration is described [here](https://developers.ceramic.network/docs/composedb/guides/composedb-server/server-configurations#prometheus-endpoint0).
