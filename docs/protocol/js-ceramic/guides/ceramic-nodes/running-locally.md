@@ -77,7 +77,7 @@ ceramic config set ceramicHost 'https://yourceramicnode.com'
 ```
 
 ## Monitoring
-You can always check if `js-ceramic` and `rust-ceramic` components are available by running the commands listed below.
+You can always check if `js-ceramic` and `ceramic-one` components are available by running the commands listed below.
 
 ### `js-ceramic` service's availability
 
@@ -87,10 +87,10 @@ Check the `js-ceramic` service’s availability with the healthcheck endpoint:
 curl http://localhost:7007/api/v0/node/healthcheck
 ```
 
-### `rust-ceramic` service's availability
+### `ceramic-one` service's availability
 
-Check the rust-ceramic service’s availability with the liveness endpoint:
+Check the ceramic-one service’s availability with the liveness endpoint:
 
 ```json
-curl http://127.0.0.1:5001/ceramic/liveness
+curl http://127.0.0.1:5101/ceramic/liveness
 ```

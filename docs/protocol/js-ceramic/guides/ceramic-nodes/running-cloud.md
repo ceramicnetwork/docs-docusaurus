@@ -116,7 +116,7 @@ You will know that your deployment is up and running when all of the processes h
 ```bash
 NAME           READY   STATUS    RESTARTS    AGE
 js-ceramic-0   0/1     Running   0           77s
-rust-ceramic-0 1/1     Running   0           77s
+ceramic-one-0  1/1     Running   0           77s
 postgres-0     1/1     Running   0           77s
 ```
 
