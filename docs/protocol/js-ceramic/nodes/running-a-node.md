@@ -71,20 +71,20 @@ Check the `js-ceramic` service’s availability with the healthcheck endpoint
 curl http://localhost:7007/api/v0/node/healthcheck
 ```
 
-Check the `rust-ceramic` service’s availability with the liveness endpoint
+Check the `ceramic-one` service’s availability with the liveness endpoint
 
 ```json
-curl http://127.0.0.1:5001/ceramic/liveness
+curl http://127.0.0.1:5101/ceramic/liveness
 ```
 
 #### Metrics
 
-Both `rust-ceramic` and `js-ceramic` have prometheus compatible endpoints available.
+Both `ceramic-one` and `js-ceramic` have prometheus compatible endpoints available.
 
-`rust-ceramic` is enabled by default 
+`ceramic-one` is enabled by default 
 
 ```jsx
-curl http://127.0.0.1:9464/metrics # rust-ceramic metrics
+curl http://127.0.0.1:9464/metrics # ceramic-one metrics
 ```
 
 js-ceramic monitoring configuration is described [here](https://developers.ceramic.network/docs/composedb/guides/composedb-server/server-configurations#prometheus-endpoint0).

@@ -30,16 +30,14 @@ instructions can be applied to the vast majority of other cloud providers like A
 **Supported Operating Systems:**
 
 - Linux
-- Mac
-- Windows
 
 :::note
-For Windows, Windows Subsystem for Linux 2 (WSL2) is strongly recommended. Using the Windows command line is not portable and can cause compatibility issue when running the same configuration on a different operating system (e.g. in a Linux-based cloud deployment).
+At the moment, developers are provided with Linux-based docker images for cloud deployment.
 :::
 
 **Compute requirements:**
 
-You’ll need sufficient compute resources to power `ceramic-one`, 'js-ceramic' and `PostgreSQL`. Below are the recommended requirements:
+You’ll need sufficient compute resources to power `ceramic-one`, `js-ceramic` and `PostgreSQL`. Below are the recommended requirements:
 
 - 4 vCPUs
 - 8GB RAM
@@ -153,7 +151,7 @@ By default, your Ceramic node will connect to the Ceramic  `clay-testnet`. In or
 
 All state in this configuration is ephemeral, for persistence use docker-compose.
 
-1. Start rust-ceramic using the host network
+1. Start ceramic-one using the host network
 
 ```json
 docker run --network=host \

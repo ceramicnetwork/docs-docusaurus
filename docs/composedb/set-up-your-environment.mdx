@@ -24,7 +24,12 @@ There are a few ways to set up your environment. Choose the one that best fits y
 **Install and start the `ceramic-one` binary**
 
 All of the configuration options listed above **require a `ceramic-one` binary up and running**, which provides a data network access. You can run `ceramic-one` on your
-local machine using two simple steps:
+local machine using two simple steps listed below.
+
+:::note
+The instructions below cover the steps for the MacOS-based systems. If you are running on a Linux-based system, you can find the 
+instructions [here](https://github.com/ceramicnetwork/rust-ceramic?tab=readme-ov-file#linux---debian-based-distributions).
+:::
 
 1. Install the component using [Homebrew](https://brew.sh/):
 
@@ -38,10 +43,19 @@ ceramic-one daemon
 ```
 
 :::note
-By default, the command above will spin off a node which will connect to a `clay-testnet`. You can change this behaviour by providing a `--network` flag and specifying a network of your choice. For example:
+By default, the command above will spin off a node which connects to a `clay-testnet` network. You can change this behaviour by providing a `--network` flag and specifying a network of your choice. For example:
 
 ```ceramic-one daemon --network clay-testnet```
 :::
+
+
+By default `ceramic-one` will store its data in the current directory. You can configure this behaviour by 
+specifying the `--store-dir`and `--p2p-key-dir` arguments. For example:
+
+```bash
+ceramic-one daemon --store-dir ~/.ceramic-one --p2p-key-dir ~/.ceramic-one
+```
+
 
 With `ceramic-one` binary up and running you can move on with the ComposeDB installation and configuration method of your choice.
 

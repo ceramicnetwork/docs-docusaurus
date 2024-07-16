@@ -19,6 +19,7 @@ An overview of the various Ceramic networks available today:
 | Mainnet | mainnet | /ceramic/mainnet | Ethereum Mainnet (EIP155:1) | Public |
 | Clay Testnet | testnet-clay | /ceramic/testnet-clay | Ethereum Gnosis Chain | Public |
 | Dev Unstable | dev-unstable | /ceramic/dev-unstable | Ethereum Goerli Testnet | Public |
+| Local | local | /ceramic/local-$(randomNumber) | Ethereum by Truffle Ganache | Private |
 | In-memory | inmemory |  | None | Private |
 
 :::note

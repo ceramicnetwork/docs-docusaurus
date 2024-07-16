@@ -5,7 +5,7 @@ Ceramic is a decentralized event streaming protocol that enables developers to b
 
 The latest release of Ceramic has introduced a new Rust-based implementation of Ceramic protocol which offers performance and stability improvements as well as a new data synchronisation protocol called Recon. Developers, building on Ceramic network will be using two main components:
 - `js-ceramic` component which provides the API interface for Ceramic applications
-- `rust-ceramic` component which provides Ceramic data network access (contains the implementation of Recon protocol).
+- `ceramic-one` component which provides Ceramic data network access (contains the implementation of Recon protocol).
 
  <div style={{textAlign: 'center'}}>
 ![protocol-overview](/img/protocol.png)
