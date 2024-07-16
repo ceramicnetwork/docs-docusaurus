@@ -5,9 +5,9 @@ Information about the default Ceramic networks
 ## Overview
 ---
 
-Networks are collections of Ceramic [nodes](../nodes/overview.md) that share specific configurations and communicate over dedicated [libp2p](https://libp2p.io/) pubsub topics. Networks are disjoint from one another; streamsthat exist on one network are **not** discoverable or usable on another.
+Networks are collections of Ceramic [nodes](../nodes/overview.md) that share specific configurations and communicate over dedicated [libp2p](https://libp2p.io/) pubsub topics. Networks are disjoint from one another; streams that exist on one network are **not** discoverable or usable on another.
 
-These pubsub topics are used to relay all messages for the defined networking sub protocols, including [Tip Gossip](tip-gossip.md) and [Tip Queries](tip-queries.md). 
+These pubsub topics are used to relay all messages for the defined networking sub protocols. 
 
 ## All Networks
 ---
@@ -22,8 +22,9 @@ An overview of the various Ceramic networks available today:
 | Local | local | /ceramic/local-$(randomNumber) | Ethereum by Truffle Ganache | Private |
 | In-memory | inmemory |  | None | Private |
 
-!!!note
+:::note
     There is currently a proposal to decompose each network into multiple pubsub topics for scalability, the pubsub topics will remain prefixed by the network identifier `/ceramic/<network>/<sep>` see [CIP-120](https://github.com/ceramicnetwork/CIP/blob/main/CIPs/cip-120.md)
+:::
 
 ## Public networks
 ---

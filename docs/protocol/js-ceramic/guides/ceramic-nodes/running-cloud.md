@@ -1,26 +1,46 @@
-# Running Ceramic in production
+# Running Ceramic nodes in the cloud environment
 
 ---
 
-This guide provides complete instructions and various tools for launching a well-connected, production-ready Ceramic node.
+This guide provides the instructions for launching a well-connected, production-ready Ceramic node in the cloud environment.
 
 ## Who should run a Ceramic node?
 
 ---
 
-To run your application on `mainnet` you'll need to run your own production-ready node or to use a community provider like [hirenodes](https://hirenodes.io/).
+To run your application on `mainnet` you'll need to run your own production-ready node or to use a community hosted nodes provider like [hirenodes](https://hirenodes.io/).
 
 ## Things to know
 
 ---
 
-**Ceramic networks** – There are currently three Ceramic networks: `mainnet`, `testnet-clay`, and `dev-unstable`. Learn more about each network [here](../../networking/networks.md). By default, Ceramic will connect to `testnet-clay` and a [Ceramic Anchor Service](https://github.com/ceramicnetwork/ceramic-anchor-service) running on Gnosis. When you are ready to get on Ceramic `mainnet`, check out [this guide](../../../../composedb/guides/composedb-server/running-in-the-cloud) to get access to our `mainnet` anchor service.
+**Ceramic networks** 
+There are currently three main Ceramic networks: 
+- `mainnet`
+- `testnet-clay`
+- `dev-unstable`
 
-**Running IPFS** – Ceramic relies on a system called [IPFS](https://docs.ipfs.io/) to connect to and share data in Ceramic networks. IPFS runs as a separate process from the Ceramic node itself, with each Ceramic node connected to a dedicated IPFS node over HTTP. The Ceramic Daemon can launch an IPFS process automatically (referred to as running IPFS in "bundled" mode in the Ceramic config file), which is designed for testing and local development only. For production deployments you should run your own IPFS process manually and point your Ceramic node at it (referred to as running ipfs in "remote" mode in the Ceramic config file). This allows for more configuration options for your IPFS node allowing for more controlled resource allocation, as well as improved maintenance, debugging and observability. Note that Ceramic only supports `go-ipfs` version 0.12 or later.
+Learn more about each network [here](../../networking/networks.md). 
 
-The rest of this guide assumes you are running Ceramic with IPFS in "remote" mode.
+By default, Ceramic will connect to `testnet-clay` and a [Ceramic Anchor Service](https://github.com/ceramicnetwork/ceramic-anchor-service) running on Gnosis. When you are ready to get on Ceramic `mainnet`, check out [this guide](../../../../composedb/guides/composedb-server/access-mainnet) to get access to our `mainnet` anchor service running on Ethereum mainnet.
 
-**Process management, restarts and data persistence** – Ceramic and IPFS will not automatically restart if they crash. You should configure your own restart mechanism, and you must ensure data persistence between restarts.
+**Supported platforms** – You can run Ceramic nodes on a cloud provider of your choice. This guide will include instructions for the Digital Ocean Kubernetes, but the
+instructions can be applied to the vast majority of other cloud providers like AWS and others.
+
+**Supported Operating Systems:**
+
+- Linux
+
+:::note
+At the moment, developers are provided with Linux-based docker images for cloud deployment.
+:::
+
+**Compute requirements:**
+
+You’ll need sufficient compute resources to power `ceramic-one`, `js-ceramic` and `PostgreSQL`. Below are the recommended requirements:
+
+- 4 vCPUs
+- 8GB RAM
 
 ## Required steps
 
@@ -28,157 +48,87 @@ The rest of this guide assumes you are running Ceramic with IPFS in "remote" mod
 
 Below are the steps required for running a Ceramic node in production. This guide will teach you how to:
 
-1. [Install and run the Ceramic daemon](#running-the-daemon)
-2. [Configure data persistence](#data-persistence)
-3. [Get connected to the network](#get-connected-to-the-network)
-4. [Get observability data from your node (optional)](#observability)
 
-## Quick start
+### Configure your Kubernetes Cluster
 
----
+Running a Ceramic Node on DO Kubernetes will require two tools:
 
-### [Run Ceramic on AWS ECS with Terraform →](https://github.com/ceramicnetwork/terraform-aws-ceramic)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/) - the Kubernetes command line tool
+- [doctl](https://docs.digitalocean.com/reference/doctl/how-to/install/) - the Digital Ocean command line tool
 
-The 3Box Labs team has written a [Terraform module](https://github.com/ceramicnetwork/terraform-aws-ceramic) that configures Ceramic and IPFS in AWS ECS using Fargate. Using this module is a fast and reliable way to run Ceramic in the cloud because it is set up for data persistence and auto-restarts. The module currently requires some common AWS resources to be pre-configured as well as Cloudflare. See an [example of the module in use](https://github.com/ceramicnetwork/terraform-aws-ceramic/blob/main/examples/ecs/main.tf).
+Make sure you have these tools installed on your machine before proceeding to the next step of this guide.
 
-We highly encourage the community to create Terraform modules or other templates for different infrastructure providers to further decentralize the Ceramic network.
+To create a Digital Ocean Kuberetes cluster, follow an official [DigitalOcean tutorial](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/). The process of setting up your Kubernetes cluster will take about 10 minutes. Once it’s up and running, you are good to continue with the next step.
 
-## Running the daemon
+### Connect to your Kubernetes Cluster
 
----
+Once the cluster is up and running, you will be provided a command that you can use to authenticate your cluster on your local machine. You will be provided with a command unique to your cluster, but For example:
 
-The [js-ceramic](https://github.com/ceramicnetwork/js-ceramic) node is run as a daemon using Node.js or Docker.
+```doctl kubernetes cluster kubeconfig save 362dda8b-b555-4c47-9bf0-1a81cf58e0a8```
 
-By default, the Ceramic daemon runs bundled with a [go-ipfs](https://github.com/ipfs/go-ipfs) node and connects to the Clay testnet and Gnosis [Ceramic Anchor Service](https://github.com/ceramicnetwork/ceramic-anchor-service). In production, you should change these defaults to secure your data and accommodate your infrastructure setup.
+Run this command on your local machine using your local terminal. After authenticating, verify the connectivity:
 
-The Ceramic daemon can be configured with a JSON file which is created on start and located at `$HOME/.ceramic/daemon.config.json` by default (you can also point to a custom location for the config file using the `--config` flag when starting the Ceramic Daemon). See [example daemon.config.json](#example-daemonconfigjson) below.
+```kubectl config get-contexts```
 
-### Run with Docker containers
+### Deploy Ceramic
 
-Docker images to run Ceramic and IPFS are built from the source code of the [js-ceramic](https://github.com/ceramicnetwork/js-ceramic) and [go-ipfs-daemon](https://github.com/ceramicnetwork/go-ipfs-daemon) repositories respectively. Images built from the main branches are tagged with `latest` and the git commit hash from which the image was built. You can view the image builds of [js-ceramic on DockerHub](https://hub.docker.com/r/ceramicnetwork/js-ceramic). The Docker image for `go-ipfs-daemon` pre-configures IPFS with plugins that make it easy to run on cloud infrastructure. You can view the image builds for [go-ipfs-daemon on DockerHub](https://hub.docker.com/r/ceramicnetwork/go-ipfs-daemon).
+Running a Ceramic node will require configuring three components:
+- `ceramic-one` - a binary which contains the Ceramic Recon protocol implementation in Rust
+- `js-ceramic` - component which provides the API interface for Ceramic applications
+- `postgres` - a database used for indexing
 
-### Run outside of containers
+To simplify the configuration of all these services, you can use the [SimpleDeploy](https://github.com/ceramicstudio/simpledeploy/tree/main), a set of infra scripts that will make the configuration process faster and easier.
 
-If you would like to run Ceramic and IPFS outside of containers or on bare metal, start by installing [go-ipfs](https://github.com/ipfs/go-ipfs) (**version 0.12 or later**). Depending on your infrastructure setup you may consider building `go-ipfs` with the [healthcheck plugin](https://github.com/ceramicnetwork/go-ipfs-healthcheck) and [S3 datastore plugin](https://github.com/3box/go-ds-s3). Once IPFS is installed, configure it to use pubsub, which Ceramic relies on for message passing. This can be done by running the IPFS daemon with the `--enable-pubsub-experiment` flag or modifying the configuration by running `ipfs config --json Pubsub.Enabled true` (learn more in the [IPFS docs](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#ipfs-pubsub)). Next you can run IPFS and install the Ceramic daemon with the [js-ceramic CLI](https://www.npmjs.com/package/@ceramicnetwork/cli), which is available as a public NPM module. It is currently compatible with **Node.js versions 14 and 16.**
+1. Clone the [simpledeploy](https://github.com/ceramicstudio/simpledeploy.git) repository and enter the created directory:
 
-## Data Persistence
-
-To run a Ceramic node in production, it is critical to persist the [Ceramic state store](#ceramic-state-store) and the [IPFS datastore](https://github.com/ipfs/go-ipfs/blob/master/docs/config.md#datastorespec). The form of storage you choose should also be configured for disaster recovery with data redundancy, and some form of snapshotting and/or backups.
-
-**With ComposeDB**
-
-Additionally, if using ComposeDB, your persistence strategy also needs to account for backups/snapshotting of your Postgres instance. In this case, your backup process should implement the following order:
-
-1. Snapshot your Postgres instance first
-2. State store
-3. IPFS block store
-
-Leveraging this order guarantees that the higher-level subsystems won't know about data that the lower-level subsystems are missing in the backup.
-
-**Loss of this data can result in permanent loss of Ceramic streams and will cause your node to be in a corrupt state.**
-
-The Ceramic state store and IPFS datastore are stored on your machine's filesystem by default. The Ceramic state store defaults to `$HOME/.ceramic/statestore`. The IPFS datastore defaults to `ipfs/blocks` located wherever you run IPFS.
-
-The fastest way to ensure data persistence is by mounting a persistent volume to your instances and configuring the Ceramic and IPFS nodes to write to the mount location. The mounted volume should be configured such that the data persists if the instance shuts down.
-
-#### IPFS Datastore
-
-The IPFS datastore stores the raw IPFS blocks that make up Ceramic streams. To prevent data corruption, use environment variables written to your profile file, or otherwise injected into your environment on start so that the datastore location does not change between reboots.
-
-Note: Switching between data storage locations is an advanced feature and should be avoided. Depending on the sharding implementation you may need to do a data migration first. See [https://github.com/ipfs/go-ipfs/blob/master/docs/config.md#datastorespec](https://github.com/ipfs/go-ipfs/blob/master/docs/config.md#datastorespec) for more information.
-
-#### Ceramic State Store
-
-The Ceramic state store holds state for pinned streams and the acts as a cache for the Ceramic streams that your node creates or loads. To ensure that the data you create with your Ceramic node does not get lost you must pin streams you care about and you must ensure that the state store does not get deleted.
-
-
-## Examples
-
----
-
-### Example with Docker containers
-
-```bash
-docker pull ceramicnetwork/go-ipfs-daemon:latest
-
-# Use this snippet to keep the datastore in the volume
-docker run \
-  -p 5001:5001 \ # API port
-  -p 8011:8011 \ # Healthcheck port
-  -v /path_on_volume_for_ipfs_repo:/data/ipfs \
-  --name ipfs \
-  go-ipfs-daemon
-
-# Get the IP address
-docker inspect -f \
-  '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' \
-  ipfs
+```
+git clone https://github.com/ceramicstudio/simpledeploy.git
+cd simpledeploy
 ```
 
-Before running the Ceramic daemon, configure it to use IPFS in "remote" mode. See [example daemon.config.json](#example-daemonconfigjson) below.
+2. Create a namespace for the nodes:
 
-```bash
-docker pull ceramicnetwork/js-ceramic:latest
-
-# Use this snippet to keep the statestore in a volume
-docker run -d \
-  -p 7007:7007 \
-  -v /path_on_volume_for_daemon_config:/root/.ceramic/daemon.config.json \
-  -v /path_on_volume_for_ceramic_logs:/root/.ceramic/logs \
-  -v /path_on_volume_for_ceramic_statestore:/root/.ceramic/statestore \
-  -e NODE_ENV=production \
-  --name js-ceramic \
-  ceramicnetwork/js-ceramic:latest
-
-### Example without containers
-
-After installation, both daemons can be run from the command line
-
-```bash
-ipfs init
-ipfs daemon
+```
+export CERAMIC_NAMESPACE=ceramic-one-0-17-0
+kubectl create namespace ${CERAMIC_NAMESPACE}
 ```
 
-Before running the Ceramic daemon, configure it to use IPFS in "remote" mode. See [example daemon.config.json](#example-daemonconfigjson) below.
+3. Create ephemereal secrets for js-ceramic and postgres
+
+```
+./scripts/create-secrets.sh
+```
+
+4. Apply manifests:
+
+```
+kubectl apply -k .
+```
+
+5. Wait for the pods to stat. It will take a few minutes for the deployment to pull the docker images and start the containers. You can watch the process with the following command:
+
+```
+kubectl get pods --watch --namespace ceramic-one-0-17-0
+```
+
+You will know that your deployment is up and running when all of the processes have a status `Running` as follows:
 
 ```bash
-ceramic daemon
+NAME           READY   STATUS    RESTARTS    AGE
+js-ceramic-0   0/1     Running   0           77s
+ceramic-one-0  1/1     Running   0           77s
+postgres-0     1/1     Running   0           77s
 ```
 
-### Example daemon.config.json
+Hit `^C` on your keyboard to exit this view.
 
-```json
-{
-    "anchor": {
-        "ethereum-rpc-url": "https://eg_infura_endpoint" // Replace with an Ethereum RPC endpoint to avoid rate limiting
-    },
-    "http-api": {
-        "cors-allowed-origins": [
-            ".*"
-        ]
-    },
-    "ipfs": {
-        "mode": "remote",
-        "host": "http://ipfs_ip_address:5001"
-    },
-    "logger": {
-        "log-level": 2, // 0 is most verbose
-        "log-to-files": true
-    },
-    "network": {
-        "name": "mainnet", // Connect to mainnet, testnet-clay, or dev-unstable
-    },
-    "node": {},
-    "state-store": {
-        "mode": "fs",
-        "local-directory": "/path_for_ceramic_statestore", // Defaults to $HOME/.ceramic/statestore
-    }
-}
-```
+:::note
 
-## Get connected to the network
+You can easily access the logs of each of the containers by using the command below and configuring the container name. For example, to access the Ceramic node logs, you can run:
 
----
+`kubectl logs --follow --namespace ceramic-one-0-17-0 js-ceramic-0`
+
+:::
 
 ### Connecting to Ceramic
 
@@ -189,40 +139,127 @@ The Ceramic daemon serves an HTTP API that clients use to interact with your Cer
     Healthchecks can be run against the API endpoint `/api/v0/node/healthcheck`.
 :::
 
-### Staying connected to IPFS
-
-Ceramic nodes rely on IPFS for networking. IPFS nodes connect to each other using a Libp2p module called "switch" (aka "swarm"). This module operates over a websocket, on port `4011` by default. The websocket port must be accessible to the internet so your Ceramic node can be connected to the network.
-
-:::caution
-
-    Healthchecks can be run against the `HEALTHCHECK_PORT` (port `8011` by default) when `HEALTHCHECK_ENABLED` is `true`.
-:::
-
-Additionally, when running IPFS the IPFS API port must be accessible by the Ceramic node. The default API port is `5001`. The IPFS node address will then be passed to Ceramic with the `ipfs.host` option in the Ceramic daemon config file.
 
 ### Connect to the mainnnet anchor service
+By default, your Ceramic node will connect to the Ceramic  `clay-testnet`. In order to connect your application to the mainnet, you will have to configure your node and verify you node DID for using the Ceramic Anchor Service (CAS). You can find a detailed step-by-step guide [here](../../../../composedb/guides/composedb-server/access-mainnet).
 
-For nodes that wish to connect to Ceramic mainnet, the node's IP address will have to be added to the allowlist for the Ceramic Anchor Service node operated by 3BoxLabs. Once you have fully configured your Ceramic node with this guide and have a way to persist its configuration and state, open an issue in the [Ceramic Anchor Allowlist Repo](https://github.com/3box/ceramic-anchor-allowlist) with the public, static *egress* IP address for your Ceramic node, and a brief description of the data persistence setup for the multiaddress, Ceramic State Store, and IPFS Repo. Once your issue is closed, you will be connected to the Ceramic network and the [Ceramic Anchor Service](https://github.com/ceramicnetwork/ceramic-anchor-service).
 
-Nodes that wish to connect to other Ceramic networks, such as the clay testnet, do not need to do anything special to gain access to the Ceramic Anchor Service.  The Anchor Service for the `testnet-clay` network is open to everyone and does not have an IP allowlist like the mainnet service does.
 
-:::caution
+---
 
-    Mainnet nodes will not run immediately after start up until your pull request is reviewed and your IP address is added to the allow list for the 3Box Labs hosted anchor service.
+### Example with Docker containers
+
+All state in this configuration is ephemeral, for persistence use docker-compose.
+
+1. Start ceramic-one using the host network
+
+```json
+docker run --network=host \
+  public.ecr.aws/r5b3e0r5/3box/ceramic-one:latest
+```
+
+2. Start js-ceramic using the host network
+
+```json
+docker run --network=host ceramicnetwork/js-ceramic:develop
+```
+
+### Docker-compose
+
+1. Create a testing directory, and enter it.
+
+```yaml
+mkdir ceramic-recon
+cd ceramic-recon
+```
+
+2. Create a file colled `docker-compose.yaml` with the configuration shown in the example below and save it:
+
+```
+version: '3.8'
+
+services:
+  ceramic-one:
+    image: public.ecr.aws/r5b3e0r5/3box/ceramic-one:0.19.0
+    network_mode: "host"
+    volumes:
+      - ceramic-one-data:/root/.ceramic-one
+
+  js-ceramic:
+    image: ceramicnetwork/js-ceramic:develop
+    environment:
+      - CERAMIC_RECON_MODE=true
+    network_mode: "host"
+    volumes:
+      - js-ceramic-data:/root/.ceramic
+      - ./daemon.config.json:/root/.ceramic/daemon.config.json
+    command: --ipfs-api http://localhost:5001
+
+volumes:
+  ceramic-one-data:
+    driver: local
+  js-ceramic-data:
+    driver: local
+```
+
+3. Update the js-ceramic configuration file `daemon.config.json` with the configurations provided below.
+
+:::note
+The js-ceramic configuration file can be found using the following path: `$HOME/.ceramic/daemon.config.json `
 :::
 
-## Observability
+
+```json
+{
+  "anchor": {
+    "auth-method": "did"
+  },
+  "http-api": {
+    "cors-allowed-origins": [
+      ".*"
+    ],
+    "admin-dids": [
+    ]
+  },
+  "ipfs": {
+    "mode": "remote",
+    "host": "http://localhost:5001"
+  },
+  "logger": {
+    "log-level": 2,
+    "log-to-files": false
+  },
+  "metrics": {
+    "metrics-exporter-enabled": false,
+    "prometheus-exporter-enabled": true,
+    "prometheus-exporter-port": 9465
+  },
+  "network": {
+    "name": "testnet-clay"
+  },
+  "node": {   },
+  "state-store": {
+    "mode": "fs",
+    "local-directory": "/root/.ceramic/statestore/"
+  },
+  "indexing": {
+    "db": "sqlite://root/.ceramic/db.sqlite3",
+    "allow-queries-before-historical-sync": true,
+    "disable-composedb": false,
+    "enable-historical-sync": false
+  }
+}
+```
+
+3. Run `docker-compose up -d`
+
 
 ---
 
-Ceramic has a debug mode that you can enable using the `--debug` flag. This will allow you to see all logs printed to your console, including debug logs, API requests, events, and errors.
 
-For observability, it is best to have these logs written to files to debug any issues and to generate metrics. Logging to files can be enabled with the `logger.log-to-files` config file option. The default location for logs is `~/.ceramic/logs` but this path can be configured with the `logger.log-directory` config file option. Even without debug mode enabled you will still get critical logs and metrics written to files.
 
-Request and event logs are written in [logfmt](https://brandur.org/logfmt). This makes them easy to import into [Grafana](https://grafana.com/) dashboards using a log scraping agent like [Promtail](https://grafana.com/docs/loki/latest/clients/promtail/) and a log aggregator like [Loki](https://grafana.com/docs/loki/latest/), which can be used as a data source for Grafana. An example of such a setup can be found [here](https://github.com/3box/ceramic-stats).
 
-## Next steps
 
----
 
-Congratulations! You have now set up a well-connected Ceramic node in the cloud which can receive HTTP requests from the local environment, the [JS HTTP Client](../ceramic-clients/javascript-clients/ceramic-http.md), or to simply serve as another node to replicate and pin streams. Please report any bugs as issues on the [JS Ceramic GitHub](https://github.com/ceramicnetwork/js-ceramic).
+
+

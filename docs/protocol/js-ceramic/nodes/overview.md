@@ -1,26 +1,14 @@
 # Nodes Overview
 ---
-Two types of nodes currently work together to support the Ceramic network.
 
 ## Ceramic Nodes
 
----
-
 A Ceramic node is a bundle of services and long-lived processes that support the protocol and provide access to the Ceramic Network. Current implementations bundle and run most all of the following services and sub protocols defined here. This includes the following:
 
-### IPFS Services
-
-The following services are typically provided to a Ceramic node by a connected IPFS node. These services do not necessarily have to be provided through an IPFS node or all bundled together.
-
-| IPLD Blockstore | Stores the underlying IPLD blocks for event streams. Supports block formatting and content addressing.  |
-| --- | --- |
-| Gossipsub | Several layers of the libp2p stack are used including GossipSub to query streams and broadcast stream updates in the network. |
-| Kademlia DHT | A distributed hash table for content and peer lookup and discovery. The same DHT table is used as the primary IPFS network.  |
-| Bitswap | Exchange and sync blocks with peers. Allows an event stream to be sycned from one node to another. |
 
 ### **Ceramic Services**
 
-| Pinning | Tracks the streams a node wants to store and to receive the latest events for.  |
+| Service | Description |
 | --- | --- |
 | StateStore | Tracks and stores the latest tips for pinned streams and caches stream state.  |
 | Networking | Runs the stream query and update protocols on Gossipsub and manages peer connections.  |
