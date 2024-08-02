@@ -19,7 +19,7 @@ When you start the daemon using the `ceramic daemon` command, if a configuration
     },
     "ipfs": {
         "mode": "remote",
-        "host": "http://ipfs_ip_address:5001"
+        "host": "http://ipfs_ip_address:5101"
     },
     "logger": {
         "log-level": 2, // 0 is most verbose
@@ -201,8 +201,7 @@ By default, Ceramic nodes will only index documents they observe using pubsub me
 
 | Name | Description | Default value? |
 | --- | --- | --- |
-| bundled | IPFS running in same compute process as Ceramic; recommended for early prototyping | ✅ |
-| remote | IPFS running in separate compute process; recommended for production and everything besides early prototyping |  |
+| remote | IPFS running in separate compute process; recommended for production and everything besides early prototyping | ✅  |
 
 ### Persistent Storage
 To run a Ceramic node in production, it is critical to persist the [Ceramic state store](../../../protocol/js-ceramic/guides/ceramic-nodes/running-cloud#ceramic-state-store) and the [IPFS datastore](https://github.com/ipfs/go-ipfs/blob/master/docs/config.md#datastorespec). The form of storage you choose should also be configured for disaster recovery with data redundancy, and some form of snapshotting and/or backups.
