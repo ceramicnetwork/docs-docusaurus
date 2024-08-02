@@ -79,11 +79,11 @@ Running a Ceramic node will require configuring three components:
 
 To simplify the configuration of all these services, you can use the [SimpleDeploy](https://github.com/ceramicstudio/simpledeploy/tree/main), a set of infra scripts that will make the configuration process faster and easier.
 
-1. Clone the [simpledeploy](https://github.com/ceramicstudio/simpledeploy.git) repository and enter the created directory:
+1. Clone the [simpledeploy](https://github.com/ceramicstudio/simpledeploy.git) repository and enter `ceramic-one` folder of the created directory:
 
 ```
 git clone https://github.com/ceramicstudio/simpledeploy.git
-cd simpledeploy
+cd simpledeploy/k8s/base/ceramic-one
 ```
 
 2. Create a namespace for the nodes:
@@ -105,7 +105,7 @@ kubectl create namespace ${CERAMIC_NAMESPACE}
 kubectl apply -k .
 ```
 
-5. Wait for the pods to stat. It will take a few minutes for the deployment to pull the docker images and start the containers. You can watch the process with the following command:
+5. Wait for the pods to start. It will take a few minutes for the deployment to pull the docker images and start the containers. You can watch the process with the following command:
 
 ```
 kubectl get pods --watch --namespace ceramic-one-0-17-0
@@ -115,8 +115,10 @@ You will know that your deployment is up and running when all of the processes h
 
 ```bash
 NAME           READY   STATUS    RESTARTS    AGE
-js-ceramic-0   0/1     Running   0           77s
 ceramic-one-0  1/1     Running   0           77s
+ceramic-one-1  1/1     Running   0           77s
+js-ceramic-0   1/1     Running   0           77s
+js-ceramic-1   1/1     Running   0           77s
 postgres-0     1/1     Running   0           77s
 ```
 
@@ -130,14 +132,26 @@ You can easily access the logs of each of the containers by using the command be
 
 :::
 
-### Connecting to Ceramic
+### Accessing your node
 
-The Ceramic daemon serves an HTTP API that clients use to interact with your Ceramic node. The default API port is `7007`. Make sure this port is available to all clients you plan to use for your application.
+The Ceramic daemon serves an HTTP API that clients use to interact with your Ceramic node. The default API port is `7007`. SimpleDeploy scripts include a Load Balancer configuration for `js-ceramic` and `ceramic-one` pods which allows you to expose the service to the outside world and interact with your node using an external IP. For example, you can access the external IP of the `js-ceramic` pod using the following command:
 
-:::caution
+`kubectl get svc --namespace ceramic-one-0-17-0 js-ceramic-lb-1`
 
-    Healthchecks can be run against the API endpoint `/api/v0/node/healthcheck`.
-:::
+After running this command you will see an output similar to the following:
+
+```bash
+NAME              TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)          AGE
+js-ceramic-lb-1   LoadBalancer   10.245.205.115   152.42.151.112   7007:30614/TCP   18m
+```
+
+The `EXTERNAL-IP` can be used to accessing your `js-ceramic` node. To test it out, copy the external IP address provided above and substitute it in the following health check command:
+
+`curl 152.42.151.112:7007/api/v0/node/healthcheck`
+
+You should see the output stating that the connection is alive:
+
+`Alive!`
 
 
 ### Connect to the mainnnet anchor service
@@ -193,7 +207,7 @@ services:
     volumes:
       - js-ceramic-data:/root/.ceramic
       - ./daemon.config.json:/root/.ceramic/daemon.config.json
-    command: --ipfs-api http://localhost:5001
+    command: --ipfs-api http://localhost:5101
 
 volumes:
   ceramic-one-data:
@@ -223,7 +237,7 @@ The js-ceramic configuration file can be found using the following path: `$HOME/
   },
   "ipfs": {
     "mode": "remote",
-    "host": "http://localhost:5001"
+    "host": "http://localhost:5101"
   },
   "logger": {
     "log-level": 2,

@@ -49,7 +49,7 @@ In this section we will show how to create a composite by downloading models fro
 You can fetch any existing model from the catalog by referencing the model’s unique ID. For example, for your basic social media app, use the existing model `SimpleProfile`. To fetch the model, to your working directory, take note of the model stream ID in the table above and run the following command:
 
 ```bash
-composedb composite:from-model kjzl6hvfrbw6c5ajfmes842lu09vjxu5956e3xq0xk12gp2jcf9s90cagt2god9 --ceramic-url=http://localhost:7007 --output=my-first-composite.json
+composedb composite:from-model kjzl6hvfrbw6c5bf2jmwo9scp1ctkqvs5nru1jfjb1dgqqnf90sycptlztjdfep --ceramic-url=http://localhost:7007 --output=my-first-composite.json
 ```
 
 You should see the following output in your terminal:
@@ -65,7 +65,7 @@ This output means that you now have the `SimpleProfile` model stored locally in 
 If your application needs multiple models, for example the `SimpleProfile` and `Post` models, you can. To fetch them, take note of the model stream IDs and provide them in a ComposeDB CLI command as follows:
 
 ```bash
-composedb composite:from-model kjzl6hvfrbw6c5ajfmes842lu09vjxu5956e3xq0xk12gp2jcf9s90cagt2god9 kjzl6hvfrbw6cb905umdi33gp1em1sp7b235z2h2orphj2p14by6llq9gwynsaf --ceramic-url=http://localhost:7007 --output=my-first-composite.json
+composedb composite:from-model kjzl6hvfrbw6c5bf2jmwo9scp1ctkqvs5nru1jfjb1dgqqnf90sycptlztjdfep kjzl6hvfrbw6c7gkodzmqq5s031yfo5xdllvcr1z0tumwl7kpml4gfe5gbwh2bg --ceramic-url=http://localhost:7007 --output=my-first-composite.json
 ```
 
 The output of this command will be a composite file named `my-first-composite.json`.
@@ -85,16 +85,16 @@ You should see the output similar to the one below:
 ```bash
 ℹ Using DID did:key:z6MkoDgemAx51v8w692aZRLPdwP6UPKj3EgUhBTvbL7hCwLu
 ✔ Deploying the composite... Done!
-["kjzl6hvfrbw6c5ajfmes842lu09vjxu5956e3xq0xk12gp2jcf9s90cagt2god9"]
+["kjzl6hvfrbw6c5bf2jmwo9scp1ctkqvs5nru1jfjb1dgqqnf90sycptlztjdfep"]
 ```
 
 Whenever composites are deployed, the models will be automatically indexed. This also means that these models are shared across the network (at the moment, only Clay testnet). If you check the output produced by the terminal that runs your Ceramic local node, you should see a similar output:
 
 ```bash
-IMPORTANT: Starting indexing for Model kjzl6hvfrbw6c5ajfmes842lu09vjxu5956e3xq0xk12gp2jcf9s90cagt2god9
-IMPORTANT: Starting indexing for Model kjzl6hvfrbw6cb905umdi33gp1em1sp7b235z2h2orphj2p14by6llq9gwynsaf
-IMPORTANT: Creating ComposeDB Indexing table for model: kjzl6hvfrbw6c5ajfmes842lu09vjxu5956e3xq0xk12gp2jcf9s90cagt2god9
-IMPORTANT: Creating ComposeDB Indexing table for model: kjzl6hvfrbw6cb905umdi33gp1em1sp7b235z2h2orphj2p14by6llq9gwynsaf
+IMPORTANT: Starting indexing for Model kjzl6hvfrbw6c5bf2jmwo9scp1ctkqvs5nru1jfjb1dgqqnf90sycptlztjdfep
+IMPORTANT: Starting indexing for Model kjzl6hvfrbw6c7gkodzmqq5s031yfo5xdllvcr1z0tumwl7kpml4gfe5gbwh2bg
+IMPORTANT: Creating ComposeDB Indexing table for model: kjzl6hvfrbw6c5bf2jmwo9scp1ctkqvs5nru1jfjb1dgqqnf90sycptlztjdfep
+IMPORTANT: Creating ComposeDB Indexing table for model: kjzl6hvfrbw6c7gkodzmqq5s031yfo5xdllvcr1z0tumwl7kpml4gfe5gbwh2bg
 ```
 
 This means that the composite was deployed and the models were indexed on your local node successfully! 🎉

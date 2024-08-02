@@ -23,6 +23,7 @@ The easiest way to to run ComposeDB server on your local machine is using [Wheel
 - Node.js
 - jq
 - PostgreSQL (optional dependent on the network)
+- [ceramic-one](../../set-up-your-environment.mdx#2-installation) node up and running
 
 Head to [Setup Your Environment](../../set-up-your-environment.mdx#install-the-dependencies) section for more detailed dependency installation instructions.
 
@@ -34,7 +35,16 @@ Head to [Setup Your Environment](../../set-up-your-environment.mdx#install-the-d
 
 
 ### Setup
-First, download the Wheel:
+
+First, install and run the `ceramic-one` binary:
+```bash
+brew install ceramicnetwork/tap/ceramic-one
+```
+```bash
+ceramic-one daemon
+```
+
+Next, download the Wheel:
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ceramicstudio/wheel/main/wheel.sh | bash
@@ -77,6 +87,14 @@ For Windows, Windows Subsystem for Linux 2 (WSL2) is strongly recommended. Using
 :::
 
 ###  Installation
+
+Install and run the `ceramic-one` binary:
+```bash
+brew install ceramicnetwork/tap/ceramic-one
+```
+```bash
+ceramic-one daemon
+```
 
 Install the Ceramic CLI and ComposeDB CLI using npm:
 
