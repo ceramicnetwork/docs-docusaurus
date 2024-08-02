@@ -79,11 +79,11 @@ Running a Ceramic node will require configuring three components:
 
 To simplify the configuration of all these services, you can use the [SimpleDeploy](https://github.com/ceramicstudio/simpledeploy/tree/main), a set of infra scripts that will make the configuration process faster and easier.
 
-1. Clone the [simpledeploy](https://github.com/ceramicstudio/simpledeploy.git) repository and enter the created directory:
+1. Clone the [simpledeploy](https://github.com/ceramicstudio/simpledeploy.git) repository and enter `ceramic-one` folder of the created directory:
 
 ```
 git clone https://github.com/ceramicstudio/simpledeploy.git
-cd simpledeploy
+cd simpledeploy/k8s/base/ceramic-one
 ```
 
 2. Create a namespace for the nodes:
@@ -105,7 +105,7 @@ kubectl create namespace ${CERAMIC_NAMESPACE}
 kubectl apply -k .
 ```
 
-5. Wait for the pods to stat. It will take a few minutes for the deployment to pull the docker images and start the containers. You can watch the process with the following command:
+5. Wait for the pods to start. It will take a few minutes for the deployment to pull the docker images and start the containers. You can watch the process with the following command:
 
 ```
 kubectl get pods --watch --namespace ceramic-one-0-17-0
