@@ -81,7 +81,8 @@ cd simpledeploy/k8s/base/ceramic-one
 2. Run the following commands to deploy the stack:
 ```
 # Create a namespace for the deployment
-kubectl create namespace ceramic-one-0-17-0
+export CERAMIC_NAMESPACE=ceramic-one-0-17-0
+kubectl create namespace ${CERAMIC_NAMESPACE}
 
 # Create the necessary secrets
 ./scripts/create-secrets.sh
