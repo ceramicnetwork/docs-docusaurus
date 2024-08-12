@@ -55,21 +55,7 @@ export default function Home() {
                 }}
               >
                 <div>
-                <a href="https://useorbis.com/" target="_blank">
-                    Get started with OrbisDB{" "}
-                    <svg
-                      width="13.5"
-                      height="13.5"
-                      aria-hidden="true"
-                      viewBox="0 0 24 24"
-                      class="iconExternalLink_node_modules--pnpm-@docusaurus+theme-classic@3-0-0_@types+react@18-2-37_eslint@8-53-0_react-dom@18-2-0_react@18-2-0_typescript@5-2-2-node_modules-@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"
-                      ></path>
-                    </svg>
-                  </a>
+                <a href="/docs/orbisdb/overview">Getting Started with OrbisDB → </a>
                 </div>
               </div>
             </div>
