@@ -4,7 +4,7 @@ import styles from "./homeNavBoxes.module.css";
 
 const FeatureList = [
   {
-    title: "Orbis →",
+    title: "OrbisDB →",
     items: [
       {
         url: "https://useorbis.com/",

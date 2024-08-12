@@ -40,35 +40,9 @@ export default function Home() {
                 background: "linear-gradient(215deg, var(--ifm-color-primary) -33%, var(--box-color) 50%)"
               }}
             >
-              <h3>Build with ComposeDB</h3>
-              <div>A decentralized, composable graph database to build interoperable applications on Ceramic.</div>
-              <div
-                style={{
-                  display: "flex",
-                  columnGap: "24px",
-                  rowGap: "4px",
-                  width: "100%",
-                  flexWrap: "wrap",
-                  padding: "16px 0 0",
-                  fontWeight: "500"
-                }}
-              >
-                <div>
-                  <a href="/docs/composedb/getting-started">Getting Started →</a>
-                </div>
-              </div>
-            </div>
-            <div
-              className={styles.productCard}
-              style={{
-                background: "linear-gradient(215deg, #660094 -33%, var(--box-color) 50%)"
-              }}
-            >
               <h3>Build with OrbisDB</h3>
-              <div>
-                OrbisDB is an advanced decentralized database built on the Ceramic Data Network. It comes with a set of
-                plugins allowing unlimited customization options.
-              </div>
+              <div>OrbisDB is an advanced decentralized database built on the Ceramic Data Network. It comes with a set of
+                plugins allowing unlimited customization options.</div>
               <div
                 style={{
                   display: "flex",
@@ -81,7 +55,7 @@ export default function Home() {
                 }}
               >
                 <div>
-                  <a href="https://useorbis.com/" target="_blank">
+                <a href="https://useorbis.com/" target="_blank">
                     Get started with OrbisDB{" "}
                     <svg
                       width="13.5"
@@ -96,6 +70,32 @@ export default function Home() {
                       ></path>
                     </svg>
                   </a>
+                </div>
+              </div>
+            </div>
+            <div
+              className={styles.productCard}
+              style={{
+                background: "linear-gradient(215deg, #660094 -33%, var(--box-color) 50%)"
+              }}
+            >
+              <h3>Build with ComposeDB</h3>
+              <div>
+                A decentralized, composable graph database to build interoperable applications on Ceramic.
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  columnGap: "24px",
+                  rowGap: "4px",
+                  width: "100%",
+                  flexWrap: "wrap",
+                  padding: "16px 0 0",
+                  fontWeight: "500"
+                }}
+              >
+                <div>
+                  <a href="/docs/composedb/getting-started">Getting Started → </a>
                 </div>
               </div>
             </div>

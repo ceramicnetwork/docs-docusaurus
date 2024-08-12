@@ -8,7 +8,9 @@ Ceramic is a decentralized data network that powers an ecosystem of interoperabl
 ## Introduction to Ceramic
 ---
 
-- Head to the [**ComposeDB**](./composedb-overview.md) section to learn more about the stream-level layer of Ceramic network
+- Head to the [**OrbisDB**](./orbisdb-overview.md) section to learn more about the database products built on Ceramic that allow you to easily interact with the data stored on Ceramic using a simple and familiar SQL-based interface.
+
+- Head to the [**ComposeDB**](./composedb-overview.md) section to learn more about stream-level Ceramic functionality.
 
 - Head to the [**Ceramic Protocol**](./protocol-overview.md) section to learn about lower-level Ceramic functionality
 
@@ -17,6 +19,10 @@ Ceramic is a decentralized data network that powers an ecosystem of interoperabl
 ## Build Applications
 
 ---
+
+### [**OrbisDB: advanced decentralized database with SQL interface→**](./orbisdb-overview.md)
+OrbisDB is an advanced decentralized database built on the Ceramic Data Network. It comes with a set of plugins allowing unlimited customization options.
+
 
 ### [**ComposeDB: Graph DB for Web3 Apps →**](../composedb/getting-started)
 
