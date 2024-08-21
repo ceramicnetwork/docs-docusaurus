@@ -214,7 +214,7 @@ As an example, let’s reuse the `merged-composite.json` file from the previous 
   <TabItem value="cli">
 
 ```bash
-composedb composite:extract-model merged-composite.json kjzl6hvfrbw6c7keo17n66rxyo21nqqaa9lh491jz16od43nokz7ksfcvzi6bwc --output=new-composite.json
+composedb composite:extract-model merged-composite.json kjzl6hvfrbw6c5i55ks5m4hhyuh0jylw4g7x0asndu97i7luts4dfzvm35oev65 --output=new-composite.json
 ```
 
   </TabItem>
@@ -228,7 +228,7 @@ import { readEncodedComposite, writeEncodedComposite } from '@composedb/devtools
 const ceramic = new CeramicClient('http://localhost:7007')
 const sourceComposite = await readEncodedComposite(ceramic, 'merged-composite.json')
 
-const mergedComposite = sourceComposite.copy(['kjzl6hvfrbw6c7keo17n66rxyo21nqqaa9lh491jz16od43nokz7ksfcvzi6bwc'])
+const mergedComposite = sourceComposite.copy(['kjzl6hvfrbw6c5i55ks5m4hhyuh0jylw4g7x0asndu97i7luts4dfzvm35oev65'])
 await writeEncodedComposite(mergedComposite, 'new-composite.json')
 ```
   </TabItem>
@@ -252,8 +252,8 @@ To manually set aliases for your models, add the following section to your compo
 
 ```jsx
 "aliases":{
-      "kjzl6hvfrbw6c7keo17n66rxyo21nqqaa9lh491jz16od43nokz7ksfcvzi6bwc":"SimpleProfile",
-      "kjzl6hvfrbw6c99mdfpjx1z3fue7sesgua6gsl1vu97229lq56344zu9bawnf96":"Post"
+      "kjzl6hvfrbw6c5i55ks5m4hhyuh0jylw4g7x0asndu97i7luts4dfzvm35oev65":"SimpleProfile",
+      "kjzl6hvfrbw6c822s0cj1ug59spj648ml8a6mbqaz91wx8zx3mlwi76tfh3u1dy":"Post"
    }
 ```
 
@@ -268,8 +268,8 @@ const ceramic = new CeramicClient('http://localhost:7007')
 const sourceComposite = await readEncodedComposite(ceramic, 'merged-composite.json')
 
 const newComposite = sourceComposite.setAliases({
-  'kjzl6hvfrbw6c7keo17n66rxyo21nqqaa9lh491jz16od43nokz7ksfcvzi6bwc': 'SimpleProfile',
-  'kjzl6hvfrbw6c99mdfpjx1z3fue7sesgua6gsl1vu97229lq56344zu9bawnf96': 'Post',
+  'kjzl6hvfrbw6c5i55ks5m4hhyuh0jylw4g7x0asndu97i7luts4dfzvm35oev65': 'SimpleProfile',
+  'kjzl6hvfrbw6c822s0cj1ug59spj648ml8a6mbqaz91wx8zx3mlwi76tfh3u1dy': 'Post',
 })
 await writeEncodedComposite(newComposite, 'new-composite.json')
 ```
@@ -278,8 +278,8 @@ This script will create a file named `new-composite.json` including model aliase
 
 ```jsx
 "aliases":{
-      "kjzl6hvfrbw6c7keo17n66rxyo21nqqaa9lh491jz16od43nokz7ksfcvzi6bwc":"SimpleProfile",
-      "kjzl6hvfrbw6c99mdfpjx1z3fue7sesgua6gsl1vu97229lq56344zu9bawnf96":"Post"
+      "kjzl6hvfrbw6c5i55ks5m4hhyuh0jylw4g7x0asndu97i7luts4dfzvm35oev65":"SimpleProfile",
+      "kjzl6hvfrbw6c822s0cj1ug59spj648ml8a6mbqaz91wx8zx3mlwi76tfh3u1dy":"Post"
    }
 ```
 
