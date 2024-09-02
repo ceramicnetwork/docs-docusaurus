@@ -17,6 +17,7 @@ const sidebars: SidebarsConfig = {
     { type: "doc", id: "introduction/why-ceramic", label: "Why Ceramic?" },
     {
       type: "category",
+      collapsible: true,
       collapsed: false,
       label: "Overview",
       items: [
