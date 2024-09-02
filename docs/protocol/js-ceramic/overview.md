@@ -13,7 +13,7 @@ The latest release of Ceramic has introduced a new Rust-based implementation of 
 
 
 The protocol doesn't prescribe how to interpret events found within streams; this is left to the applications consuming the streams. Some examples of this type of application are:
-- [OrbisDB](https://useorbis.com/)
+- [OrbisDB](../../orbisdb/overview.md)
 - [ComposeDB](../../composedb/getting-started)
 
 
