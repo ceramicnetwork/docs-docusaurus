@@ -108,13 +108,13 @@ An option to start your Ceramic daemon which will spin up the node using the Cer
 
 This section dives deeper into the Ceramic parameters you can configure when you choose `Advanced: Configure all ceramic options` option in your wheel prompt.
 
-### Bundled or Remote IPFS
+### Remote or Bundlesd IPFS
 
 An option to define if IFPS runs in the same compute process as Ceramic. You have two options to choose from:
 
-- Bundled - IPFS running in same compute process as Ceramic; recommended for early prototyping.
-- Remote - IPFS running in separate compute process; recommended for production and everything besides early prototyping.
-  This assumes that you have the IPFS process setup and can provide an IPFS Hostname.
+- Remote - IPFS running in separate compute process; recommended for all Ceramic versions that use `ceramic-one`. This configuration requires an IPFS Hostname. Default value is `http://localhost:5101`
+- Bundled - IPFS running in same compute process as Ceramic; used only with older Ceramic versions that use Kubo.
+
 
 ### State Store
 
