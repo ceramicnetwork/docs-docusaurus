@@ -65,9 +65,9 @@ export default function Home() {
                 background: "linear-gradient(215deg, #660094 -33%, var(--box-color) 50%)"
               }}
             >
-              <h3>Build with ComposeDB</h3>
+              <h3>Run nodes and explore the Ceramic protocol specificiation</h3>
               <div>
-                A decentralized, composable graph database to build interoperable applications on Ceramic.
+                Ceramic protocol specifications and APIs for creting streams, producting and cosuming events from streans and aggregating the stream state.
               </div>
               <div
                 style={{
@@ -81,7 +81,7 @@ export default function Home() {
                 }}
               >
                 <div>
-                  <a href="/docs/composedb/getting-started">Getting Started → </a>
+                  <a href="/docs/protocol/js-ceramic/overview">Getting Started → </a>
                 </div>
               </div>
             </div>
