@@ -17,12 +17,9 @@ const sidebars: SidebarsConfig = {
     { type: "doc", id: "introduction/why-ceramic", label: "Why Ceramic?" },
     {
       type: "category",
+      collapsible: true,
       collapsed: false,
       label: "Overview",
-      link: {
-        type: "doc",
-        id: "introduction/intro"
-      },
       items: [
         { type: "doc", id: "introduction/protocol-overview", label: "Ceramic Protocol" },
         { type: "doc", id: "introduction/orbisdb-overview", label: "OrbisDB" },

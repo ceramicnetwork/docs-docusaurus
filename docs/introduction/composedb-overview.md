@@ -1,15 +1,10 @@
 # ComposeDB
-![Introduction](/img/intro-dataverse.png)
 
 ComposeDB is a composable graph database built on [Ceramic](https://ceramic.network), designed for Web3 applications. 
+<p align="center">
+    <img src="/img/intro-dataverse.png" alt="Introduction" width="500"/>
+</p>
 
-### Use Cases
-| Use Case  | Examples  |
-|---|---|
-|__Decentralized identity__| `user profiles` `credentials` `reputation systems` |
-|__Web3 social__| `social graphs` `posts` `reactions` `comments` `messages` |
-|__DAO tools__| `proposals` `projects` `tasks` `votes` `contribution graphs` |
-|__Open information graphs__| `DeSci graphs` `knowledge graphs` `discourse graphs` |
 
 ### Why ComposeDB?
 
@@ -20,17 +15,22 @@ ComposeDB is a composable graph database built on [Ceramic](https://ceramic.netw
 -  Eliminate trust and guarantee data verifiability
 -  Scale your Web3 data infrastructure beyond L1 or L2 blockchains
 
+### Use Cases
+| Use Case  | Examples  |
+|---|---|
+|__Decentralized identity__| `user profiles` `credentials` `reputation systems` |
+|__Web3 social__| `social graphs` `posts` `reactions` `comments` `messages` |
+|__DAO tools__| `proposals` `projects` `tasks` `votes` `contribution graphs` |
+|__Open information graphs__| `DeSci graphs` `knowledge graphs` `discourse graphs` |
+
 ### Project Status: `Beta`
 
-ComposeDB officially entered `Beta` on February 28, 2023. What does this mean?
+Currently, ComposeDB is in `Beta`. What does this mean?
 
 - You can now build and deploy apps to production on mainnet! 
 - Core features like GraphQL APIs, reusable models, and data composability are available
 - We will continue to improve performance and add more features
 - We are not yet guaranteeing a 100% stable, bug-free platform
-
-If you want to provide feedback, request new features, or report insufficient performance, please [make a post on the Forum](https://forum.ceramic.network/), as we'd like to work with you.
-Thank you for being a ComposeDB pioneer and understanding that great Web3 protocols take time to mature.
 
 ---
 
@@ -43,10 +43,3 @@ Test example queries to ComposeDB directly in your browser.
 
 ### [Development Guides →](../composedb/guides)
 Learn about data modeling, application set up, and data interactions.
-<!-- Server Config-->
-
-### [Core concepts →](../composedb/core-concepts)
-Dive deeper into the ComposeDB protocol and its components.
-  
-### [Community →](../ecosystem/community)
-Connect with the ComposeDB developer community.
