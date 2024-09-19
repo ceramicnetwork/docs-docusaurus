@@ -13,7 +13,7 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Ceramic documentation" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.a66065bf.css">
-<script src="/assets/js/runtime~main.8ca3e60b.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.323f5197.js" defer="defer"></script>
 <script src="/assets/js/main.5698ac2d.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -100,9 +100,8 @@ You can choose one of the following options:</p>
 <h3 class="anchor anchorWithStickyNavbar_lHFp" id="bundled-or-remote-ipfs">Bundled or Remote IPFS<a href="#bundled-or-remote-ipfs" class="hash-link" aria-label="Direct link to Bundled or Remote IPFS" title="Direct link to Bundled or Remote IPFS">​</a></h3>
 <p>An option to define if IFPS runs in the same compute process as Ceramic. You have two options to choose from:</p>
 <ul>
-<li>Bundled - IPFS running in same compute process as Ceramic; recommended for early prototyping.</li>
-<li>Remote - IPFS running in separate compute process; recommended for production and everything besides early prototyping.
-This assumes that you have the IPFS process setup and can provide an IPFS Hostname.</li>
+<li>Remote - IPFS running in separate compute process; recommended for all Ceramic versions that use <code>ceramic-one</code>. This configuration requires an IPFS Hostname. Default value is <code>http://localhost:5101</code></li>
+<li>Bundled - IPFS running in same compute process as Ceramic; used only with older Ceramic versions that use Kubo.</li>
 </ul>
 <h3 class="anchor anchorWithStickyNavbar_lHFp" id="state-store">State Store<a href="#state-store" class="hash-link" aria-label="Direct link to State Store" title="Direct link to State Store">​</a></h3>
 <p>An option to choose where your data will be persisted. To run a Ceramic node in production, it is critical to persist the Ceramic state store
