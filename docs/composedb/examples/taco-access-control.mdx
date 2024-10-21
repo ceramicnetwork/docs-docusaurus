@@ -87,7 +87,7 @@ b. Domain
 c. EncryptedMessage
 d. ConditionContext
 
-The conditionContext is a way for developers to programmatically provide required data consumer authentication methods mapped to specific access conditions – all at decryption time.
+`conditionContext` is a way for developers to programmatically map methods for authenticating a data consumer to specific access conditions – all executable at decryption time. For example, if the condition involves proving ownership of a social account, authenticate via OAuth.
 
 ```TypeScript
 import {conditions, decrypt, Domain, encrypt, ThresholdMessageKit} from '@nucypher/taco';
