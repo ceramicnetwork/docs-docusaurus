@@ -82,10 +82,10 @@ const encryptedMessageHex = toHexString(messageKit.toBytes());
 
 Data consumers interact with the TACo API via the `decrypt` function. They include the following arguments:
 
-a. Provider
-b. Domain
-c. EncryptedMessage
-d. ConditionContext
+a. `provider`
+b. `domain`
+c. `encryptedMessage`
+d. `conditionContext`
 
 `conditionContext` is a way for developers to programmatically map methods for authenticating a data consumer to specific access conditions – all executable at decryption time. For example, if the condition involves proving ownership of a social account, authenticate via OAuth.
 
