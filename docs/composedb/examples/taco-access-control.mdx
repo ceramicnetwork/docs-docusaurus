@@ -10,7 +10,8 @@ TACo is a programmable encrypt/decrypt API for applications that handle sensitiv
 
 TACo is the first and only end-to-end encrypted data sharing layer in which access to data payloads is always collectively enforced by a distributed group. Today, over 120 service-providers permissionlessly run TACo clients. They independently validate whether a given data request satisfies pre-specified conditions, only then provisioning decryption material fragments for client-side assembly, decryption, and plaintext access. 
 
-TACo offers a flexible access control framework and language, in which access conditions can be configured individually or combined logically. This approach enables developers to chain conditions together and facilitates dynamic access flows. For example, predicting the input to one access condition on the output of a previous access condition can also be programmatically combined with on-chain (and off-chain) authentication methods. 
+TACo offers a flexible access control framework and language, in which access conditions can be configured individually and combined logically. Developers can compose dynamic access workflows for their users – for example, using 
+the sequential conditions feature to predicate the input to a given access condition on the output of a previous condition or call. Conditions may also be programmatically combined with both on-chain and off-chain authentication methods.  
 
 TACo’s encrypt/decrypt API – [taco-web](https://github.com/nucypher/taco-web) – is straightforward to integrate into any web app and usable in parallel with core Web3 infrastructure like Ceramic. 
 
