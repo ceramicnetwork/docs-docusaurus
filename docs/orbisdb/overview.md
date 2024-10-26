@@ -4,7 +4,7 @@
 
 ### How to get started?
 
-OrbisDB comes with an easy-to-use shared instance called [Orbis Studio](https://app.formo.so/orbisdb-access-hJ5VGyugmGigyVFyqdHJa) which provides developers with a user-friendly interface to start interacting with data stored on Ceramic and use a library of available plugins right away without worrying about managing the backend requirements. [**Get access to Orbis Studio in closed beta and start building using OrbisDB**](https://app.formo.so/orbisdb-access-hJ5VGyugmGigyVFyqdHJa).
+OrbisDB comes with an easy-to-use shared instance called [Orbis Studio](https://studio.useorbis.com/) which provides developers with a user-friendly interface to start interacting with data stored on Ceramic and use a library of available plugins right away without worrying about managing the backend requirements.
 
 
 

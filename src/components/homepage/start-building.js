@@ -22,9 +22,9 @@ const FeatureList = [
     ]
   },
   {
-    title: "ComposeDB →",
+    title: "Interact with Event Store SDK →",
     items: [
-      { url: "docs/composedb/getting-started", text: "Build composable dApps using a decentralised graph database." }
+      { url: "docs/composedb/getting-started", text: "Interact with Event Store's primitive APIs" }
     ]
   }
 ];

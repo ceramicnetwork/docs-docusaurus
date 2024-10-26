@@ -422,7 +422,7 @@ const config: Config = {
       },
       items: [
         {
-          to: "docs/introduction/intro",
+          to: "docs/introduction/why-ceramic",
           label: "Introduction"
         },
         {

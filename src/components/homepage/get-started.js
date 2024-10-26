@@ -13,7 +13,7 @@ const FeatureList = [
     ]
   },
   {
-    title: "ComposeDB Sandbox →",
+    title: "Sandbox →",
     items: [
       {
         url: "docs/composedb/sandbox",

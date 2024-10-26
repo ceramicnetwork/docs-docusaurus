@@ -1,14 +1,19 @@
 
 # Ceramic Protocol
 
-Ceramic is a decentralized event streaming protocol that enables developers to build decentralized databases, distributed compute pipelines, and authenticated data feeds, etc. Ceramic nodes can subscribe to subsets of streams forgoing the need of a global network state. This makes Ceramic an eventually consistent system (as opposed to strongly consistent like L1 blockchains), enabling web scale applications to be built reliably.
+Ceramic's event streaming protocol is a highly-scalable decentralized data infrastructure used for building all kinds of interoperable Web3 services and protocols, such as decentralized databases, distributed compute pipelines, and authenticated data feeds, etc. 
 
+Ceramic nodes can subscribe to subsets of streams forgoing the need of a global network state. This makes Ceramic an eventually consistent system (as opposed to strongly consistent like L1 blockchains), enabling web scale applications to be built reliably.
+
+<p align="center">
+    <img src="/img/ceramic-overview.png" alt="Introduction" width="500"/>
+</p>
 
 ## Core Components
 
 ---
 
-The Ceramic protocol consists of the following components:
+The Ceramic protocol consists of the following core components if playing an important role in the functionality and the decentralization of the network:
 
 - [**Streams →**](../protocol/js-ceramic/streams/streams-index)
 - [**Accounts →**](../protocol/js-ceramic/accounts/accounts-index.md)
@@ -17,37 +22,23 @@ The Ceramic protocol consists of the following components:
 - [**Ceramic Nodes →**](../protocol/js-ceramic/nodes/overview.md)
 
 
-## Specification Status
+## Ceramic Nodes
 
 ---
+Developers, building on Ceramic have to run a Ceramic node to provide data storage, compute, and bandwidth for their Ceramic application. Today there are no tokenized incentives for running a Ceramic node, but by running a node you can ensure the data for your app remains available while helping contribute to the network's decentralization. There are a few different ways of how you can run a Ceramic node:
 
-| Section | State |
-| --- | --- |
-| [1. Streams](../protocol/js-ceramic/streams/streams-index) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/streams/streams-index)** |
-| [1.1. Event Log](../protocol/js-ceramic/streams/event-log) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/streams/event-log)** |
-| [1.2. URI Scheme](../protocol/js-ceramic/streams/uri-scheme) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/streams/uri-scheme)** |
-| [1.3. Consensus](../protocol/js-ceramic/streams/consensus) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/streams/consensus)** |
-| [1.4. Lifecycle](../protocol/js-ceramic/streams/lifecycle) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/streams/lifecycle)** |
-| [2. Accounts](../protocol/js-ceramic/accounts/accounts-index) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/accounts/accounts-index)** |
-| [2.1. Decentralized Identifiers](../protocol/js-ceramic/accounts/decentralized-identifiers) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/accounts/decentralized-identifiers)** |
-| [2.2. Authorizations](../protocol/js-ceramic/accounts/authorizations) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/accounts/authorizations)** |
-| [2.3. Object-Capabilities](../protocol/js-ceramic/accounts/object-capabilities) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/accounts/object-capabilities)** |
-| [3. Networking](../protocol/js-ceramic/networking/networking-index) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/networking/networking-index)** |
-| [3.1. Tip Gossip](../protocol/js-ceramic/networking/tip-gossip) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/networking/tip-gossip)** |
-| [3.2. Tip Queries](../protocol/js-ceramic/networking/tip-queries) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/networking/tip-queries)** |
-| [3.3. Event Fetching](../protocol/js-ceramic/networking/event-fetching) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/networking/event-fetching)** |
-| [3.4. Network Identifiers](../protocol/js-ceramic/networking/networks) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/networking/networks)** |
-| [4. API](../protocol/js-ceramic/api) | **[<span styles="color:rgba(212, 76, 71, 1)">Missing</span>](../protocol/js-ceramic/api)** |
-| [5. Nodes](../protocol/js-ceramic/nodes/overview) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/nodes/overview)** |
+- [**Run Ceramic in the cloud**](../protocol/js-ceramic/guides/ceramic-nodes/running-cloud)
 
-#### **Legend**
+- [**Run Ceramic locally**](../protocol/js-ceramic/guides/ceramic-nodes/running-locally)
 
-| Spec state | Label |
-| --- | --- |
-| Unlikely to change in the foreseeable future. |  **<span styles="color:rgba(51, 126, 169, 1)">Stable</span>** |
-| All content is correct. Important details are covered. | **<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>** |
-| All content is correct. Details are being worked on. | **<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>** |
-| Do not follow. Important things have changed. | **<span styles="color:rgba(217, 115, 13, 1)">Incorrect</span>** |
-| No work has been done yet. | **<span styles="color:rgba(212, 76, 71, 1)">Missing</span>** |
+- [**Use one of the managed node solutions built by the Ceramic community**](https://hirenodes.io/)
 
+
+## Database products built on ceramic
+---
+Ceramic enables a number of database products that process and index data in various ways. Today, developers can already interact with the following existing solutions and build new ones:
+
+- [**OrbisDB**](./orbisdb-overview.md) - a database built on Ceramic that allows you to easily interact with the data stored on Ceramic using a simple and familiar SQL-based interface.
+
+- [**ComposeDB**](./composedb-overview.md) - a composable grapqh database built on Ceramic.
 
