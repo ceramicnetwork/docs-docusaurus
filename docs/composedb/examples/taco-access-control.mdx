@@ -1,0 +1,117 @@
+# TACo with ComposeDB
+
+*Store sensitive data on ComposeDB, using decentralized access control to enforce fine-grained decryption rights.*
+
+This guide explains how to integrate [TACo](https://docs.threshold.network/applications/threshold-access-control) into ComposeDB, which enables the storing and sharing of non-public data on Ceramic. A more detailed version of this tutorial is available [here](https://docs.threshold.network/app-development/threshold-access-control-tac/integration-guides/ceramic-+-taco). 
+
+## TACo Overview 
+
+TACo is a programmable encrypt/decrypt API for applications that handle sensitive user data, without compromising on privacy, security or decentralization. TACo offers a distinct alternative to centralized, permissioned, and TEE-dependent access control services.
+
+TACo is the first and only end-to-end encrypted data sharing layer in which access to data payloads is always collectively enforced by a distributed group. Today, over 120 service-providers permissionlessly run TACo clients. They independently validate whether a given data request satisfies pre-specified conditions, only then provisioning decryption material fragments for client-side assembly, decryption, and plaintext access. 
+
+TACo offers a flexible access control framework and language, in which access conditions can be configured individually and combined logically. Developers can compose dynamic access workflows for their users – for example, using 
+the sequential conditions feature to predicate the input to a given access condition on the output of a previous condition or call. Conditions may also be programmatically combined with both on-chain and off-chain authentication methods.  
+
+TACo’s encrypt/decrypt API – [taco-web](https://github.com/nucypher/taco-web) – is straightforward to integrate into any web app and usable in parallel with core Web3 infrastructure like Ceramic. 
+
+### Use Cases
+
+- **Social networks & Knowledge Bases:** Leverage Ceramic's verifiable credentials and TACo's credential-based decryption to ensure that private user-generated content is only viewable by those who are supposed to see it, and nobody else.
+
+- **IoT event streams:** Let data flow from sensors to legitimate recipients, without trusting an intermediary server to handle the routing and harvest sensitive (meta)data. For example, a medical professional can be issued a temporary access token if the output data from a patient's wearable device rises above a certain threshold.
+
+- **LLM chatbots:** Messages to and from a chatbot should be 100% private, not mined by a UX-providing intermediary. Harness Ceramic's web-scale transaction processing and TACo's per-message encryption/condition granularity to provide a smooth and safe experience for users of LLM interfaces.
+
+## Example Application & Repo
+
+The "TACo with ComposeDB Message Board [Application](https://github.com/nucypher/taco-composedb/tree/main)" is provided as an example and reference for developers – illustrating how TACo and ComposeDB can be combined in a browser-based messaging app. Once installed, a simple UI shows how messages can be encrypted by data producers with access conditions embedded, and how data consumers can view messages *only* if they satisfy those conditions. Launching the demo also involves running a local Ceramic node, to which TACo-encrypted messages are saved and immediately queryable by data requestors.
+
+The following sections explain the core components of TACo’s access control system – access conditions, encryption, and decryption. 
+
+### Specifying access conditions & authentication methods
+
+There are two ways in which a recipient, or data consumer, must prove their right to access the private data – (1) authentication and (2) condition fulfillment. The data producer must specify the authentication methods and condition(s) before encrypting the private data, as this configuration is embedded alongside the encrypted payload. 
+
+In the example snippet below, we are using RPC conditions. The function will check the *data consumer’s* Ethereum wallet balance, which they prove ownership of via the chosen authentication method – in this case via a EIP4361 (Sign-In with Ethereum) message. Note that this message has already been solicited and utilized by the application, analogous to single-sign-on functionality. This setup is the same as in the demo code above and can be viewed directly in the [repo](https://github.com/nucypher/taco-composedb/blob/main/src/fragments/chatinputbox.tsx#L26-L34).
+
+```TypeScript
+import { conditions } from "@nucypher/taco"; 
+
+const rpcCondition = new conditions.base.rpc.RpcCondition({
+    chain: 80002,
+    method: 'eth_getBalance',
+    parameters: [':userAddressExternalEIP4361'],
+    returnValueTest: {
+        comparator: '>',
+        value: 0,
+    },
+});
+```
+
+### Encrypting & saving the data
+
+To complete the encryption step, the following are added as arguments:
+a. `domain` – testnet or mainnet
+b. `ritualId`  – the ID of the cohort of TACo nodes who will collectively manage access to the data
+c. a standard web3 provider
+
+The output of this function is a payload containing both the encrypted data and embedded metadata necessary for a qualifying data consumer to access the plaintext message. 
+
+```TypeScript
+import { initialize, encrypt, conditions, domains, toHexString } from '@nucypher/taco';
+import { ethers } from "ethers";
+
+await initialize();
+
+const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
+const ritualId = 0
+const message = "I cannot trust a centralized access control layer with this message.";
+const messageKit = await encrypt(
+    web3Provider,
+    domains.TESTNET,
+    Message,
+    rpcCondition,
+    ritualId,
+    web3Provider.getSigner()
+);
+const encryptedMessageHex = toHexString(messageKit.toBytes());
+```
+
+### Querying & decrypting the data 
+
+Data consumers interact with the TACo API via the `decrypt` function. They include the following arguments:
+
+a. `provider`
+b. `domain`
+c. `encryptedMessage`
+d. `conditionContext`
+
+`conditionContext` is a way for developers to programmatically map methods for authenticating a data consumer to specific access conditions – all executable at decryption time. For example, if the condition involves proving ownership of a social account, authenticate via OAuth.
+
+```TypeScript
+import {conditions, decrypt, Domain, encrypt, ThresholdMessageKit} from '@nucypher/taco';
+import {ethers} from "ethers";
+
+export async function decryptWithTACo(
+    encryptedMessage: ThresholdMessageKit,
+    domain: Domain,
+    conditionContext?: conditions.context.ConditionContext
+): Promise<Uint8Array> {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    return await decrypt(
+        provider,
+        domain,
+        encryptedMessage,
+        conditionContext,
+    )
+}
+```
+
+Note that the EIP4361 authentication data required to validate the user address (within the condition) is supplied via the `conditionContext` object. To understand this component better, check out the demo [repo](https://github.com/nucypher/taco-composedb/blob/main/src/fragments/chatcontent.tsx#L47). 
+
+### Using ComposeDB & TACo in production
+
+For Ceramic, connect to Mainnet (`domains.MAINNET`).
+
+For TACo, a funded Mainnet ritualID is required – this connects the encrypt/decrypt API to a cohort of independently operated nodes and corresponds to a DKG public key generated by independent parties. A dedicated ritualID for Ceramic + TACo projects will be sponsored soon. Watch for updates here. 

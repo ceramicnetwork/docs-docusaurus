@@ -241,6 +241,11 @@ const sidebars: SidebarsConfig = {
           type: "doc",
           id: "composedb/examples/verifiable-credentials",
           label: "Verifiable Credentials"
+        },
+        {
+          type: "doc",
+          id: "composedb/examples/taco-access-control",
+          label: "TACo with ComposeDB"
         }
       ]
     },

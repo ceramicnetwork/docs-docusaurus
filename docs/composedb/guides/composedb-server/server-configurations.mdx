@@ -183,18 +183,6 @@ Only Postgres is currently supported for production usage.
 
 :::
 
-## History Sync
-By default, Ceramic nodes will only index documents they observe using pubsub messages. In order to index documents created before the node was deployed or configured to index some models, **History Sync** needs to be enabled on the Ceramic node, in the `daemon.config.json` file:
-
-```json
-{
-	...
-	"indexing": {
-    ...
-		"enable-historical-sync": true
-	}
-}
-```
 
 ## IPFS Process
 ### Available Configurations

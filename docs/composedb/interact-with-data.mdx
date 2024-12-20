@@ -44,10 +44,10 @@ In the [Create your composite](./create-your-composite.mdx) guide, we fetched tw
 
 ```graphql
 query{
-  postIndex(first: 2) {
+  postsIndex(first: 2) {
     edges {
       node {
-        text
+        body
       }
     }
   }
@@ -67,16 +67,16 @@ You should see a response similar to the one below. Here, nodes correspond to st
 ```json
 {
   "data": {
-    "postIndex": {
+    "postsIndex": {
       "edges": [
         {
           "node": {
-            "text": "This is my first post."
+            "text": "A Post created using composites and GraphQL"
           }
         },
         {
           "node": {
-            "text": "My second post about ComposeDB!"
+            "text": "This is my second post!"
           }
         }
       ]
@@ -97,10 +97,10 @@ You have options to retrieve specific records or last `n` indexed records as wel
 
 ```graphql
 query{
-  postIndex(last: 3) {
+  postsIndex(last: 3) {
     edges {
       node {
-        text
+        body
       }
     }
   }
@@ -121,11 +121,15 @@ Let’s say, you would like to create a post and add it to the graph. To do that
   
 
 ```graphql
-mutation CreateNewPost($i: CreatePostInput!){
-  createPost(input: $i){
-		document{
-			id
-      text
+mutation CreateNewPost($i: CreatePostsInput!){
+  createPosts(input: $i){
+    document{
+      id
+      title
+      body
+      tag
+      ranking
+      created_at
     }
   }
 }
@@ -141,7 +145,11 @@ mutation CreateNewPost($i: CreatePostInput!){
 {
   "i": {
     "content": {
-      "text": "A Post created using composites and GraphQL" 
+      "title": "New post",
+      "body": "My new post on Ceramic",
+      "tag": "User post",
+      "ranking": 5,
+      "created_at": "2024-12-03T10:15:30Z"
     }
   }
 }
@@ -160,10 +168,14 @@ The result of the query above will be a new document with a unique ID and the co
 ```json
 {
   "data": {
-    "createPost": {
+    "createPosts": {
       "document": {
-        "id": "kjzl6kcym7w8y9xlffqruh3v7ou1vn11t8203i6te2i3pliizt65ad3vdh5nl4l",
-        "text": "A Post created using composites and GraphQL"
+        "id": "kjzl6kcym7w8y5ygh1fyvstbjztd69suybc4ez8bet2hun7jezrc2m0uwg5bm3q",
+        "title": "New post",
+        "body": "My new post on Ceramic",
+        "tag": "User post",
+        "ranking": 5,
+        "created_at": "2024-12-03T10:15:30Z"
       }
     }
   }
@@ -173,7 +185,8 @@ The result of the query above will be a new document with a unique ID and the co
   
 :::note
 
-Stream IDs are unique. The “id” you will see in the response when performing the mutation above will be different.
+Stream IDs are unique. The “id” you will see in the response when performing the mutation above will be different. Keep that in mind
+as you follow this guide and update the id to the one that you see in your response.
 
 :::
   
@@ -191,11 +204,15 @@ You can find your post’s ID in the response after you ran the `CreateNewPost` 
 **Query:**
 
 ```graphql
-mutation UpdatePost($i: UpdatePostInput!) {
-    updatePost(input: $i) {
+mutation UpdatePost($i: UpdatePostsInput!) {
+    updatePosts(input: $i) {
         document {
             id
-            text
+            title
+            body
+            tag
+            ranking
+            created_at
         }
     }
 }
@@ -208,24 +225,32 @@ mutation UpdatePost($i: UpdatePostInput!) {
 ```json
 {
   "i": {
-    "id": "kjzl6kcym7w8y9xlffqruh3v7ou1vn11t8203i6te2i3pliizt65ad3vdh5nl4l",
+    "id": "kjzl6kcym7w8y5ygh1fyvstbjztd69suybc4ez8bet2hun7jezrc2m0uwg5bm3q",
     "content": {
-      "text": "My best post!"
+      "title": "New post",
+      "body": "My new post on Ceramic using ComposeDB",
+      "tag": "User post",
+      "ranking": 5,
+      "created_at": "2024-12-03T10:15:30Z"
     }
   }
 }
 ```
 
-This mutation will update the record with ID `kjzl6kcym7w8y9xlffqruh3v7ou1vn11t8203i6te2i3pliizt65ad3vdh5nl4l`.
+This mutation will update the record with ID `kjzl6kcym7w8y5ygh1fyvstbjztd69suybc4ez8bet2hun7jezrc2m0uwg5bm3q`.
 
 **Response:**
 ```json
 {
   "data": {
-    "updatePost": {
+    "updatePosts": {
       "document": {
-        "id": "kjzl6kcym7w8y9xlffqruh3v7ou1vn11t8203i6te2i3pliizt65ad3vdh5nl4l",
-        "text": "My best post!"
+        "id": "kjzl6kcym7w8y5ygh1fyvstbjztd69suybc4ez8bet2hun7jezrc2m0uwg5bm3q",
+        "title": "New post",
+        "body": "My new post on Ceramic using ComposeDB",
+        "tag": "User post",
+        "ranking": 5,
+        "created_at": "2024-12-03T10:15:30Z"
       }
     }
   }
@@ -241,8 +266,8 @@ mutation with the `shouldIndex` option set to `true`, and the post ID as variabl
 **Query:**
 
 ```graphql
-mutation EnableIndexingPost($input: EnableIndexingPostInput!) {
-      enableIndexingPost(input: $input) {
+mutation EnableIndexingPost($i: EnableIndexingPostsInput!) {
+      enableIndexingPosts(input: $i) {
           document {
             id
           }
@@ -257,19 +282,19 @@ mutation EnableIndexingPost($input: EnableIndexingPostInput!) {
 ```json
 {
   "i": {
-    "id": "kjzl6kcym7w8y9xlffqruh3v7ou1vn11t8203i6te2i3pliizt65ad3vdh5nl4l",
+    "id": "kjzl6kcym7w8y5ygh1fyvstbjztd69suybc4ez8bet2hun7jezrc2m0uwg5bm3q",
     "shouldIndex": false
   }
 }
 ```
 
-This mutation will un-index the record with ID `kjzl6kcym7w8y9xlffqruh3v7ou1vn11t8203i6te2i3pliizt65ad3vdh5nl4l`.
+This mutation will un-index the record with ID `kjzl6kcym7w8y5ygh1fyvstbjztd69suybc4ez8bet2hun7jezrc2m0uwg5bm3q`.
 
 **Response:**
 ```json
 {
   "data": {
-    "enableIndexingPost": {
+    "enableIndexingPosts": {
       "document": null
     }
   }
