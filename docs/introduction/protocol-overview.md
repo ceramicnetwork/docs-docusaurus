@@ -10,7 +10,7 @@ Ceramic is a decentralized event streaming protocol that enables developers to b
 
 The Ceramic protocol consists of the following components:
 
-- [**Streams →**](../protocol/js-ceramic/streams/streams-index)
+- [**Streams →**](../protocol/js-ceramic/streams/streams-index.md)
 - [**Accounts →**](../protocol/js-ceramic/accounts/accounts-index.md)
 - [**Networking →**](../protocol/js-ceramic/networking/networking-index.md)
 - [**Ceramic API →**](../protocol/js-ceramic/api.md)
@@ -23,22 +23,22 @@ The Ceramic protocol consists of the following components:
 
 | Section | State |
 | --- | --- |
-| [1. Streams](../protocol/js-ceramic/streams/streams-index) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/streams/streams-index)** |
-| [1.1. Event Log](../protocol/js-ceramic/streams/event-log) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/streams/event-log)** |
-| [1.2. URI Scheme](../protocol/js-ceramic/streams/uri-scheme) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/streams/uri-scheme)** |
-| [1.3. Consensus](../protocol/js-ceramic/streams/consensus) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/streams/consensus)** |
-| [1.4. Lifecycle](../protocol/js-ceramic/streams/lifecycle) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/streams/lifecycle)** |
-| [2. Accounts](../protocol/js-ceramic/accounts/accounts-index) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/accounts/accounts-index)** |
-| [2.1. Decentralized Identifiers](../protocol/js-ceramic/accounts/decentralized-identifiers) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/accounts/decentralized-identifiers)** |
-| [2.2. Authorizations](../protocol/js-ceramic/accounts/authorizations) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/accounts/authorizations)** |
-| [2.3. Object-Capabilities](../protocol/js-ceramic/accounts/object-capabilities) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/accounts/object-capabilities)** |
-| [3. Networking](../protocol/js-ceramic/networking/networking-index) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/networking/networking-index)** |
-| [3.1. Tip Gossip](../protocol/js-ceramic/networking/tip-gossip) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/networking/tip-gossip)** |
-| [3.2. Tip Queries](../protocol/js-ceramic/networking/tip-queries) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/networking/tip-queries)** |
-| [3.3. Event Fetching](../protocol/js-ceramic/networking/event-fetching) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/networking/event-fetching)** |
-| [3.4. Network Identifiers](../protocol/js-ceramic/networking/networks) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/networking/networks)** |
-| [4. API](../protocol/js-ceramic/api) | **[<span styles="color:rgba(212, 76, 71, 1)">Missing</span>](../protocol/js-ceramic/api)** |
-| [5. Nodes](../protocol/js-ceramic/nodes/overview) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/nodes/overview)** |
+| [1. Streams](../protocol/js-ceramic/streams/streams-index.md) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/streams/streams-index.md)** |
+| [1.1. Event Log](../protocol/js-ceramic/streams/event-log.md) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/streams/event-log.md)** |
+| [1.2. URI Scheme](../protocol/js-ceramic/streams/uri-scheme.md) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/streams/uri-scheme.md)** |
+| [1.3. Consensus](../protocol/js-ceramic/streams/consensus.md) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/streams/consensus.md)** |
+| [1.4. Lifecycle](../protocol/js-ceramic/streams/lifecycle.md) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/streams/lifecycle.md)** |
+| [2. Accounts](../protocol/js-ceramic/accounts/accounts-index.md) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/accounts/accounts-index.md)** |
+| [2.1. Decentralized Identifiers](../protocol/js-ceramic/accounts/decentralized-identifiers.md) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/accounts/decentralized-identifiers.md)** |
+| [2.2. Authorizations](../protocol/js-ceramic/accounts/authorizations.md) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/accounts/authorizations.md)** |
+| [2.3. Object-Capabilities](../protocol/js-ceramic/accounts/object-capabilities.md) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/accounts/object-capabilities.md)** |
+| [3. Networking](../protocol/js-ceramic/networking/networking-index.md) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/networking/networking-index.md)** |
+| [3.1. Tip Gossip](../protocol/js-ceramic/networking/tip-gossip.md) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/networking/tip-gossip.md)** |
+| [3.2. Tip Queries](../protocol/js-ceramic/networking/tip-queries.md) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/networking/tip-queries.md)** |
+| [3.3. Event Fetching](../protocol/js-ceramic/networking/event-fetching.md) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/networking/event-fetching.md)** |
+| [3.4. Network Identifiers](../protocol/js-ceramic/networking/networks.md) | **[<span styles="color:rgba(68, 131, 97, 1)">Reliable</span>](../protocol/js-ceramic/networking/networks.md)** |
+| [4. API](../protocol/js-ceramic/api.md) | **[<span styles="color:rgba(212, 76, 71, 1)">Missing</span>](../protocol/js-ceramic/api.md)** |
+| [5. Nodes](../protocol/js-ceramic/nodes/overview.md) | **[<span styles="color:rgba(203, 145, 47, 1)">Draft/WIP</span>](../protocol/js-ceramic/nodes/overview.md)** |
 
 #### **Legend**
 

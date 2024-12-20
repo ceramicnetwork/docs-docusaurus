@@ -35,18 +35,18 @@ Thank you for being a ComposeDB pioneer and understanding that great Web3 protoc
 ---
 
 
-### [Get Started →](../composedb/getting-started) 
+### [Get Started →](../composedb/getting-started.mdx) 
 Build a Hello World application and interact from the CLI.
 
-### [ComposeDB Sandbox →](/docs/composedb/sandbox) 
+### [ComposeDB Sandbox →](/docs/composedb/sandbox.mdx) 
 Test example queries to ComposeDB directly in your browser.
 
-### [Development Guides →](../composedb/guides)
+### [Development Guides →](../composedb/guides/index.mdx)
 Learn about data modeling, application set up, and data interactions.
 <!-- Server Config-->
 
-### [Core concepts →](../composedb/core-concepts)
+### [Core concepts →](../composedb/core-concepts.mdx)
 Dive deeper into the ComposeDB protocol and its components.
   
-### [Community →](../ecosystem/community)
+### [Community →](../ecosystem/community.mdx)
 Connect with the ComposeDB developer community.
