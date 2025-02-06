@@ -1,0 +1,246 @@
+---
+title: Produce
+description: Produce model and model instance document streams.
+---
+
+:::tip
+
+This document assumes that you've already followed our
+[installation guide](/docs/protocol/ceramic-one/usage/installation).
+
+:::
+
+While Ceramic will eventually support a diversity of different stream types to assist different use
+cases, developers using the network today produce and consume Ceramic streams using models and model
+instance documents.
+
+## Models
+
+A `model` represents the schema for a single piece of data (e.g. a user profile), which includes the
+required and optional field definitions that profile should contain, in addition to traits like
+relationships to user accounts and other models. When working with models in Ceramic, developers
+create and use model streams that contain the schema definition of the model, in addition to traits
+from a base Ceramic stream (such as the account that created the stream, etc.)
+
+Developers can use the `@ceramic-sdk/model-client` sub-package to create new model streams, fetch
+model definitions, and other utilities needed to create model instance documents that leverage those
+definitions.
+
+To get started, use the base `CeramicClient` class to instantiate a new `ModelClient` class. For
+more information regarding usage of the CeramicClient see the previous page.
+
+### Working with Models
+
+```typescript
+import { CeramicClient } from "@ceramic-sdk/http-client";
+import { ModelClient } from "@ceramic-sdk/model-client";
+import type { ModelDefinition } from "@ceramic-sdk/model-protocol";
+import { getAuthenticatedDID } from "@didtools/key-did";
+
+const authenticatedDID = await getAuthenticatedDID(new Uint8Array(32));
+
+const ceramic = new CeramicClient({ url: "http://localhost:5101" });
+
+// 1. Create a model client
+const modelClient = new ModelClient({
+  ceramic,
+  did: authenticatedDID,
+});
+
+// 2. Define the Model's Schema Definition
+const model: ModelDefinition = {
+  version: "2.0",
+  name: "Profile",
+  description: "A simple profile",
+  accountRelation: { type: "single" },
+  interface: false,
+  implements: [],
+  schema: {
+    type: "object",
+    properties: {
+      firstName: { type: "string", maxLength: 12 },
+      lastName: { type: "string", maxLength: 12 },
+      userName: { type: "string", maxLength: 12 },
+    },
+    required: ["userName"],
+    additionalProperties: false,
+  },
+};
+
+// 3. Create the Model Stream
+const modelStream = await modelClient.postDefinition(model);
+
+// 4. Get the Stream's Model Definition
+const modelDefinition = await modelClient.getModelDefinition(modelStream);
+```
+
+### Model Types
+
+There are three types of models Ceramic developers use that are differentiated based on the
+relationship they define to the account that is using them to create model instance documents:
+
+**`single`**
+
+A model that defines a `single` accountRelation ensures that each Ceramic user can create only one
+model instance document using that model definition. This is commonly used for profiles or user
+information documents for which applications want to ensure that a user does not intentionally or
+unintentionally create more than one instance, resulting in the burden of additional application
+logic that would otherwise need to be handled by the application layer. For example:
+
+```typescript
+const singleModel: ModelDefinition = {
+  version: "2.0",
+  name: "Profile",
+  description: "A simple profile",
+  accountRelation: { type: "single" },
+  interface: false,
+  implements: [],
+  schema: {
+    type: "object",
+    properties: {
+      firstName: { type: "string", maxLength: 12 },
+      lastName: { type: "string", maxLength: 12 },
+      userName: { type: "string", maxLength: 12 },
+    },
+    required: ["userName"],
+    additionalProperties: false,
+  },
+};
+```
+
+**`set`**
+
+A model that defines a `set` accountRelation ensures that each Ceramic user can create a unique set
+of model instance documents based on the corresponding field(s) that define the set constraint in
+the schema. For example, a marketplace application might want to allow users to leave reviews for
+products they've purchased, and would want to ensure that each user can only leave 1 review per
+product. This allows users to leave reviews for as many products as they wish, but no more than 1
+per product. For example:
+
+```typescript
+const setModel: ModelDefinition = {
+  version: "2.0",
+  name: "Review",
+  description: "A product review",
+  accountRelation: {
+    type: "set",
+    fields: ["productId"],
+  },
+  schema: {
+    type: "object",
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    properties: {
+      rating: {
+        type: "number",
+      },
+      productId: {
+        type: "number",
+      },
+      reason: {
+        type: "string",
+      },
+    },
+    required: ["productId", "rating"],
+    additionalProperties: false,
+  },
+  interface: false,
+  implements: [],
+};
+```
+
+In the example above, the `set` relation is defined on the "productId" field, which would ensure
+that each user could only create one model instance document per unique productId.
+
+**`list`**
+
+A model that defines a `list` accountRelation allows controlling accounts to create as many model
+instance documents of that model as they want. For example, a forum application might want to allow
+users to create as many posts as they'd like:
+
+```typescript
+const listModel: ModelDefinition = {
+  version: "2.0",
+  name: "Post",
+  description: "A forum post",
+  accountRelation: { type: "list" },
+  interface: false,
+  implements: [],
+  schema: {
+    type: "object",
+    properties: {
+      title: { type: "string", maxLength: 100 },
+      body: { type: "string", maxLength: 1000 },
+    },
+    additionalProperties: false,
+  },
+};
+```
+
+## Model Instance Documents
+
+A `model instance document` (or MID) stream uses the definition of a model to create a Ceramic
+stream containing content that adheres to the model's schema definition. Developers can use the
+Ceramic SDK to create new MIDs, fetch the current state from an MID, and update MIDs by leveraging
+the `@ceramic-sdk/model-instance-client` sub-package.
+
+### Working with MIDs
+
+```typescript
+import { CeramicClient } from "@ceramic-sdk/http-client";
+import { ModelInstanceClient } from "@ceramic-sdk/model-instance-client";
+import { getAuthenticatedDID } from "@didtools/key-did";
+
+const authenticatedDID = await getAuthenticatedDID(new Uint8Array(32));
+
+const ceramic = new CeramicClient({ url: "http://localhost:5101" });
+
+// a model using the single accountRelation
+const profileModelStreamId = "kjzl6hvfrbw6c77ooylhtrs71a3ddqi5zdzosmvaodxu1upnhl6t8x6ekf5k2t8";
+
+// a model using the list accountRelation
+const forumPostModelStreamId = "kjzl6hvfrbw6c8007xlqeudoh0n82j0fepj4y2in7uskh74yv3612d3bi7y7p1j";
+
+// 1. Instantiate a ModelInstanceClient
+const modelInstanceClient = new ModelInstanceClient({
+  ceramic,
+  did: authenticatedDID,
+});
+
+// 2. Create a new MID (single` and `set` model types are handled differently than `list` types)
+
+// `single` and `set` require a deterministic initial event (without content)
+const singleDocumentStream = await modelInstanceClient.postDeterministicInit({
+  model: profileModelStreamId,
+  controller: authenticatedDID.id,
+});
+
+// `list` documents can contain an initial content payload
+const listDocumentStream = await modelInstanceClient.postSignedInit({
+  model: forumPostModelStreamId,
+  content: {
+    title: "This is a new post",
+    body: "This is the body for a new post",
+  },
+  shouldIndex: true,
+});
+
+// 3. Updating a MID (does not differ between model types)
+
+await modelInstanceClient.updateDocument({
+  streamID: singleDocumentStream.toString(),
+  newContent: { firstName: "New", lastName: "User", userName: "newUser1" },
+  shouldIndex: true,
+});
+
+await modelInstanceClient.updateDocument({
+  streamID: listDocumentStream.toString(),
+  newContent: {
+    title: "This is an updated post title",
+    body: "This is an updated post body",
+  },
+  shouldIndex: true,
+});
+
+// 4. Read the MID's State
+const currentState = await modelInstanceClient.getDocumentState(listDocumentStream.toString());
+```

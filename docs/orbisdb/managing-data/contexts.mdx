@@ -1,0 +1,44 @@
+---
+title: Contexts (spaces)
+description: Understand how OrbisDB uses Contexts to organize data.
+---
+
+OrbisDB is made for decentralized data, lots of it. Contexts help you organize it in a way
+meaningful to your project or application.
+
+## Organizing data
+
+Contexts are an OrbisDB and Ceramic native term. They let you divide and organize data in any way
+you want, think of them as different "spaces" in your OrbisDB.
+
+> _Contexts_ can have _Sub-Contexts_, allowing for fine-grained control and a tree-like structure.
+
+As they are a part of the original Ceramic event, Contexts will be used to determine which data to
+index and how, providing an opportunity for compute optimization.
+
+## Isolation
+
+Contexts are used for more than organization, they also serve as a level of isolation. Plugins are
+defined on Context basis, allowing for granular control over things like access gating, data
+validation, metadata and more.
+
+## Use cases
+
+OrbisDB Contexts are often used to define projects or apps, as well as their internal data
+organization. An example may be an AI training app (Context) which separates datasets (Sub-Contexts)
+based on semantics or source, even though they share the same
+[data model](/docs/orbisdb/managing-data/models).
+
+## Managing Contexts
+
+Context management is currently done through the OrbisDB Dashboard, only.
+
+## Contexts in OrbisDB
+
+Each OrbisDB entry has an additional `_metadata_context` field that's read from the Ceramic event
+directly. This field will be used when writing or reading data from a specific Context and it will
+help determine the rules based on the Context itself.
+
+When using the SDK, an additional `context` param can be passed. This will automatically be used in
+the read or write query to filter or write data to the specified Context. Check out more in the
+[SDK Reference](/docs/orbisdb/sdk-reference).

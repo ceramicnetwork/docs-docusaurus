@@ -1,0 +1,74 @@
+---
+title: Overview
+description: Learn how to set up OrbisDB.
+---
+
+OrbisDB is built on top of multiple components, mainly PostgreSQL, Ceramic and the OrbisDB Node
+itself. You can learn more about roles of each in our
+[Architecture overview](/docs/orbisdb/introduction/architecture).
+
+How and if you're going to run each of these depends on the environment you're using OrbisDB in, as
+well as your hosting requirements.
+
+## OrbisDB modes
+
+### Shared
+
+Shared OrbisDB instances allow multiple separate environments on a single OrbisDB instance - similar
+to a shared (multi-tenant) hosting environment. Each environment is logically isolated, including
+separate databases, owners and limited configuration options.
+
+All environments share the same underlying hardware, network and Ceramic node.
+
+A Shared OrbisDB instance has one administrator. They handle the core configuration such as Database
+and Ceramic connections. An example of a Shared OrbisDB instance is
+[OrbisDB Studio](/docs/orbisdb/setting-up/managed-studio), hosting multiple environments for users
+to get started with OrbisDB.
+
+### Dedicated
+
+Dedicated OrbisDB instances are meant to serve a single client (an app or a project). This means a
+single database, environment, owner (administrator) and configuration. Dedicated instances are
+easier to scale, as the load is predictable and depends on a single consumer. Most currently running
+OrbisDB instances are dedicated.
+
+### Mode comparison
+
+|                | Shared            | Dedicated |
+| -------------- | ----------------- | --------- |
+| Environments   | 1 per consumer    | 1         |
+| Users          | 1 per environment | 1         |
+| Administrators | 1                 | 1         |
+| Scalability    | 🟡                | ✅        |
+| Databases      | 1 per environment | 1         |
+
+## Hosting environments
+
+As is the case with other web services, OrbisDB can be hosted locally, in the cloud or via a managed
+hosting provider. This is true for each separate component, as they don't have to be hosted on a
+single server.
+
+Docker images will be provided for a quicker setup.
+
+### Local
+
+Local hosting environment is the best way to start your OrbisDB development journey. This means all
+OrbisDB hosted will be hosted locally, including PostgreSQL, Ceramic and OrbisDB Node itself. Find
+out how to get started locally here.
+
+### Self-hosted
+
+Self-hosting OrbisDB allows for full control over each component. Each component can be isolated on
+a separate server or hosted on a single instance. Check out our self-hosting guide.
+
+### Managed
+
+Managed hosting providers allow a one-click setup. They handle hosting and scaling of the
+infrastructure, so you can focus on building the next big app instead. Get started with a managed
+OrbisDB instance here.
+
+### Hybrid
+
+Because each OrbisDB component can be hosted separately, this allows for a hybrid hosting approach.
+You can choose to run the OrbisDB Node yourself, but delegate Database and Ceramic hosting to a
+managed provider. Mix and match the setup to your needs, balancing between control and convenience.

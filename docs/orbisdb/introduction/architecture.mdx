@@ -1,0 +1,80 @@
+---
+title: Architecture
+description:
+  OrbisDB builds on top of proven foundations, utilizing open-source projects, standards and
+  protocols.
+---
+
+OrbisDB builds on top of proven foundations, utilizing open-source projects, standards and
+protocols.
+
+## Ceramic (write)
+
+Ceramic is a decentralized event store with composability and data ownership at its core. It can be
+compared to Kafka in the Web2 stack. The protocol is purpose-built for data, allowing for higher
+scalability and lower costs.
+
+To find out more about Ceramic, check out the docs.
+
+### Streams
+
+Each Ceramic stream represents a row in OrbisDB. It contains all commits (modifications) done to the
+data since the initial creation. This is done in the form of Events.
+
+### Models
+
+Ceramic Models dictate the way data needs to be structured, providing composability out of the box.
+Any application can consume the data based on the Model definition, knowing it will be valid. Each
+Model is treated as a subscription topic and represented as a unique Table in OrbisDB.
+
+Read more about Models [here](/docs/orbisdb/managing-data/models).
+
+### IPFS
+
+IPFS (and IPLD) are powering Ceramic's data storage, providing a universal data model and P2P cold
+storage.
+
+### DID
+
+Ceramic utilizes [DIDs](/docs/orbisdb/managing-data/accounts) - decentralized identifiers. Any data
+coming through Ceramic needs to be signed by the end user. Creators have the sole ownership over
+their data.
+
+## PostgreSQL (read)
+
+The most famous open-source database sits at the core of OrbisDB. Choosing PostgreSQL allows OrbisDB
+to expose a familiar query interface. It also brings an existing ecosystem, bundled with thousands
+of extensions and services.
+
+## OrbisDB Node (orchestrate)
+
+OrbisDB Node runs on top of Ceramic and PostgreSQL, indexing data and exposing an API to query it.
+It subscribes to Ceramic's events via SSE, ingesting, filtering and storing data based on the rules
+defined by the OrbisDB Node owner.
+
+### Dashboard
+
+OrbisDB Dashboard is a hosted UI that allows anyone to configure and manage their node with no
+server or infrastructure knowledge required.
+
+### Plugins (customize)
+
+Nobody can predict all the use cases, so we made sure to include a robust plugin framework. This
+allows anyone to tap into the existing ecosystem of plugins or build new ones to make OrbisDB truly
+theirs. Plugins are used to validate and enrich data, do post-processing (such as webhooks,
+notifications, and emails) and expose API routes.
+
+### Writing data
+
+1. End user creates and signs the data (SDK)
+2. The data is sent to Ceramic by the end user directly (SDK)
+3. OrbisDB picks up and processes Ceramic events
+4. Plugins are used to validate and enrich the data
+5. If the data passes all the checks, its then organized and stored in PostgreSQL
+6. Plugins get the final state of data, allowing them to do post-processing operations
+
+### Reading data
+
+1. User interacts with the OrbisDB directly (SDK)
+2. OrbisDB handles permissions and locates the data
+3. Data gets loaded from the database and returned to the user

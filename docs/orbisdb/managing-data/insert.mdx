@@ -1,0 +1,140 @@
+---
+title: Writing data
+description: Learn how to write data to OrbisDB.
+---
+
+Using OrbisDB to write data should feel just as natural as it does with a Web2 database.
+
+## Flow of data (`INSERT`)
+
+OrbisDB is built on top of Ceramic, a decentralized event store. In order to inherit Ceramic's
+properties such as data ownership, integrity and verifiability, we use Ceramic as our ingestion
+layer.
+
+When writing data to OrbisDB, end users interact with Ceramic directly, making them the true
+controllers - nobody else can modify their data. You also need to specify the
+[Model](/docs/orbisdb/managing-data/models) to which the data will adhere.
+
+Once written to Ceramic, all OrbisDB instances subscribed to a Model used will get a notification
+and begin the indexing process. This includes [Context](/docs/orbisdb/managing-data/contexts)
+checks, validation done by plugins, etc.
+
+Indexed data is then queried from OrbisDB directly, but is linked to the underlying Ceramic data via
+the `Stream ID`.
+
+## `INSERT` in OrbisDB
+
+Two main sources of writes exist in OrbisDB: users and plugins.
+
+### Users
+
+This is the main way data gets written to OrbisDB, as it represents your end users. Thanks to the
+SDK abstraction, there's a simple ORM-like approach to writing data. To write the data, you'll be
+using `insert` and `insertBulk` [methods](/docs/orbisdb/sdk-reference/insert).
+
+### Plugins
+
+Plugins can generate data on their own. This data is signed by your node and can be used for
+purposes such as bringing data from outside sources (APIs, webhooks) or generating reports based on
+certain rules.
+
+Example Plugins using this functionality: CSV Uploader and API Data Source.
+
+### Encrypted data
+
+Since OrbisDB uses Ceramic as its ingestion layer, **all data needs to be encrypted client-side** -
+before being written to Ceramic. OrbisDB will respect the
+[Model](/docs/orbisdb/managing-data/models) definition when indexing the data, however, it will be
+indexed as-is. No decryption attempts will be made. Decryption will have to happen client-side or
+via plugins.
+
+An example of a client-side decentralized encryption scheme is
+[Lit Protocol](https://www.litprotocol.com/).
+
+### Code examples
+
+> [Model aliases](/docs/orbisdb/managing-data/models) can be used when writing data, allowing for a
+> better developer experience
+
+#### Single insert
+
+```jsx
+// OrbisDB has been initialized
+// orbis.connectUser has been used to authenticate the user
+
+const result = await orbis
+  .insert("MODEL_ID" | "MODEL_ALIAS")
+  .value({
+    column: value,
+    column2: value2,
+  })
+  // optionally, you can scope this insert to a specific context
+  .context("CONTEXT_ID")
+  .run();
+```
+
+#### Bulk insert
+
+```jsx
+// OrbisDB has been initialized
+// orbis.connectUser has been used to authenticate the user
+
+const { success, errors } = await orbis
+  .bulkInsert("MODEL_ID" | "MODEL_ALIAS")
+  .values(
+    {
+      column: value,
+      column2: value2,
+    },
+    {
+      column: value,
+      column2: value2,
+    }
+  )
+  .run();
+
+// bulkStatements DO NOT throw in case a run partially fails
+// As each insert is handled as an isolated case, you may have partial success
+if (errors.length) {
+  console.error("Errors occurred during execution", errors);
+}
+
+console.log(success);
+```
+
+#### Local Model validation
+
+If you wish to validate the data before submitting it, you can use the built-in JSON Schema
+validator.
+
+```jsx
+// OrbisDB has been initialized
+// orbis.connectUser has been used to authenticate the user
+
+const insertStatement = await orbis.insert("MODEL_ID" | "MODEL_ALIAS").value({
+  column: value,
+  column2: value2,
+});
+
+// Perform local JSON Schema validation before running the query
+const validation = await insertStatement.validate();
+if (!validation.valid) {
+  throw "Error during validation: " + validation.error;
+}
+
+const result = await insertStatement.run();
+```
+
+## Summary
+
+When writing data, Ceramic is used as the source of truth from which OrbisDB Nodes index new data.
+Inserts are as simple as `orbis.insert`.
+
+The general flow when writing data looks like this:
+
+1. End user creates and signs the data (SDK)
+2. The data is sent to Ceramic by the end user directly (SDK)
+3. OrbisDB picks up and processes Ceramic events
+4. Plugins are used to validate and enrich the data
+5. If the data passes all the checks, it's then organized and stored in PostgreSQL
+6. Plugins get the final state of data, allowing them to do post-processing operations
