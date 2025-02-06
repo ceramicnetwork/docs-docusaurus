@@ -1,0 +1,371 @@
+---
+title: Select
+description: Learn how to query data in OrbisDB.
+---
+
+To query data, users interface with OrbisDB nodes directly. This can be done using a query builder,
+raw SQL or GraphQL. Node owners also have the option of using our Data dashboard (link) and the
+provided SQL or GraphQL editors (link).
+
+Check out our [Querying data](/docs/orbisdb/managing-data/select) section to find out more.
+
+> Before using the methods, make sure to [initialize](/docs/orbisdb/sdk-reference) your OrbisDB SDK.
+
+## Syntax
+
+OrbisDB SDK provides 2 main ways to query data, ORM-like query builder and raw SQL.
+
+> Queries ran using the SDK go through the public API interface and are ran using a read-only
+> PostgreSQL user. This prevents any malicious query attempts at the DB level.
+
+### ORM-like (Query builder)
+
+This syntax matches the way `INSERTs` and `UPDATEs` work. You build statements by chaining methods
+and eventually executing them.
+
+```tsx
+const { columns, rows } = await orbis
+  .select()
+  .from("MODEL_ID" | "MODEL_ALIAS" | "VIEW")
+  .where({
+    column_name: "value",
+  })
+  .run();
+
+// SELECT * FROM table WHERE column_name = 'value';
+console.log("Retrieved data", rows);
+```
+
+### Raw SQL
+
+While still utilizing the same method, raw SQL statements do not have additional chained methods to
+build the statement itself.
+
+```tsx
+const { columns, rows } = await orbis
+  .select()
+  .raw("SELECT * FROM table WHERE column_name = $1", ["value"])
+  .run();
+
+// SELECT * FROM table WHERE column_name = 'value';
+console.log("Retrieved data", rows);
+```
+
+### GraphQL
+
+> Execute GraphQL queries with any of the available GraphQL clients for your language of choice.
+> This functionality is not built into the SDK.
+
+```tsx
+// SELECT columnName, anotherColumn FROM table WHERE columnName = 'value';
+{
+	table(filter:{ column_name: "value" }) {
+		column_name,
+		another_column
+	}
+}
+```
+
+## Contexts
+
+### Query builder
+
+Only `SELECT` statements built using the query builder can be scoped to a
+[Context](/docs/orbisdb/managing-data/contexts) by using `.context()`. You can also run the search
+across multiple Contexts.
+
+#### Single context
+
+```tsx
+const { columns, rows } = await orbis
+  .select()
+  .from("MODEL_ID" | "MODEL_ALIAS" | "VIEW")
+  .where({
+    column_name: "value",
+  })
+  .context("CONTEXT_ID")
+  .run();
+```
+
+#### Multiple contexts
+
+```tsx
+const { columns, rows } = await orbis
+  .select()
+  .from("MODEL_ID" | "MODEL_ALIAS" | "VIEW")
+  .where({
+    column_name: "value",
+  })
+  .contexts("CONTEXT_ID", "CONTEXT_ID_2")
+  .run();
+```
+
+### Raw SQL
+
+To scope raw SQL statements filter by `_metadata_context` column using a `WHERE` clause.
+
+```tsx
+const { columns, rows } = await orbis
+  .select()
+  .raw("SELECT * FROM table WHERE column_name = $1 AND _metadata_context = $2", [
+    "value",
+    "CONTEXT_ID",
+  ])
+  .run();
+```
+
+### GraphQL
+
+```tsx
+{
+	table(filter:{ _metadata_context: "CONTEXT_ID" }) {
+		column_name,
+		another_column
+	}
+}
+```
+
+## Views and Joins
+
+Views can be queried using their name. They can be used via Query builder, raw SQL or GraphQL with
+no additional configuration required.
+
+> Joins are currently **not** available in the **query builder**. > You **can** **achieve** joins
+> using **Views, raw SQL or GraphQL.**
+
+## Statement execution
+
+You do not have to execute the statement immediately. It's done by either chaining the `.run()` or
+executing it later.
+
+If you decide to postpone the execution, you can access a history of all query runs by accessing the
+`statement.runs` property.
+
+### Immediate execution
+
+```tsx
+const result = await orbis
+  .select()
+  .from("MODEL_ID" | "MODEL_ALIAS" | "VIEW")
+  .where({
+    column_name: "value",
+  })
+  .run();
+```
+
+### Postponed execution
+
+```tsx
+const statement = orbis
+  .select()
+  .from("MODEL_ID" | "MODEL_ALIAS" | "VIEW")
+  .where({
+    column_name: "value",
+  });
+
+const result = await statement.run();
+
+console.log(result);
+
+// Log the execution history of this statement
+console.log(statement.runs);
+```
+
+## Statement preview
+
+Statements built using the SDK can be previewed. This allows for more clarity before execution.
+
+```tsx
+const statement = orbis
+  .select()
+  .from("MODEL_ID" | "MODEL_ALIAS" | "VIEW")
+  .where({
+    column_name: "value",
+  });
+
+console.log(statement.build()); // SELECT * FROM table WHERE column_name = 'value'
+```
+
+## Query builder
+
+Query builder comes with several operator and helper methods used to build the statement with
+filters, limits, ordering and more.
+
+> This section **only applies** **to** queries built using **the query builder**. > It's not
+> relevant to raw SQL or GraphQL queries.
+
+### Columns
+
+By default, all columns will be fetched (`SELECT *`).
+
+#### `.select()`
+
+Pass column names to the select directly to retrieve only a set of columns.
+
+```tsx
+const statement = orbis
+  .select("column_1", "column_2", "column_3")
+  .from("MODEL_ID" | "MODEL_ALIAS" | "VIEW");
+```
+
+#### `.column()`
+
+**Add** an additional column to be retrieved.
+
+```tsx
+const statement = orbis
+  .select("column_1")
+  .from("MODEL_ID" | "MODEL_ALIAS" | "VIEW")
+  .column("column_2");
+```
+
+#### `.columns()`
+
+**Add** additional columns to be retrieved.
+
+```tsx
+const statement = orbis
+  .select("column_1")
+  .from("MODEL_ID" | "MODEL_ALIAS" | "VIEW")
+  .columns("column_2", "column_3");
+```
+
+#### `.deselectColumn()`
+
+Remove a column from the set.
+
+```tsx
+const statement = orbis
+  .select("column_1", "column_2", "column_3")
+  .from("MODEL_ID" | "MODEL_ALIAS" | "VIEW")
+  .deselectColumn("column_4");
+```
+
+#### `.clearColumns()`
+
+Clear all columns and default back to all columns (`SELECT *`).
+
+```tsx
+const statement = orbis
+  .select("column_1", "column_2", "column_3")
+  .from("MODEL_ID" | "MODEL_ALIAS" | "VIEW");
+```
+
+### `LIMIT`
+
+Limit the number of rows retrieved.
+
+```tsx
+const statement = orbis
+  .select()
+  .from("MODEL_ID" | "MODEL_ALIAS" | "VIEW")
+  .limit(5);
+```
+
+### `OFFSET`
+
+Offset the result by `N` rows. Commonly used with `LIMIT` for naive pagination. Performance for
+large datasets is poor due to row scanning.
+
+```tsx
+const statement = orbis
+  .select()
+  .from("MODEL_ID" | "MODEL_ALIAS" | "VIEW")
+  .offset(5);
+```
+
+### `ORDER BY`
+
+Order the results based on a column or a set of columns. Syntax:
+`.orderBy(["column_name", "asc" | "desc"], …)`
+
+#### Single column
+
+```tsx
+const statement = orbis
+  .select()
+  .from("MODEL_ID" | "MODEL_ALIAS" | "VIEW")
+  .orderBy(["column", "asc"]);
+```
+
+#### Multiple columns
+
+```tsx
+const statement = orbis
+  .select()
+  .from("MODEL_ID" | "MODEL_ALIAS" | "VIEW")
+  .orderBy(["column", "asc"], ["column_2", "desc"]);
+```
+
+### `WHERE`
+
+`WHERE` clause is used to narrow down the result set. This can be done using a number of operators.
+
+All same-level filters are joined using an `AND` operator.
+
+#### Basic syntax
+
+```tsx
+const statement = orbis
+  .select()
+  .from("MODEL_ID" | "MODEL_ALIAS" | "VIEW")
+  .where({
+    // column = "value"
+    column: "value",
+    // column_2 in (value1, value2)
+    column_2 = ["value1", "value2"],
+  });
+```
+
+#### Filter operators
+
+You can find the
+[full list of operators here](https://github.com/OrbisWeb3/db-sdk/blob/main/src/querybuilder/statements/operators.ts).
+
+```tsx
+import { contains } from "@useorbis/db-sdk/operators";
+
+const statement = orbis
+  .select()
+  .from("MODEL_ID" | "MODEL_ALIAS" | "VIEW")
+  .where({
+    // column LIKE "%value%"
+    column: contains("value"),
+  });
+```
+
+#### Logical operators
+
+Logical operators allow you to dictate the order and combination of filter operators. You can find
+the
+[full list of operators here](https://github.com/OrbisWeb3/db-sdk/blob/main/src/querybuilder/statements/operators.ts).
+
+```tsx
+import { or } from "@useorbis/db-sdk/operators"
+
+const statement = orbis
+    .select()
+    .from("MODEL_ID" | "MODEL_ALIAS" | "VIEW")
+    .where(
+        {
+            // adds a top level OR
+            ...or({ column_2: "value" }),
+            // adds an isolated (expression OR expression)
+            // joined by the top level AND
+            or({ column_3: "value", column_4: "value" })
+        }
+    )
+```
+
+#### Aggregate operators
+
+Some operators allow you to aggregate operations over columns. You can find the
+[full list of operators here](https://github.com/OrbisWeb3/db-sdk/blob/main/src/querybuilder/statements/operators.ts).
+
+```tsx
+import { count, sum } from "@useorbis/db-sdk/operators";
+
+const statement = orbis
+  .select("column", sum("column_1"), count("column_2", "total_count"))
+  .from("MODEL_ID" | "MODEL_ALIAS" | "VIEW");
+```

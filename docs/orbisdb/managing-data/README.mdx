@@ -1,0 +1,54 @@
+---
+title: Managing data
+description: Learn how to manage data in OrbisDB.
+---
+
+OrbisDB is built on top of decentralized components such as DIDs and Models. Despite being new,
+these concepts have been made easy to use thanks to OrbisDB abstractions and a Web2-like DX.
+
+## Accounts (DIDs)
+
+OrbisDB utilizes decentralized identifiers (DIDs) for account management. Each entry in the OrbisDB
+is verifiably owned by its original author - a trait inherited from Ceramic. DIDs bring this to
+another level, allowing users to own their identity in full. They are self-verifiable, so you can
+prove your identity (and data ownership) with no 3rd parties involved.
+
+Learn more in the [Accounts section](/docs/orbisdb/managing-data/accounts).
+
+## Models (Tables)
+
+Composable data requires rules. Applications and users need to understand the data to consume it.
+Models are a way for you to define your OrbisDB tables using standard JSON Schema. This helps
+OrbisDB build out the tables, indexes and relations required. It also allows you to control the data
+format, structure and rules - making it easy for anyone to consume.
+
+Find out how to create your first Table in our [Models section](/docs/orbisdb/managing-data/models).
+
+## Contexts (Spaces)
+
+Data in today's world is already complex enough. However, bringing data to an open and composable
+network is a challenge in itself. Contexts and Sub-Contexts are an OrbisDB (and Ceramic) native way
+of organizing data. Think of them as separate "Spaces" in your OrbisDB. They help OrbisDB sift
+through data to index, but also allow isolation for things such as plugins.
+
+Learn how data organization works in our [Contexts section](/docs/orbisdb/managing-data/contexts).
+
+## Queries
+
+We were determined to bring a familiar developer experience to the web3. This is one of the reasons
+our indexing is backed by PostgreSQL. However, there's more to it than just the choice of
+technologies. Our SDK methods should feel just as familiar, whether you're interacting with our
+underlying data network (Ceramic) or OrbisDB directly.
+
+### INSERT & UPDATE
+
+Writing data to a decentralized data network is one function call away - literally. Learn how
+`INSERTs` and `UPDATEs` work in OrbisDB in our [Writing](/docs/orbisdb/managing-data/insert) and
+[Updating](/docs/orbisdb/managing-data/update) data sections.
+
+### SELECT
+
+When querying already-indexed data, you're interfacing with OrbisDB directly. Whether you prefer a
+query builder, raw SQL or GraphQL - OrbisDB got you covered.
+
+Check out the full [SELECT guide here](/docs/orbisdb/managing-data/select).

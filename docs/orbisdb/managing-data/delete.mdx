@@ -1,0 +1,90 @@
+---
+title: Removing data
+description: Learn more about OrbisDB's plans for deleting data.
+---
+
+## State of `DELETE`
+
+:::warning
+
+Be careful when running `DELETE` queries using OribsDB SQL Editor. Make sure there's a **narrow and
+specific WHERE clause**, otherwise you may end up deleting your entire table.
+
+:::
+
+`DELETE` statement is not currently exposed to the end user. It's not a Ceramic or OrbisDB native
+event.
+
+The only way to handle `DELETE` queries it through your OrbisDB SQL Editor (link). Deleting the data
+this way will **only remove it from your OrbisDB node**. You can't delete the original Ceramic
+Stream or the underlying IPFS data.
+
+These challenges are not unique to OrbisDB.
+
+## Future plans
+
+Even though `DELETE` statements aren't available as an OrbisDB or Ceramic native event, we do plan
+to introduce it in the near future. We also have multiple options for handling these cases.
+
+### OrbisDB `DELETE`
+
+The first step to achieving native `DELETE` operations is by introducing a special `DELETE event`
+Model that won't be indexed by default, however, all OrbisDB nodes will be subscribed to it.
+
+Once an event is triggered, each OrbisDB node will verify whether it has any data relevant to this
+event and will delete it if so. They will also unpin the Ceramic Stream's data from their internal
+IPFS stores and block it from getting indexed in the future.
+
+This event can only be triggered by the content's original author - its verifiable owner.
+
+However, Ceramic nodes will not understand this event natively. The same could apply to some OrbisDB
+nodes as the software is MIT-licensed and may be modified by the node controller.
+
+### Ceramic `DELETE`
+
+There have been discussions about a native `DELETE` even in Ceramic. We are actively involved in
+them and are vocal about the importance of such event.
+
+There's still the possibility of an IPFS node storing the content - or a 3rd party that's subscribed
+to a certain topic.
+
+### Subnets
+
+Subnets would represent a subset of the network nodes. They may choose to apply different rules.
+
+An example might be a private subnet in which case the data would only be distributed to a trusted
+set of nodes.
+
+There's no clear ETA for this, as it involves a tech stack outside of our direct control.
+
+### Encryption
+
+As data is coming through Ceramic - a public network - it needs to be encrypted client-side.
+Currently, OrbisDB is storing encrypted content as-is, in its encrypted form.
+
+A feature may be introduced for data to be encrypted to a set of nodes. These nodes could then
+decrypt the data during indexing, allowing for all the query functionality. This would be
+public-private subnet, since data is being distributed, but only a subset of nodes would be able to
+interpret the data.
+
+This may be introduced via plugins or as an OrbisDB native feature.
+
+It's not a work-in-progress and there are no ETAs\
+It may be re-prioritized depending on the needs of our users.
+
+## GDPR & CCPA
+
+GDPR & CCPA are privacy regulations and acts. They are a step in the right direction when it comes
+to users "owning" their data, or at least having some form of control over it.
+
+At the heart of both of these is the "right to be forgotten". This is challenging for a technology
+that relies on immutability. In case of OrbisDB, Ceramic or IPFS you as the node operator can remove
+(forget) the content from your instances, but can't affect other node operators to which the data
+has been distributed.
+
+There's active discussions as to how the emerging blockchain technology can co-exist with acts such
+as GDPR and CCPA. For more details, you can read the following:
+
+- [Blockchain and the GDPR](<https://www.europarl.europa.eu/RegData/etudes/STUD/2019/634445/EPRS_STU(2019)634445_EN.pdf>)
+- [BLOCKCHAIN & CCPA](https://digitalcommons.law.scu.edu/cgi/viewcontent.cgi?article=1667&context=chtlj)
+- [Blockchain Technology: Data Privacy Issues and Potential Mitigation Strategies](https://www.davispolk.com/sites/default/files/blockchain_technology_data_privacy_issues_and_potential_mitigation_strategies_w-021-8235.pdf)

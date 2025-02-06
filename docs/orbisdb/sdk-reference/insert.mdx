@@ -1,0 +1,157 @@
+---
+title: Insert
+description: Learn how to write data to OrbisDB.
+---
+
+When writing data to OrbisDB, users are interacting with the underlying decentralized data network,
+Ceramic. Find out more about the data flow in our
+[Writing data section](/docs/orbisdb/managing-data/insert).
+
+> Before using the methods, make sure to [initialize](/docs/orbisdb/sdk-reference) your OrbisDB SDK
+> and [authenticate](/docs/orbisdb/sdk-reference/auth) the user.
+
+## Syntax
+
+Single and bulk inserts share the same syntax with the exception of partial failure possibility in
+the case of bulk inserts.
+
+> OrbisDB statements work on the principle of "method chaining" to build and eventually execute the
+> query.
+
+### Single insert
+
+```tsx
+const result = await orbis
+  .insert("MODEL_ID" | "MODEL_ALIAS")
+  .value({
+    column: value,
+    column2: value2,
+  })
+  .run();
+```
+
+### Bulk insert
+
+> Bulk statements **DO NOT** throw, as they are executed in parallel. This means you can have
+> partial failure with only some rows being written.
+
+```tsx
+const { success, errors } = await orbis
+  .bulkInsert("MODEL_ID" | "MODEL_ALIAS")
+  .values(
+    {
+      column: value,
+      column2: value2,
+    },
+    {
+      column: value,
+      column2: value2,
+    }
+  )
+  .run();
+
+if (errors.length) {
+  console.error("Errors occurred during execution", errors);
+}
+
+console.log(success);
+```
+
+## Contexts
+
+`INSERT` statements can be scoped to a [Context](/docs/orbisdb/managing-data/contexts) by using
+`.context()`.
+
+```tsx
+const result = await orbis
+  .insert("MODEL_ID" | "MODEL_ALIAS")
+  .value({
+    column: value,
+    column2: value2,
+  })
+  .context("CONTEXT_ID")
+  .run();
+```
+
+## Statement execution
+
+You do not have to execute the statement immediately. It's done by either chaining the `.run()` or
+executing it later.
+
+If you decide to postpone the execution, you can access a history of all query runs by accessing the
+`statement.runs` property.
+
+### Immediate execution
+
+```tsx
+const result = await orbis
+  .insert("MODEL_ID" | "MODEL_ALIAS")
+  .value({
+    column: value,
+    column2: value2,
+  })
+  .run();
+```
+
+### Postponed execution
+
+```tsx
+const statement = orbis.insert("MODEL_ID" | "MODEL_ALIAS").value({
+  column: value,
+  column2: value2,
+});
+
+const result = await statement.run();
+
+console.log(result);
+
+// Log the execution history of this statement
+console.log(statement.runs);
+```
+
+## Local validation
+
+All insert statements can be validated against their [Models](/docs/orbisdb/managing-data/models)
+locally. This requires postponed execution syntax. Local validation is not required, it's just a
+quality-of-life feature. Data validation is ultimately done by the Ceramic node you're writing the
+data to.
+
+### Single insert
+
+```tsx
+const insertStatement = await orbis.insert("MODEL_ID" | "MODEL_ALIAS").value({
+  column: value,
+  column2: value2,
+});
+
+// Perform local JSON Schema validation before running the query
+const validation = await insertStatement.validate();
+if (!validation.valid) {
+  throw "Error during validation: " + validation.error;
+}
+
+const result = await insertStatement.run();
+```
+
+### Bulk insert
+
+```tsx
+const insertStatement = await orbis.bulkInsert("MODEL_ID" | "MODEL_ALIAS").values(
+  {
+    column: value,
+    column2: value2,
+  },
+  {
+    column: value,
+    column2: value2,
+  }
+);
+
+const validation = await insertStatement.validate();
+if (!validation.valid) {
+  console.error("Errors during validation", validation.errors);
+  throw "Errors during validation";
+}
+
+const { success, errors } = await insertStatement.run();
+```

@@ -430,7 +430,7 @@ const config: Config = {
 
           items: [
             {
-              to: "docs/orbisdb/overview",
+              to: "docs/orbisdb/introduction",
               label: "OrbisDB"
             },
             {
@@ -454,6 +454,10 @@ const config: Config = {
             {
               to: "docs/protocol/js-ceramic/overview",
               label: "JS-Ceramic"
+            },
+            {
+              to: "docs/protocol/ceramic-one/",
+              label: "Ceramic One"
             }
           ]
         },
