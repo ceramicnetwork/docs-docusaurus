@@ -430,7 +430,7 @@ const config: Config = {
 
           items: [
             {
-              to: "docs/orbisdb/introduction",
+              to: "docs/orbisdb/overview",
               label: "OrbisDB"
             },
             {

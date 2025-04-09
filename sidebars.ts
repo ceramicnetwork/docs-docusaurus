@@ -474,72 +474,20 @@ const sidebars: SidebarsConfig = {
           items: ["protocol/ceramic-one/usage/events/raw-events"],
         },
       ],
-    },
-    {
-      type: "category",
-      collapsed: true,
-      label: "Tutorials",
-      items: [
-        "protocol/ceramic-one/tutorials/data-labeling",
-        "protocol/ceramic-one/tutorials/user-data"
-      ],
-    },
-    {
-      type: "doc",
-      id: "protocol/ceramic-one/related-projects",
-    },
+    }
   ],
   orbisdb: [
     {
       type: "doc",
-      label: "OrbisDB",
-      id: "orbisdb/introduction/README",
+      id: "orbisdb/overview",
+      label: "OrbisDB Overview"
     },
     {
-      type: "category",
-      label: "Introduction",
-      items: [
-        "orbisdb/introduction/architecture",
-        "orbisdb/introduction/quickstart",
-      ],
+      type: "doc",
+      id: "orbisdb/orbisdb-sdk",
+      label: "OrbisDB SDK"
     },
-    {
-      type: "category",
-      label: "Setting Up",
-      items: [
-        "orbisdb/setting-up/README",
-        "orbisdb/setting-up/local",
-        "orbisdb/setting-up/managed-studio",
-        "orbisdb/setting-up/self-hosted",
-        "orbisdb/setting-up/managing-orbisdb",
-      ],
-    },
-    {
-      type: "category",
-      label: "Managing Data",
-      items: [
-        "orbisdb/managing-data/README",
-        "orbisdb/managing-data/accounts",
-        "orbisdb/managing-data/contexts",
-        "orbisdb/managing-data/models",
-        "orbisdb/managing-data/insert",
-        "orbisdb/managing-data/update",
-        "orbisdb/managing-data/select",
-        "orbisdb/managing-data/delete",
-        "orbisdb/managing-data/advanced",
-      ],
-    },
-    {
-      type: "category",
-      label: "References",
-      items: [
-        "orbisdb/sdk-reference/README",
-        "orbisdb/sdk-reference/auth",
-        "orbisdb/sdk-reference/insert",
-        "orbisdb/sdk-reference/update",
-        "orbisdb/sdk-reference/select",
-      ],
-    },
+    
   ],
 
 
