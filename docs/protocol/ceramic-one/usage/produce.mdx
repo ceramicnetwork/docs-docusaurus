@@ -29,6 +29,12 @@ definitions.
 To get started, use the base `CeramicClient` class to instantiate a new `ModelClient` class. For
 more information regarding usage of the CeramicClient see the previous page.
 
+### Add client packages to your project
+
+```bash
+npm install --save @ceramic-sdk/model-client @ceramic-sdk/model-protocol @ceramic-sdk/model-instance-client @didtools/key-did
+```
+
 ### Working with Models
 
 ```typescript
@@ -68,7 +74,7 @@ const model: ModelDefinition = {
 };
 
 // 3. Create the Model Stream
-const modelStream = await modelClient.postDefinition(model);
+const modelStream = await modelClient.createDefinition(model);
 
 // 4. Get the Stream's Model Definition
 const modelDefinition = await modelClient.getModelDefinition(modelStream);
@@ -189,16 +195,17 @@ the `@ceramic-sdk/model-instance-client` sub-package.
 import { CeramicClient } from "@ceramic-sdk/http-client";
 import { ModelInstanceClient } from "@ceramic-sdk/model-instance-client";
 import { getAuthenticatedDID } from "@didtools/key-did";
+import { StreamID } from "@ceramic-sdk/identifiers";
 
 const authenticatedDID = await getAuthenticatedDID(new Uint8Array(32));
 
 const ceramic = new CeramicClient({ url: "http://localhost:5101" });
 
 // a model using the single accountRelation
-const profileModelStreamId = "kjzl6hvfrbw6c77ooylhtrs71a3ddqi5zdzosmvaodxu1upnhl6t8x6ekf5k2t8";
+const profileModelStreamId = StreamID.fromString("kjzl6hvfrbw6c77ooylhtrs71a3ddqi5zdzosmvaodxu1upnhl6t8x6ekf5k2t8");
 
 // a model using the list accountRelation
-const forumPostModelStreamId = "kjzl6hvfrbw6c8007xlqeudoh0n82j0fepj4y2in7uskh74yv3612d3bi7y7p1j";
+const forumPostModelStreamId = StreamID.fromString("kjzl6hvfrbw6c8007xlqeudoh0n82j0fepj4y2in7uskh74yv3612d3bi7y7p1j");
 
 // 1. Instantiate a ModelInstanceClient
 const modelInstanceClient = new ModelInstanceClient({
@@ -209,13 +216,13 @@ const modelInstanceClient = new ModelInstanceClient({
 // 2. Create a new MID (single` and `set` model types are handled differently than `list` types)
 
 // `single` and `set` require a deterministic initial event (without content)
-const singleDocumentStream = await modelInstanceClient.postDeterministicInit({
+const singleDocumentStream = await modelInstanceClient.createSingleton({
   model: profileModelStreamId,
   controller: authenticatedDID.id,
 });
 
 // `list` documents can contain an initial content payload
-const listDocumentStream = await modelInstanceClient.postSignedInit({
+const listDocumentStream = await modelInstanceClient.createInstance({
   model: forumPostModelStreamId,
   content: {
     title: "This is a new post",
@@ -227,13 +234,13 @@ const listDocumentStream = await modelInstanceClient.postSignedInit({
 // 3. Updating a MID (does not differ between model types)
 
 await modelInstanceClient.updateDocument({
-  streamID: singleDocumentStream.toString(),
+  streamID: singleDocumentStream.baseID.toString(),
   newContent: { firstName: "New", lastName: "User", userName: "newUser1" },
   shouldIndex: true,
 });
 
 await modelInstanceClient.updateDocument({
-  streamID: listDocumentStream.toString(),
+  streamID: listDocumentStream.baseID.toString(),
   newContent: {
     title: "This is an updated post title",
     body: "This is an updated post body",
@@ -242,5 +249,6 @@ await modelInstanceClient.updateDocument({
 });
 
 // 4. Read the MID's State
-const currentState = await modelInstanceClient.getDocumentState(listDocumentStream.toString());
+const currentState1 = await modelInstanceClient.getDocumentState(singleDocumentStream.baseID);
+const currentState2 = await modelInstanceClient.getDocumentState(listDocumentStream.baseID);
 ```
