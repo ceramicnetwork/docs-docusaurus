@@ -91,10 +91,10 @@ Consumers can either handle the event `data` payloads directly using their own b
 or they can leverage Ceramic's standard data pipeline to combine messages into new forms, including
 mutable data structures and other key components of a modern data environment.
 
-## Archival Storage on Recall
+## Archival Storage on S3
 
-The Ceramic Network in the context of Recall is a communication, synchronization, and validation for
-ephemeral events. While this architecture is intentionally flexible to allow for bespoke molding of
+The Ceramic Network is a communication, synchronization, and validation for persistent or ephemeral
+events. While this architecture is intentionally flexible to allow for bespoke molding of
 custom data pipelines, schema, and other logic, it requires a data availability layer to provide
 archival assurances and programmatic access.
 
@@ -103,7 +103,7 @@ transformations across the Ceramic data pipeline, giving developers access to ra
 document states, or custom document states based on bespoke logic developers implement into their
 pipelines.
 
-These parquet files containing Ceramic events are stored in Recall buckets. The columnar storage
+These parquet files containing Ceramic events are stored in S3 buckets. The columnar storage
 format of parquet files is highly efficient for analytical queries, therefore reducing data transfer
 and storage costs. Parquet also supports performant compression schemes which reduces file sizes
 further without compromising performance.

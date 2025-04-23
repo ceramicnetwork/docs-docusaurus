@@ -45,16 +45,16 @@ queried and transmitted efficiently, ideal for intense data workloads.
 
 The `@ceramic-sdk/flight-sql-client` is a package designed to run server-side only. Using this
 client needs a [ceramic-one](https://github.com/ceramicnetwork/rust-ceramic) daemon running with
-experimental flags which point to your Recall-S3 adapter:
+experimental flags which point to your S3 bucket:
 
 ```bash
-ceramic-one -- daemon --experimental-features --flight-sql-bind-address 0.0.0.0:5102 --s3-bucket your-recall-account.your-bucket-name
+ceramic-one -- daemon --experimental-features --flight-sql-bind-address 0.0.0.0:5102 --object-store-url s3://your-bucket-name
 ```
 
 ### Install the flight-sql package
 
 ```bash
-npm install --save @ceramic-sdk/flight-sql-client
+npm install --save @ceramic-sdk/flight-sql-client apache-arrow
 ```
 
 ### Create a client instance
@@ -79,7 +79,7 @@ const client = await createFlightSqlClient(OPTIONS);
 ### Execute a query
 
 ```typescript
-const buffer = await client.preparedStatement(
+const buffer = await client.preparedQuery(
   "SELECT * from conclusion_events where stream_type = $1",
   new Array(["$1", "3"])
 );
