@@ -467,12 +467,6 @@ const sidebars: SidebarsConfig = {
         "protocol/ceramic-one/usage/produce",
         "protocol/ceramic-one/usage/consume",
         "protocol/ceramic-one/usage/query",
-        {
-          type: "category",
-          collapsed: true,
-          label: "Events",
-          items: ["protocol/ceramic-one/usage/events/raw-events"],
-        },
       ],
     }
   ],
