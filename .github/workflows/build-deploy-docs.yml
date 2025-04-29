@@ -1,8 +1,13 @@
-name: Build docs
+name: Build and deploy docs
+
 on:
   pull_request:
     branches:
       - main
+  push:
+    branches:
+      - main
+  workflow_dispatch: # manually triggered
 
 jobs:
   build:
@@ -27,3 +32,12 @@ jobs:
 
       - name: Build docs website
         run: pnpm build
+
+      - name: Deploy to GitHub Pages
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          user_name: github-actions[bot]
+          user_email: 41898282+github-actions[bot]@users.noreply.github.com
