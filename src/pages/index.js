@@ -40,31 +40,6 @@ export default function Home() {
                 background: "linear-gradient(215deg, var(--ifm-color-primary) -33%, var(--box-color) 50%)"
               }}
             >
-              <h3>Build with OrbisDB</h3>
-              <div>OrbisDB is an advanced decentralized database built on the Ceramic Data Network. It comes with a set of
-                plugins allowing unlimited customization options.</div>
-              <div
-                style={{
-                  display: "flex",
-                  columnGap: "24px",
-                  rowGap: "4px",
-                  width: "100%",
-                  flexWrap: "wrap",
-                  padding: "16px 0 0",
-                  fontWeight: "500"
-                }}
-              >
-                <div>
-                <a href="/docs/orbisdb/overview">Getting Started with OrbisDB → </a>
-                </div>
-              </div>
-            </div>
-            <div
-              className={styles.productCard}
-              style={{
-                background: "linear-gradient(215deg, #660094 -33%, var(--box-color) 50%)"
-              }}
-            >
               <h3>Build with ComposeDB</h3>
               <div>
                 A decentralized, composable graph database to build interoperable applications on Ceramic.

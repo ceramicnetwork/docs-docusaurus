@@ -59,10 +59,6 @@ const config: Config = {
         fromExtensions: ["html", "htm"],
         redirects: [
           {
-            to: "/docs/composedb/sandbox",
-            from: "/composedb/sandbox"
-          },
-          {
             to: "/docs/composedb/guides/data-modeling",
             from: "/docs/advanced/standards/data-models/"
           },
@@ -192,10 +188,6 @@ const config: Config = {
               "/tools/composedb/development/",
               "/learn/"
             ]
-          },
-          {
-            to: "/docs/composedb/sandbox",
-            from: ["/sandbox"]
           },
           {
             to: "/docs/protocol/js-ceramic/guides/ceramic-clients/authentication/key-did",
@@ -429,10 +421,6 @@ const config: Config = {
           label: "Developer Tools",
 
           items: [
-            {
-              to: "docs/orbisdb/overview",
-              label: "OrbisDB"
-            },
             {
               to: "docs/composedb/getting-started",
               label: "ComposeDB"

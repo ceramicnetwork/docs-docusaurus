@@ -13,15 +13,6 @@ const FeatureList = [
     ]
   },
   {
-    title: "ComposeDB Sandbox →",
-    items: [
-      {
-        url: "docs/composedb/sandbox",
-        text: "Interact with data stored in the Ceramic Network right in your browser."
-      }
-    ]
-  },
-  {
     title: "Ceramic Ecosystem →",
     items: [
       {

@@ -25,13 +25,11 @@ const sidebars: SidebarsConfig = {
       },
       items: [
         { type: "doc", id: "introduction/protocol-overview", label: "Ceramic Protocol" },
-        { type: "doc", id: "introduction/orbisdb-overview", label: "OrbisDB" },
         { type: "doc", id: "introduction/composedb-overview", label: "ComposeDB" },
         { type: "doc", id: "introduction/did-overview", label: "Decentralized Identifiers" }
       ]
     },
     { type: "doc", id: "introduction/technical-reqs", label: "Technical Requirements" },
-    { type: "link", label: "Try it out!", href: "/docs/composedb/sandbox" },
     { type: "doc", id: "introduction/ceramic-roadmap", label: "Roadmap" }
   ],
   protocol: [
@@ -202,11 +200,6 @@ const sidebars: SidebarsConfig = {
         id: "composedb/getting-started"
       },
       items: [
-        {
-          type: "doc",
-          id: "composedb/sandbox",
-          label: "ComposeDB Sandbox"
-        },
         {
           type: "doc",
           id: "composedb/create-ceramic-app",
@@ -470,20 +463,6 @@ const sidebars: SidebarsConfig = {
       ],
     }
   ],
-  orbisdb: [
-    {
-      type: "doc",
-      id: "orbisdb/overview",
-      label: "OrbisDB Overview"
-    },
-    {
-      type: "doc",
-      id: "orbisdb/orbisdb-sdk",
-      label: "OrbisDB SDK"
-    },
-    
-  ],
-
 
   // But you can create a sidebar manually
   /*
