@@ -58,7 +58,7 @@ type Posts @createModel(accountRelation: LIST, description: "A simple Post") {
 
 #### Account to Model Relations
 
-Any document can always be queried by its author's account using the required `accountRelation` property. See [Account to Model Relations](./guides/data-modeling/relations.mdx#account-to-model-relations) for more.
+Any document can always be queried by its author's account using the required `accountRelation` property. See [Account to Model Relations](./guides/data-modeling/relations.mdx#account-to-model) for more.
 
 ##### Model
 
@@ -85,7 +85,7 @@ Let's query the `DisplayName` using the author's account:
 
 #### Model to Account Relations
 
-Enable a document to be queried by a referenced account using the `@accountReference` directive. See [Model to Account Relations](./guides/data-modeling/relations.mdx#model-to-account-relations) for more.
+Enable a document to be queried by a referenced account using the `@accountReference` directive. See [Model to Account Relations](./guides/data-modeling/relations.mdx#model-to-account) for more.
 
 ##### Model
 
@@ -113,7 +113,7 @@ Let's query messages based on recipient using `@accountReference`:
 
 #### Model to Model Relations
 
-Enable a document to be queried by its relationship to other documents using the `@documentReference` and `@relationFrom` directives. See [Model to Model Relations](./guides/data-modeling/relations.mdx#model-to-model-relations) for more.
+Enable a document to be queried by its relationship to other documents using the `@documentReference` and `@relationFrom` directives. See [Model to Model Relations](./guides/data-modeling/relations.mdx#model-to-model) for more.
 
 ##### Model
 

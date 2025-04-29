@@ -67,8 +67,8 @@ One option is installing and setting up one or more account providers that run l
 
 | Account | Supported Key Types | Provider libraries                                               |
 | ------- | ------------------- | ---------------------------------------------------------------- |
-| Key DID | Ed25519             | [`key-did-provider-ed25519`](./key-did.md#ed25519)     |
-| Key DID | Secp256k1           | [`key-did-provider-secp256k1`](./key-did.md#secp256k1) |
+| Key DID | Ed25519             | [`key-did-provider-ed25519`](./key-did#key-did-provider-ed25519)     |
+| Key DID | Secp256k1           | [`key-did-provider-secp256k1`](./key-did#key-did-provider-secp256k1) |
 
 <!-- | PKH DID | ?????????           | [`js-pkh-did-provider →`]()           | -->
 

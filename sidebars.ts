@@ -212,7 +212,7 @@ const sidebars: SidebarsConfig = {
         },
         { type: "doc", id: "composedb/create-your-composite", label: "Create your composite" },
         { type: "doc", id: "composedb/interact-with-data", label: "Interact with data" },
-        { type: "doc", id: "composedb/core-concepts", label: "Core ComposeDBconcepts" },
+        { type: "doc", id: "composedb/core-concepts", label: "Core ComposeDB concepts" },
         { type: "doc", id: "composedb/next-steps", label: "Next Steps" }
       ]
     },

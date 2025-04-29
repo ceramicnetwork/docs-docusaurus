@@ -167,8 +167,7 @@ const config: Config = {
               "/reference/typescript/interfaces/_ceramicnetwork_common.AnchorValidator.html",
               "/reference/typescript/DEVELOPMENT.md",
               "/reference/typescript/docs-dev/UPGRADING.md",
-              "/reference/typescript/docs-dev/QUICKSTART.md",
-              "/reference/typescript/DEVELOPMENT.md"
+              "/reference/typescript/docs-dev/QUICKSTART.md"
             ]
           },
           {
