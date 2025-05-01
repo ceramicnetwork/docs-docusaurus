@@ -25,13 +25,11 @@ const sidebars: SidebarsConfig = {
       },
       items: [
         { type: "doc", id: "introduction/protocol-overview", label: "Ceramic Protocol" },
-        { type: "doc", id: "introduction/orbisdb-overview", label: "OrbisDB" },
         { type: "doc", id: "introduction/composedb-overview", label: "ComposeDB" },
         { type: "doc", id: "introduction/did-overview", label: "Decentralized Identifiers" }
       ]
     },
     { type: "doc", id: "introduction/technical-reqs", label: "Technical Requirements" },
-    { type: "link", label: "Try it out!", href: "/docs/composedb/sandbox" },
     { type: "doc", id: "introduction/ceramic-roadmap", label: "Roadmap" }
   ],
   protocol: [
@@ -204,11 +202,6 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: "doc",
-          id: "composedb/sandbox",
-          label: "ComposeDB Sandbox"
-        },
-        {
-          type: "doc",
           id: "composedb/create-ceramic-app",
           label: "Scaffold a new Ceramic app"
         },
@@ -219,7 +212,7 @@ const sidebars: SidebarsConfig = {
         },
         { type: "doc", id: "composedb/create-your-composite", label: "Create your composite" },
         { type: "doc", id: "composedb/interact-with-data", label: "Interact with data" },
-        { type: "doc", id: "composedb/core-concepts", label: "Core ComposeDBconcepts" },
+        { type: "doc", id: "composedb/core-concepts", label: "Core ComposeDB concepts" },
         { type: "doc", id: "composedb/next-steps", label: "Next Steps" }
       ]
     },
@@ -447,20 +440,29 @@ const sidebars: SidebarsConfig = {
       label: "Overview"
     }
   ],
-  orbisdb: [
+  ceramicOne: [
     {
       type: "doc",
-      id: "orbisdb/overview",
-      label: "OrbisDB Overview"
+      id: "protocol/ceramic-one/README",
+      label: "Ceramic One",
     },
     {
       type: "doc",
-      id: "orbisdb/orbisdb-sdk",
-      label: "OrbisDB SDK"
+      id: "protocol/ceramic-one/concepts",
+      label: "Concepts",
     },
-    
+    {
+      type: "category",
+      collapsed: true,
+      label: "Usage",
+      items: [
+        "protocol/ceramic-one/usage/installation",
+        "protocol/ceramic-one/usage/produce",
+        "protocol/ceramic-one/usage/consume",
+        "protocol/ceramic-one/usage/query",
+      ],
+    }
   ],
-
 
   // But you can create a sidebar manually
   /*

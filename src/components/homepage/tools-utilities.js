@@ -28,14 +28,6 @@ const FeatureList = [
         text: "Easily run Ceramic Nodes in the Cloud."
       }
     ]
-  },
-  {
-    title: "Hirenodes →",
-    items: [{ url: "https://hirenodes.io/", text: "Run Ceramic Nodes using a hosted service." }]
-  },
-  {
-    title: "Cerscan →",
-    items: [{ url: "https://cerscan.com/", text: "Explore the data streams stored on the Ceramic Network." }]
   }
 ];
 

@@ -59,10 +59,6 @@ const config: Config = {
         fromExtensions: ["html", "htm"],
         redirects: [
           {
-            to: "/docs/composedb/sandbox",
-            from: "/composedb/sandbox"
-          },
-          {
             to: "/docs/composedb/guides/data-modeling",
             from: "/docs/advanced/standards/data-models/"
           },
@@ -171,8 +167,7 @@ const config: Config = {
               "/reference/typescript/interfaces/_ceramicnetwork_common.AnchorValidator.html",
               "/reference/typescript/DEVELOPMENT.md",
               "/reference/typescript/docs-dev/UPGRADING.md",
-              "/reference/typescript/docs-dev/QUICKSTART.md",
-              "/reference/typescript/DEVELOPMENT.md"
+              "/reference/typescript/docs-dev/QUICKSTART.md"
             ]
           },
           {
@@ -192,10 +187,6 @@ const config: Config = {
               "/tools/composedb/development/",
               "/learn/"
             ]
-          },
-          {
-            to: "/docs/composedb/sandbox",
-            from: ["/sandbox"]
           },
           {
             to: "/docs/protocol/js-ceramic/guides/ceramic-clients/authentication/key-did",
@@ -430,10 +421,6 @@ const config: Config = {
 
           items: [
             {
-              to: "docs/orbisdb/overview",
-              label: "OrbisDB"
-            },
-            {
               to: "docs/composedb/getting-started",
               label: "ComposeDB"
             },
@@ -454,6 +441,10 @@ const config: Config = {
             {
               to: "docs/protocol/js-ceramic/overview",
               label: "JS-Ceramic"
+            },
+            {
+              to: "docs/protocol/ceramic-one/",
+              label: "Ceramic One"
             }
           ]
         },

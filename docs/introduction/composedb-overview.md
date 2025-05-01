@@ -38,9 +38,6 @@ Thank you for being a ComposeDB pioneer and understanding that great Web3 protoc
 ### [Get Started →](../composedb/getting-started) 
 Build a Hello World application and interact from the CLI.
 
-### [ComposeDB Sandbox →](/docs/composedb/sandbox) 
-Test example queries to ComposeDB directly in your browser.
-
 ### [Development Guides →](../composedb/guides)
 Learn about data modeling, application set up, and data interactions.
 <!-- Server Config-->

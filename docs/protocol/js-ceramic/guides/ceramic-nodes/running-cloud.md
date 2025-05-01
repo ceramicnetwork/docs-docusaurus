@@ -8,7 +8,7 @@ This guide provides the instructions for launching a well-connected, production-
 
 ---
 
-To run your application on `mainnet` you'll need to run your own production-ready node or to use a community hosted nodes provider like [hirenodes](https://hirenodes.io/).
+To run your application on `mainnet` you'll need to run your own production-ready node.
 
 ## Things to know
 
@@ -269,11 +269,3 @@ The js-ceramic configuration file can be found using the following path: `$HOME/
 
 
 ---
-
-
-
-
-
-
-
-
