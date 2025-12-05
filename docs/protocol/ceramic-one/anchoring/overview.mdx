@@ -28,20 +28,14 @@ When events are anchored:
 Before configuring self-anchoring, ensure you have:
 
 1. **A running Ceramic One node** - See [Installation](../usage/installation)
-2. **Access to EVM RPC endpoints** - For both submitting transactions and verifying anchor proofs
+2. **Access to an EVM RPC endpoint** - For submitting transactions and verifying anchor proofs
 3. **A funded wallet** - The wallet must have sufficient funds for transaction fees on your chosen network
-4. **The anchor contract address** - The deployed Ceramic anchor contract on your target network
+4. **A deployed anchor contract** - See [Deploying the Anchor Contract](./evm-configuration#deploying-the-anchor-contract)
 
 ## Quick Start
 
-Self-anchoring requires two types of RPC configuration:
-
-1. **`--ethereum-rpc-urls`** - For verifying anchor proofs (required)
-2. **`--evm-rpc-url`** - For submitting anchor transactions (required for self-anchoring)
-
 ```bash
 ceramic-one daemon \
-  --ethereum-rpc-urls https://rpc.yournetwork.com \
   --evm-rpc-url https://rpc.yournetwork.com \
   --evm-private-key your-private-key-hex \
   --evm-chain-id 1 \
@@ -52,7 +46,6 @@ ceramic-one daemon \
 Or use environment variables:
 
 ```bash
-export CERAMIC_ONE_ETHEREUM_RPC_URLS=https://rpc.yournetwork.com
 export CERAMIC_ONE_EVM_RPC_URL=https://rpc.yournetwork.com
 export CERAMIC_ONE_EVM_PRIVATE_KEY=your-private-key-hex
 export CERAMIC_ONE_EVM_CHAIN_ID=1
@@ -68,11 +61,11 @@ See [EVM Configuration](./evm-configuration) for detailed setup instructions and
 
 | Option | Environment Variable | Purpose |
 |--------|---------------------|---------|
-| `--ethereum-rpc-urls` | `CERAMIC_ONE_ETHEREUM_RPC_URLS` | Verify anchor proofs from the network |
-| `--evm-rpc-url` | `CERAMIC_ONE_EVM_RPC_URL` | Submit anchor transactions |
+| `--evm-rpc-url` | `CERAMIC_ONE_EVM_RPC_URL` | Submit anchor transactions and verify proofs |
 | `--evm-private-key` | `CERAMIC_ONE_EVM_PRIVATE_KEY` | Sign anchor transactions |
 | `--evm-chain-id` | `CERAMIC_ONE_EVM_CHAIN_ID` | Target blockchain network |
 | `--evm-contract-address` | `CERAMIC_ONE_EVM_CONTRACT_ADDRESS` | Anchor contract address |
+| `--additional-chain-rpc-urls` | `CERAMIC_ONE_ADDITIONAL_CHAIN_RPC_URLS` | Validate anchors from other chains (optional) |
 
 ## How It Works
 
@@ -80,7 +73,7 @@ See [EVM Configuration](./evm-configuration) for detailed setup instructions and
 2. **Merkle Tree Construction**: Events are batched and organized into a Merkle tree
 3. **Blockchain Transaction**: The Merkle root is written to the anchor contract on your chosen EVM chain
 4. **Confirmation**: After the configured number of block confirmations, anchors are considered final
-5. **Proof Verification**: The node verifies anchor proofs using `--ethereum-rpc-urls`
+5. **Proof Verification**: The node verifies anchor proofs using the configured RPC endpoints
 6. **Proof Distribution**: Anchor proofs are distributed to relevant streams
 
 ## Next Steps

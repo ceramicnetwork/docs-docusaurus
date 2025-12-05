@@ -7,28 +7,66 @@ description: Configure self-anchoring for any EVM-compatible blockchain
 
 This guide covers the configuration options for running self-anchoring on EVM-compatible blockchains.
 
+## Anchor Contract
+
+Self-anchoring requires an anchor contract deployed on your chosen EVM blockchain.
+
+### Pre-deployed Contracts
+
+The anchor contract is already deployed on the following networks:
+
+| Network | Chain ID | Contract Address |
+|---------|----------|------------------|
+| Ethereum Mainnet | 1 | `0x231055A0852D67C7107Ad0d0DFeab60278fE6AdC` |
+| Gnosis Chain | 100 | `0x231055A0852D67C7107Ad0d0DFeab60278fE6AdC` |
+
+You can use these addresses directly with `--evm-contract-address` without deploying your own contract.
+
+### Deploying to Other Networks
+
+To deploy the anchor contract on a different EVM chain:
+
+The contract source code is available at:
+[ceramicnetwork/ceramic-anchor-service/contracts](https://github.com/ceramicnetwork/ceramic-anchor-service/tree/develop/contracts)
+
+The contract (`CeramicAnchorServiceV2.sol`) implements [CIP-110](https://github.com/ceramicnetwork/CIPs/blob/main/CIPs/cip-110.md) for indexable anchors.
+
+**Deployment steps:**
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ceramicnetwork/ceramic-anchor-service.git
+   cd ceramic-anchor-service/contracts
+   ```
+
+2. Install dependencies (requires [Foundry](https://book.getfoundry.sh/getting-started/installation)):
+   ```bash
+   make installDeps
+   make build
+   ```
+
+3. Deploy to your network:
+   ```bash
+   export ETH_WALLET_PK=your-private-key
+   export ETH_RPC_HOST=https://rpc.yournetwork.com
+   export ETH_RPC_PORT=443
+   make create
+   ```
+
+4. Note the deployed contract address from the output for use with `--evm-contract-address`.
+
 ## Required Options
-
-Self-anchoring requires both anchor verification RPC endpoints and transaction submission configuration:
-
-### Anchor Proof Verification
-
-| Option | Environment Variable | Description |
-|--------|---------------------|-------------|
-| `--ethereum-rpc-urls` | `CERAMIC_ONE_ETHEREUM_RPC_URLS` | Comma-separated list of RPC URLs for verifying anchor proofs |
-
-This is required for validating anchor proofs, including the proofs created by your own self-anchoring. The node uses these endpoints to verify that anchors exist on-chain.
-
-### Transaction Submission
 
 All of these options must be provided together to enable self-anchoring:
 
 | Option | Environment Variable | Description |
 |--------|---------------------|-------------|
-| `--evm-rpc-url` | `CERAMIC_ONE_EVM_RPC_URL` | RPC endpoint URL for submitting anchor transactions |
+| `--evm-rpc-url` | `CERAMIC_ONE_EVM_RPC_URL` | RPC endpoint URL for submitting anchor transactions and verifying anchor proofs |
 | `--evm-private-key` | `CERAMIC_ONE_EVM_PRIVATE_KEY` | Private key in hex format (without 0x prefix) |
 | `--evm-chain-id` | `CERAMIC_ONE_EVM_CHAIN_ID` | Network/chain ID (e.g., 1 for Ethereum mainnet) |
-| `--evm-contract-address` | `CERAMIC_ONE_EVM_CONTRACT_ADDRESS` | Deployed anchor contract address |
+| `--evm-contract-address` | `CERAMIC_ONE_EVM_CONTRACT_ADDRESS` | Deployed anchor contract address (see [Deploying the Anchor Contract](#deploying-the-anchor-contract)) |
+
+The `--evm-rpc-url` is used both for submitting anchor transactions and for verifying anchor proofs on that chain.
 
 ## Optional Settings
 
@@ -36,6 +74,20 @@ All of these options must be provided together to enable self-anchoring:
 |--------|---------------------|---------|-------------|
 | `--evm-confirmations` | `CERAMIC_ONE_EVM_CONFIRMATIONS` | 4 | Number of block confirmations before anchor is final |
 | `--anchor-interval` | `CERAMIC_ONE_ANCHOR_INTERVAL` | 3600 | Anchoring frequency in seconds |
+| `--additional-chain-rpc-urls` | `CERAMIC_ONE_ADDITIONAL_CHAIN_RPC_URLS` | - | Comma-separated list of RPC URLs for validating anchors from other chains |
+
+### Validating Anchors from Other Chains
+
+If your node syncs events from the network that were anchored on different chains (e.g., historical anchors or events from other nodes), you can provide additional RPC endpoints to validate those proofs:
+
+```bash
+ceramic-one daemon \
+  --evm-rpc-url https://rpc.gnosis.io \
+  --additional-chain-rpc-urls https://eth-mainnet.g.alchemy.com/v2/YOUR_KEY,https://polygon-rpc.com \
+  ...
+```
+
+The node uses the first valid RPC for each chain ID.
 
 ## Configuration Methods
 
@@ -43,7 +95,6 @@ All of these options must be provided together to enable self-anchoring:
 
 ```bash
 ceramic-one daemon \
-  --ethereum-rpc-urls https://rpc.yournetwork.com \
   --evm-rpc-url https://rpc.yournetwork.com \
   --evm-private-key abcd1234... \
   --evm-chain-id 12345 \
@@ -55,7 +106,6 @@ ceramic-one daemon \
 ### Environment Variables
 
 ```bash
-export CERAMIC_ONE_ETHEREUM_RPC_URLS=https://rpc.yournetwork.com
 export CERAMIC_ONE_EVM_RPC_URL=https://rpc.yournetwork.com
 export CERAMIC_ONE_EVM_PRIVATE_KEY=abcd1234...
 export CERAMIC_ONE_EVM_CHAIN_ID=12345
@@ -76,7 +126,6 @@ services:
     image: public.ecr.aws/r5b3e0r5/3box/ceramic-one:latest
     network_mode: "host"
     environment:
-      - CERAMIC_ONE_ETHEREUM_RPC_URLS=https://rpc.yournetwork.com
       - CERAMIC_ONE_EVM_RPC_URL=https://rpc.yournetwork.com
       - CERAMIC_ONE_EVM_PRIVATE_KEY=${EVM_PRIVATE_KEY}
       - CERAMIC_ONE_EVM_CHAIN_ID=12345
