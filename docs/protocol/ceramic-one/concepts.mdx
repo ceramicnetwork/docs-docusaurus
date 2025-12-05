@@ -7,10 +7,8 @@ Ceramic combines a powerful event streaming platform with the open access and ve
 modern, decentralized web. This page provides a brief overview of the core architecture, with a
 focus on how the high-level components of the protocol fit together.
 
-You may find this page helpful even if you are working with a database or other application built on
-top of the core protocol, such as ComposeDB, although there may be some details here that are less
-relevant to your needs, and some things that are better covered by the documentation of the tool
-you're interacting with directly.
+This page provides essential background for understanding how Ceramic works, from event streaming
+fundamentals to the data pipeline that transforms raw events into queryable state.
 
 ## Event Streaming
 
@@ -195,15 +193,9 @@ future update events. Updates to documents take the form of events containing JS
 which encode an operation to perform on the current state, for example, set the field `"name"` to
 the value `"Ada Lovelace"`.
 
-Databases built on Ceramic like ComposeDB extend the idea of JSON-based documents and defines a shared
-vocabulary of "models." A model specifies the fields, data types, and relationships to other models
-that are supported for a specific kind of data. For example, a simple social media post model might
-include a text status field, a link to the author's account, and optional links to attached media
-objects.
+A model specifies the fields, data types, and relationships to other models that are supported for a
+specific kind of data. For example, a simple social media post model might include a text status
+field, a link to the author's account, and optional links to attached media objects.
 
-In Ceramic, models are associated with the model instance document stream type. Ceramic is, however,
-designed with the flexibility to process events for various stream types, with models representing
-just one stream category. Therefore, it is important to note that the data pipeline steps outlined
-above will vary based on different stream types. While Ceramic currently only supports model and
-model instance document streams, support for new stream types will be introduced by implementing
-their pipeline aggregation steps in the near future.
+In Ceramic, models are associated with the model instance document stream type. The data pipeline
+steps outlined above process model and model instance document streams.

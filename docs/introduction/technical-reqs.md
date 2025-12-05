@@ -11,13 +11,13 @@ To make it easier to grasp, you can think about implementing Ceramic just like y
 
 When integrating with Ceramic, you will be running a few different services and components, each serving a specific purpose for running your application:
 
-- `js-ceramic` - provides the HTTP API access for connected clients to read the streams stored on the Ceramic network
-- `ceramic-one` - responsible for storing the actual data and coordinate with network participants.
+- `ceramic-one` - the Ceramic node written in Rust, responsible for storing data, providing HTTP API access, and coordinating with network participants
 - `PostgreSQL` - used for indexing data
-- `Ethereum RPC node API access` - required to validate Ceramic Anchor Service (CAS) anchors.
-- `Ceramic Anchor Service (CAS) access` - Anchors Ceramic protocol proofs to the blockchain. This service is currently funded by 3box Labs, however, eventually, this function will be provided by node operators and with some expected cost. 
+- `EVM RPC node access` - required for self-anchoring to EVM blockchains (optional, but recommended for production)
 
-Ceramic nodes are simply pieces of software than run on a server. PostgreSQL is a type of traditional database.
+With self-anchoring support, you can run your own anchor service on any EVM-compatible blockchain instead of relying on external services. See [Self-Anchoring](../protocol/ceramic-one/anchoring/overview) for more details.
+
+Ceramic nodes are simply pieces of software that run on a server. PostgreSQL is a type of traditional database.
 
 ## Hardware requirements
 
