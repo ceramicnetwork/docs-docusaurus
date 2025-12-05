@@ -4,28 +4,28 @@ import styles from "./homeNavBoxes.module.css";
 
 const FeatureList = [
   {
-    title: "Ceramic Protocol →",
+    title: "Ceramic One →",
     items: [
       {
-        url: "docs/protocol/js-ceramic/overview",
-        text: "Dive into the specifications and implementation of the Ceramic Protocol."
+        url: "/docs/protocol/ceramic-one/",
+        text: "Dive into the Rust implementation of the Ceramic protocol."
       }
     ]
   },
   {
-    title: "Data Feed API →",
-    items: [{ url: "docs/protocol/js-ceramic/networking/data-feed-api", text: "Build custom indexes on Ceramic." }]
+    title: "Query Pipeline →",
+    items: [{ url: "/docs/protocol/ceramic-one/usage/query", text: "Query Ceramic data using Flight SQL." }]
   },
   {
     title: "Decentralized Identifiers (DIDs) →",
-    items: [{ url: "docs/dids/introduction", text: "Interact and manage decentralized identifiers." }]
+    items: [{ url: "/docs/dids/introduction", text: "Interact and manage decentralized identifiers." }]
   },
   {
-    title: "Simple Deploy →",
+    title: "Self-Anchoring →",
     items: [
       {
-        url: "docs/composedb/guides/composedb-server/running-in-the-cloud",
-        text: "Easily run Ceramic Nodes in the Cloud."
+        url: "/docs/protocol/ceramic-one/anchoring/overview",
+        text: "Run your own anchor service on any EVM blockchain."
       }
     ]
   }

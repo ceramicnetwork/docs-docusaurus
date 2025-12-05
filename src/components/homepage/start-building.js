@@ -4,18 +4,18 @@ import styles from "./homeNavBoxes.module.css";
 
 const FeatureList = [
   {
-    title: "Example App →",
+    title: "Getting Started →",
     items: [
       {
-        url: "/docs/composedb/create-ceramic-app",
-        text: "Setup a fully functioning Ceramic app by running one simple command."
+        url: "/docs/protocol/ceramic-one/",
+        text: "Learn how to install and run Ceramic One to build decentralized applications."
       }
     ]
   },
   {
-    title: "ComposeDB →",
+    title: "Ceramic SDK →",
     items: [
-      { url: "docs/composedb/getting-started", text: "Build composable dApps using a decentralised graph database." }
+      { url: "/docs/protocol/ceramic-one/usage/installation", text: "Use the Ceramic SDK to produce and consume events on the Ceramic network." }
     ]
   }
 ];

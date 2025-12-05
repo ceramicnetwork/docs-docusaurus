@@ -40,9 +40,9 @@ export default function Home() {
                 background: "linear-gradient(215deg, var(--ifm-color-primary) -33%, var(--box-color) 50%)"
               }}
             >
-              <h3>Build with ComposeDB</h3>
+              <h3>Build with Ceramic One</h3>
               <div>
-                A decentralized, composable graph database to build interoperable applications on Ceramic.
+                The next-generation Ceramic node in Rust. Build scalable, decentralized applications with verifiable, composable data.
               </div>
               <div
                 style={{
@@ -56,7 +56,7 @@ export default function Home() {
                 }}
               >
                 <div>
-                  <a href="/docs/composedb/getting-started">Getting Started → </a>
+                  <a href="/docs/protocol/ceramic-one/">Getting Started → </a>
                 </div>
               </div>
             </div>

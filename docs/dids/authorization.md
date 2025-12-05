@@ -2,7 +2,7 @@
 
 Authorize and then use DIDs where needed. At the moment, Ethereum and Solana accounts
 are supported. Reference the chain/network specific libraries for more info on how to
-use each. Additional accounts will be supported in the future. 
+use each. Additional accounts will be supported in the future.
 
 Authorize with an Ethereum account using [@didtools/pkh-ethereum](https://did.js.org/docs/api/modules/pkh_ethereum):
 
@@ -32,9 +32,11 @@ const authMethod = await SolanaWebAuth.getAuthMethod(solProvider, accountId)
 const session = await DIDSession.get(accountId, authMethod, { resources: [...]})
 ```
 
-With your session, use DIDs in composedb, ceramic & glaze libraries:
+With your session, use DIDs with Ceramic:
 
 ```js
-const ceramic = new CeramicClient()
-ceramic.did = session.did
+import { CeramicClient } from '@ceramic-sdk/http-client'
+
+const ceramic = new CeramicClient({ url: 'http://localhost:5101' })
+// Use session.did for authenticated operations
 ```

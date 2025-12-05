@@ -1,0 +1,82 @@
+---
+title: Self-Anchoring Overview
+description: Run your own anchor service on any EVM-compatible blockchain
+---
+
+# Self-Anchoring Overview
+
+Ceramic One supports self-anchoring, allowing you to run your own anchor service instead of relying on an external Ceramic Anchor Service (CAS). This gives you full control over your anchoring infrastructure and supports any EVM-compatible blockchain.
+
+## What is Anchoring?
+
+Anchoring is the process of writing cryptographic commitments to a blockchain, providing a verifiable timestamp and ordering for Ceramic events. This ensures data integrity and enables conflict resolution across the decentralized network.
+
+When events are anchored:
+- They receive a blockchain-verified timestamp
+- Their ordering becomes globally verifiable
+- Conflicts can be deterministically resolved
+
+## Benefits of Self-Anchoring
+
+- **Independence**: No reliance on external anchor services
+- **Flexibility**: Use any EVM-compatible blockchain
+- **Control**: Configure anchoring frequency and confirmation requirements
+- **Cost Management**: Choose networks with appropriate transaction costs for your use case
+
+## Prerequisites
+
+Before configuring self-anchoring, ensure you have:
+
+1. **A running Ceramic One node** - See [Installation](../usage/installation)
+2. **Access to an EVM RPC endpoint** - For submitting transactions and verifying anchor proofs
+3. **A funded wallet** - The wallet must have sufficient funds for transaction fees on your chosen network
+4. **A deployed anchor contract** - See [Deploying the Anchor Contract](./evm-configuration#deploying-the-anchor-contract)
+
+## Quick Start
+
+```bash
+ceramic-one daemon \
+  --evm-rpc-url https://rpc.yournetwork.com \
+  --evm-private-key your-private-key-hex \
+  --evm-chain-id 1 \
+  --evm-contract-address 0x... \
+  --anchor-interval 3600
+```
+
+Or use environment variables:
+
+```bash
+export CERAMIC_ONE_EVM_RPC_URL=https://rpc.yournetwork.com
+export CERAMIC_ONE_EVM_PRIVATE_KEY=your-private-key-hex
+export CERAMIC_ONE_EVM_CHAIN_ID=1
+export CERAMIC_ONE_EVM_CONTRACT_ADDRESS=0x...
+export CERAMIC_ONE_ANCHOR_INTERVAL=3600
+
+ceramic-one daemon
+```
+
+See [EVM Configuration](./evm-configuration) for detailed setup instructions and all available options.
+
+## Configuration Summary
+
+| Option | Environment Variable | Purpose |
+|--------|---------------------|---------|
+| `--evm-rpc-url` | `CERAMIC_ONE_EVM_RPC_URL` | Submit anchor transactions and verify proofs |
+| `--evm-private-key` | `CERAMIC_ONE_EVM_PRIVATE_KEY` | Sign anchor transactions |
+| `--evm-chain-id` | `CERAMIC_ONE_EVM_CHAIN_ID` | Target blockchain network |
+| `--evm-contract-address` | `CERAMIC_ONE_EVM_CONTRACT_ADDRESS` | Anchor contract address |
+| `--additional-chain-rpc-urls` | `CERAMIC_ONE_ADDITIONAL_CHAIN_RPC_URLS` | Validate anchors from other chains (optional) |
+
+## How It Works
+
+1. **Event Collection**: Ceramic One collects pending events that need anchoring
+2. **Merkle Tree Construction**: Events are batched and organized into a Merkle tree
+3. **Blockchain Transaction**: The Merkle root is written to the anchor contract on your chosen EVM chain
+4. **Confirmation**: After the configured number of block confirmations, anchors are considered final
+5. **Proof Verification**: The node verifies anchor proofs using the configured RPC endpoints
+6. **Proof Distribution**: Anchor proofs are distributed to relevant streams
+
+## Next Steps
+
+- [EVM Configuration](./evm-configuration) - Detailed configuration options for EVM anchoring
+- [Concepts](../concepts) - Learn more about Ceramic's event streaming architecture

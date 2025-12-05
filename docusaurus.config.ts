@@ -59,7 +59,7 @@ const config: Config = {
         fromExtensions: ["html", "htm"],
         redirects: [
           {
-            to: "/docs/composedb/guides/data-modeling",
+            to: "/docs/protocol/ceramic-one/",
             from: "/docs/advanced/standards/data-models/"
           },
           {
@@ -122,19 +122,19 @@ const config: Config = {
             ]
           },
           {
-            to: "/docs/protocol/js-ceramic/streams/consensus",
+            to: "/docs/protocol/ceramic-one/concepts",
             from: ["/learn/advanced/consensus/", "/protocol/streams/consensus/"]
           },
           {
-            to: "/docs/composedb/guides/data-modeling/model-catalog",
+            to: "/docs/protocol/ceramic-one/",
             from: "/build/share/"
           },
           {
-            to: "/docs/protocol/js-ceramic/guides/ceramic-clients/javascript-clients/pinning",
+            to: "/docs/protocol/ceramic-one/",
             from: ["/build/javascript/pinning/", "/build/pinning/"]
           },
           {
-            to: "/docs/composedb/examples",
+            to: "/docs/protocol/ceramic-one/",
             from: [
               "/try/projects/",
               "/explore/sample-apps/",
@@ -171,11 +171,11 @@ const config: Config = {
             ]
           },
           {
-            to: "/docs/protocol/js-ceramic/streams/event-log",
+            to: "/docs/protocol/ceramic-one/concepts",
             from: "/protocol/streams/event-log/"
           },
           {
-            to: "/docs/composedb/getting-started",
+            to: "/docs/protocol/ceramic-one/",
             from: [
               "/build/",
               "/tools/overview/",
@@ -189,7 +189,7 @@ const config: Config = {
             ]
           },
           {
-            to: "/docs/protocol/js-ceramic/guides/ceramic-clients/authentication/key-did",
+            to: "/docs/dids/introduction",
             from: [
               "/reference/accounts/key-did/",
               "/docs/advanced/standards/accounts/key-did/",
@@ -202,19 +202,19 @@ const config: Config = {
             ]
           },
           {
-            to: "/docs/protocol/js-ceramic/streams/uri-scheme",
+            to: "/docs/protocol/ceramic-one/concepts",
             from: ["/protocol/streams/uri-scheme/", "/protocol/networking/streams/uri-scheme"]
           },
           {
-            to: "/docs/protocol/js-ceramic/guides/ceramic-clients/clients-overview",
+            to: "/docs/protocol/ceramic-one/usage/installation",
             from: ["/build/clients/", "/clients/javascript/cli/", "/learn/clients/", "/reference/javascript/clients/"]
           },
           {
-            to: "/docs/composedb/guides",
+            to: "/docs/protocol/ceramic-one/",
             from: "/guides"
           },
           {
-            to: "/docs/protocol/js-ceramic/accounts/decentralized-identifiers#supported-methods",
+            to: "/docs/dids/introduction",
             from: [
               "/reference/accounts/3id-did/",
               "/docs/advanced/standards/accounts/nft-did/",
@@ -226,7 +226,7 @@ const config: Config = {
             ]
           },
           {
-            to: "/docs/protocol/js-ceramic/networking/networking-index",
+            to: "/docs/protocol/ceramic-one/concepts",
             from: ["/protocol/networking/"]
           },
           {
@@ -234,11 +234,11 @@ const config: Config = {
             from: ["/explore/explorers/", "/try/explorers/"]
           },
           {
-            to: "/docs/protocol/js-ceramic/overview",
+            to: "/docs/protocol/ceramic-one/",
             from: ["/run/cas/cas/", "/run/"]
           },
           {
-            to: "/docs/composedb/guides/data-modeling#models",
+            to: "/docs/protocol/ceramic-one/concepts",
             from: [
               "/tools/glaze/datamodel/",
               "/tools/glaze/did-datastore/",
@@ -248,7 +248,7 @@ const config: Config = {
             ]
           },
           {
-            to: "/docs/protocol/js-ceramic/overview",
+            to: "/docs/protocol/ceramic-one/",
             from: ["/reference/javascript/blockchain/", "/build/javascript/writes/", "/build/writes/"]
           },
           {
@@ -256,7 +256,7 @@ const config: Config = {
             from: ["/reference/accounts/did-session/"]
           },
           {
-            to: "/docs/protocol/js-ceramic/guides/ceramic-clients/stream-api/caip10-link",
+            to: "/docs/protocol/ceramic-one/concepts",
             from: [
               "/reference/stream-programs/caip10-link/",
               "/streamtypes/caip-10-link/overview",
@@ -264,11 +264,11 @@ const config: Config = {
             ]
           },
           {
-            to: "/docs/protocol/js-ceramic/networking/event-fetching",
+            to: "/docs/protocol/ceramic-one/concepts",
             from: ["/protocol/networking/event-fetching/"]
           },
           {
-            to: "/docs/protocol/js-ceramic/streams/lifecycle",
+            to: "/docs/protocol/ceramic-one/concepts",
             from: ["/protocol/streams/lifecycle/"]
           },
           {
@@ -276,23 +276,23 @@ const config: Config = {
             from: ["/learn/blog/"]
           },
           {
-            to: "/docs/protocol/js-ceramic/streams/streams-index",
+            to: "/docs/protocol/ceramic-one/concepts",
             from: ["/protocol/streams/", "/streamtypes/overview/"]
           },
           {
-            to: "/docs/protocol/js-ceramic/accounts/authorizations",
+            to: "/docs/dids/authorization",
             from: "/protocol/accounts/authorizations/"
           },
           {
-            to: "/docs/protocol/js-ceramic/networking/tip-gossip",
+            to: "/docs/protocol/ceramic-one/concepts",
             from: "/protocol/networking/tip-gossip/"
           },
           {
-            to: "/docs/protocol/js-ceramic/networking/tip-queries",
+            to: "/docs/protocol/ceramic-one/concepts",
             from: "/protocol/networking/tip-queries/"
           },
           {
-            to: "/docs/protocol/js-ceramic/accounts/object-capabilities",
+            to: "/docs/dids/authorization",
             from: "/protocol/accounts/object-capabilities/"
           },
           {
@@ -300,7 +300,7 @@ const config: Config = {
             from: "/docs/introduction/next-steps/"
           },
           {
-            to: "/docs/protocol/js-ceramic/guides/ceramic-clients/javascript-clients/http-api",
+            to: "/docs/protocol/ceramic-one/usage/installation",
             from: [
               "/build/cli/api/",
               "/reference/http-api/",
@@ -315,7 +315,7 @@ const config: Config = {
             from: "/reference/typescript/variables/_ceramicnetwork_core.INDEXED_MODEL_CONFIG_TABLE_NAME.html"
           },
           {
-            to: "/docs/protocol/js-ceramic/accounts/accounts-index",
+            to: "/docs/dids/introduction",
             from: "/protocol/accounts/"
           },
           {
@@ -323,31 +323,31 @@ const config: Config = {
             from: "/reference/typescript/interfaces/_ceramicnetwork_common.AnchorProof.html"
           },
           {
-            to: "/docs/protocol/js-ceramic/guides/ceramic-clients/authentication/did-jsonrpc",
+            to: "/docs/dids/introduction",
             from: "/reference/core-clients/did-jsonrpc/"
           },
           {
-            to: "/docs/protocol/js-ceramic/nodes/overview",
+            to: "/docs/protocol/ceramic-one/",
             from: ["/protocol/nodes", "/run/nodes/node-providers/", "/run/nodes/community-nodes/"]
           },
           {
-            to: "/docs/protocol/js-ceramic/nodes/running-a-node",
+            to: "/docs/protocol/ceramic-one/usage/installation",
             from: ["/run/nodes/nodes", "/run/nodes", "/run/nodes/available/"]
           },
           {
-            to: "/docs/protocol/js-ceramic/guides/ceramic-clients/javascript-clients/queries",
+            to: "/docs/protocol/ceramic-one/usage/query",
             from: "/build/queries"
           },
           {
-            to: "/docs/protocol/js-ceramic/guides/ceramic-clients/javascript-clients/ceramic-http",
+            to: "/docs/protocol/ceramic-one/usage/installation",
             from: "/build/javascript/http"
           },
           {
-            to: "/docs/composedb/set-up-your-environment",
+            to: "/docs/protocol/ceramic-one/usage/installation",
             from: ["/build/installation/", "/build/javascript/installation/", "/build/installation/Ceramic"]
           },
           {
-            to: "/docs/composedb/interact-with-data#authentication",
+            to: "/docs/dids/authorization",
             from: ["/build/authentication/"]
           },
           {
@@ -355,7 +355,7 @@ const config: Config = {
             from: ["/build/the-ceramic-stack/", "/learn/overview/"]
           },
           {
-            to: "/docs/protocol/js-ceramic/networking/networks",
+            to: "/docs/protocol/ceramic-one/",
             from: ["/learn/networks/", "/learn/mainnet/"]
           },
           {
@@ -367,7 +367,7 @@ const config: Config = {
             from: ["/learn/features/"]
           },
           {
-            to: "/docs/protocol/js-ceramic/accounts/decentralized-identifiers#pkh-did",
+            to: "/docs/dids/introduction",
             from: ["/docs/advanced/standards/accounts/pkh-did/"]
           },
           {
@@ -387,12 +387,27 @@ const config: Config = {
             from: ["/reference/typescript/interfaces/_ceramicnetwork_common.pinapi-1.html"]
           },
           {
-            to: "/docs/protocol/js-ceramic/nodes/overview",
-            from: ["/docs/protocol/js-ceramic/nodes"]
+            to: "/docs/protocol/ceramic-one/",
+            from: ["/docs/protocol/js-ceramic/nodes", "/docs/protocol/js-ceramic/overview"]
           },
           {
             to: "/docs/introduction/protocol-overview",
             from: "/protocol"
+          },
+          {
+            to: "/docs/protocol/ceramic-one/",
+            from: [
+              "/docs/composedb/getting-started",
+              "/docs/composedb/create-ceramic-app",
+              "/docs/composedb/set-up-your-environment",
+              "/docs/composedb/create-your-composite",
+              "/docs/composedb/interact-with-data",
+              "/docs/composedb/core-concepts",
+              "/docs/composedb/next-steps",
+              "/docs/composedb/examples",
+              "/docs/composedb/guides",
+              "/docs/wheel/wheel-reference"
+            ]
           }
         ]
       }
@@ -417,36 +432,12 @@ const config: Config = {
           label: "Introduction"
         },
         {
-          label: "Developer Tools",
-
-          items: [
-            {
-              to: "docs/composedb/getting-started",
-              label: "ComposeDB"
-            },
-            {
-              to: "docs/wheel/wheel-reference",
-              label: "Wheel"
-            },
-            {
-              to: "docs/dids/introduction",
-              label: "Decentralized Identifiers"
-            }
-          ]
+          to: "docs/protocol/ceramic-one/",
+          label: "Ceramic One"
         },
         {
-          label: "Protocol",
-
-          items: [
-            {
-              to: "docs/protocol/js-ceramic/overview",
-              label: "JS-Ceramic"
-            },
-            {
-              to: "docs/protocol/ceramic-one/",
-              label: "Ceramic One"
-            }
-          ]
+          to: "docs/dids/introduction",
+          label: "Decentralized Identifiers"
         },
         {
           label: "Ecosystem",
@@ -488,12 +479,12 @@ const config: Config = {
               to: "/docs/introduction/intro"
             },
             {
-              label: "ComposeDB",
-              to: "/docs/composedb/getting-started"
+              label: "Ceramic One",
+              to: "/docs/protocol/ceramic-one/"
             },
             {
-              label: "Protocol",
-              to: "/docs/protocol/js-ceramic/overview"
+              label: "Decentralized Identifiers",
+              to: "/docs/dids/introduction"
             }
           ]
         },
